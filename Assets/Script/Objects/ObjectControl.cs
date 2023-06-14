@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectControl : MonoBehaviour
@@ -38,15 +37,16 @@ public class ObjectControl : MonoBehaviour
     private bool canRotate;
     private bool isInside;
     private bool isInTheBox = true;
+    private bool alreadyUsed;
     #endregion
 
     #region OtherVariables
-    private Rigidbody rb;
-    private Animator animator;
     [Header("Other Variables")]
     [SerializeField] private GameObject examineButton;
     [SerializeField] private Transform takenParent;
     private Collider objCollider;
+    private Rigidbody rb;
+    private Animator animator;
     private FirstAidBox firstAidBox;
     private GameManager gm;
     #endregion
@@ -82,7 +82,7 @@ public class ObjectControl : MonoBehaviour
 
         if(!gm.GetIsInInspectMode() && isInTheBox) 
         {
-            LeanTween.moveY(gameObject, 4.0f, 0.3f);
+            LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.3f);
             LeanTween.rotateY(gameObject, 0.0f, 0.3f);
         }
         
@@ -107,15 +107,14 @@ public class ObjectControl : MonoBehaviour
         {
             if(objectIndex == gm.GetProcedureIndex())
             {
-                LeanTween.move(gameObject, targetPosition, 0.5f).setEaseInOutBack();
                 StartCoroutine(Wait());
 
-                if(gm.GetProcedureIndex() < gm.objects.Length) gm.AddProcedureObjectIndex();
+                if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
             }
-            else if(objectIndex != gm.GetProcedureIndex())
+            else if(objectIndex > gm.GetProcedureIndex())
             {
                 LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
-                Debug.Log("Kamu Harus menggunakan " + gm.objects[gm.GetProcedureIndex()].name + " Terlebih Dahulu");
+                gm.ShowWrongProcedureUI();
             }
         }
 
@@ -132,7 +131,7 @@ public class ObjectControl : MonoBehaviour
             
             transform.position = GetMouseWorldPos() + offset;
 
-            if(transform.position.y <= 4.0f || transform.position.y > 4.0f) transform.position = new Vector3(transform.position.x, 4.0f, transform.position.z);
+            if(transform.position.y <= 5.0f || transform.position.y > 5.0f) transform.position = new Vector3(transform.position.x, 5.0f, transform.position.z);
 
             if(transform.position.x <= xBoundaries[0]) transform.position = new Vector3(xBoundaries[0], transform.position.y, transform.position.z);
             if(transform.position.x >= xBoundaries[1]) transform.position = new Vector3(xBoundaries[1], transform.position.y, transform.position.z);

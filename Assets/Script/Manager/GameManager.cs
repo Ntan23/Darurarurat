@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InspectUI inspectUI;
     [SerializeField] private string[] inspectText;
     private bool isInInspectMode;
+    [Header("For Wrong Procedure")]
+    [SerializeField] private WrongProcedureUI wrongProcedureUI;
 
     private int procedureObjectIndex;
 
@@ -31,8 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenInspectUI(int index)
     {
-        //inspectUI.gameObject.SetActive(true);  
-        LeanTween.value(inspectUI.gameObject, UpdateInspectUIAlpha, 0.0f, 1.0f, 0.5f); 
+        inspectUI.FadeIn(); 
         inspectUI.ChangeUIText(inspectText[index]);
         isInInspectMode = true;
         selectedIndex = index;
@@ -40,14 +40,18 @@ public class GameManager : MonoBehaviour
 
     public void CloseInspect()
     {
-        //inspectUI.gameObject.SetActive(false);
-        LeanTween.value(inspectUI.gameObject, UpdateInspectUIAlpha, 1.0f, 0.0f, 0.5f); 
+        inspectUI.FadeOut();
         isInInspectMode = false;
         objects[selectedIndex].GetComponent<ObjectControl>().CloseInspect();
     }
-
-    void UpdateInspectUIAlpha(float alpha) => inspectUI.gameObject.GetComponent<CanvasGroup>().alpha = alpha;
     
+    public void ShowWrongProcedureUI()
+    {
+        wrongProcedureUI.FadeIn();
+        wrongProcedureUI.UpdateText(objects[procedureObjectIndex].name);
+        StartCoroutine(WaitWrongProcedureUI());
+    }
+
     public void AddProcedureObjectIndex() => procedureObjectIndex += 1;
 
     public int GetProcedureIndex()
@@ -58,5 +62,11 @@ public class GameManager : MonoBehaviour
     public bool GetIsInInspectMode()
     {
         return isInInspectMode;
+    }
+
+    IEnumerator WaitWrongProcedureUI()
+    {
+        yield return new WaitForSeconds(2.0f);
+        wrongProcedureUI.FadeOut();
     }
 }
