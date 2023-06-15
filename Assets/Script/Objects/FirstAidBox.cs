@@ -42,7 +42,7 @@ public class FirstAidBox : MonoBehaviour
             if(clickCount == 1)
             {
                 isInTheMiddle = true;
-                LeanTween.move(gameObject, targetPosition, 0.5f);
+                LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
                 LeanTween.rotate(gameObject, targetRotation, 0.5f);
                 StartCoroutine(Wait(0.6f));
             }

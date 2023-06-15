@@ -3,6 +3,15 @@ using UnityEngine;
 
 public class ObjectControl : MonoBehaviour
 {
+    #region EnumVariables
+    private enum Type
+    {
+        BandAid, Betadine
+    }
+
+    [SerializeField] private Type objectType;
+    #endregion
+
     #region VectorVariables
     private Vector3 offset;
     private Vector3 mousePos;
@@ -32,23 +41,24 @@ public class ObjectControl : MonoBehaviour
     private bool canMove = true;
     private bool canExamine = true;
     private bool isDragging;
-    private bool isInInspectMode;
     private bool isAnimating;
+    private bool alreadyAnimated;
     private bool canRotate;
     private bool isInside;
     private bool isInTheBox = true;
-    private bool alreadyUsed;
+    private bool isPeeled;
+    [SerializeField] private bool needToMoveBack;
     #endregion
 
     #region OtherVariables
     [Header("Other Variables")]
-    [SerializeField] private GameObject examineButton;
+    [SerializeField] private GameObject[] buttons;
     [SerializeField] private Transform takenParent;
     private Collider objCollider;
     private Rigidbody rb;
-    private Animator animator;
     private FirstAidBox firstAidBox;
     private GameManager gm;
+    [SerializeField] private ObjectAnimationControl objectAnimationControl;
     #endregion
 
     void Start() 
@@ -56,22 +66,19 @@ public class ObjectControl : MonoBehaviour
         gm = GameManager.instance;
 
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
         objCollider = GetComponent<Collider>();
-
         firstAidBox = GetComponentInParent<FirstAidBox>();
 
-        animator.enabled = false;
         objCollider.enabled = false;
         beforeAnimatePosition = transform.position;
-        examineButton.SetActive(false);
+        HideAllButtons();
     }
 
     void OnMouseDown()
     {
         if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBox();
 
-        if(isInTheBox) examineButton.SetActive(false);
+        if(isInTheBox) HideAllButtons();
 
         if(transform.parent != takenParent) transform.parent = takenParent;
         
@@ -82,7 +89,7 @@ public class ObjectControl : MonoBehaviour
 
         if(!gm.GetIsInInspectMode() && isInTheBox) 
         {
-            LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.3f);
+            LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
             LeanTween.rotateY(gameObject, 0.0f, 0.3f);
         }
         
@@ -91,12 +98,17 @@ public class ObjectControl : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(!isDragging && canExamine && !isInTheBox && !gm.GetIsInInspectMode()) examineButton.SetActive(true);
+        if(!isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
+
+        if(objectType == Type.BandAid)
+        {
+            if(!isPeeled && !isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+        }
     }
 
     void OnMouseExit()
     {
-        examineButton.SetActive(false);
+        HideAllButtons();
         isDragging = false;
         if(!gm.GetIsInInspectMode()) canExamine = true;
     }
@@ -107,9 +119,25 @@ public class ObjectControl : MonoBehaviour
         {
             if(objectIndex == gm.GetProcedureIndex())
             {
-                StartCoroutine(Wait());
+                LeanTween.move(gameObject, targetPosition, 0.5f);
+                
+                if(!alreadyAnimated && objectType != Type.BandAid) Animate();
 
-                if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
+                if(objectType == Type.BandAid)
+                {
+                    if(isPeeled) LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+                    if(!isPeeled) 
+                    {
+                        Debug.Log("Kamu Harus Peel Plesternya Terlebih Dahulu");
+                        LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+                    }
+
+                    if(gm.GetProcedureIndex() <= gm.objects.Length && isPeeled) gm.AddProcedureObjectIndex();
+                }
+                else if(objectType != Type.BandAid)
+                {
+                    if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
+                }   
             }
             else if(objectIndex > gm.GetProcedureIndex())
             {
@@ -124,7 +152,7 @@ public class ObjectControl : MonoBehaviour
 
     void OnMouseDrag() 
     {
-        if(canMove && !isInTheBox)
+        if(canMove && !isInTheBox && !isAnimating)
         {
             isDragging = true;
             canExamine = false;
@@ -168,29 +196,31 @@ public class ObjectControl : MonoBehaviour
         if(isInside) isInside = false;
     }
 
-    private void AfterAnimation()
-    {
-        animator.enabled = false;
-        isAnimating = false;
-        LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
-    }
-
-    IEnumerator Wait()
+    private void Animate()
     {
         canMove = false;
         isAnimating = true;
-        yield return new WaitForSeconds(0.5f);
-        animator.enabled = true;
-        animator.SetTrigger("Animate");
+        objectAnimationControl.EnableAnimator();
+        objectAnimationControl.PlayAnimation();
         canExamine = false;
+    }
+
+    public void AfterAnimate()
+    {
+        isAnimating = false;
+        LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
+        objectAnimationControl.DisableAnimator();
+        if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+
+        alreadyAnimated = true;
     }
 
     public void Inspect() 
     {
         firstAidBox.SetCanBeClicked(false);
-        examineButton.SetActive(false);
+        HideAllButtons();
         beforeInspectPosition = transform.position;
-        LeanTween.move(gameObject, inspectPosition, 0.5f);
+        LeanTween.move(gameObject, inspectPosition, 0.8f).setEaseSpring();
 
         canExamine = false;
         canMove = false;
@@ -211,4 +241,33 @@ public class ObjectControl : MonoBehaviour
     }
 
     public void EnableCollider() => objCollider.enabled = true;
+
+    private void HideAllButtons() 
+    {
+        foreach(GameObject go in buttons)
+        {
+            go.SetActive(false);
+        }
+    }
+
+    //For Band Aid Only
+    public void Peel()
+    {
+        isPeeled = true;
+        StartCoroutine(PeelAnimation());
+        StartCoroutine(WaitForRotateAndMove(2.0f));
+    }   
+
+    IEnumerator PeelAnimation()
+    {
+        LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f);
+        yield return new WaitForSeconds(0.6f);
+        LeanTween.rotateX(gameObject, 90.0f, 0.3f);
+    }
+
+    IEnumerator WaitForRotateAndMove(float time) 
+    {
+        yield return new WaitForSeconds(time); 
+        Animate();
+    } 
 }
