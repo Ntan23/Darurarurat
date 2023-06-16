@@ -27,7 +27,7 @@ public class WrongProcedureUI : MonoBehaviour
 
     private void UpdateAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
 
-    public void UpdateText(string objectName) => wrongText.text = "Kamu Harus Menggunakan " + objectName + " Terlebih Dahulu";
+    public void UpdateText(string sentence) => wrongText.text = sentence;
 
     IEnumerator Wait()
     {

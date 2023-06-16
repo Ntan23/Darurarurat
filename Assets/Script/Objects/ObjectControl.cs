@@ -6,7 +6,7 @@ public class ObjectControl : MonoBehaviour
     #region EnumVariables
     private enum Type
     {
-        BandAid, Betadine
+        Procedural, NonProcedural
     }
 
     [SerializeField] private Type objectType;
@@ -46,7 +46,7 @@ public class ObjectControl : MonoBehaviour
     private bool canRotate;
     private bool isInside;
     private bool isInTheBox = true;
-    private bool isPeeled;
+    private bool isProcedureFinished;
     [SerializeField] private bool needToMoveBack;
     #endregion
 
@@ -91,6 +91,8 @@ public class ObjectControl : MonoBehaviour
         {
             LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
             LeanTween.rotateY(gameObject, 0.0f, 0.3f);
+
+            if(rb.isKinematic) rb.isKinematic = false;
         }
         
         if(!gm.GetIsInInspectMode() && !isAnimating) canMove = true;
@@ -100,9 +102,9 @@ public class ObjectControl : MonoBehaviour
     {
         if(!isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
-        if(objectType == Type.BandAid)
+        if(objectType == Type.Procedural)
         {
-            if(!isPeeled && !isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+            if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
         }
     }
 
@@ -120,22 +122,22 @@ public class ObjectControl : MonoBehaviour
             if(objectIndex == gm.GetProcedureIndex())
             {
                 LeanTween.move(gameObject, targetPosition, 0.5f);
-                
-                if(!alreadyAnimated && objectType != Type.BandAid) Animate();
 
-                if(objectType == Type.BandAid)
+                if(objectType == Type.Procedural)
                 {
-                    if(isPeeled) LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
-                    if(!isPeeled) 
+                    if(isProcedureFinished) LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+                    if(!isProcedureFinished) 
                     {
-                        Debug.Log("Kamu Harus Peel Plesternya Terlebih Dahulu");
-                        LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+                        if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
+                        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                     }
 
-                    if(gm.GetProcedureIndex() <= gm.objects.Length && isPeeled) gm.AddProcedureObjectIndex();
+                    if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
                 }
-                else if(objectType != Type.BandAid)
+                else if(objectType == Type.NonProcedural)
                 {
+                    if(!alreadyAnimated) Animate();
+
                     if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
                 }   
             }
@@ -150,10 +152,19 @@ public class ObjectControl : MonoBehaviour
         if(isDragging) isDragging = false;
     }
 
+    IEnumerator CheckCondition()
+    {
+        gm.AddProcedureObjectIndex();
+        yield return new WaitForSeconds(0.5f);
+        gm.CheckWinCondition();
+    }
+
     void OnMouseDrag() 
     {
         if(canMove && !isInTheBox && !isAnimating)
         {
+            if(!rb.isKinematic) rb.isKinematic = true;
+
             isDragging = true;
             canExamine = false;
             
@@ -196,7 +207,7 @@ public class ObjectControl : MonoBehaviour
         if(isInside) isInside = false;
     }
 
-    private void Animate()
+    public void Animate()
     {
         canMove = false;
         isAnimating = true;
@@ -210,10 +221,14 @@ public class ObjectControl : MonoBehaviour
         isAnimating = false;
         LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
         objectAnimationControl.DisableAnimator();
-        if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+        if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
         alreadyAnimated = true;
-    }
+
+        if(rb.isKinematic) rb.isKinematic = false;
+
+        gm.CheckWinCondition();
+     }
 
     public void Inspect() 
     {
@@ -232,8 +247,8 @@ public class ObjectControl : MonoBehaviour
     public void CloseInspect()
     {
         firstAidBox.SetCanBeClicked(true);
-        LeanTween.move(gameObject, beforeInspectPosition, 0.5f);
-        LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
+        LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
+        LeanTween.rotate(gameObject, Vector3.zero, 0.4f);
 
         canRotate = false;
         canExamine = true;
@@ -250,24 +265,7 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-    //For Band Aid Only
-    public void Peel()
-    {
-        isPeeled = true;
-        StartCoroutine(PeelAnimation());
-        StartCoroutine(WaitForRotateAndMove(2.0f));
-    }   
-
-    IEnumerator PeelAnimation()
-    {
-        LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f);
-        yield return new WaitForSeconds(0.6f);
-        LeanTween.rotateX(gameObject, 90.0f, 0.3f);
-    }
-
-    IEnumerator WaitForRotateAndMove(float time) 
-    {
-        yield return new WaitForSeconds(time); 
-        Animate();
-    } 
+    public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
+    
+    public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
 }

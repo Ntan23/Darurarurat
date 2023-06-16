@@ -43,7 +43,7 @@ public class FirstAidBox : MonoBehaviour
             {
                 isInTheMiddle = true;
                 LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
-                LeanTween.rotate(gameObject, targetRotation, 0.5f);
+                LeanTween.rotate(gameObject, targetRotation, 0.4f);
                 StartCoroutine(Wait(0.6f));
             }
             if(clickCount == 2)
@@ -65,13 +65,7 @@ public class FirstAidBox : MonoBehaviour
 
         if(isOpen && !isInTheMiddle && canBeClicked) 
         {
-            LeanTween.move(gameObject, targetPosition, 0.5f);
-
-            // if(gm.objects.Length > 1 && objectIndex < gm.objects.Length) 
-            // {
-            //     gm.objects[objectIndex].GetComponent<ObjectControl>().EnableCollider();
-            //     if(objectIndex < gm.objects.Length) objectIndex++;
-            // }
+            LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
             
             StartCoroutine(WaitTheBox(0.8f, false));
         }
@@ -79,7 +73,7 @@ public class FirstAidBox : MonoBehaviour
 
     public void MoveBox()
     {
-        LeanTween.move(gameObject, intialPosition, 0.5f);
+        LeanTween.move(gameObject, intialPosition, 0.8f).setEaseSpring();
         StartCoroutine(WaitTheBox(0.5f, true));
     }
 

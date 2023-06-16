@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     }
 
     private int selectedIndex;
+    private bool isWin;
     public GameObject[] objects;
 
     [Header("For Inspect")]
@@ -48,11 +49,33 @@ public class GameManager : MonoBehaviour
     public void ShowWrongProcedureUI()
     {
         wrongProcedureUI.FadeIn();
-        wrongProcedureUI.UpdateText(objects[procedureObjectIndex].name);
+        wrongProcedureUI.UpdateText("Kamu Harus Menggunakan " + objects[procedureObjectIndex].name + " Terlebih Dahulu");
         StartCoroutine(WaitWrongProcedureUI());
     }
 
+    public void ShowWrongProcedureUIForProceduralObjects(string sentence)
+    {
+        wrongProcedureUI.FadeIn();
+        wrongProcedureUI.UpdateText(sentence);
+        StartCoroutine(WaitWrongProcedureUI());
+    }
+
+    IEnumerator WaitWrongProcedureUI()
+    {
+        yield return new WaitForSeconds(2.0f);
+        wrongProcedureUI.FadeOut();
+    }
+
     public void AddProcedureObjectIndex() => procedureObjectIndex += 1;
+
+    public void CheckWinCondition()
+    {
+        if(procedureObjectIndex == objects.Length && !isWin) 
+        {
+            Debug.Log("You Win");
+            isWin = true;
+        }
+    }
 
     public int GetProcedureIndex()
     {
@@ -64,9 +87,4 @@ public class GameManager : MonoBehaviour
         return isInInspectMode;
     }
 
-    IEnumerator WaitWrongProcedureUI()
-    {
-        yield return new WaitForSeconds(2.0f);
-        wrongProcedureUI.FadeOut();
-    }
 }
