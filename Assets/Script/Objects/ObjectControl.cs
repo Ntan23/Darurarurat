@@ -125,7 +125,10 @@ public class ObjectControl : MonoBehaviour
 
                 if(objectType == Type.Procedural)
                 {
-                    if(isProcedureFinished) LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+                    if(isProcedureFinished) 
+                    {
+                        if(gameObject.name == "Plester") LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+                    }
                     if(!isProcedureFinished) 
                     {
                         if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");

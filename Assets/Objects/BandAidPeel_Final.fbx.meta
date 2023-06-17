@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: c956cc87fa45e9741a6bf1d2166d57ab
+guid: b21e7429737595340adead84f7eb670b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
+  - first:
+      74: -6468488235515654990
+    second: Armature.001|AreaAction
+  - first:
+      74: 3449435967923084856
+    second: Armature.001|AreaAction.001
   - first:
       74: -374351248576610348
     second: Armature.001|LeftPeel_Anim
@@ -13,6 +19,15 @@ ModelImporter:
       74: -6490821515258642018
     second: Armature.001|RightPeel_Visibility
   - first:
+      74: -805650494319032960
+    second: Armature.001|SunAction
+  - first:
+      74: 7232233882498212294
+    second: Armature.002|AreaAction
+  - first:
+      74: 3067734510086807285
+    second: Armature.002|AreaAction.001
+  - first:
       74: -1792832320046984962
     second: Armature.002|LeftPeel_Visibility
   - first:
@@ -21,6 +36,9 @@ ModelImporter:
   - first:
       74: -4219875865878201197
     second: Armature.002|RightPeel_Visibility
+  - first:
+      74: -4018981195121713114
+    second: Armature.002|SunAction
   externalObjects:
   - first:
       type: UnityEngine:Material
