@@ -70,7 +70,7 @@ public class ObjectControl : MonoBehaviour
         firstAidBox = GetComponentInParent<FirstAidBox>();
 
         objCollider.enabled = false;
-        beforeAnimatePosition = transform.position;
+        SetBeforeAnimatePosition();
         HideAllButtons();
     }
 
@@ -85,7 +85,7 @@ public class ObjectControl : MonoBehaviour
         cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
         
         offset = transform.position - GetMouseWorldPos();
-        beforeAnimatePosition = transform.position;
+        if(!isAnimating) SetBeforeAnimatePosition();
 
         if(!gm.GetIsInInspectMode() && isInTheBox) 
         {
@@ -267,6 +267,8 @@ public class ObjectControl : MonoBehaviour
             go.SetActive(false);
         }
     }
+
+    public void SetBeforeAnimatePosition() => beforeAnimatePosition = transform.position;
 
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
     
