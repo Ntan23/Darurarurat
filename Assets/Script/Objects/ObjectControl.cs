@@ -74,6 +74,12 @@ public class ObjectControl : MonoBehaviour
         HideAllButtons();
     }
 
+    void Update()
+    {
+        if(rb.velocity.x > 0 || rb.velocity.y > 0 || rb.velocity.z > 0) rb.velocity = Vector3.zero;
+        if(rb.velocity.x < 0 || rb.velocity.y < 0 || rb.velocity.z < 0) rb.velocity = Vector3.zero;
+    }
+
     void OnMouseDown()
     {
         if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBox();
@@ -85,9 +91,9 @@ public class ObjectControl : MonoBehaviour
         cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
         
         offset = transform.position - GetMouseWorldPos();
-        if(!isAnimating) SetBeforeAnimatePosition();
+        if(!gm.GetIsAnimating()) SetBeforeAnimatePosition();
 
-        if(!gm.GetIsInInspectMode() && isInTheBox) 
+        if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
         {
             LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
             LeanTween.rotateY(gameObject, 0.0f, 0.3f);
@@ -95,16 +101,16 @@ public class ObjectControl : MonoBehaviour
             if(rb.isKinematic) rb.isKinematic = false;
         }
         
-        if(!gm.GetIsInInspectMode() && !isAnimating) canMove = true;
+        if(!gm.GetIsInInspectMode() && !gm.GetIsAnimating()) canMove = true;
     }
 
     void OnMouseEnter()
     {
-        if(!isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
+        if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
         if(objectType == Type.Procedural)
         {
-            if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !isAnimating && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+            if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
         }
     }
 
@@ -113,6 +119,8 @@ public class ObjectControl : MonoBehaviour
         HideAllButtons();
         isDragging = false;
         if(!gm.GetIsInInspectMode()) canExamine = true;
+
+        if(rb.isKinematic) rb.isKinematic = false;
     }
 
     void OnMouseUp()
@@ -164,7 +172,7 @@ public class ObjectControl : MonoBehaviour
 
     void OnMouseDrag() 
     {
-        if(canMove && !isInTheBox && !isAnimating)
+        if(canMove && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
         {
             if(!rb.isKinematic) rb.isKinematic = true;
 
@@ -181,7 +189,7 @@ public class ObjectControl : MonoBehaviour
             if(transform.position.z <= zBoundaries[1]) transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaries[1]); 
         }
 
-        if(canRotate)
+        if(canRotate && gm.GetIsInInspectMode())
         {
             xAxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
             yAxisRotation = Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -212,8 +220,11 @@ public class ObjectControl : MonoBehaviour
 
     public void Animate()
     {
+        if(!rb.isKinematic) rb.isKinematic = true;
+
         canMove = false;
-        isAnimating = true;
+        // isAnimating = true;
+        gm.ChangeIsAnimatingValue(true);
         objectAnimationControl.EnableAnimator();
         objectAnimationControl.PlayAnimation();
         canExamine = false;
@@ -221,9 +232,9 @@ public class ObjectControl : MonoBehaviour
 
     public void AfterAnimate()
     {
-        isAnimating = false;
-        LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
+        gm.ChangeIsAnimatingValue(false);
         objectAnimationControl.DisableAnimator();
+        LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
         if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
         alreadyAnimated = true;
@@ -253,6 +264,8 @@ public class ObjectControl : MonoBehaviour
         LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
         LeanTween.rotate(gameObject, Vector3.zero, 0.4f);
 
+        if(rb.isKinematic) rb.isKinematic = false;
+        
         canRotate = false;
         canExamine = true;
         canMove = true;
@@ -272,5 +285,5 @@ public class ObjectControl : MonoBehaviour
 
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
     
-    public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
+    // public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
 }

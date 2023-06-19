@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class BandAidPeel : MonoBehaviour
 {
-    
     private Vector3 mousePosition;
     private bool canAnimate;
     private bool isLeftPeeled;
     private bool isRightPeeled;
     [SerializeField] private ObjectControl objectControl;
-    [SerializeField] private Animator animator;
+    private Animator animator;
     [SerializeField] private GameObject[] bandAidPeels;
+    private GameManager gm;
 
-    void Update()
+    void Start() 
     {
-        if(Input.GetMouseButtonDown(0)) mousePosition = Input.mousePosition;
+        gm = GameManager.instance;
 
-        if(Input.GetMouseButtonUp(0) && canAnimate)
+        animator = GetComponentInChildren<Animator>();
+    }
+
+    public void Peel()
+    {
+        objectControl.SetBeforeAnimatePosition();
+        gm.ChangeIsAnimatingValue(true);
+        objectControl.ChangeIsProcedureFinishedValue();
+        StartCoroutine(PeelAnimation());
+    }   
+
+    void OnMouseDown() => mousePosition = Input.mousePosition;
+
+    void OnMouseUp()
+    {
+        if(canAnimate)
         {
             if(Input.mousePosition.x < mousePosition.x)
             {
@@ -35,20 +50,8 @@ public class BandAidPeel : MonoBehaviour
                 canAnimate = false;
                 StartCoroutine(Wait("Right"));
             }
-            else return;
         }
-
-        if(isLeftPeeled && isRightPeeled) StartCoroutine(AfterAnimate());
-        else return;
     }
-
-    public void Peel()
-    {
-        objectControl.SetBeforeAnimatePosition();
-        objectControl.ChangeIsAnimatingValue();
-        objectControl.ChangeIsProcedureFinishedValue();
-        StartCoroutine(PeelAnimation());
-    }   
 
     IEnumerator PeelAnimation()
     {
@@ -74,6 +77,10 @@ public class BandAidPeel : MonoBehaviour
             isRightPeeled = true;
             bandAidPeels[1].SetActive(false);
         }
+
+        if(isLeftPeeled && isRightPeeled) StartCoroutine(AfterAnimate());
+        else yield return null;
+
         canAnimate = true;
     }
 
@@ -81,6 +88,6 @@ public class BandAidPeel : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         objectControl.AfterAnimate();
-        this.enabled = false;
+        Destroy(this);
     }
 }

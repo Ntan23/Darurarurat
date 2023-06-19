@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     private int selectedIndex;
     private bool isWin;
+    private bool isAnimating;
     public GameObject[] objects;
 
     [Header("For Inspect")]
@@ -77,6 +78,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ChangeIsAnimatingValue(bool value) => isAnimating = value;
+    
     public int GetProcedureIndex()
     {
         return procedureObjectIndex;
@@ -87,4 +90,8 @@ public class GameManager : MonoBehaviour
         return isInInspectMode;
     }
 
-}
+    public bool GetIsAnimating()
+    {
+        return isAnimating;
+    }
+}   
