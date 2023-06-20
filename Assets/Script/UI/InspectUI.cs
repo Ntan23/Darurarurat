@@ -5,7 +5,12 @@ public class InspectUI : MonoBehaviour
 {
     private TextMeshProUGUI inspectText;
 
-    void Start() => inspectText = GetComponentInChildren<TextMeshProUGUI>();    
+    void Start() 
+    {
+        inspectText = GetComponentInChildren<TextMeshProUGUI>();   
+
+        gameObject.SetActive(false); 
+    }
     
     public void FadeIn() => LeanTween.value(gameObject, UpdateAlpha, 0.0f, 1.0f, 0.5f); 
     

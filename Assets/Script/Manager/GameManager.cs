@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenInspectUI(int index)
     {
+        inspectUI.gameObject.SetActive(true);
         inspectUI.FadeIn(); 
         inspectUI.ChangeUIText(inspectText[index]);
         isInInspectMode = true;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseInspect()
     {
+        inspectUI.gameObject.SetActive(false);
         inspectUI.FadeOut();
         isInInspectMode = false;
         objects[selectedIndex].GetComponent<ObjectControl>().CloseInspect();
