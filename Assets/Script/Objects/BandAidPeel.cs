@@ -11,6 +11,8 @@ public class BandAidPeel : MonoBehaviour
     [SerializeField] private ObjectControl objectControl;
     private Animator animator;
     [SerializeField] private GameObject[] bandAidPeels;
+    [SerializeField] private GameObject instructionArrowParent;
+    [SerializeField] private GameObject[] instructionArrow;
     private GameManager gm;
 
     void Start() 
@@ -18,6 +20,11 @@ public class BandAidPeel : MonoBehaviour
         gm = GameManager.instance;
 
         animator = GetComponentInChildren<Animator>();
+
+        foreach(GameObject go in instructionArrow)
+        {
+            go.SetActive(false);
+        }
     }
 
     public void Peel()
@@ -36,6 +43,8 @@ public class BandAidPeel : MonoBehaviour
         {
             if(Input.mousePosition.x < mousePosition.x)
             {
+                instructionArrow[0].SetActive(false);
+
                 if(isRightPeeled) bandAidPeels[1].SetActive(false);
 
                 animator.Play("Left Peel");
@@ -44,6 +53,8 @@ public class BandAidPeel : MonoBehaviour
             }
             else if(Input.mousePosition.x > mousePosition.x)
             {
+                instructionArrow[1].SetActive(false);
+                
                 if(isLeftPeeled) bandAidPeels[0].SetActive(false);
 
                 animator.Play("Right Peel");
@@ -60,6 +71,13 @@ public class BandAidPeel : MonoBehaviour
         LeanTween.rotateX(gameObject, 90.0f, 0.3f);
         yield return new WaitForSeconds(0.2f);
         // objectControl.Animate();
+        foreach(GameObject go in instructionArrow)
+        {
+            go.SetActive(true);
+        }
+
+        instructionArrowParent.transform.Rotate(new Vector3(90.0f, 0.0f, 0.0f));
+
         animator.enabled = true;
         canAnimate = true;
     }

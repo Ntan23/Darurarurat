@@ -95,7 +95,7 @@ public class ObjectControl : MonoBehaviour
 
         if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
         {
-            LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
+            LeanTween.move(gameObject, new Vector3(transform.position.x, 6.0f, 0.0f), 0.8f).setEaseSpring();
             LeanTween.rotateY(gameObject, 0.0f, 0.3f);
 
             if(rb.isKinematic) rb.isKinematic = false;
@@ -110,7 +110,25 @@ public class ObjectControl : MonoBehaviour
 
         if(objectType == Type.Procedural)
         {
-            if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+            if(buttons.Length == 2)
+            {
+                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+            }
+
+            if(buttons.Length == 3)
+            {
+                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
+                {
+                    buttons[1].SetActive(true);
+                    buttons[2].SetActive(false);
+                }
+
+                if(isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
+                {
+                    buttons[1].SetActive(false);
+                    buttons[2].SetActive(true);
+                }
+            }
         }
     }
 
@@ -140,6 +158,9 @@ public class ObjectControl : MonoBehaviour
                     if(!isProcedureFinished) 
                     {
                         if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
+                        
+                        if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
+                        
                         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                     }
 
@@ -181,7 +202,7 @@ public class ObjectControl : MonoBehaviour
             
             transform.position = GetMouseWorldPos() + offset;
 
-            if(transform.position.y <= 5.0f || transform.position.y > 5.0f) transform.position = new Vector3(transform.position.x, 5.0f, transform.position.z);
+            if(transform.position.y <= 6.0f || transform.position.y > 6.0f) transform.position = new Vector3(transform.position.x, 6.0f, transform.position.z);
 
             if(transform.position.x <= xBoundaries[0]) transform.position = new Vector3(xBoundaries[0], transform.position.y, transform.position.z);
             if(transform.position.x >= xBoundaries[1]) transform.position = new Vector3(xBoundaries[1], transform.position.y, transform.position.z);
@@ -233,7 +254,7 @@ public class ObjectControl : MonoBehaviour
     public void AfterAnimate()
     {
         gm.ChangeIsAnimatingValue(false);
-        objectAnimationControl.DisableAnimator();
+        //objectAnimationControl.DisableAnimator();
         LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
         if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
