@@ -11,10 +11,13 @@ public class AntisepticAnimation : MonoBehaviour
     private ObjectControl objectControl;
     private GameManager gm;
     [SerializeField] private GameObject cap;
-    [SerializeField] private Transform targetParent;
-    [SerializeField] private Transform originalParent;
+    [SerializeField] private GameObject capMesh;
     private Collider objectCollider;
     [SerializeField] private Collider capCollider;
+    private SkinnedMeshRenderer capSkinnedMeshRenderer;
+    [SerializeField] private Material normalCapMaterial;
+    [SerializeField] private Material transparentCapMaterial;
+    [SerializeField] private ParticleSystem liquidParticleSystem;
 
     void Start() 
     {
@@ -22,6 +25,7 @@ public class AntisepticAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
         objectCollider = GetComponent<Collider>();
+        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
     }
 
     void OnMouseDown() => mousePosition = Input.mousePosition;
@@ -56,14 +60,21 @@ public class AntisepticAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation(false));
     }
 
+    private void UpdateAlpha(float alpha) => capSkinnedMeshRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+    
     IEnumerator OpenMoveRotateAnimation(bool hasCap)
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.8f);
         LeanTween.rotateX(gameObject, 60.0f, 0.3f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
-        if(!hasCap) cap.transform.parent = originalParent;
+        if(!hasCap) 
+        {
+            LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
+            yield return new WaitForSeconds(1.0f);
+            capSkinnedMeshRenderer.material = normalCapMaterial;
+        }
 
         animator.enabled = true;
         canAnimate = true;
@@ -73,8 +84,10 @@ public class AntisepticAnimation : MonoBehaviour
     {
         animator.Play("Open");
         yield return new WaitForSeconds(1.8f);
-        cap.transform.parent = targetParent;
-        yield return new WaitForSeconds(0.5f);
+        // cap.transform.parent = targetParent;
+        capSkinnedMeshRenderer.material = transparentCapMaterial;
+        LeanTween.value(capMesh, UpdateAlpha, 1.0f, 0.0f, 0.8f);
+        yield return new WaitForSeconds(1.0f);
         objectControl.AfterAnimate();
         objectCollider.enabled = true;
         capCollider.enabled = false;
@@ -92,4 +105,6 @@ public class AntisepticAnimation : MonoBehaviour
         canAnimate = false;
         isOpen = false;
     }
+
+    public void PlayLiquidParticleSystem() => liquidParticleSystem.Play();
 }

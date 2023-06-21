@@ -59,6 +59,7 @@ public class ObjectControl : MonoBehaviour
     private FirstAidBox firstAidBox;
     private GameManager gm;
     [SerializeField] private ObjectAnimationControl objectAnimationControl;
+    private GameObject antisepticLiquidParticleSystem;
     #endregion
 
     void Start() 
@@ -68,6 +69,8 @@ public class ObjectControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         objCollider = GetComponent<Collider>();
         firstAidBox = GetComponentInParent<FirstAidBox>();
+
+        antisepticLiquidParticleSystem = GameObject.FindGameObjectWithTag("Liquid");
 
         objCollider.enabled = false;
         SetBeforeAnimatePosition();
@@ -95,8 +98,8 @@ public class ObjectControl : MonoBehaviour
 
         if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
         {
-            LeanTween.move(gameObject, new Vector3(transform.position.x, 6.0f, 0.0f), 0.8f).setEaseSpring();
-            LeanTween.rotateY(gameObject, 0.0f, 0.3f);
+            LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
+            LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
             if(rb.isKinematic) rb.isKinematic = false;
         }
@@ -153,7 +156,9 @@ public class ObjectControl : MonoBehaviour
                 {
                     if(isProcedureFinished) 
                     {
-                        if(gameObject.name == "Plester") LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+                        if(gameObject.name == "Plester") StartCoroutine(Plester());
+
+                        if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
                     }
                     if(!isProcedureFinished) 
                     {
@@ -202,7 +207,7 @@ public class ObjectControl : MonoBehaviour
             
             transform.position = GetMouseWorldPos() + offset;
 
-            if(transform.position.y <= 6.0f || transform.position.y > 6.0f) transform.position = new Vector3(transform.position.x, 6.0f, transform.position.z);
+            if(transform.position.y <= 5.0f || transform.position.y > 5.0f) transform.position = new Vector3(transform.position.x, 5.0f, transform.position.z);
 
             if(transform.position.x <= xBoundaries[0]) transform.position = new Vector3(xBoundaries[0], transform.position.y, transform.position.z);
             if(transform.position.x >= xBoundaries[1]) transform.position = new Vector3(xBoundaries[1], transform.position.y, transform.position.z);
@@ -305,6 +310,20 @@ public class ObjectControl : MonoBehaviour
     public void SetBeforeAnimatePosition() => beforeAnimatePosition = transform.position;
 
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
-    
     // public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
+
+    IEnumerator Plester()
+    {
+        LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+        yield return new WaitForSeconds(0.3f);
+        if(antisepticLiquidParticleSystem != null) antisepticLiquidParticleSystem.SetActive(false);
+    }
+
+    IEnumerator Antiseptic()
+    {
+        LeanTween.move(gameObject, new Vector3(5.8f, 6.0f, 6.6f), 0.8f).setEaseSpring();
+        LeanTween.rotateY(gameObject, -90.0f, 0.3f);
+        yield return new WaitForSeconds(1.0f);
+        GetComponent<Animator>().Play("Pour");
+    }
 }
