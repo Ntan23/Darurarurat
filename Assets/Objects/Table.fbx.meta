@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e19d6c85f643df6408d35650a2ee0928
+guid: e8f8cb100f64690489b6d4fcb9e6f5a4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Arms
-    second: {fileID: 2100000, guid: 065307a7e6bb8314c81114aff06aa99f, type: 2}
+      name: Table
+    second: {fileID: 2100000, guid: fcc2ff653916d70439032c222e9c9e8f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
