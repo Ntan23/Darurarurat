@@ -314,7 +314,8 @@ public class ObjectControl : MonoBehaviour
 
     IEnumerator Plester()
     {
-        LeanTween.move(gameObject, new Vector3(9.3f, 1.0f, 9.3f), 0.5f);
+        LeanTween.move(gameObject, new Vector3(9.6f, 1.35f, 9.7f), 0.5f);
+        LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
         yield return new WaitForSeconds(0.3f);
         if(antisepticLiquidParticleSystem != null) antisepticLiquidParticleSystem.SetActive(false);
     }
