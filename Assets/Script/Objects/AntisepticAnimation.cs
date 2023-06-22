@@ -10,6 +10,8 @@ public class AntisepticAnimation : MonoBehaviour
     private Animator animator;
     private ObjectControl objectControl;
     private GameManager gm;
+
+    [Header("For Object Animation")]
     [SerializeField] private GameObject cap;
     [SerializeField] private GameObject capMesh;
     private Collider objectCollider;
@@ -19,6 +21,9 @@ public class AntisepticAnimation : MonoBehaviour
     [SerializeField] private Material transparentCapMaterial;
     [SerializeField] private ParticleSystem liquidParticleSystem;
 
+    [Header("For Arrow Instruction UI")]
+    [SerializeField] private GameObject[] instructionArrows;
+
     void Start() 
     {
         gm = GameManager.instance;
@@ -26,6 +31,8 @@ public class AntisepticAnimation : MonoBehaviour
         objectControl = GetComponent<ObjectControl>();
         objectCollider = GetComponent<Collider>();
         capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
+
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
     }
 
     void OnMouseDown() => mousePosition = Input.mousePosition;
@@ -69,11 +76,14 @@ public class AntisepticAnimation : MonoBehaviour
         LeanTween.rotateX(gameObject, 60.0f, 0.3f);
         yield return new WaitForSeconds(0.5f);
 
+        if(hasCap) instructionArrows[1].SetActive(true);
+
         if(!hasCap) 
         {
             LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
             yield return new WaitForSeconds(1.0f);
             capSkinnedMeshRenderer.material = normalCapMaterial;
+            instructionArrows[0].SetActive(true);
         }
 
         animator.enabled = true;
@@ -82,6 +92,8 @@ public class AntisepticAnimation : MonoBehaviour
 
     IEnumerator OpenCap()
     {
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
+
         animator.Play("Open");
         yield return new WaitForSeconds(1.8f);
         // cap.transform.parent = targetParent;
@@ -91,12 +103,15 @@ public class AntisepticAnimation : MonoBehaviour
         objectControl.AfterAnimate();
         objectCollider.enabled = true;
         capCollider.enabled = false;
+
         canAnimate = false;
         isOpen = true;
     }
 
     IEnumerator CloseCap()
     {
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
+
         animator.Play("Close");
         yield return new WaitForSeconds(1.8f);
         objectControl.AfterAnimate();

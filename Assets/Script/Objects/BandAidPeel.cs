@@ -11,7 +11,6 @@ public class BandAidPeel : MonoBehaviour
     [SerializeField] private ObjectControl objectControl;
     private Animator animator;
     [SerializeField] private GameObject[] bandAidPeels;
-    [SerializeField] private GameObject instructionArrowParent;
     [SerializeField] private GameObject[] instructionArrow;
     private GameManager gm;
 
@@ -21,10 +20,7 @@ public class BandAidPeel : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
 
-        foreach(GameObject go in instructionArrow)
-        {
-            go.SetActive(false);
-        }
+        foreach(GameObject go in instructionArrow) go.SetActive(false);
     }
 
     public void Peel()
@@ -71,12 +67,7 @@ public class BandAidPeel : MonoBehaviour
         LeanTween.rotateX(gameObject, 90.0f, 0.3f);
         yield return new WaitForSeconds(0.2f);
         // objectControl.Animate();
-        foreach(GameObject go in instructionArrow)
-        {
-            go.SetActive(true);
-        }
-
-        instructionArrowParent.transform.Rotate(new Vector3(90.0f, 0.0f, 0.0f));
+        foreach(GameObject go in instructionArrow) go.SetActive(true);
 
         animator.enabled = true;
         canAnimate = true;
