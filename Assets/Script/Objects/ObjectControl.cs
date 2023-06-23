@@ -77,10 +77,11 @@ public class ObjectControl : MonoBehaviour
         HideAllButtons();
     }
 
-    void Update()
+    void Update() 
     {
-        if(rb.velocity.x > 0 || rb.velocity.y > 0 || rb.velocity.z > 0) rb.velocity = Vector3.zero;
-        if(rb.velocity.x < 0 || rb.velocity.y < 0 || rb.velocity.z < 0) rb.velocity = Vector3.zero;
+        if(rb.velocity.x != 0 || rb.velocity.y != 0 || rb.velocity.z != 0) rb.velocity = Vector3.zero;
+    
+        if(!gm.IsPlaying()) return;
     }
 
     void OnMouseDown()

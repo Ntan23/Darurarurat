@@ -3,16 +3,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
     public static GameManager instance;
 
     void Awake()
     {
         if(instance == null) instance = this;
     }
+    #endregion
+    
+    private enum State 
+    {
+        Pause, Playing
+    }
+
+    private State gameState;
 
     private int selectedIndex;
     private bool isWin;
     private bool isAnimating;
+    private bool isPauseMenuAnimating;
+    private bool isNotUsingKey;
     public GameObject[] objects;
 
     [Header("For Inspect")]
@@ -21,8 +32,38 @@ public class GameManager : MonoBehaviour
     private bool isInInspectMode;
     [Header("For Wrong Procedure")]
     [SerializeField] private WrongProcedureUI wrongProcedureUI;
+    [Header("Pause Menu")]
+    [SerializeField] private PauseMenuUI pauseMenuUI;
 
     private int procedureObjectIndex;
+
+    void Start() => gameState = State.Playing;
+    
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating)
+        {
+            if(gameState == State.Playing)
+            {
+                pauseMenuUI.OpenPauseMenu(false);
+                StartCoroutine(WaitForPauseMenuAnimation(false));
+            }
+
+            if(gameState == State.Pause)
+            {
+                pauseMenuUI.ClosePauseMenu(false);
+                StartCoroutine(WaitForPauseMenuAnimation(true));
+            }
+        }
+    }
+
+    IEnumerator WaitForPauseMenuAnimation(bool isPause)
+    {
+        yield return new WaitForSeconds(1.0f);
+        isPauseMenuAnimating = false;
+        if(isPause) gameState = State.Playing;
+        else if(!isPause) gameState = State.Pause;
+    }
 
     public void EnableCollider()
     {
@@ -84,6 +125,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeIsAnimatingValue(bool value) => isAnimating = value;
     
+    public void ChangeGameState(bool isPause)
+    {
+        if(isPause) gameState = State.Pause;
+        else if(!isPause) gameState = State.Playing;
+    }
+
+    public void ChangePauseMenuIsAnimatingValue(bool value) => isPauseMenuAnimating = value;
+
     public int GetProcedureIndex()
     {
         return procedureObjectIndex;
@@ -97,5 +146,15 @@ public class GameManager : MonoBehaviour
     public bool GetIsAnimating()
     {
         return isAnimating;
+    }
+
+    public bool IsPlaying()
+    {
+        return gameState == State.Playing;
+    }
+
+    public bool IsPausing()
+    {
+        return isPauseMenuAnimating;
     }
 }   
