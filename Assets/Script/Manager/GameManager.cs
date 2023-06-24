@@ -133,6 +133,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangePauseMenuIsAnimatingValue(bool value) => isPauseMenuAnimating = value;
 
+    public bool GetPauseMenuIsAnimating()
+    {
+        return isPauseMenuAnimating;
+    }
+
     public int GetProcedureIndex()
     {
         return procedureObjectIndex;

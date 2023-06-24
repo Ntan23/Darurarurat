@@ -34,7 +34,7 @@ public class FirstAidBox : MonoBehaviour
 
     void OnMouseDown()
     {
-        if(!isOpen && canBeClicked)
+        if(!isOpen && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
             clickCount++;
 
@@ -63,7 +63,7 @@ public class FirstAidBox : MonoBehaviour
             }
         }
 
-        if(isOpen && !isInTheMiddle && canBeClicked) 
+        if(isOpen && !isInTheMiddle && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating()) 
         {
             LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
             

@@ -80,57 +80,61 @@ public class ObjectControl : MonoBehaviour
     void Update() 
     {
         if(rb.velocity.x != 0 || rb.velocity.y != 0 || rb.velocity.z != 0) rb.velocity = Vector3.zero;
-    
-        if(!gm.IsPlaying()) return;
     }
 
     void OnMouseDown()
     {
-        if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBox();
-
-        if(isInTheBox) HideAllButtons();
-
-        if(transform.parent != takenParent) transform.parent = takenParent;
-        
-        cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
-        
-        offset = transform.position - GetMouseWorldPos();
-        if(!gm.GetIsAnimating()) SetBeforeAnimatePosition();
-
-        if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
+        if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
-            LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+            if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBox();
 
-            if(rb.isKinematic) rb.isKinematic = false;
+            if(isInTheBox) HideAllButtons();
+
+            if(transform.parent != takenParent) transform.parent = takenParent;
+            
+            cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
+            
+            offset = transform.position - GetMouseWorldPos();
+            if(!gm.GetIsAnimating()) SetBeforeAnimatePosition();
+
+            if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
+            {
+                LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
+                LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+
+                if(rb.isKinematic) rb.isKinematic = false;
+            }
+            
+            if(!gm.GetIsInInspectMode() && !gm.GetIsAnimating()) canMove = true;
         }
-        
-        if(!gm.GetIsInInspectMode() && !gm.GetIsAnimating()) canMove = true;
     }
 
     void OnMouseEnter()
     {
-        if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
-
-        if(objectType == Type.Procedural)
+        if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            if(buttons.Length == 2)
-            {
-                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
-            }
+            if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
-            if(buttons.Length == 3)
+            if(objectType == Type.Procedural)
             {
-                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
+                if(buttons.Length == 2)
                 {
-                    buttons[1].SetActive(true);
-                    buttons[2].SetActive(false);
+                    if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
                 }
 
-                if(isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
+                if(buttons.Length == 3)
                 {
-                    buttons[1].SetActive(false);
-                    buttons[2].SetActive(true);
+                    if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
+                    {
+                        buttons[1].SetActive(true);
+                        buttons[2].SetActive(false);
+                    }
+
+                    if(isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
+                    {
+                        buttons[1].SetActive(false);
+                        buttons[2].SetActive(true);
+                    }
                 }
             }
         }
@@ -138,56 +142,62 @@ public class ObjectControl : MonoBehaviour
 
     void OnMouseExit()
     {
-        HideAllButtons();
-        isDragging = false;
-        if(!gm.GetIsInInspectMode()) canExamine = true;
+        if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
+        {
+            HideAllButtons();
+            isDragging = false;
+            if(!gm.GetIsInInspectMode()) canExamine = true;
 
-        if(rb.isKinematic) rb.isKinematic = false;
+            if(rb.isKinematic) rb.isKinematic = false;
+        }
     }
 
     void OnMouseUp()
     {
-        if(isInside)
+        if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            if(objectIndex == gm.GetProcedureIndex())
+            if(isInside)
             {
-                LeanTween.move(gameObject, targetPosition, 0.5f);
-
-                if(objectType == Type.Procedural)
+                if(objectIndex == gm.GetProcedureIndex())
                 {
-                    if(isProcedureFinished) 
-                    {
-                        if(gameObject.name == "Plester") StartCoroutine(Plester());
+                    LeanTween.move(gameObject, targetPosition, 0.5f);
 
-                        if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
-                    }
-                    if(!isProcedureFinished) 
+                    if(objectType == Type.Procedural)
                     {
-                        if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
-                        
-                        if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
-                        
-                        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
-                    }
+                        if(isProcedureFinished) 
+                        {
+                            if(gameObject.name == "Plester") StartCoroutine(Plester());
 
-                    if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+                            if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
+                        }
+                        if(!isProcedureFinished) 
+                        {
+                            if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
+                            
+                            if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
+                            
+                            LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+                        }
+
+                        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+                    }
+                    else if(objectType == Type.NonProcedural)
+                    {
+                        if(!alreadyAnimated) Animate();
+
+                        if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
+                    }   
                 }
-                else if(objectType == Type.NonProcedural)
+                else if(objectIndex > gm.GetProcedureIndex())
                 {
-                    if(!alreadyAnimated) Animate();
+                    LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+                    gm.ShowWrongProcedureUI();
+                }
+            }
 
-                    if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
-                }   
-            }
-            else if(objectIndex > gm.GetProcedureIndex())
-            {
-                LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
-                gm.ShowWrongProcedureUI();
-            }
+            if(isInTheBox) isInTheBox = false;
+            if(isDragging) isDragging = false;
         }
-
-        if(isInTheBox) isInTheBox = false;
-        if(isDragging) isDragging = false;
     }
 
     IEnumerator CheckCondition()
@@ -199,30 +209,33 @@ public class ObjectControl : MonoBehaviour
 
     void OnMouseDrag() 
     {
-        if(canMove && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
+        if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            if(!rb.isKinematic) rb.isKinematic = true;
+            if(canMove && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
+            {
+                if(!rb.isKinematic) rb.isKinematic = true;
 
-            isDragging = true;
-            canExamine = false;
-            
-            transform.position = GetMouseWorldPos() + offset;
+                isDragging = true;
+                canExamine = false;
+                
+                transform.position = GetMouseWorldPos() + offset;
 
-            if(transform.position.y <= 5.0f || transform.position.y > 5.0f) transform.position = new Vector3(transform.position.x, 5.0f, transform.position.z);
+                if(transform.position.y <= 5.0f || transform.position.y > 5.0f) transform.position = new Vector3(transform.position.x, 5.0f, transform.position.z);
 
-            if(transform.position.x <= xBoundaries[0]) transform.position = new Vector3(xBoundaries[0], transform.position.y, transform.position.z);
-            if(transform.position.x >= xBoundaries[1]) transform.position = new Vector3(xBoundaries[1], transform.position.y, transform.position.z);
-            if(transform.position.z >= zBoundaries[0]) transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaries[0]);
-            if(transform.position.z <= zBoundaries[1]) transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaries[1]); 
-        }
+                if(transform.position.x <= xBoundaries[0]) transform.position = new Vector3(xBoundaries[0], transform.position.y, transform.position.z);
+                if(transform.position.x >= xBoundaries[1]) transform.position = new Vector3(xBoundaries[1], transform.position.y, transform.position.z);
+                if(transform.position.z >= zBoundaries[0]) transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaries[0]);
+                if(transform.position.z <= zBoundaries[1]) transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaries[1]); 
+            }
 
-        if(canRotate && gm.GetIsInInspectMode())
-        {
-            xAxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
-            yAxisRotation = Input.GetAxis("Mouse Y") * rotationSpeed;
+            if(canRotate && gm.GetIsInInspectMode())
+            {
+                xAxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
+                yAxisRotation = Input.GetAxis("Mouse Y") * rotationSpeed;
 
-            transform.Rotate(Vector3.down, xAxisRotation);
-            transform.Rotate(Vector3.right, yAxisRotation);
+                transform.Rotate(Vector3.down, xAxisRotation);
+                transform.Rotate(Vector3.right, yAxisRotation);
+            }
         }
     }
 
@@ -315,7 +328,7 @@ public class ObjectControl : MonoBehaviour
 
     IEnumerator Plester()
     {
-        LeanTween.move(gameObject, new Vector3(9.7f, 1.35f, 9.5f), 0.5f);
+        LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
         yield return new WaitForSeconds(0.3f);
         //if(antisepticLiquidParticleSystem != null) antisepticLiquidParticleSystem.SetActive(false);
@@ -324,7 +337,7 @@ public class ObjectControl : MonoBehaviour
     IEnumerator Antiseptic()
     {
         gm.ChangeIsAnimatingValue(true);
-        LeanTween.move(gameObject, new Vector3(5.8f, 6.0f, 6.6f), 0.8f).setEaseSpring();
+        LeanTween.move(gameObject, new Vector3(6.6f, 5.0f, 6.15f), 0.8f).setEaseSpring();
         LeanTween.rotateY(gameObject, -90.0f, 0.3f);
         yield return new WaitForSeconds(1.0f);
         GetComponent<Animator>().Play("Pour");
