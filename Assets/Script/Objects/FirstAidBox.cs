@@ -25,7 +25,7 @@ public class FirstAidBox : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
 
-        intialPosition.x = -14.0f;
+        intialPosition.x = -9.6f;
         intialPosition.y = targetPosition.y;
         intialPosition.z = transform.position.z;
 
