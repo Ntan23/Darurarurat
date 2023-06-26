@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private bool isWin;
     private bool isAnimating;
     private bool isPauseMenuAnimating;
-    private bool isNotUsingKey;
     public GameObject[] objects;
 
     [Header("For Inspect")]

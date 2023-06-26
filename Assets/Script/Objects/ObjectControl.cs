@@ -76,7 +76,6 @@ public class ObjectControl : MonoBehaviour
         SetBeforeAnimatePosition();
         HideAllButtons();
     }
-
     void Update() 
     {
         if(rb.velocity.x != 0 || rb.velocity.y != 0 || rb.velocity.z != 0) rb.velocity = Vector3.zero;
@@ -100,7 +99,9 @@ public class ObjectControl : MonoBehaviour
             if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
             {
                 LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
-                LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+                
+                if(gameObject.name == "Petroleum Jelly") LeanTween.rotateY(gameObject, -180.0f, 0.3f);
+                else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
                 if(rb.isKinematic) rb.isKinematic = false;
             }
@@ -274,7 +275,9 @@ public class ObjectControl : MonoBehaviour
     {
         gm.ChangeIsAnimatingValue(false);
         //objectAnimationControl.DisableAnimator();
-        LeanTween.rotate(gameObject, Vector3.zero, 0.5f);
+        if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
+        else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+
         if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
         alreadyAnimated = true;
