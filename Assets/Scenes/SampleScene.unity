@@ -7575,8 +7575,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7660,7 +7660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 296.56, y: -382}
+  m_AnchoredPosition: {x: 296.56, y: -371}
   m_SizeDelta: {x: 592.41, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433344022
@@ -7683,7 +7683,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kebutuhan Pertolongan Pertama Untuk Luka Sayat atau Lecet :'
+  m_text: 'Kebutuhan Pertolongan Pertama Untuk Luka Yang Memiliki Pendarahan Ringan
+    :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -7711,8 +7712,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7831,7 +7832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.534, y: -197}
+  m_AnchoredPosition: {x: -3.534, y: -170}
   m_SizeDelta: {x: 591.66, y: 50.491}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464793568
@@ -7854,7 +7855,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Prosedur Pertolongan Pertama Untuk Luka Sayat atau Lecet :'
+  m_text: 'Prosedur Pertolongan Pertama Untuk Luka Yang Memiliki Pendarahan Ringan
+    :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -7882,8 +7884,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8103,8 +8105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 306.99, y: -280.6999}
-  m_SizeDelta: {x: 576.59, y: 209.6462}
+  m_AnchoredPosition: {x: 306.99, y: -251.39877}
+  m_SizeDelta: {x: 576.59, y: 151.044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509672604
 MonoBehaviour:
@@ -8126,8 +8128,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Luka Lecet, Luka Sayat, Luka Tusuk, Luka Baret dan Luka Robek. \n\nCatatan
-    : Untuk luka tusuk dan robek memerlukan prosedur dan kebutuhan yang berbeda."
+  m_text: "Luka Lecet, Luka Sayat, Luka Tusuk dan Luka Robek. \n\nCatatan : Selain
+    luka ringan yang memiliki pendarahan ringan memerlukan prosedur dan kebutuhan
+    yang berbeda."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -11775,7 +11778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 308.64, y: -749}
+  m_AnchoredPosition: {x: 308.64, y: -707}
   m_SizeDelta: {x: 576.59, y: 149.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120121582
@@ -11798,14 +11801,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1. Buka Antiseptik
+  m_text: '1. Siapkan Antiseptik dan Plester
 
-    2. Tuang Antiseptik Ke Bagian Luka
+    2. Buka Antiseptik
 
-    3. Buka
-    Plester
+    3. Tuang
+    Antiseptik Ke Bagian Luka
 
-    4. Nempel Plester Ke Bagian Luka'
+    4. Buka Plester
+
+    5. Tempelkan Plester Ke Bagian
+    Luka'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -17935,7 +17941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.6805, y: -100}
+  m_AnchoredPosition: {x: -7.6805, y: -72}
   m_SizeDelta: {x: 558.2791, y: 108.3033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788843754
