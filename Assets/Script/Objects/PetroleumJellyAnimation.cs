@@ -10,6 +10,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
     private Animator animator;
     private Collider objCollider;
     [SerializeField] private Collider capCollider;
+    [SerializeField] private Vector3 animationPosition;
     private ObjectControl objControl;
     private GameManager gm;
 
@@ -54,7 +55,11 @@ public class PetroleumJellyAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation());
     }
 
-    
+    public void PlayAnimation()
+    {
+        LeanTween.move(gameObject, animationPosition, 0.8f).setEaseSpring();
+    }
+
     IEnumerator OpenMoveRotateAnimation()
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();

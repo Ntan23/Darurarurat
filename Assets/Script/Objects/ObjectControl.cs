@@ -47,7 +47,6 @@ public class ObjectControl : MonoBehaviour
     private bool isInside;
     private bool isInTheBox = true;
     private bool isProcedureFinished;
-    [SerializeField] private bool needToMoveBack;
     #endregion
 
     #region OtherVariables
@@ -167,9 +166,11 @@ public class ObjectControl : MonoBehaviour
                     {
                         if(isProcedureFinished) 
                         {
-                            if(gameObject.name == "Plester") StartCoroutine(Plester());
+                            if(gameObject.name == "Plester") Plester();
 
                             if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
+
+                            if(gameObject.name == "Petroleum Jelly") GetComponent<PetroleumJellyAnimation>().PlayAnimation();
                         }
                         if(!isProcedureFinished) 
                         {
@@ -177,6 +178,8 @@ public class ObjectControl : MonoBehaviour
                             
                             if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
                             
+                            if(gameObject.name == "Petroleum Jelly") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Petroleum Jellynya Terlebih Dahulu");
+
                             LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                         }
 
@@ -278,7 +281,7 @@ public class ObjectControl : MonoBehaviour
         if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
-        if(needToMoveBack) LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
         alreadyAnimated = true;
 
@@ -305,7 +308,9 @@ public class ObjectControl : MonoBehaviour
     {
         firstAidBox.SetCanBeClicked(true);
         LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
-        LeanTween.rotate(gameObject, Vector3.zero, 0.4f);
+
+        if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
+        else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         if(rb.isKinematic) rb.isKinematic = false;
         
@@ -329,12 +334,10 @@ public class ObjectControl : MonoBehaviour
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
     // public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
 
-    IEnumerator Plester()
+    void Plester()
     {
         LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
-        yield return new WaitForSeconds(0.3f);
-        //if(antisepticLiquidParticleSystem != null) antisepticLiquidParticleSystem.SetActive(false);
     }
 
     IEnumerator Antiseptic()
