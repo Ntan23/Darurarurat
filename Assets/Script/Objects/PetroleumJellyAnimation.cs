@@ -15,7 +15,6 @@ public class PetroleumJellyAnimation : MonoBehaviour
     private Vector3 beforeAnimatePosition;
     [Header("Player Hand")]
     [SerializeField] private GameObject playerHand;
-    [SerializeField] private float targetZPosition;
     private ObjectControl objControl;
     private GameManager gm;
 
@@ -100,12 +99,12 @@ public class PetroleumJellyAnimation : MonoBehaviour
 
     IEnumerator GrabVaselineAnimation()
     {
+        gm.ChangeIsAnimatingValue(true);
         LeanTween.move(gameObject, animationPosition, 0.8f).setEaseSpring();
-        yield return new WaitForSeconds(1.0f);
-        LeanTween.moveZ(playerHand, targetZPosition, 0.5f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
         playerHandAnimator.Play("Grab Vaseline");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.1f);
+        playerHand.GetComponent<PlayerHand>().ChangeCanInteract();
         beforeAnimatePosition = objControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
     }

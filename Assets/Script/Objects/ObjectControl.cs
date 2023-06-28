@@ -170,7 +170,7 @@ public class ObjectControl : MonoBehaviour
 
                             if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
 
-                            if(gameObject.name == "Petroleum Jelly") StartCoroutine(PetroleumJelly());
+                            if(gameObject.name == "Petroleum Jelly") GetComponent<PetroleumJellyAnimation>().PlayAnimation();
                         }
                         if(!isProcedureFinished) 
                         {
@@ -360,6 +360,6 @@ public class ObjectControl : MonoBehaviour
     {
         GetComponent<PetroleumJellyAnimation>().PlayAnimation();
         yield return new WaitForSeconds(1.5f);
-        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+        //if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
     }
 }
