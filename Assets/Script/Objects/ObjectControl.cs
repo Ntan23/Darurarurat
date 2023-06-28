@@ -170,7 +170,7 @@ public class ObjectControl : MonoBehaviour
 
                             if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
 
-                            if(gameObject.name == "Petroleum Jelly") GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+                            if(gameObject.name == "Petroleum Jelly") StartCoroutine(PetroleumJelly());
                         }
                         if(!isProcedureFinished) 
                         {
@@ -182,8 +182,6 @@ public class ObjectControl : MonoBehaviour
 
                             LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                         }
-
-                        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
                     }
                     else if(objectType == Type.NonProcedural)
                     {
@@ -331,13 +329,20 @@ public class ObjectControl : MonoBehaviour
 
     public void SetBeforeAnimatePosition() => beforeAnimatePosition = transform.position;
 
+    public Vector3 GetBeforeAnimatePosition()
+    {
+        return beforeAnimatePosition;
+    }
+
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
     // public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
 
-    void Plester()
+    IEnumerator Plester()
     {
         LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
+        yield return new WaitForSeconds(0.8f);
+        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
     }
 
     IEnumerator Antiseptic()
@@ -347,5 +352,14 @@ public class ObjectControl : MonoBehaviour
         LeanTween.rotateY(gameObject, -90.0f, 0.3f);
         yield return new WaitForSeconds(1.0f);
         GetComponent<Animator>().Play("Pour");
+        yield return new WaitForSeconds(1.2f);
+        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+    }
+
+    IEnumerator PetroleumJelly()
+    {
+        GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+        yield return new WaitForSeconds(1.5f);
+        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
     }
 }

@@ -8,9 +8,14 @@ public class PetroleumJellyAnimation : MonoBehaviour
     private bool canAnimate;
     private bool isOpen;
     private Animator animator;
+    private Animator playerHandAnimator;
     private Collider objCollider;
     [SerializeField] private Collider capCollider;
     [SerializeField] private Vector3 animationPosition;
+    private Vector3 beforeAnimatePosition;
+    [Header("Player Hand")]
+    [SerializeField] private GameObject playerHand;
+    [SerializeField] private float targetZPosition;
     private ObjectControl objControl;
     private GameManager gm;
 
@@ -19,6 +24,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objCollider = GetComponent<Collider>();
         objControl = GetComponent<ObjectControl>();
+        playerHandAnimator = playerHand.GetComponent<Animator>();
 
         gm = GameManager.instance;
     }
@@ -55,11 +61,8 @@ public class PetroleumJellyAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation());
     }
 
-    public void PlayAnimation()
-    {
-        LeanTween.move(gameObject, animationPosition, 0.8f).setEaseSpring();
-    }
-
+    public void PlayAnimation() => StartCoroutine(GrabVaselineAnimation());
+    
     IEnumerator OpenMoveRotateAnimation()
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
@@ -93,5 +96,17 @@ public class PetroleumJellyAnimation : MonoBehaviour
 
         isOpen = false;
         canAnimate = false;
+    }
+
+    IEnumerator GrabVaselineAnimation()
+    {
+        LeanTween.move(gameObject, animationPosition, 0.8f).setEaseSpring();
+        yield return new WaitForSeconds(1.0f);
+        LeanTween.moveZ(playerHand, targetZPosition, 0.5f);
+        yield return new WaitForSeconds(0.3f);
+        playerHandAnimator.Play("Grab Vaseline");
+        yield return new WaitForSeconds(2.0f);
+        beforeAnimatePosition = objControl.GetBeforeAnimatePosition();
+        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
     }
 }
