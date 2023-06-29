@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private bool isWin;
     private bool isAnimating;
     private bool isPauseMenuAnimating;
+    [SerializeField] private Fade fade;
     public GameObject[] objects;
 
     [Header("For Inspect")]
@@ -33,10 +34,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WrongProcedureUI wrongProcedureUI;
     [Header("Pause Menu")]
     [SerializeField] private PauseMenuUI pauseMenuUI;
-
+    private StoryManager storyManager;
     private int procedureObjectIndex;
 
-    void Start() => gameState = State.Playing;
+    void Start() 
+    {
+        storyManager = StoryManager.instance;
+
+        gameState = State.Playing;
+
+        fade.FadeIn();
+    }
     
     void Update()
     {
@@ -117,7 +125,7 @@ public class GameManager : MonoBehaviour
     {
         if(procedureObjectIndex == objects.Length && !isWin) 
         {
-            Debug.Log("You Win");
+            storyManager.ShowEndStory();
             isWin = true;
         }
     }
