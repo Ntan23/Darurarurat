@@ -21,7 +21,10 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private GameObject endStoryboard;
     [SerializeField] private int cutStoryIndex;
     private int storyIndex;
-    
+    private ScenesManager sm;
+
+    void Start() => sm =ScenesManager.instance;
+
     public void NextStory()
     {
         storyIndex++;
@@ -34,13 +37,8 @@ public class StoryManager : MonoBehaviour
         else if(storyIndex < stories.Length) StartCoroutine(PlayNextStoryAnimation());
     }
 
-    public void PreviousStory()
-    {
-        storyIndex--;
-        LeanTween.moveLocalX(stories[storyIndex + 1], 1924.0f, 0.5f).setEaseSpring();
-        LeanTween.moveLocalX(stories[storyIndex], 0.0f, 0.5f).setEaseSpring();
-    }
-
+    public void PreviousStory() => StartCoroutine(PlayPreviousStoryAnimation());
+    
     public void SkipStory()
     {
         storyIndex++;
@@ -51,7 +49,7 @@ public class StoryManager : MonoBehaviour
             storyIndex = cutStoryIndex;
             MoveStoryBoard();
         }
-        else if(storyIndex > cutStoryIndex) GoToNextScene();
+        else if(storyIndex > cutStoryIndex) sm.GoToNextScene();
     }
 
     public void ShowEndStory()
@@ -61,23 +59,21 @@ public class StoryManager : MonoBehaviour
         LeanTween.moveLocalX(storyBoard, 0.0f, 0.5f).setEaseSpring();
     }
 
-    public void GoToNextScene() 
-    {
-        if(SceneManager.GetActiveScene().buildIndex < 2) StartCoroutine(GoToNextSceneAnimation());
-    }
-
     IEnumerator PlayNextStoryAnimation()
     {
         LeanTween.moveLocalX(stories[storyIndex - 1], -1924.0f, 0.5f).setEaseSpring();
-        yield return new WaitForSeconds(0.3f);
         LeanTween.moveLocalX(stories[storyIndex], 0, 0.5f).setEaseSpring();
+        yield return new WaitForSeconds(0.5f);
+        if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
     }
 
-    IEnumerator GoToNextSceneAnimation()
+    IEnumerator PlayPreviousStoryAnimation()
     {
-        fade.FadeOut();
-        yield return new WaitForSeconds(1.1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        storyIndex--;
+        LeanTween.moveLocalX(stories[storyIndex + 1], 1924.0f, 0.5f).setEaseSpring();
+        LeanTween.moveLocalX(stories[storyIndex], 0.0f, 0.5f).setEaseSpring();
+        yield return new WaitForSeconds(0.5f);
+        if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
     }
 
     void MoveStoryBoard() => LeanTween.moveLocalX(storyBoard, 1924.0f, 0.3f); 

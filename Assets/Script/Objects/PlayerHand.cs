@@ -7,6 +7,7 @@ public class PlayerHand : MonoBehaviour
     private bool canInteract;
     [SerializeField] private GameObject button;
     [SerializeField] private ParticleSystem particleFX;
+    [SerializeField] private ObjectControl targetObjectControl;
     private GameManager gm;
     private Animator animator;
     
@@ -43,6 +44,8 @@ public class PlayerHand : MonoBehaviour
         particleFX.Play();
         yield return new WaitForSeconds(1.0f);
         particleFX.Pause();
+        yield return new WaitForSeconds(0.2f);
+        targetObjectControl.CheckWinCondition();
     }
 
     public void ChangeCanInteract() => canInteract = !canInteract;

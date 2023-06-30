@@ -202,12 +202,6 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-    IEnumerator CheckCondition()
-    {
-        gm.AddProcedureObjectIndex();
-        yield return new WaitForSeconds(0.5f);
-        gm.CheckWinCondition();
-    }
 
     void OnMouseDrag() 
     {
@@ -284,8 +278,6 @@ public class ObjectControl : MonoBehaviour
         alreadyAnimated = true;
 
         if(rb.isKinematic) rb.isKinematic = false;
-
-        gm.CheckWinCondition();
      }
 
     public void Inspect() 
@@ -337,12 +329,24 @@ public class ObjectControl : MonoBehaviour
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
     // public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
 
+    IEnumerator CheckCondition()
+    {
+        gm.AddProcedureObjectIndex();
+        yield return new WaitForSeconds(0.1f);
+        gm.CheckWinCondition();
+    }
+
+    public void CheckWinCondition()
+    {
+        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+    }
+
     IEnumerator Plester()
     {
         LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
         yield return new WaitForSeconds(0.7f);
-        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+        CheckWinCondition();
     }
 
     IEnumerator Antiseptic()
@@ -353,13 +357,8 @@ public class ObjectControl : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         GetComponent<Animator>().Play("Pour");
         yield return new WaitForSeconds(1.2f);
-        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+        CheckWinCondition();
     }
 
-    IEnumerator PetroleumJelly()
-    {
-        GetComponent<PetroleumJellyAnimation>().PlayAnimation();
-        yield return new WaitForSeconds(1.5f);
-        //if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
-    }
+
 }

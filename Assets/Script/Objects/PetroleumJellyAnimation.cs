@@ -107,5 +107,6 @@ public class PetroleumJellyAnimation : MonoBehaviour
         playerHand.GetComponent<PlayerHand>().ChangeCanInteract();
         beforeAnimatePosition = objControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+        gm.ChangeIsAnimatingValue(false);
     }
 }

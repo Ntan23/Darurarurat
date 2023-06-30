@@ -8,13 +8,13 @@ public class WrongProcedureUI : MonoBehaviour
 
     void Start() => wrongText = GetComponentInChildren<TextMeshProUGUI>();    
     
-    public void FadeIn() 
+    public void MoveIn() 
     {
         //LeanTween.value(gameObject, UpdateAlpha, 0.0f, 1.0f, 1.5f); 
         LeanTween.moveLocalY(gameObject, 420.0f, 0.8f).setEaseSpring();
     }
     
-    public void FadeOut() 
+    public void MoveOut() 
     {
         //LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f); 
         // StartCoroutine(Wait());

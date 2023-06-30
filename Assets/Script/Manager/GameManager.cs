@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
 
     private State gameState;
 
+    [SerializeField] private int levelIndex;
     private int selectedIndex;
     private bool isWin;
     private bool isAnimating;
     private bool isPauseMenuAnimating;
-    [SerializeField] private Fade fade;
     public GameObject[] objects;
 
     [Header("For Inspect")]
@@ -42,8 +42,6 @@ public class GameManager : MonoBehaviour
         storyManager = StoryManager.instance;
 
         gameState = State.Playing;
-
-        fade.FadeIn();
     }
     
     void Update()
@@ -101,14 +99,14 @@ public class GameManager : MonoBehaviour
     
     public void ShowWrongProcedureUI()
     {
-        wrongProcedureUI.FadeIn();
+        wrongProcedureUI.MoveIn();
         wrongProcedureUI.UpdateText("Kamu Harus Menggunakan " + objects[procedureObjectIndex].name + " Terlebih Dahulu");
         StartCoroutine(WaitWrongProcedureUI());
     }
 
     public void ShowWrongProcedureUIForProceduralObjects(string sentence)
     {
-        wrongProcedureUI.FadeIn();
+        wrongProcedureUI.MoveIn();
         wrongProcedureUI.UpdateText(sentence);
         StartCoroutine(WaitWrongProcedureUI());
     }
@@ -116,7 +114,7 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitWrongProcedureUI()
     {
         yield return new WaitForSeconds(2.0f);
-        wrongProcedureUI.FadeOut();
+        wrongProcedureUI.MoveOut();
     }
 
     public void AddProcedureObjectIndex() => procedureObjectIndex += 1;
@@ -125,7 +123,8 @@ public class GameManager : MonoBehaviour
     {
         if(procedureObjectIndex == objects.Length && !isWin) 
         {
-            storyManager.ShowEndStory();
+            Debug.Log("Win");
+            if(storyManager != null) storyManager.ShowEndStory();
             isWin = true;
         }
     }
@@ -140,14 +139,19 @@ public class GameManager : MonoBehaviour
 
     public void ChangePauseMenuIsAnimatingValue(bool value) => isPauseMenuAnimating = value;
 
-    public bool GetPauseMenuIsAnimating()
-    {
-        return isPauseMenuAnimating;
-    }
-
     public int GetProcedureIndex()
     {
         return procedureObjectIndex;
+    }
+
+    public int GetLevelIndex()
+    {
+        return levelIndex;
+    }
+
+    public bool GetPauseMenuIsAnimating()
+    {
+        return isPauseMenuAnimating;
     }
 
     public bool GetIsInInspectMode()
