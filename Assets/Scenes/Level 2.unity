@@ -9257,6 +9257,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4638452817970852406, guid: 5a3dd5bc65dd91c4793992327f6b1212,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 455cdacaa08ca1347ab17fcf97230aa0, type: 2}
     - target: {fileID: -4612881507881347478, guid: 5a3dd5bc65dd91c4793992327f6b1212,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10326,7 +10331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33a3345e127e5a4f975e401eb55a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 0
+  levelIndex: 2
   objects:
   - {fileID: 655448548}
   inspectUI: {fileID: 1960982636}
@@ -21512,7 +21517,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 065307a7e6bb8314c81114aff06aa99f, type: 2}
+      objectReference: {fileID: 2100000, guid: d111c2b06f577884e8e46351ed6d1f75, type: 2}
     - target: {fileID: 919132149155446097, guid: e19d6c85f643df6408d35650a2ee0928,
         type: 3}
       propertyPath: m_Name
