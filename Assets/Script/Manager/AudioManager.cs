@@ -23,6 +23,15 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    private void Stop(string name)
+    {
+        Sound s = System.Array.Find(sounds,sound=>sound.name==name);
+
+        if(s == null) return;
+
+        s.source.Stop();
+    }
+
     void Start() 
     {
         foreach (Sound s in sounds)
@@ -39,5 +48,6 @@ public class AudioManager : MonoBehaviour
     } 
 
     public void PlaySippingTeaSFX() => Play("Sipping");
+    public void StopSippingTeaSFX() => Stop("Sipping");
 }
 

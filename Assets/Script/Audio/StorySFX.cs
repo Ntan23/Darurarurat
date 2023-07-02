@@ -17,4 +17,9 @@ public class StorySFX : MonoBehaviour
     {
         if(soundFX == SFX.SippingTea) am.PlaySippingTeaSFX();
     }
+
+    public void StopSFX()
+    {
+        if(soundFX == SFX.SippingTea) am.StopSippingTeaSFX();
+    }
 }

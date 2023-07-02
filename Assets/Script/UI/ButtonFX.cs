@@ -9,6 +9,8 @@ public class ButtonFX : MonoBehaviour
 
     void Start() => text = GetComponent<TextMeshProUGUI>();
 
+    void UpdateFontSize(float value) => text.fontSize = value;
+
     public void HoverFX(float to) 
     {
         text.fontStyle = FontStyles.Underline;
@@ -21,5 +23,7 @@ public class ButtonFX : MonoBehaviour
         LeanTween.value(gameObject, UpdateFontSize, text.fontSize, to, 0.3f).setEaseSpring();
     }
 
-    void UpdateFontSize(float value) => text.fontSize = value;
+    public void ArrowHoverFX() => LeanTween.scale(gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.5f).setEaseSpring();
+
+    public void ArrowUnhoverFX() => LeanTween.scale(gameObject, Vector3.one, 0.5f).setEaseSpring();
 }
