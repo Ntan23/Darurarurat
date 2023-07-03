@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     private State gameState;
 
     [SerializeField] private int levelIndex;
-    private int selectedIndex;
+    private int nextLevelIndex;
+    private int levelUnlocked;
+    private int selectedObjectIndex;
     private bool isWin;
     private bool isAnimating;
     private bool isPauseMenuAnimating;
@@ -40,6 +42,9 @@ public class GameManager : MonoBehaviour
     void Start() 
     {
         storyManager = StoryManager.instance;
+
+        levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
+        nextLevelIndex = levelIndex + 1;
 
         gameState = State.Playing;
     }
@@ -85,7 +90,7 @@ public class GameManager : MonoBehaviour
         inspectUI.MoveIn();
         inspectUI.ChangeUIText(inspectText[index]);
         isInInspectMode = true;
-        selectedIndex = index;
+        selectedObjectIndex = index;
     }
 
     public void CloseInspect()
@@ -94,7 +99,7 @@ public class GameManager : MonoBehaviour
         //inspectUI.FadeOut();
         inspectUI.MoveOut();
         isInInspectMode = false;
-        objects[selectedIndex].GetComponent<ObjectControl>().CloseInspect();
+        objects[selectedObjectIndex].GetComponent<ObjectControl>().CloseInspect();
     }
     
     public void ShowWrongProcedureUI()
@@ -125,6 +130,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Win");
             if(storyManager != null) storyManager.ShowEndStory();
+            
+            if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 2) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
+
             isWin = true;
         }
     }
