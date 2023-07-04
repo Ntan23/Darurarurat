@@ -15,6 +15,8 @@ public class PetroleumJellyAnimation : MonoBehaviour
     private Vector3 beforeAnimatePosition;
     [Header("Player Hand")]
     [SerializeField] private GameObject playerHand;
+    [Header("For Instruction Arrow")]
+    [SerializeField] private GameObject[] instructionArrows;
     private ObjectControl objControl;
     private GameManager gm;
 
@@ -26,6 +28,8 @@ public class PetroleumJellyAnimation : MonoBehaviour
         playerHandAnimator = playerHand.GetComponent<Animator>();
 
         gm = GameManager.instance;
+
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
     }
 
     void OnMouseDown() => mousePosition = Input.mousePosition;
@@ -47,7 +51,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
         objControl.ChangeIsProcedureFinishedValue();
         objCollider.enabled = false;
         capCollider.enabled = true;
-        StartCoroutine(OpenMoveRotateAnimation());
+        StartCoroutine(OpenMoveRotateAnimation(false));
     }
 
     public void Close()
@@ -57,17 +61,20 @@ public class PetroleumJellyAnimation : MonoBehaviour
         objControl.ChangeIsProcedureFinishedValue();
         objCollider.enabled = false;
         capCollider.enabled = true;
-        StartCoroutine(OpenMoveRotateAnimation());
+        StartCoroutine(OpenMoveRotateAnimation(true));
     }
 
     public void PlayAnimation() => StartCoroutine(GrabVaselineAnimation());
     
-    IEnumerator OpenMoveRotateAnimation()
+    IEnumerator OpenMoveRotateAnimation(bool isOpen)
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.8f);
         LeanTween.rotateX(gameObject, -60.0f, 0.3f);
         yield return new WaitForSeconds(0.5f);
+
+        if(isOpen) instructionArrows[1].SetActive(true);
+        else if(!isOpen) instructionArrows[0].SetActive(true);
 
         animator.enabled = true;
         canAnimate = true;
@@ -75,6 +82,8 @@ public class PetroleumJellyAnimation : MonoBehaviour
 
     IEnumerator OpenCap()
     {
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
+
         animator.Play("Open");
         yield return new WaitForSeconds(1.2f);
         objControl.AfterAnimate();
@@ -87,6 +96,8 @@ public class PetroleumJellyAnimation : MonoBehaviour
 
     IEnumerator CloseCap()
     {
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
+
         animator.Play("Close");
         yield return new WaitForSeconds(1.2f);
         objControl.AfterAnimate();

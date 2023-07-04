@@ -14,7 +14,6 @@ public class StoryManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private Fade fade;
     [SerializeField] private GameObject[] stories;
     [SerializeField] private GameObject storyBoard;
     [SerializeField] private GameObject startStoryBoard;

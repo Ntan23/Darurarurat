@@ -24,7 +24,7 @@ public class LevelSelectionUI : MonoBehaviour
 
     IEnumerator StartAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         LeanTween.moveLocalY(box, 580.0f, 0.8f).setEaseSpring();
         LeanTween.moveLocalY(clipboard, 0.0f, 0.8f).setEaseSpring(); 
     }

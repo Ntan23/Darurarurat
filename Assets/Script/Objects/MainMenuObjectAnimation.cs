@@ -13,7 +13,7 @@ public class MainMenuObjectAnimation : MonoBehaviour
 
     IEnumerator StartAnimation()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.0f);
         LeanTween.moveZ(objects[0], targetZPosition[0], 0.8f).setEaseSpring();
         yield return new WaitForSeconds(0.5f);
         LeanTween.moveZ(objects[1], targetZPosition[1], 0.8f).setEaseSpring();

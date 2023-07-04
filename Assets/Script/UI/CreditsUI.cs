@@ -21,16 +21,18 @@ public class CreditsUI : MonoBehaviour
 
     public void CloseCredits() 
     {
+        LeanTween.cancel(creditText); 
         LeanTween.moveLocalX(gameObject, 2075.0f, 0.8f).setEaseSpring();
+        creditText.transform.localPosition = new Vector3(0.0f, -1166.0f, 0.0f);
         canScroll = false;
     }
 
     IEnumerator ScrollAnimation()
     {
         canScroll = false;
-        LeanTween.moveLocalY(creditText, 1066.0f, textTimeToReachTheEnd);
+        LeanTween.moveLocalY(creditText, 1166.0f, textTimeToReachTheEnd);
         yield return new WaitForSeconds(textTimeToReachTheEnd + 0.1f);
-        creditText.transform.localPosition = new Vector3(0.0f, -1066.0f, 0.0f);
+        creditText.transform.localPosition = new Vector3(0.0f, -1166.0f, 0.0f);
         yield return new WaitForSeconds(0.1f);
         canScroll = true;
     }
