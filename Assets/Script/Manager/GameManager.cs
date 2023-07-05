@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WrongProcedureUI wrongProcedureUI;
     [Header("Pause Menu")]
     [SerializeField] private PauseMenuUI pauseMenuUI;
+    [Header("Complete UI")]
+    [SerializeField] private MissionCompleteUI missionCompleteUI;
     private StoryManager storyManager;
     private int procedureObjectIndex;
 
@@ -126,15 +128,20 @@ public class GameManager : MonoBehaviour
 
     public void CheckWinCondition()
     {
-        if(procedureObjectIndex == objects.Length && !isWin) 
-        {
-            Debug.Log("Win");
-            if(storyManager != null) storyManager.ShowEndStory();
-            
-            if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 2) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
+        if(procedureObjectIndex == objects.Length && !isWin) StartCoroutine(CompleteAnimation());
+    }
 
-            isWin = true;
-        }
+    IEnumerator CompleteAnimation()
+    {
+        gameState = State.Pause;
+        missionCompleteUI.OpenUI();
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Win");
+        if(storyManager != null) storyManager.ShowEndStory();
+            
+        if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
+
+        isWin = true;
     }
 
     public void ChangeIsAnimatingValue(bool value) => isAnimating = value;

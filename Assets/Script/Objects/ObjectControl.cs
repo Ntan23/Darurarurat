@@ -3,15 +3,6 @@ using UnityEngine;
 
 public class ObjectControl : MonoBehaviour
 {
-    #region EnumVariables
-    private enum Type
-    {
-        Procedural, NonProcedural
-    }
-
-    [SerializeField] private Type objectType;
-    #endregion
-
     #region VectorVariables
     private Vector3 offset;
     private Vector3 mousePos;
@@ -42,7 +33,6 @@ public class ObjectControl : MonoBehaviour
     private bool canExamine = true;
     private bool isDragging;
     private bool isAnimating;
-    private bool alreadyAnimated;
     private bool canRotate;
     private bool isInside;
     private bool isInTheBox = true;
@@ -100,7 +90,7 @@ public class ObjectControl : MonoBehaviour
                 LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
                 
                 if(gameObject.name == "Petroleum Jelly") LeanTween.rotateY(gameObject, -180.0f, 0.3f);
-                else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+                else if(gameObject.name != "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
                 if(rb.isKinematic) rb.isKinematic = false;
             }
@@ -115,26 +105,23 @@ public class ObjectControl : MonoBehaviour
         {
             if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
-            if(objectType == Type.Procedural)
+            if(buttons.Length == 2)
             {
-                if(buttons.Length == 2)
+                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+            }
+
+            if(buttons.Length == 3)
+            {
+                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
                 {
-                    if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+                    buttons[1].SetActive(true);
+                    buttons[2].SetActive(false);
                 }
 
-                if(buttons.Length == 3)
+                if(isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
                 {
-                    if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
-                    {
-                        buttons[1].SetActive(true);
-                        buttons[2].SetActive(false);
-                    }
-
-                    if(isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
-                    {
-                        buttons[1].SetActive(false);
-                        buttons[2].SetActive(true);
-                    }
+                    buttons[1].SetActive(false);
+                    buttons[2].SetActive(true);
                 }
             }
         }
@@ -161,34 +148,29 @@ public class ObjectControl : MonoBehaviour
                 if(objectIndex == gm.GetProcedureIndex())
                 {
                     LeanTween.move(gameObject, targetPosition, 0.5f);
-
-                    if(objectType == Type.Procedural)
+                    
+                    if(isProcedureFinished) 
                     {
-                        if(isProcedureFinished) 
-                        {
-                            if(gameObject.name == "Plester") StartCoroutine(Plester());
+                        if(gameObject.name == "Plester") StartCoroutine(Plester());
 
-                            if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
+                        if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
 
-                            if(gameObject.name == "Petroleum Jelly") GetComponent<PetroleumJellyAnimation>().PlayAnimation();
-                        }
-                        if(!isProcedureFinished) 
-                        {
-                            if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
-                            
-                            if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
-                            
-                            if(gameObject.name == "Petroleum Jelly") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Petroleum Jellynya Terlebih Dahulu");
+                        if(gameObject.name == "Petroleum Jelly") GetComponent<PetroleumJellyAnimation>().PlayAnimation();
 
-                            LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
-                        }
+                        if(gameObject.name == "Tisu Basah Non Alkohol") StartCoroutine(Wipes());
                     }
-                    else if(objectType == Type.NonProcedural)
+                    if(!isProcedureFinished) 
                     {
-                        if(!alreadyAnimated) Animate();
+                        if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
+                        
+                        if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
+                        
+                        if(gameObject.name == "Petroleum Jelly") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Petroleum Jellynya Terlebih Dahulu");
 
-                        if(gm.GetProcedureIndex() <= gm.objects.Length) gm.AddProcedureObjectIndex();
-                    }   
+                        if(gameObject.name == "Tisu Basah Non Alkohol") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Tisunya Terlebih Dahulu");
+
+                        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+                    }  
                 }
                 else if(objectIndex > gm.GetProcedureIndex())
                 {
@@ -254,28 +236,15 @@ public class ObjectControl : MonoBehaviour
         if(isInside) isInside = false;
     }
 
-    public void Animate()
-    {
-        if(!rb.isKinematic) rb.isKinematic = true;
-
-        canMove = false;
-        // isAnimating = true;
-        gm.ChangeIsAnimatingValue(true);
-        objectAnimationControl.EnableAnimator();
-        objectAnimationControl.PlayAnimation();
-        canExamine = false;
-    }
-
     public void AfterAnimate()
     {
         gm.ChangeIsAnimatingValue(false);
-        //objectAnimationControl.DisableAnimator();
+
         if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
-        else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        else if(gameObject.name == "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
+        else if(gameObject.name != "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
-
-        alreadyAnimated = true;
 
         if(rb.isKinematic) rb.isKinematic = false;
      }
@@ -300,7 +269,8 @@ public class ObjectControl : MonoBehaviour
         LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
 
         if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
-        else LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        else if(gameObject.name == "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
+        else if(gameObject.name != "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         if(rb.isKinematic) rb.isKinematic = false;
         
@@ -360,5 +330,19 @@ public class ObjectControl : MonoBehaviour
         CheckWinCondition();
     }
 
-
+    IEnumerator Wipes()
+    {
+        gm.ChangeIsAnimatingValue(true);
+        yield return new WaitForSeconds(0.6f);
+        LeanTween.moveY(gameObject, 1.66f, 0.3f);
+        yield return new WaitForSeconds(0.6f);
+        LeanTween.moveY(gameObject, targetPosition.y, 0.3f);
+        yield return new WaitForSeconds(0.6f);
+        LeanTween.moveY(gameObject, 1.66f, 0.3f);
+        yield return new WaitForSeconds(0.6f);
+        LeanTween.moveY(gameObject, targetPosition.y, 0.3f);
+        yield return new WaitForSeconds(0.8f);
+        AfterAnimate();
+        CheckWinCondition();
+    }
 }
