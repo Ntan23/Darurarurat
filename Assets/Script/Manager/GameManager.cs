@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
     [Header("Complete UI")]
     [SerializeField] private MissionCompleteUI missionCompleteUI;
     private StoryManager storyManager;
+    private DialogueManager dialogueManager;
     private int procedureObjectIndex;
 
     void Start() 
     {
         storyManager = StoryManager.instance;
+        dialogueManager = DialogueManager.instance;
 
         levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
         nextLevelIndex = levelIndex + 1;
@@ -137,8 +139,9 @@ public class GameManager : MonoBehaviour
         missionCompleteUI.OpenUI();
         yield return new WaitForSeconds(1.5f);
         Debug.Log("Win");
-        if(storyManager != null) storyManager.ShowEndStory();
-            
+        // if(storyManager != null) storyManager.ShowEndStory();
+        if(dialogueManager != null) dialogueManager.ShowEndDialogue();
+
         if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
 
         isWin = true;

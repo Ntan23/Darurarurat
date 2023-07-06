@@ -134,11 +134,12 @@ public class CreamAnimation : MonoBehaviour
         animator.Play("Squeze");
         LeanTween.scale(cream, new Vector3(0.1f, 0.1f, 0.1f), 0.8f);
         LeanTween.move(cream, new Vector3(1.1f, 12.2f, 0.67f), 0.8f).setOnComplete(() => cream.SetActive(false));
-        yield return new WaitForSeconds(3.0f);
-        playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
+        yield return new WaitForSeconds(1.0f);
         beforeAnimatePosition = objectControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
         LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        yield return new WaitForSeconds(2.0f);
+        playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
         gm.ChangeIsAnimatingValue(false);
     }
 }
