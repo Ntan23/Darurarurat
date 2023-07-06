@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class ObjectControl : MonoBehaviour
 {
+    #region enum
+    private enum Object{
+        Antiseptic, BandAid, Petroleum, Wipes, Cream
+    }
+
+    [SerializeField] private Object objectType;
+    #endregion
+
     #region VectorVariables
     private Vector3 offset;
     private Vector3 mousePos;
@@ -89,8 +97,8 @@ public class ObjectControl : MonoBehaviour
             {
                 LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
                 
-                if(gameObject.name == "Petroleum Jelly") LeanTween.rotateY(gameObject, -180.0f, 0.3f);
-                else if(gameObject.name != "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+                if(objectType == Object.Petroleum) LeanTween.rotateY(gameObject, -180.0f, 0.3f);
+                else if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
                 if(rb.isKinematic) rb.isKinematic = false;
             }
@@ -151,23 +159,27 @@ public class ObjectControl : MonoBehaviour
                     
                     if(isProcedureFinished) 
                     {
-                        if(gameObject.name == "Plester") StartCoroutine(Plester());
+                        if(objectType == Object.BandAid) StartCoroutine(Plester());
 
-                        if(gameObject.name == "Antiseptik") StartCoroutine(Antiseptic());
+                        if(objectType == Object.Antiseptic) StartCoroutine(Antiseptic());
 
-                        if(gameObject.name == "Petroleum Jelly") GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+                        if(objectType == Object.Petroleum) GetComponent<PetroleumJellyAnimation>().PlayAnimation();
 
-                        if(gameObject.name == "Tisu Basah Non Alkohol") StartCoroutine(Wipes());
+                        if(objectType == Object.Wipes) StartCoroutine(Wipes());
+
+                        if(objectType == Object.Cream) GetComponent<CreamAnimation>().PlayAnimation();
                     }
                     if(!isProcedureFinished) 
                     {
-                        if(gameObject.name == "Plester") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
+                        if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
                         
-                        if(gameObject.name == "Antiseptik") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
+                        if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
                         
-                        if(gameObject.name == "Petroleum Jelly") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Petroleum Jellynya Terlebih Dahulu");
+                        if(objectType == Object.Petroleum) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Petroleum Jellynya Terlebih Dahulu");
 
-                        if(gameObject.name == "Tisu Basah Non Alkohol") gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Tisunya Terlebih Dahulu");
+                        if(objectType == Object.Wipes) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Tisunya Terlebih Dahulu");
+
+                        if(objectType == Object.Cream) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Krimnya Terlebih Dahulu");
 
                         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                     }  
@@ -240,9 +252,9 @@ public class ObjectControl : MonoBehaviour
     {
         gm.ChangeIsAnimatingValue(false);
 
-        if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
-        else if(gameObject.name == "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        else if(gameObject.name != "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
+        if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
+        if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
@@ -268,9 +280,9 @@ public class ObjectControl : MonoBehaviour
         firstAidBox.SetCanBeClicked(true);
         LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
 
-        if(gameObject.name == "Petroleum Jelly") LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
-        else if(gameObject.name == "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        else if(gameObject.name != "Tisu Basah Non Alkohol") LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
+        if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
+        if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         if(rb.isKinematic) rb.isKinematic = false;
         

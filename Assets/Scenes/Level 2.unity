@@ -10206,6 +10206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4cbc3667759448fc4250f06af7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: 2
   targetPosition: {x: 7.5, y: 5, z: 7}
   inspectPosition: {x: 0, y: 12.5, z: 0.8}
   objectIndex: 0
