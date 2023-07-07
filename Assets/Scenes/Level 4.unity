@@ -352,7 +352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Petroleum Jelly
+  m_text: Krim Hidrokortison
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 24.45
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7348,7 +7348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Macam - Macam Luka Bakar :'
+  m_text: 'Penyebab Gatal - Gatal :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -7484,7 +7484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kebutuhan Pertolongan Pertama Untuk Luka Bakar Ringan :'
+  m_text: 'Kebutuhan Pertolongan Pertama Untuk Gatal - Gatal :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -7655,7 +7655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Prosedur Pertolongan Pertama Untuk Luka Bakar Ringan :'
+  m_text: 'Prosedur Pertolongan Pertama Untuk Gatal - Gatal :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -7797,11 +7797,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Luka Bakar Tingkat 1, 2 dan 3
-
-
-    Catatan : Untuk Luka Bakar Tingkat
-    3 Memerlukan Bantuan Dari Dokter'
+  m_text: 'Gatal - gatal bisa disebabkan disebabkan oleh : kulit kering, alergi,
+    infeksi, gigitan serangga, scabies atau kudis, psoriasis atau dermatitis atopik'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -13000,8 +12997,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Siapkan Petroleum Jelly\n2. Buka Petroleum Jelly\n3. Ambil Petroleum
-    Jelly Secukupnya \n4. Oleskan Ke Luka Bakarnya "
+  m_text: '1. Siapkan Krim Hidrokortison
+
+    2. Buka Krimnya dan Pencet Krimnya
+    Ke Tangan
+
+    3. Oleskan Ke Bagian Yang Gatal - Gatal'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -13037,7 +13038,7 @@ MonoBehaviour:
   m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -15015,7 +15016,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec508d86af47b7240b78c1a5e7e92925, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86997ebaa5c99bd41ac4b1259fccb51b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15403,7 +15404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Luka Bakar
+  m_text: Gatal - gatal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -17940,7 +17941,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d111c2b06f577884e8e46351ed6d1f75, type: 2}
+      objectReference: {fileID: 2100000, guid: f8aecfaef2e6cc84eb184d4a5fec29b1, type: 2}
     - target: {fileID: 919132149155446097, guid: e19d6c85f643df6408d35650a2ee0928,
         type: 3}
       propertyPath: m_Name

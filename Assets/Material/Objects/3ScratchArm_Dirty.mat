@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-76789803355682335
+--- !u!114 &-3150556889193340470
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Band Aid
+  m_Name: 3ScratchArm_Dirty
   m_Shader: {fileID: 4800000, guid: 313fcf3aebc04cf4ab4f8c5f2850be7f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -34,22 +34,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 0e6a2fd8dbf1c0648b0d3c400a5fa31f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97374a2bf0c32354f8c7966bfc8c4e71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 0e6a2fd8dbf1c0648b0d3c400a5fa31f, type: 3}
+        m_Texture: {fileID: 2800000, guid: ccbbef6b0158e4c44ba88d37d48d30f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CelCurveTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CelStepTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -70,11 +62,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0e6a2fd8dbf1c0648b0d3c400a5fa31f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 2800000, guid: cd54b2b5ec8a4d14a91d7188a14ef29e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1495157e7d49fd545915b30d5ed3a84c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -82,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 7a8638211538d384ca19b4f31242bd3d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9dfefd1c86d8da5439c8860030e8f11d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -94,7 +86,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Roughness:
-        m_Texture: {fileID: 2800000, guid: 15be8d2eb4c01d04697ea44f29d34139, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6f69e9a01ce2b3a42934e8ce8d4e1f27, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -118,9 +110,6 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
-    - _CelExtraEnabled: 0
-    - _CelNumSteps: 3
-    - _CelPrimaryMode: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -129,71 +118,39 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FlatRimEdgeSmoothness: 0.5
-    - _FlatRimLightAlign: 0
-    - _FlatRimSize: 0.5
-    - _FlatSpecularEdgeSmoothness: 0
-    - _FlatSpecularSize: 0.1
-    - _Flatness: 1
-    - _FlatnessExtra: 1
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
-    - _GradientAngle: 0
-    - _GradientCenterX: 0
-    - _GradientCenterY: 0
-    - _GradientEnabled: 0
-    - _GradientSize: 10
-    - _LightContribution: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.4472136
+    - _GlossyReflections: 1
     - _Metallic: 0
+    - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineDepthOffset: 0
-    - _OutlineWidth: 0.8
-    - _Parallax: 0.005
+    - _OutlineWidth: 0.03
+    - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimEnabled: 0
     - _RimStep: 0.6
     - _RimStepSmooth: 0
-    - _Roughness_Value: 1
-    - _SelfShadingSize: 0.5
-    - _SelfShadingSizeExtra: 0.6
-    - _ShadowEdgeSize: 0.05
-    - _ShadowEdgeSizeExtra: 0.05
-    - _ShadowStep: 0.6
+    - _Roughness_Value: 0
+    - _ShadowStep: 0.5
     - _ShadowStepSmooth: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0.4472136
     - _SmoothnessTextureChannel: 0
-    - _SpecularEnabled: 0
     - _SpecularHighlights: 1
     - _SpecularStep: 0
     - _SpecularStepSmooth: 0
     - _SrcBlend: 1
     - _Surface: 0
-    - _TextureBlendingMode: 0
-    - _TextureImpact: 1
-    - _UnityShadowMode: 0
-    - _UnityShadowPower: 0.2
-    - _UnityShadowSharpness: 1
+    - _UVSec: 0
     - _Use_Roughness_Texture: 1
-    - _VertexColorsEnabled: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDim: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
   m_BuildTextureStacks: []

@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private bool isIntro;
     [SerializeField] private Dialogue[] dialogues;
     [SerializeField] private Image[] actorImage;
     [SerializeField] private Color inactiveColor;
@@ -22,8 +23,9 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI actorNameText;
 	[SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private GameObject dialogueBoard;
-    [SerializeField] private GameObject startBoard;
+    [SerializeField] private GameObject dialogueContainer;
     [SerializeField] private Button nextButton;
+    private TextMeshProUGUI nextButtonText;
     [SerializeField] private int cutDialogueIndex;
     private int dialogueIndex;
     private Queue<Dialogue> dialogueQueue = new Queue<Dialogue>
@@ -31,22 +33,30 @@ public class DialogueManager : MonoBehaviour
 
     private ScenesManager sm;
 
-    void Start() => sm = ScenesManager.instance;
+    void Start() 
+    {
+        sm = ScenesManager.instance;
 
-	public void StartDialogue (Dialogue dialogue)
+        nextButtonText = nextButton.GetComponent<TextMeshProUGUI>();
+        nextButtonText.color = inactiveColor;
+
+        foreach(Image img in actorImage) img.color = inactiveColor;
+
+        StartCoroutine(StartDialogueAnimation());
+    }
+
+	public void StartDialogue()
 	{
-		actorNameText.text = dialogue.actorName;
-
-		// dialogueQueue.Clear();
-
         for(int i = 0; i < dialogues.Length; i++) dialogueQueue.Enqueue(dialogues[i]);
         
-		DisplayNextSentence();
+		DisplayNextDialogue();
 	}
 
-	public void DisplayNextSentence()
+	public void DisplayNextDialogue()
 	{
         nextButton.interactable = false;
+        nextButtonText.color = inactiveColor;
+
 		if (dialogueQueue.Count == 0)
 		{
 			EndDialogue();
@@ -59,22 +69,52 @@ public class DialogueManager : MonoBehaviour
             dialogueIndex++;
             return;
         }
+        if(isIntro && dialogueIndex == 1)
+        {
+            actorNameText.text = null;
+            dialogueText.text = null;
+        }
+        
+        Dialogue dialogue = dialogueQueue.Dequeue();
 
-		Dialogue dialogue = dialogueQueue.Dequeue();
+        if(isIntro && dialogueIndex == 0) StartCoroutine(TypeSentence(dialogue.sentences));
 
+        if(isIntro && dialogueIndex > 0) dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, -23.0f, transform.localPosition.z);
+        
+        if(isIntro && dialogueIndex == 1)
+        {
+            LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring();
+            LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(0.5f).setOnComplete(() => SettingDialogue(dialogue));
+        }
+
+        if(!isIntro || (isIntro && dialogueIndex > 1)) SettingDialogue(dialogue);
+
+        dialogueIndex++;
+	}
+
+    void SettingDialogue(Dialogue dialogue)
+    {
         actorNameText.text = dialogue.actorName;
-
-		StopAllCoroutines();
 
         actorImage[dialogue.actorIndex].sprite = dialogue.actorSprite;
         actorImage[dialogue.actorIndex].color = activeColor;
+        LeanTween.scale(actorImage[dialogue.actorIndex].gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.5f).setEaseSpring();
 
-        if(dialogue.actorIndex == 0) actorImage[dialogue.actorIndex + 1].color = inactiveColor;
-        if(dialogue.actorIndex == 1) actorImage[dialogue.actorIndex - 1].color = inactiveColor;
-        
-		StartCoroutine(TypeSentence(dialogue.sentences));
-        dialogueIndex++;
-	}
+        if(dialogue.actorIndex == 0) 
+        {
+            actorImage[dialogue.actorIndex + 1].color = inactiveColor;
+            LeanTween.scale(actorImage[dialogue.actorIndex + 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
+        }
+        if(dialogue.actorIndex == 1) 
+        {
+            actorImage[dialogue.actorIndex - 1].color = inactiveColor;
+            LeanTween.scale(actorImage[dialogue.actorIndex - 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
+        }
+
+        StartCoroutine(TypeSentence(dialogue.sentences));
+    }
+
+
 
 	IEnumerator TypeSentence (string sentence)
 	{
@@ -86,35 +126,50 @@ public class DialogueManager : MonoBehaviour
 		}
 
         nextButton.interactable = true;
+        nextButtonText.color = Color.black;
 	}
 
-    public void ShowEndDialogue()
+    public void ShowEndDialogue() => StartCoroutine(ShowEndDialogueAnimation());
+
+    public void MoveStartBoard() => StartCoroutine(StartDialogueAnimation());
+
+	void EndDialogue() => LeanTween.moveLocalX(dialogueBoard, 1924.0f, 0.8f).setEaseSpring().setOnComplete(() => CloseDialogueUI());
+    
+    void CloseDialogueUI()
     {
-        // LeanTween.moveLocalX(dialogueBoard, 0.0f, 0.8f).setEaseSpring();
-        // DisplayNextSentence();
-        StartCoroutine(ShowEndDialogueAnimation());
+        actorNameText.text = null;
+        dialogueText.text = null;
+        dialogueContainer.transform.localScale = Vector3.zero;
+        
+        foreach(Image img in actorImage) 
+        {
+            img.gameObject.transform.localScale = Vector3.zero;
+            img.color = inactiveColor;
+        }
     }
 
-    public void MoveStartBoard()
-    {
-        // if(startBoard != null) LeanTween.moveLocalX(startBoard, 1924.0f, 0.8f).setEaseSpring();
-        // StartDialogue(dialogues[0]);
-        StartCoroutine(StartDialogueAnimation());
-    }
-
-	void EndDialogue() => LeanTween.moveLocalX(dialogueBoard, 1924.0f, 0.8f).setEaseSpring();
-	
     IEnumerator ShowEndDialogueAnimation()
     {
         LeanTween.moveLocalX(dialogueBoard, 0.0f, 0.8f).setEaseSpring();
-        yield return new WaitForSeconds(0.2f);
-        DisplayNextSentence();
+        yield return new WaitForSeconds(0.6f);
+        LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring();
+        LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(0.5f);
+        LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(1.0f).setOnComplete(() => DisplayNextDialogue());
     }
 
     IEnumerator StartDialogueAnimation()
     {
-        if(startBoard != null) LeanTween.moveLocalX(startBoard, 1924.0f, 0.8f).setEaseSpring();
-        yield return new WaitForSeconds(0.1f);
-        StartDialogue(dialogues[0]);
+        yield return new WaitForSeconds(0.6f);
+        if(isIntro) 
+        {
+            dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, 43.0f, transform.localPosition.z);
+            LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring().setOnComplete(() => StartDialogue());
+        }
+        else if(!isIntro)
+        {
+            LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring();
+            LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(0.5f);
+            LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(1.0f).setOnComplete(() => StartDialogue());
+        }
     }
 }

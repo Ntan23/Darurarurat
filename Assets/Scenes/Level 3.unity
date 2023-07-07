@@ -15315,6 +15315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e876299f651b1c41887ae2b1a88887d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handMesh: {fileID: 1708966758}
+  cleanMaterial: {fileID: 2100000, guid: 50dd2691f9ad6a446a8d46f8c1f9e3d4, type: 2}
   instructionArrow: {fileID: 1465790504}
 --- !u!1 &897987855
 GameObject:
@@ -25333,6 +25335,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704372540}
   m_CullTransparentMesh: 1
+--- !u!23 &1708966758 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e19d6c85f643df6408d35650a2ee0928,
+    type: 3}
+  m_PrefabInstance: {fileID: 1829320700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1718346046
 GameObject:
   m_ObjectHideFlags: 0
@@ -26702,7 +26710,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 065307a7e6bb8314c81114aff06aa99f, type: 2}
+      objectReference: {fileID: 2100000, guid: 8b74483f238c71c43ba015081aaed43b, type: 2}
     - target: {fileID: 919132149155446097, guid: e19d6c85f643df6408d35650a2ee0928,
         type: 3}
       propertyPath: m_Name

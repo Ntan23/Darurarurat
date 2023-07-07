@@ -9,6 +9,8 @@ public class WipesAnimation : MonoBehaviour
     private ObjectControl objectControl;
     private GameManager gm;
     private Animator animator;
+    [SerializeField] private MeshRenderer handMesh;
+    [SerializeField] private Material cleanMaterial;
     [SerializeField] private GameObject instructionArrow;
 
     void Start()
@@ -61,4 +63,6 @@ public class WipesAnimation : MonoBehaviour
         objectControl.AfterAnimate();
         canAnimate = false;
     }
+
+    public void ChangeHandTexture() => handMesh.material = cleanMaterial;
 }

@@ -254,7 +254,7 @@ public class ObjectControl : MonoBehaviour
 
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        if(objectType != Object.Wipes && objectType != Object.Petroleum) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
 
@@ -282,7 +282,7 @@ public class ObjectControl : MonoBehaviour
 
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        if(objectType != Object.Wipes && objectType != Object.Petroleum) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         if(rb.isKinematic) rb.isKinematic = false;
         
@@ -345,15 +345,12 @@ public class ObjectControl : MonoBehaviour
     IEnumerator Wipes()
     {
         gm.ChangeIsAnimatingValue(true);
-        yield return new WaitForSeconds(0.6f);
-        LeanTween.moveY(gameObject, 1.66f, 0.3f);
-        yield return new WaitForSeconds(0.6f);
-        LeanTween.moveY(gameObject, targetPosition.y, 0.3f);
-        yield return new WaitForSeconds(0.6f);
-        LeanTween.moveY(gameObject, 1.66f, 0.3f);
-        yield return new WaitForSeconds(0.6f);
-        LeanTween.moveY(gameObject, targetPosition.y, 0.3f);
-        yield return new WaitForSeconds(0.8f);
+        LeanTween.moveY(gameObject, 1.66f, 0.3f).setDelay(0.6f);
+        LeanTween.moveY(gameObject, targetPosition.y, 0.3f).setDelay(1.2f);
+        LeanTween.moveY(gameObject, 1.66f, 0.3f).setDelay(1.8f);
+        LeanTween.moveY(gameObject, targetPosition.y, 0.3f).setDelay(2.4f);
+        yield return new WaitForSeconds(2.8f);
+        GetComponent<WipesAnimation>().ChangeHandTexture();
         AfterAnimate();
         CheckWinCondition();
     }
