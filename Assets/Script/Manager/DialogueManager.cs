@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(StartDialogueAnimation());
     }
 
-	public void StartDialogue()
+	private void StartDialogue()
 	{
         for(int i = 0; i < dialogues.Length; i++) dialogueQueue.Enqueue(dialogues[i]);
         
@@ -80,10 +80,8 @@ public class DialogueManager : MonoBehaviour
         
         Dialogue dialogue = dialogueQueue.Dequeue();
 
-        if(isIntro && dialogueIndex == 0) StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
+        if(isIntro && dialogueIndex == 0) SettingDialogue(dialogue);
 
-        if(isIntro && dialogueIndex > 0) dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, -23.0f, transform.localPosition.z);
-        
         if(isIntro && dialogueIndex == 1)
         {
             LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring();
@@ -97,23 +95,44 @@ public class DialogueManager : MonoBehaviour
 
     void SettingDialogue(Dialogue dialogue)
     {
-        actorNameText.text = dialogue.actorName;
-
-        actorImage[dialogue.actorIndex].sprite = dialogue.actorSprite;
-        actorImage[dialogue.actorIndex].color = activeColor;
-        LeanTween.scale(actorImage[dialogue.actorIndex].gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.5f).setEaseSpring();
-
-        if(dialogue.actorIndex == 0) 
+        if(dialogue.actorIndex < 2)
         {
-            actorImage[dialogue.actorIndex + 1].color = inactiveColor;
-            LeanTween.scale(actorImage[dialogue.actorIndex + 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
-        }
-        if(dialogue.actorIndex == 1) 
-        {
-            actorImage[dialogue.actorIndex - 1].color = inactiveColor;
-            LeanTween.scale(actorImage[dialogue.actorIndex - 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
-        }
+            if(dialogueText.transform.localPosition.y != -23.0f) dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, -23.0f, transform.localPosition.z);
 
+            actorNameText.text = dialogue.actorName;
+
+            actorImage[dialogue.actorIndex].sprite = dialogue.actorSprite;
+            actorImage[dialogue.actorIndex].color = activeColor;
+            LeanTween.scale(actorImage[dialogue.actorIndex].gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.5f).setEaseSpring();
+        
+            if(dialogue.actorIndex == 0) 
+            {
+                actorImage[dialogue.actorIndex + 1].color = inactiveColor;
+                LeanTween.scale(actorImage[dialogue.actorIndex + 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
+            }
+            else if(dialogue.actorIndex == 1) 
+            {
+                actorImage[dialogue.actorIndex - 1].color = inactiveColor;
+                LeanTween.scale(actorImage[dialogue.actorIndex - 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
+            }
+        }
+        
+        if(dialogue.actorIndex >= 2) 
+        {
+            dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, 43.0f, transform.localPosition.z);
+
+            actorNameText.text = null;
+
+            if(!isIntro)
+            {
+                foreach(Image img in actorImage) 
+                {
+                    LeanTween.scale(img.gameObject, Vector3.one, 0.5f).setEaseSpring();
+                    img.color = inactiveColor;
+                }
+            }
+        }
+            
         StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
     }
 
