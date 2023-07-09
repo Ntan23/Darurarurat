@@ -54,10 +54,18 @@ MonoBehaviour:
     audioMixer: {fileID: -1783568017751514057, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}
   - name: Sipping
-    clip: {fileID: 8300000, guid: be834a71fab3b3e4c9bced66a932537a, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 67992e84014369e4d9f04d4b07ffaaa3, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: Writing
+    clip: {fileID: 8300000, guid: 08b023c9eb945104aba4e059d08bec82, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
     audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}

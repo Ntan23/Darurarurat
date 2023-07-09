@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueBoard;
     [SerializeField] private GameObject dialogueContainer;
     [SerializeField] private Button nextButton;
+    [SerializeField] private GameObject skipButton;
     private TextMeshProUGUI nextButtonText;
     [SerializeField] private int cutDialogueIndex;
     private int dialogueIndex;
@@ -32,10 +33,12 @@ public class DialogueManager : MonoBehaviour
     ();
 
     private ScenesManager sm;
+    private AudioManager am;
 
     void Start() 
     {
         sm = ScenesManager.instance;
+        am = AudioManager.instance;
 
         nextButtonText = nextButton.GetComponent<TextMeshProUGUI>();
         nextButtonText.color = inactiveColor;
@@ -77,7 +80,7 @@ public class DialogueManager : MonoBehaviour
         
         Dialogue dialogue = dialogueQueue.Dequeue();
 
-        if(isIntro && dialogueIndex == 0) StartCoroutine(TypeSentence(dialogue.sentences));
+        if(isIntro && dialogueIndex == 0) StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
 
         if(isIntro && dialogueIndex > 0) dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, -23.0f, transform.localPosition.z);
         
@@ -111,13 +114,14 @@ public class DialogueManager : MonoBehaviour
             LeanTween.scale(actorImage[dialogue.actorIndex - 1].gameObject, Vector3.one, 0.5f).setEaseSpring();
         }
 
-        StartCoroutine(TypeSentence(dialogue.sentences));
+        StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
     }
 
-
-
-	IEnumerator TypeSentence (string sentence)
+	IEnumerator TypeSentence (string sentence, Dialogue dialogue)
 	{
+        am.PlayWritingSFX();
+        if(dialogue.audioActionName != null) am.PlayDialogueActionSFX(dialogue.audioActionName);
+
 		dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
@@ -127,11 +131,28 @@ public class DialogueManager : MonoBehaviour
 
         nextButton.interactable = true;
         nextButtonText.color = Color.black;
+        am.StopWritingSFX();
 	}
 
     public void ShowEndDialogue() => StartCoroutine(ShowEndDialogueAnimation());
-
     public void MoveStartBoard() => StartCoroutine(StartDialogueAnimation());
+    public void SkipDialogue()
+    {
+        am.StopAllSFX();
+
+        if(dialogueIndex <= cutDialogueIndex) 
+        {
+            for(int i = dialogueIndex; i < cutDialogueIndex; i++) dialogueQueue.Dequeue();
+
+            dialogueIndex = cutDialogueIndex + 1;
+
+            StopAllCoroutines();
+            EndDialogue();
+            return;
+        }
+        
+        if(dialogueIndex > cutDialogueIndex) sm.GoToNextScene();
+    }
 
 	void EndDialogue() => LeanTween.moveLocalX(dialogueBoard, 1924.0f, 0.8f).setEaseSpring().setOnComplete(() => CloseDialogueUI());
     
@@ -147,6 +168,8 @@ public class DialogueManager : MonoBehaviour
             img.color = inactiveColor;
         }
     }
+
+    public void ActivateSkipButton(bool value) => skipButton.SetActive(value);
 
     IEnumerator ShowEndDialogueAnimation()
     {

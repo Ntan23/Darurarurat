@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
 
     private void Play(string name)
     {
-        Sound s = System.Array.Find(sounds,sound=>sound.name==name);
+        Sound s = System.Array.Find(sounds, sound => sound.name == name);
 
         if(s == null) return;
 
@@ -24,8 +24,8 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Stop(string name)
-    {
-        Sound s = System.Array.Find(sounds,sound=>sound.name==name);
+    { 
+        Sound s = System.Array.Find(sounds, sound => sound.name == name);
 
         if(s == null) return;
 
@@ -46,8 +46,19 @@ public class AudioManager : MonoBehaviour
 
         Play("BGM");
     } 
+    
+    public void StopAllSFX()
+    {
+        foreach(Sound s in sounds) 
+        {
+            if(s.name != "BGM") s.source.Stop();
+        }
+    }
 
+    public void PlayDialogueActionSFX(string name) => Play(name);
     public void PlaySippingTeaSFX() => Play("Sipping");
     public void StopSippingTeaSFX() => Stop("Sipping");
+    public void PlayWritingSFX() => Play("Writing");
+    public void StopWritingSFX() => Stop("Writing");
 }
 

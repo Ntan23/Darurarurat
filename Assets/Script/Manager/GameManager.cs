@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private int nextLevelIndex;
     private int levelUnlocked;
     private int selectedObjectIndex;
+    private int dialogueSkipButtonIndicator;
     private bool isWin;
     private bool isAnimating;
     private bool isPauseMenuAnimating;
@@ -47,8 +48,12 @@ public class GameManager : MonoBehaviour
         storyManager = StoryManager.instance;
         dialogueManager = DialogueManager.instance;
 
+        dialogueSkipButtonIndicator = PlayerPrefs.GetInt("DialogueSkipIndicator", 0);
         levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
         nextLevelIndex = levelIndex + 1;
+
+        if(dialogueSkipButtonIndicator < levelIndex) dialogueManager.ActivateSkipButton(false);
+        else if(dialogueSkipButtonIndicator >= levelIndex) dialogueManager.ActivateSkipButton(true);
 
         gameState = State.Playing;
     }
@@ -142,6 +147,7 @@ public class GameManager : MonoBehaviour
         // if(storyManager != null) storyManager.ShowEndStory();
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
 
+        if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("DialogueSkipIndicator", levelIndex);
         if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
 
         isWin = true;
