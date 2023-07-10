@@ -7,6 +7,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
     private Vector3 mousePosition;
     private bool canAnimate;
     private bool isOpen;
+    private float mouseDistanceX;
     private Animator animator;
     private Animator playerHandAnimator;
     private Collider objCollider;
@@ -35,12 +36,17 @@ public class PetroleumJellyAnimation : MonoBehaviour
     void OnMouseDown() => mousePosition = Input.mousePosition;
     
     void OnMouseUp()
-    {
+    {   
+        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
+
         if(canAnimate)
         {
-            if(Input.mousePosition.y > mousePosition.y && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
+            if(Mathf.Abs(mouseDistanceX) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            {
+                if(Input.mousePosition.y > mousePosition.y && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
 
-            if(Input.mousePosition.y < mousePosition.y && isOpen && capCollider.enabled) StartCoroutine(CloseCap());
+                if(Input.mousePosition.y < mousePosition.y && isOpen && capCollider.enabled) StartCoroutine(CloseCap());
+            }
         }   
     }
 

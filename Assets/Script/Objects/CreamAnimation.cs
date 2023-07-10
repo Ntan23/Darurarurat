@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreamAnimation : MonoBehaviour
 {
     private Vector3 mousePosition;
+    private float mouseDistanceY;
     [SerializeField] private Vector3 animationPosition;
     [SerializeField] private GameObject playerArm;
     private Vector3 beforeAnimatePosition;
@@ -40,11 +41,16 @@ public class CreamAnimation : MonoBehaviour
 
     void OnMouseUp()
     {
+        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+
         if(canAnimate)
         {
-            if(Input.mousePosition.x < mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
+            if(Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            {
+                if(Input.mousePosition.x < mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
 
-            if(Input.mousePosition.x > mousePosition.x && isOpen && capCollider.enabled) StartCoroutine(CloseCap());
+                if(Input.mousePosition.x > mousePosition.x && isOpen && capCollider.enabled) StartCoroutine(CloseCap());
+            }
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BandAidPeel : MonoBehaviour
 {
     private Vector3 mousePosition;
+    private float mouseDistanceY;
     private bool canAnimate;
     private bool isLeftPeeled;
     private bool isRightPeeled;
@@ -35,27 +36,32 @@ public class BandAidPeel : MonoBehaviour
 
     void OnMouseUp()
     {
+        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+
         if(canAnimate)
         {
-            if(Input.mousePosition.x < mousePosition.x)
+            if(Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
             {
-                instructionArrow[0].SetActive(false);
+                if(Input.mousePosition.x < mousePosition.x)
+                {
+                    instructionArrow[0].SetActive(false);
 
-                if(isRightPeeled) bandAidPeels[1].SetActive(false);
+                    if(isRightPeeled) bandAidPeels[1].SetActive(false);
 
-                animator.Play("Left Peel");
-                canAnimate = false;
-                StartCoroutine(Wait("Left"));
-            }
-            else if(Input.mousePosition.x > mousePosition.x)
-            {
-                instructionArrow[1].SetActive(false);
-                
-                if(isLeftPeeled) bandAidPeels[0].SetActive(false);
+                    animator.Play("Left Peel");
+                    canAnimate = false;
+                    StartCoroutine(Wait("Left"));
+                }
+                else if(Input.mousePosition.x > mousePosition.x)
+                {
+                    instructionArrow[1].SetActive(false);
+                    
+                    if(isLeftPeeled) bandAidPeels[0].SetActive(false);
 
-                animator.Play("Right Peel");
-                canAnimate = false;
-                StartCoroutine(Wait("Right"));
+                    animator.Play("Right Peel");
+                    canAnimate = false;
+                    StartCoroutine(Wait("Right"));
+                }
             }
         }
     }

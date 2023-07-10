@@ -5,6 +5,7 @@ using UnityEngine;
 public class WipesAnimation : MonoBehaviour
 {
     private Vector3 mousePosition;
+    private float mouseDistanceY;
     private bool canAnimate;
     private ObjectControl objectControl;
     private GameManager gm;
@@ -48,9 +49,11 @@ public class WipesAnimation : MonoBehaviour
 
     void OnMouseUp()
     {
+        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+
         if(canAnimate)
         {
-            if(Input.mousePosition.x < mousePosition.x) StartCoroutine(PlayAnimation());
+            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f) StartCoroutine(PlayAnimation());
         }
     }
 

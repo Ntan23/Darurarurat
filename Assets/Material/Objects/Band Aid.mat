@@ -23,9 +23,10 @@ Material:
   m_Name: Band Aid
   m_Shader: {fileID: 4800000, guid: 313fcf3aebc04cf4ab4f8c5f2850be7f, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SEGMENTED_ON
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap: {}
@@ -116,6 +117,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _AmbientCol: 0
     - _Blend: 0
     - _BumpScale: 1
     - _CelExtraEnabled: 0
@@ -123,6 +125,9 @@ Material:
     - _CelPrimaryMode: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Clipped: 0
+    - _ColBright: 0
+    - _ColIntense: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -145,8 +150,13 @@ Material:
     - _GradientEnabled: 0
     - _GradientSize: 10
     - _LightContribution: 0
+    - _Lumin: 0
+    - _MaxLight: 1
     - _Metallic: 0
+    - _MinLight: 0
     - _OcclusionStrength: 1
+    - _Offset: 0
+    - _OtlWidth: 1
     - _OutlineDepthOffset: 0
     - _OutlineWidth: 0.8
     - _Parallax: 0.005
@@ -157,12 +167,17 @@ Material:
     - _RimStep: 0.6
     - _RimStepSmooth: 0
     - _Roughness_Value: 1
+    - _Segmented: 1
     - _SelfShadingSize: 0.5
     - _SelfShadingSizeExtra: 0.6
     - _ShadowEdgeSize: 0.05
     - _ShadowEdgeSizeExtra: 0.05
     - _ShadowStep: 0.6
     - _ShadowStepSmooth: 0
+    - _ShnIntense: 0
+    - _ShnOverlap: 0
+    - _ShnRange: 0.15
+    - _ShnSmooth: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
@@ -170,6 +185,8 @@ Material:
     - _SpecularStep: 0
     - _SpecularStepSmooth: 0
     - _SrcBlend: 1
+    - _Steps: 3
+    - _StpSmooth: 0
     - _Surface: 0
     - _TextureBlendingMode: 0
     - _TextureImpact: 1
@@ -181,7 +198,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+    - _BaseColor: {r: 0.99056596, g: 0.99056596, b: 0.99056596, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDim: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
@@ -191,8 +208,10 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+    - _ShnColor: {r: 1, g: 1, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}

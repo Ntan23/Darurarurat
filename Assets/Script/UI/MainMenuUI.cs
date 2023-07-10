@@ -7,12 +7,17 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject gameTitle;
     [SerializeField] private GameObject clipoard;
     [SerializeField] private GameObject settingsUI;
+    [SerializeField] private GameObject instructionUI;
 
     void Start() => StartCoroutine((StartAnimation()));
 
-    public void OpenSettings() => LeanTween.moveLocalX(settingsUI, 538.0f, 0.8f).setEaseSpring();
+    public void OpenSettings() => LeanTween.moveLocalX(settingsUI, 0.0f, 0.8f).setEaseSpring();
     
-    public void CloseSettings() => LeanTween.moveLocalX(settingsUI, 1500.0f, 0.8f).setEaseSpring();
+    public void CloseSettings() => LeanTween.moveLocalX(settingsUI, 970.0f, 0.8f).setEaseSpring();
+
+    public void OpenInstructionUI() => LeanTween.moveLocalX(instructionUI, 0.0f, 0.8f).setEaseSpring();
+    
+    public void CloseInstructionUI() => LeanTween.moveLocalX(instructionUI, 970.0f, 0.8f).setEaseSpring();
 
     IEnumerator StartAnimation()
     {

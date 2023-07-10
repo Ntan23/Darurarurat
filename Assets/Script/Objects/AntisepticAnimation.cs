@@ -6,6 +6,7 @@ public class AntisepticAnimation : MonoBehaviour
 {
     private bool canAnimate;
     private bool isOpen;
+    private float mouseDistanceY;
     private Vector3 mousePosition;
     private Animator animator;
     private ObjectControl objectControl;
@@ -38,11 +39,16 @@ public class AntisepticAnimation : MonoBehaviour
 
     void OnMouseUp()
     {
+        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+        
         if(canAnimate)
         {
-            if(Input.mousePosition.x > mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
+            if(Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            {
+                if(Input.mousePosition.x > mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
 
-            if(Input.mousePosition.x < mousePosition.x && isOpen && capCollider.enabled) StartCoroutine(CloseCap());
+                if(Input.mousePosition.x < mousePosition.x && isOpen && capCollider.enabled) StartCoroutine(CloseCap());
+            }
         }
     }
 
