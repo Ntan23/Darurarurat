@@ -54,7 +54,7 @@ MonoBehaviour:
     audioMixer: {fileID: -1783568017751514057, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}
   - name: Sipping
-    clip: {fileID: 8300000, guid: 67992e84014369e4d9f04d4b07ffaaa3, type: 3}
+    clip: {fileID: 8300000, guid: 76f0a441af6d1f7499798d483bfce804, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -66,6 +66,110 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: BoxOpen
+    clip: {fileID: 8300000, guid: e6b4d758fbe6e114caca82b1c31067f2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: BoxMove
+    clip: {fileID: 8300000, guid: 06146fe29f7de9e4997b56c5850f0206, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: BoxMoveBack
+    clip: {fileID: 8300000, guid: ff11e1c5ae76cf74e933819312bb0147, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: OpenVaseline
+    clip: {fileID: 8300000, guid: e652741598ed194408118672473d752b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: CloseVaseline
+    clip: {fileID: 8300000, guid: d3512e36676297947af959947e185b69, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: OpenClose
+    clip: {fileID: 8300000, guid: 834f41c234e3dcb4a8147d71cee50e10, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: Peel
+    clip: {fileID: 8300000, guid: ea378b610e1f7534ab87212de7d90f24, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: TearPaper
+    clip: {fileID: 8300000, guid: ec87cc088ea2dc94bbc8156edcb2ee30, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 10e06ae6aef1eeb4f9a1a6817cb76bd3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: LevelComplete
+    clip: {fileID: 8300000, guid: 42638d703db7e9743b85f00e6548f788, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: KidsPlay
+    clip: {fileID: 8300000, guid: 74941b4b380bf17419dce45dc0b84803, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: KnockDoor
+    clip: {fileID: 8300000, guid: dbbf785f9330742409744a43c92cf1dc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: Fall
+    clip: {fileID: 8300000, guid: 7cb1add2ca2eb7346a2d83edcf138d56, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
     audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}

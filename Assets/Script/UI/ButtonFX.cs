@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ButtonFX : MonoBehaviour
 {
     private TextMeshProUGUI text;
+    private Button btn;
+    private AudioManager am;
 
-    void Start() => text = GetComponent<TextMeshProUGUI>();
+    void Start() 
+    {
+        am =AudioManager.instance;
+
+        text = GetComponent<TextMeshProUGUI>();
+        btn = GetComponent<Button>();
+
+        btn.onClick.AddListener(() => am.PlayButtonClickSFX());
+    }
 
     void UpdateFontSize(float value) => text.fontSize = value;
 

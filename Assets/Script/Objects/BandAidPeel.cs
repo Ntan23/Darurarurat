@@ -14,10 +14,12 @@ public class BandAidPeel : MonoBehaviour
     [SerializeField] private GameObject[] bandAidPeels;
     [SerializeField] private GameObject[] instructionArrow;
     private GameManager gm;
+    private AudioManager am;
 
     void Start() 
     {
         gm = GameManager.instance;
+        am = AudioManager.instance;
 
         animator = GetComponentInChildren<Animator>();
 
@@ -44,6 +46,7 @@ public class BandAidPeel : MonoBehaviour
             {
                 if(Input.mousePosition.x < mousePosition.x)
                 {
+                    am.PlayPeelSFX();
                     instructionArrow[0].SetActive(false);
 
                     if(isRightPeeled) bandAidPeels[1].SetActive(false);
@@ -54,6 +57,7 @@ public class BandAidPeel : MonoBehaviour
                 }
                 else if(Input.mousePosition.x > mousePosition.x)
                 {
+                    am.PlayPeelSFX();
                     instructionArrow[1].SetActive(false);
                     
                     if(isLeftPeeled) bandAidPeels[0].SetActive(false);

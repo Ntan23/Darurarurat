@@ -24,9 +24,13 @@ public class AntisepticAnimation : MonoBehaviour
     [Header("For Arrow Instruction UI")]
     [SerializeField] private GameObject[] instructionArrows;
 
+    private AudioManager am;
+
     void Start() 
     {
         gm = GameManager.instance;
+        am = AudioManager.instance;
+
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
         objectCollider = GetComponent<Collider>();
@@ -98,7 +102,8 @@ public class AntisepticAnimation : MonoBehaviour
     IEnumerator OpenCap()
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
-
+        
+        am.PlayOpenCloseSFX();
         animator.Play("Open");
         yield return new WaitForSeconds(1.8f);
         // cap.transform.parent = targetParent;
@@ -117,6 +122,7 @@ public class AntisepticAnimation : MonoBehaviour
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
+        am.PlayOpenCloseSFX();
         animator.Play("Close");
         yield return new WaitForSeconds(1.8f);
         objectControl.AfterAnimate();

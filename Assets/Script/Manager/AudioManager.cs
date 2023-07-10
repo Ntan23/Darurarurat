@@ -60,5 +60,15 @@ public class AudioManager : MonoBehaviour
     public void StopSippingTeaSFX() => Stop("Sipping");
     public void PlayWritingSFX() => Play("Writing");
     public void StopWritingSFX() => Stop("Writing");
+    public void PlayBoxOpenSFX() => Play("BoxOpen");
+    public void PlayBoxMoveSFX() => Play("BoxMove");
+    public void PlayBoxMoveBackSFX() => Play("BoxMoveBack");
+    public void PlayOpenVaselineSFX() => Play("OpenVaseline");
+    public void PlayCloseVaselineSFX() => Play("CloseVaseline");
+    public void PlayOpenCloseSFX() => Play("OpenClose");
+    public void PlayPeelSFX() => Play("Peel");
+    public void PlayButtonClickSFX() => Play("ButtonClick");
+    public void PlayTearPaperSFX() => Play("TearPaper");
+    public void PlayLevelCompleteSFX() => Play("LevelComplete");
 }
 

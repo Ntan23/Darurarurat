@@ -41,12 +41,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MissionCompleteUI missionCompleteUI;
     private StoryManager storyManager;
     private DialogueManager dialogueManager;
+    private AudioManager am;
     private int procedureObjectIndex;
 
     void Start() 
     {
         storyManager = StoryManager.instance;
         dialogueManager = DialogueManager.instance;
+        am = AudioManager.instance;
 
         dialogueSkipButtonIndicator = PlayerPrefs.GetInt("DialogueSkipIndicator", 0);
         levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
@@ -141,9 +143,10 @@ public class GameManager : MonoBehaviour
     IEnumerator CompleteAnimation()
     {
         gameState = State.Pause;
+
+        am.PlayLevelCompleteSFX();
         missionCompleteUI.OpenUI();
         yield return new WaitForSeconds(1.5f);
-        Debug.Log("Win");
         // if(storyManager != null) storyManager.ShowEndStory();
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
 

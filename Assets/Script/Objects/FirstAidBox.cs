@@ -16,16 +16,16 @@ public class FirstAidBox : MonoBehaviour
     private Animator animator;
     private BoxCollider boxCollider;
     private GameManager gm;
+    private AudioManager am;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.instance;
+        am =AudioManager.instance;
+
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
 
-        // intialPosition.x = -9.6f;
         intialPosition.x = -13.0f;
         intialPosition.y = targetPosition.y;
         intialPosition.z = transform.position.z;
@@ -43,17 +43,20 @@ public class FirstAidBox : MonoBehaviour
             if(clickCount == 1)
             {
                 isInTheMiddle = true;
+                am.PlayBoxMoveSFX();
                 LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
                 LeanTween.rotate(gameObject, targetRotation, 0.4f);
                 StartCoroutine(Wait(0.6f));
             }
             if(clickCount == 2)
             {
+                am.PlayBoxOpenSFX();
                 StartCoroutine(DelayAnimation(0.3f));
                 StartCoroutine(Wait(0.4f));
             } 
             if(clickCount == 3)
             {
+                am.PlayBoxOpenSFX();
                 StartCoroutine(DelayAnimation(0.3f));
                 StartCoroutine(Wait(0.4f));
             }
@@ -66,6 +69,8 @@ public class FirstAidBox : MonoBehaviour
 
         if(isOpen && !isInTheMiddle && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating()) 
         {
+            am.PlayBoxMoveSFX();
+
             LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
             
             StartCoroutine(WaitTheBox(0.8f, false));
@@ -74,6 +79,7 @@ public class FirstAidBox : MonoBehaviour
 
     public void MoveBox()
     {
+        am.PlayBoxMoveBackSFX();
         LeanTween.move(gameObject, intialPosition, 0.8f).setEaseSpring();
         StartCoroutine(WaitTheBox(0.5f, true));
     }

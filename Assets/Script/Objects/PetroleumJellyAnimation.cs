@@ -20,15 +20,17 @@ public class PetroleumJellyAnimation : MonoBehaviour
     [SerializeField] private GameObject[] instructionArrows;
     private ObjectControl objControl;
     private GameManager gm;
+    private AudioManager am;
 
     void Start() 
     {
+        gm = GameManager.instance;
+        am = AudioManager.instance;
+
         animator = GetComponent<Animator>();
         objCollider = GetComponent<Collider>();
         objControl = GetComponent<ObjectControl>();
         playerHandAnimator = playerHand.GetComponent<Animator>();
-
-        gm = GameManager.instance;
 
         foreach(GameObject go in instructionArrows) go.SetActive(false);
     }
@@ -90,6 +92,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
+        am.PlayOpenVaselineSFX();
         animator.Play("Open");
         yield return new WaitForSeconds(1.2f);
         objControl.AfterAnimate();
@@ -104,6 +107,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
+        am.PlayCloseVaselineSFX();
         animator.Play("Close");
         yield return new WaitForSeconds(1.2f);
         objControl.AfterAnimate();

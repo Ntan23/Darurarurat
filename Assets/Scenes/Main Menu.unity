@@ -6030,15 +6030,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Kontrols : Klik dan Drag\r\nInstruksi : \r\n1. Anda perlu drag object
-    yang diperlukan ke atas tangan yang terluka (jika benar maka akan ada animasi,
-    jika salah maka ada text yang muncul untuk memberitahu player apa yang perlu
-    dikerjakan terlebih dahulu).\r\n\n2. Untuk objek yang bisa dipakai (interaksi),
-    Player dapat inspeksi dan berinteraksi dengan objeknya seperti (buka, tutup dan
-    menaruh krim) dengan menekan tombol. Tombol akan muncul jika player menghover
-    objeknya. Untuk setiap level, Objek yang bisa di interaksi berbeda.\r\n\nCatatan
-    : Papan yang ada dibawah yang berada di setiap level dapat di klik untuk melihat
-    informasi yang berkaitan dengan level tersebut.\n"
+  m_text: "Kontrol : Klik dan Drag\r\nInstruksi : \r\n1. Anda perlu drag object yang
+    dibutuhkan ke tangan yang ada di setiap level (jika benar maka akan ada animasi,
+    jika salah maka ada text yang muncul untuk memberitahu Anda apa yang perlu dikerjakan
+    terlebih dahulu).\r\n\n2. Untuk objek yang bisa dipakai (interaksi), Anda dapat
+    melakukan inspeksi dan berinteraksi dengan objeknya seperti (buka, tutup dan
+    menaruh krim) dengan menekan tombol. Tombol akan muncul jika Anda menghover objeknya.
+    \nSetelah klik tombol untuk interaksi, Anda perlu untuk melakukan drag ke arah
+    yang telah diberikan (panah) yang ada di setiap level di targetnya, Misalnya
+    : Buka tutup , maka drag dari tutupnya. Untuk setiap level, Objek yang bisa di
+    interaksi berbeda.\r \n\nCatatan : Papan yang ada dibawah yang berada di setiap
+    level dapat di klik untuk melihat informasi yang berkaitan dengan level tersebut.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -6066,10 +6068,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26.6
+  m_fontSizeBase: 27
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

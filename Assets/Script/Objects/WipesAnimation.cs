@@ -13,10 +13,12 @@ public class WipesAnimation : MonoBehaviour
     [SerializeField] private MeshRenderer handMesh;
     [SerializeField] private Material cleanMaterial;
     [SerializeField] private GameObject instructionArrow;
+    private AudioManager am;
 
     void Start()
     {
         gm = GameManager.instance;
+        am = AudioManager.instance;
 
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
@@ -61,6 +63,7 @@ public class WipesAnimation : MonoBehaviour
     {
         instructionArrow.SetActive(false);
         
+        am.PlayTearPaperSFX();
         animator.Play("Open");
         yield return new WaitForSeconds(1.6f);
         objectControl.AfterAnimate();
