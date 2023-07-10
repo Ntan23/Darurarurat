@@ -13,14 +13,14 @@ public class CreditsUI : MonoBehaviour
     {
         LeanTween.cancel(creditText); 
         LeanTween.moveLocalX(gameObject, 2075.0f, 0.8f).setEaseSpring();
-        creditText.transform.localPosition = new Vector3(0.0f, -1266.0f, 0.0f);
+        creditText.transform.localPosition = new Vector3(0.0f, -1466.0f, 0.0f);
     }
 
     IEnumerator OpenAnimation()
     {
         LeanTween.moveLocalX(gameObject, 0.0f, 0.8f).setEaseSpring();
         yield return new WaitForSeconds(0.8f);
-        LeanTween.moveLocalY(creditText, 1266.0f, textTimeToReachTheEnd).setLoopClamp();
+        LeanTween.moveLocalY(creditText, 1466.0f, textTimeToReachTheEnd).setLoopClamp();
     }
 }
 

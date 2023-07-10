@@ -6596,7 +6596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1266}
+  m_AnchoredPosition: {x: 0, y: -1466}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824277164
@@ -6619,60 +6619,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b><size=60px>Game Designer</size></b>
-
-    Jouza
-
-
-    <b><size=60px>Game
-    3D Artist</size></b>
-
-    Nicholas
-
-
-    <b><size=60px>Game Programmer</size></b>
-
-    Nicholas
-    Tandinata
-
-
-    <b><size=60px>UI Designer</size></b>
-
-    Jouza
-
-    Nicholas
-    Tandinata
-
-
-    <b><size=60px>Font</size></b>
-
-    Hand Craft by <b><u>MJ Type</u></b>
-
-
-    <b><size=60px>Dialogue
-    Avatar</size></b>
-
-    Avatar by <u>https:<font="LiberationSans SDF">// </font>avatarmaker.net<font="LiberationSans
-    SDF">/ </font></u>
-
-
-    <b><size=60px>BGM</size></b>
-
-    Sunflowers by Piano
-    Amor <font="LiberationSans SDF">| </font><u>https : <font="LiberationSans SDF">//</font>lesfm.net<font="LiberationSans
-    SDF">/</font></u>
-
-    Music promoted by <u>https : <font="LiberationSans SDF">//</font>www.chosic.com<font="LiberationSans
-    SDF">/</font>free-music<font="LiberationSans SDF">/</font>all<font="LiberationSans
-    SDF">/</font></u>
-
-    Creative Commons CC BY 3.0
-
-    <u>https : <font="LiberationSans
-    SDF">//</font>creativecommons.org<font="LiberationSans SDF">/</font>licenses<font="LiberationSans
-    SDF">/</font>by<font="LiberationSans SDF">/</font>3.0<font="LiberationSans SDF">/</font></u>
-
-'
+  m_text: "<b><size=60px>Game Designer</size></b>\nJouza\n\n<b><size=60px>Game 3D
+    Artist</size></b>\nNicholas\n\n<b><size=60px>Game Programmer</size></b>\nNicholas
+    Tandinata\n\n<b><size=60px>UI Designer</size></b>\nJouza\nNicholas Tandinata\n\n<b><size=60px>Font</size></b>\nHand
+    Craft by <b><u>MJ Type</u></b>\n\n<b><size=60px>Dialogue Avatar</size></b>\nAvatar
+    dari <u>https:<font=\"LiberationSans SDF\">// </font>avatarmaker.net<font=\"LiberationSans
+    SDF\">/ </font></u>\n\n<b><size=60px>SFX</size></b>\nSFX Buka Tutup Antiseptik
+    & Hidrokotison dari \n<u>https:<font=\"LiberationSans SDF\">// </font>pixabay.com<font=\"LiberationSans
+    SDF\">/</font>\r</u>\nSFX Keramaian, Klik Tombol, Jatuh & Level Selesai dari
+    \n<u>https:<font=\"LiberationSans SDF\">// </font>mixkit.co<font=\"LiberationSans
+    SDF\">/ </font></u>\nSFX lainnya dibuat oleh Jouza dan Nicholas Tandinata\n\n<b><size=60px>BGM</size></b>\nSunflowers
+    by Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
+    SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\nMusic promoted
+    by <u>https : <font=\"LiberationSans SDF\">//</font>www.chosic.com<font=\"LiberationSans
+    SDF\">/</font>free-music<font=\"LiberationSans SDF\">/</font>all<font=\"LiberationSans
+    SDF\">/</font></u>\nCreative Commons CC BY 3.0\n<u>https : <font=\"LiberationSans
+    SDF\">//</font>creativecommons.org<font=\"LiberationSans SDF\">/</font>licenses<font=\"LiberationSans
+    SDF\">/</font>by<font=\"LiberationSans SDF\">/</font>3.0<font=\"LiberationSans
+    SDF\">/</font></u>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,

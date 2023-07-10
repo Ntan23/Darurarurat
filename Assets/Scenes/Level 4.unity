@@ -20730,7 +20730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1adef7120d3efa14ca91b6c21c641f4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fbd0af89f4294e64ab703df866fd732b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21036,7 +21036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next >>
+  m_text: Lanjut >>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,
@@ -21131,8 +21131,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -107.94714, y: 43}
-  m_SizeDelta: {x: 219.8942, y: 55}
+  m_AnchoredPosition: {x: -148, y: 43}
+  m_SizeDelta: {x: 293.9724, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5377170323376657829
 MonoBehaviour:

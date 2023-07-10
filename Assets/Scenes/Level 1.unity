@@ -11536,8 +11536,8 @@ RectTransform:
   - {fileID: 279365405}
   - {fileID: 1657249984}
   - {fileID: 820848221}
-  - {fileID: 977429845}
   - {fileID: 1792510670}
+  - {fileID: 977429845}
   - {fileID: 1645819049}
   - {fileID: 519155410}
   m_Father: {fileID: 0}
@@ -12050,7 +12050,7 @@ RectTransform:
   - {fileID: 1983248815}
   - {fileID: 1337501029}
   m_Father: {fileID: 863934021}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -19444,7 +19444,7 @@ RectTransform:
   m_Children:
   - {fileID: 201356381}
   m_Father: {fileID: 863934021}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -19489,8 +19489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -107.94714, y: 43}
-  m_SizeDelta: {x: 219.8942, y: 55}
+  m_AnchoredPosition: {x: -148, y: 43}
+  m_SizeDelta: {x: 293.9724, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798044841
 MonoBehaviour:
@@ -19625,7 +19625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next >>
+  m_text: Lanjut >>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,

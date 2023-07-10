@@ -143,7 +143,7 @@ MonoBehaviour:
       type: 2}
   - name: LevelComplete
     clip: {fileID: 8300000, guid: 42638d703db7e9743b85f00e6548f788, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
