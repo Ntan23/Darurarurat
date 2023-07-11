@@ -47,7 +47,7 @@ public class AntisepticAnimation : MonoBehaviour
         
         if(canAnimate)
         {
-            if(Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            if(Mathf.Abs(mouseDistanceY) <= 20.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
             {
                 if(Input.mousePosition.x > mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
 
@@ -85,52 +85,70 @@ public class AntisepticAnimation : MonoBehaviour
         LeanTween.rotateX(gameObject, 60.0f, 0.3f);
         yield return new WaitForSeconds(0.5f);
 
-        if(hasCap) instructionArrows[1].SetActive(true);
+        if(hasCap) 
+        {
+            instructionArrows[1].SetActive(true);
+            canAnimate = true;
+        }
 
         if(!hasCap) 
         {
-            LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
-            yield return new WaitForSeconds(1.0f);
-            capSkinnedMeshRenderer.material = normalCapMaterial;
-            instructionArrows[0].SetActive(true);
+            LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f).setOnComplete(() => 
+            {
+                capSkinnedMeshRenderer.material = normalCapMaterial;
+                instructionArrows[0].SetActive(true);
+                canAnimate = true;
+            });
         }
 
         animator.enabled = true;
-        canAnimate = true;
     }
 
     IEnumerator OpenCap()
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
         
+        objectControl.ChangeCanShowEffectValue(false);
         am.PlayOpenCloseSFX();
         animator.Play("Open");
+        canAnimate = false;
         yield return new WaitForSeconds(1.8f);
         // cap.transform.parent = targetParent;
         capSkinnedMeshRenderer.material = transparentCapMaterial;
-        LeanTween.value(capMesh, UpdateAlpha, 1.0f, 0.0f, 0.8f);
-        yield return new WaitForSeconds(1.0f);
-        objectControl.AfterAnimate();
-        objectCollider.enabled = true;
-        capCollider.enabled = false;
+        LeanTween.value(capMesh, UpdateAlpha, 1.0f, 0.0f, 0.8f).setOnComplete(() =>
+        {
+            objectControl.AfterAnimate();
+            objectCollider.enabled = true;
+            capCollider.enabled = false;
 
-        canAnimate = false;
-        isOpen = true;
+            isOpen = true;
+        });
     }
 
     IEnumerator CloseCap()
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
+        objectControl.ChangeCanShowEffectValue(false);
         am.PlayOpenCloseSFX();
         animator.Play("Close");
+        canAnimate = false;
         yield return new WaitForSeconds(1.8f);
         objectControl.AfterAnimate();
         objectCollider.enabled = true;
         capCollider.enabled = false;
-        canAnimate = false;
         isOpen = false;
     }
 
     public void PlayLiquidParticleSystem() => liquidParticleSystem.Play();
+
+    public bool IsOpen()
+    {
+        return isOpen;
+    }
+
+    public bool CanAnimate()
+    {
+        return canAnimate;
+    }
 }

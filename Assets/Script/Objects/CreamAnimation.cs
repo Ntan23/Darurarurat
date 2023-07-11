@@ -104,8 +104,10 @@ public class CreamAnimation : MonoBehaviour
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
+        objectControl.ChangeCanShowEffectValue(false);
         am.PlayOpenCloseSFX();
         animator.Play("Open");
+        canAnimate = false;
         yield return new WaitForSeconds(2.1f);
         capSkinnedMeshRenderer.material = transparentCapMaterial;
         LeanTween.value(capMesh, UpdateAlpha, 1.0f, 0.0f, 0.8f);
@@ -113,8 +115,7 @@ public class CreamAnimation : MonoBehaviour
         objectControl.AfterAnimate();
         objectCollider.enabled = true;
         capCollider.enabled = false;
-
-        canAnimate = false;
+        
         isOpen = true;
     }
 
@@ -122,14 +123,15 @@ public class CreamAnimation : MonoBehaviour
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
+        objectControl.ChangeCanShowEffectValue(false);
         am.PlayOpenCloseSFX();
         animator.Play("Close");
+        canAnimate = false;
         yield return new WaitForSeconds(2.2f);
         objectControl.AfterAnimate();
         objectCollider.enabled = true;
         capCollider.enabled = false;
 
-        canAnimate = false;
         isOpen = false;
     }
 
@@ -151,5 +153,15 @@ public class CreamAnimation : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
         gm.ChangeIsAnimatingValue(false);
+    }
+
+    public bool CanAnimate()
+    {
+        return canAnimate;
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
     }
 }

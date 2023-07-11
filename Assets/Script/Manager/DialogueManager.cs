@@ -25,13 +25,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueBoard;
     [SerializeField] private GameObject dialogueContainer;
     [SerializeField] private Button nextButton;
-    [SerializeField] private GameObject skipButton;
+    [SerializeField] private GameObject skipButtonGO;
     private TextMeshProUGUI nextButtonText;
     [SerializeField] private int cutDialogueIndex;
     private int dialogueIndex;
     private Queue<Dialogue> dialogueQueue = new Queue<Dialogue>
     ();
-
     private ScenesManager sm;
     private AudioManager am;
 
@@ -45,14 +44,13 @@ public class DialogueManager : MonoBehaviour
 
         foreach(Image img in actorImage) img.color = inactiveColor;
 
+        DialogueIntialization();
         StartCoroutine(StartDialogueAnimation());
     }
 
-	private void StartDialogue()
+	private void DialogueIntialization()
 	{
         for(int i = 0; i < dialogues.Length; i++) dialogueQueue.Enqueue(dialogues[i]);
-        
-		DisplayNextDialogue();
 	}
 
 	public void DisplayNextDialogue()
@@ -188,7 +186,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void ActivateSkipButton(bool value) => skipButton.SetActive(value);
+    public void DeactivateSkipButton() => skipButtonGO.SetActive(false);
 
     IEnumerator ShowEndDialogueAnimation()
     {
@@ -205,13 +203,13 @@ public class DialogueManager : MonoBehaviour
         if(isIntro) 
         {
             dialogueText.transform.localPosition = new Vector3(dialogueText.transform.localPosition.x, 43.0f, transform.localPosition.z);
-            LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring().setOnComplete(() => StartDialogue());
+            LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring().setOnComplete(() => DisplayNextDialogue());
         }
         else if(!isIntro)
         {
             LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring();
             LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(0.5f);
-            LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(1.0f).setOnComplete(() => StartDialogue());
+            LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(1.0f).setOnComplete(() => DisplayNextDialogue());
         }
     }
 }

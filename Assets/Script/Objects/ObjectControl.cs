@@ -45,10 +45,15 @@ public class ObjectControl : MonoBehaviour
     private bool isInside;
     private bool isInTheBox = true;
     private bool isProcedureFinished;
+    private bool canHide = true;
+    private bool canShowEffect = true;
     #endregion
 
     #region OtherVariables
     [Header("Other Variables")]
+    [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
+    [SerializeField] private Material[] hoverMaterial;
+    [SerializeField] private Material[] originalMaterial;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private Transform takenParent;
     private Collider objCollider;
@@ -56,7 +61,6 @@ public class ObjectControl : MonoBehaviour
     private FirstAidBox firstAidBox;
     private GameManager gm;
     [SerializeField] private ObjectAnimationControl objectAnimationControl;
-    private GameObject antisepticLiquidParticleSystem;
     #endregion
 
     void Start() 
@@ -67,15 +71,87 @@ public class ObjectControl : MonoBehaviour
         objCollider = GetComponent<Collider>();
         firstAidBox = GetComponentInParent<FirstAidBox>();
 
-        antisepticLiquidParticleSystem = GameObject.FindGameObjectWithTag("Liquid");
-
         objCollider.enabled = false;
         SetBeforeAnimatePosition();
         HideAllButtons();
     }
+
     void Update() 
     {
         if(rb.velocity.x != 0 || rb.velocity.y != 0 || rb.velocity.z != 0) rb.velocity = Vector3.zero;
+    
+        if(gm.IsPausing() && canHide)
+        {
+            HideAllButtons();
+
+            for(int i = 0; i < meshRenderer.Length; i++)
+            {
+                if(objectType == Object.Antiseptic) 
+                {
+                    AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+
+                    if(gm.GetIsAnimating()) 
+                    {
+                        if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                        else if(antisepticAnimation.IsOpen()) 
+                        {
+                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                            if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                        }
+                    }
+                    if(!gm.GetIsAnimating())
+                    {
+                        if(antisepticAnimation.IsOpen())
+                        {
+                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                            else if(i == 1) break;
+                        }
+                        else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                else if(objectType == Object.Cream)
+                {
+                    CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
+
+                    if(gm.GetIsAnimating()) 
+                    {
+                        if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                        else if(creamAnimation.IsOpen()) 
+                        {
+                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                            if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                        }
+                    }
+                    if(!gm.GetIsAnimating())
+                    {
+                        if(creamAnimation.IsOpen())
+                        {
+                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                            else if(i == 1) break;
+                        }
+                        else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                else if(objectType == Object.Wipes)
+                {
+                    WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
+
+                    if(wipesAnimation.IsOpen()) 
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        else break;
+                    }
+                    else if(!wipesAnimation.IsOpen())
+                    {
+                        if(i == 0) continue;
+                        else meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                else meshRenderer[i].material = originalMaterial[i];
+            }
+            canHide = false;
+        }
+        else if(!gm.IsPausing() && !canHide) canHide = true;
     }
 
     void OnMouseDown()
@@ -110,23 +186,89 @@ public class ObjectControl : MonoBehaviour
     void OnMouseEnter()
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
-        {
+        { 
+            if(canShowEffect)
+            {
+                for(int i = 0; i < meshRenderer.Length; i++)
+                {
+                    if(objectType == Object.Antiseptic) 
+                    {
+                        AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+                        
+                        if(gm.GetIsAnimating())
+                        {
+                            if(antisepticAnimation.CanAnimate())
+                            {
+                                if(i == 0) continue;
+                                if(i == 1) meshRenderer[i].material = hoverMaterial[i];
+                            }
+                        }
+                        else if(!gm.GetIsAnimating())
+                        {
+                            if(antisepticAnimation.IsOpen())
+                            {
+                                if(i == 0) meshRenderer[i].material = hoverMaterial[i];
+                                else if(i == 1) break;
+                            }
+                            else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
+                        }
+                    }
+                    if(objectType == Object.Cream)
+                    {
+                        CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
+                        
+                        if(gm.GetIsAnimating())
+                        {
+                            if(creamAnimation.CanAnimate())
+                            {
+                                if(i == 0) continue;
+                                if(i == 1) meshRenderer[i].material = hoverMaterial[i];
+                            }
+                        }
+                        else if(!gm.GetIsAnimating())
+                        {
+                            if(creamAnimation.IsOpen())
+                            {
+                                if(i == 0) meshRenderer[i].material = hoverMaterial[i];
+                                else if(i == 1) break;
+                            }
+                            else if(!creamAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
+                        }
+                    }
+                    else if(objectType == Object.Wipes)
+                    {
+                        WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
+
+                        if(wipesAnimation.IsOpen()) 
+                        {
+                            if(i == 0) meshRenderer[i].material = hoverMaterial[i];
+                            else break;
+                        }
+                        else if(!wipesAnimation.IsOpen())
+                        {
+                            meshRenderer[i].material = hoverMaterial[i];
+                        }
+                    }
+                    else meshRenderer[i].material = hoverMaterial[i];
+                }
+            }
+
             if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
             if(buttons.Length == 2)
             {
-                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
+                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[1].SetActive(true);
             }
 
             if(buttons.Length == 3)
             {
-                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
+                if(!isProcedureFinished && !isDragging && canExamine && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) 
                 {
                     buttons[1].SetActive(true);
                     buttons[2].SetActive(false);
                 }
 
-                if(isProcedureFinished && !isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
+                if(isProcedureFinished && !isDragging && canExamine && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
                 {
                     buttons[1].SetActive(false);
                     buttons[2].SetActive(true);
@@ -139,6 +281,74 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            if(canShowEffect)
+            {
+                for(int i = 0; i < meshRenderer.Length; i++)
+                {
+                    if(objectType == Object.Antiseptic) 
+                    {
+                        AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+
+                        if(gm.GetIsAnimating()) 
+                        {
+                            if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                            else if(antisepticAnimation.IsOpen()) 
+                            {
+                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                                if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                            }
+                        }
+                        if(!gm.GetIsAnimating())
+                        {
+                            if(antisepticAnimation.IsOpen())
+                            {
+                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                                else if(i == 1) break;
+                            }
+                            else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                        }
+                    }
+                    else if(objectType == Object.Cream)
+                    {
+                        CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
+
+                        if(gm.GetIsAnimating()) 
+                        {
+                            if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                            else if(creamAnimation.IsOpen()) 
+                            {
+                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                                if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                            }
+                        }
+                        if(!gm.GetIsAnimating())
+                        {
+                            if(creamAnimation.IsOpen())
+                            {
+                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                                else if(i == 1) break;
+                            }
+                            else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                        }
+                    }
+                    else if(objectType == Object.Wipes)
+                    {
+                        WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
+
+                        if(wipesAnimation.IsOpen()) 
+                        {
+                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                            else break;
+                        }
+                        else if(!wipesAnimation.IsOpen())
+                        {
+                            meshRenderer[i].material = originalMaterial[i];
+                        }
+                    }
+                    else meshRenderer[i].material = originalMaterial[i];
+                }
+            }
+
             HideAllButtons();
             isDragging = false;
             if(!gm.GetIsInInspectMode()) canExamine = true;
@@ -196,7 +406,6 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-
     void OnMouseDrag() 
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
@@ -250,19 +459,88 @@ public class ObjectControl : MonoBehaviour
 
     public void AfterAnimate()
     {
-        gm.ChangeIsAnimatingValue(false);
-
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
         if(objectType != Object.Wipes && objectType != Object.Petroleum) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
-        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring().setOnComplete(() => 
+        {
+            gm.ChangeIsAnimatingValue(false);
+            canShowEffect = true;
+        });
 
         if(rb.isKinematic) rb.isKinematic = false;
      }
 
     public void Inspect() 
     {
+        for(int i = 0; i < meshRenderer.Length; i++)
+        {
+            if(objectType == Object.Antiseptic) 
+            {
+                AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+
+                if(gm.GetIsAnimating()) 
+                {
+                    if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                    else if(antisepticAnimation.IsOpen()) 
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                if(!gm.GetIsAnimating())
+                {
+                    if(antisepticAnimation.IsOpen())
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        else if(i == 1) break;
+                    }
+                    else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                }
+            }
+            else if(objectType == Object.Cream)
+            {
+                CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
+
+                if(gm.GetIsAnimating()) 
+                {
+                    if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                    else if(creamAnimation.IsOpen()) 
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                if(!gm.GetIsAnimating())
+                {
+                    if(creamAnimation.IsOpen())
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        else if(i == 1) break;
+                    }
+                    else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                }
+            }
+            else if(objectType == Object.Wipes)
+            {
+                WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
+
+                if(wipesAnimation.IsOpen()) 
+                {
+                    if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                    else break;
+                }
+                else if(!wipesAnimation.IsOpen())
+                {
+                    if(i == 0) continue;
+                    else meshRenderer[i].material = originalMaterial[i];
+                }
+            }
+            else meshRenderer[i].material = originalMaterial[i];
+        }
+
+        canShowEffect = false;
         firstAidBox.SetCanBeClicked(false);
         HideAllButtons();
         beforeInspectPosition = transform.position;
@@ -289,6 +567,7 @@ public class ObjectControl : MonoBehaviour
         canRotate = false;
         canExamine = true;
         canMove = true;
+        canShowEffect = true;
     }
 
     public void EnableCollider() => objCollider.enabled = true;
@@ -310,6 +589,8 @@ public class ObjectControl : MonoBehaviour
 
     public void ChangeIsProcedureFinishedValue() => isProcedureFinished = !isProcedureFinished;
     // public void ChangeIsAnimatingValue() => isAnimating = !isAnimating;
+    
+    public void ChangeCanShowEffectValue(bool value) => canShowEffect = value;
 
     IEnumerator CheckCondition()
     {
@@ -325,6 +606,7 @@ public class ObjectControl : MonoBehaviour
 
     IEnumerator Plester()
     {
+        canShowEffect = false;
         LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
         yield return new WaitForSeconds(0.7f);
@@ -333,6 +615,7 @@ public class ObjectControl : MonoBehaviour
 
     IEnumerator Antiseptic()
     {
+        canShowEffect = false;
         gm.ChangeIsAnimatingValue(true);
         LeanTween.move(gameObject, new Vector3(6.6f, 5.0f, 6.15f), 0.8f).setEaseSpring();
         LeanTween.rotateY(gameObject, -90.0f, 0.3f);
@@ -344,6 +627,7 @@ public class ObjectControl : MonoBehaviour
 
     IEnumerator Wipes()
     {
+        canShowEffect = false;
         gm.ChangeIsAnimatingValue(true);
         LeanTween.moveY(gameObject, 1.66f, 0.3f).setDelay(0.6f);
         LeanTween.moveY(gameObject, targetPosition.y, 0.3f).setDelay(1.2f);

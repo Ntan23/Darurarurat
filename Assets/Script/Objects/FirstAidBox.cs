@@ -15,6 +15,9 @@ public class FirstAidBox : MonoBehaviour
     private Vector3 initialRotation;
     private Animator animator;
     private BoxCollider boxCollider;
+    private SkinnedMeshRenderer boxRenderer;
+    [SerializeField] private Material originalMaterial;
+    [SerializeField] private Material hoverMaterial;
     private GameManager gm;
     private AudioManager am;
 
@@ -25,12 +28,18 @@ public class FirstAidBox : MonoBehaviour
 
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
+        boxRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
         intialPosition.x = -13.0f;
         intialPosition.y = targetPosition.y;
         intialPosition.z = transform.position.z;
 
         initialRotation = transform.rotation.eulerAngles;
+    }
+
+    void OnMouseEnter()
+    {
+        if(canBeClicked && !gm.GetPauseMenuIsAnimating()) boxRenderer.material = hoverMaterial;
     }
 
     void OnMouseDown()
@@ -75,6 +84,11 @@ public class FirstAidBox : MonoBehaviour
             
             StartCoroutine(WaitTheBox(0.8f, false));
         }
+    }
+
+    void OnMouseExit()
+    {
+        boxRenderer.material = originalMaterial;
     }
 
     public void MoveBox()

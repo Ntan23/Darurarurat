@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private bool isWin;
     private bool isAnimating;
     private bool isPauseMenuAnimating;
+    private bool canSkip;
+    private bool canPause;
     public GameObject[] objects;
 
     [Header("For Inspect")]
@@ -54,15 +56,14 @@ public class GameManager : MonoBehaviour
         levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
         nextLevelIndex = levelIndex + 1;
 
-        if(dialogueSkipButtonIndicator < levelIndex) dialogueManager.ActivateSkipButton(false);
-        else if(dialogueSkipButtonIndicator >= levelIndex) dialogueManager.ActivateSkipButton(true);
+        if(dialogueSkipButtonIndicator < levelIndex) dialogueManager.DeactivateSkipButton();
 
         gameState = State.Playing;
     }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating)
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause)
         {
             if(gameState == State.Playing)
             {
@@ -166,6 +167,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangePauseMenuIsAnimatingValue(bool value) => isPauseMenuAnimating = value;
 
+    public void ChangeCanPauseValue(bool value) => canPause = value;
+    
     public int GetProcedureIndex()
     {
         return procedureObjectIndex;
@@ -199,5 +202,10 @@ public class GameManager : MonoBehaviour
     public bool IsPausing()
     {
         return isPauseMenuAnimating;
+    }
+
+    public bool CanSkip()
+    {
+        return canSkip;
     }
 }   

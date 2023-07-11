@@ -7,6 +7,7 @@ public class WipesAnimation : MonoBehaviour
     private Vector3 mousePosition;
     private float mouseDistanceY;
     private bool canAnimate;
+    private bool isOpen;
     private ObjectControl objectControl;
     private GameManager gm;
     private Animator animator;
@@ -68,7 +69,13 @@ public class WipesAnimation : MonoBehaviour
         yield return new WaitForSeconds(1.6f);
         objectControl.AfterAnimate();
         canAnimate = false;
+        isOpen = true;
     }
 
     public void ChangeHandTexture() => handMesh.material = cleanMaterial;
+
+    public bool IsOpen() 
+    {
+        return isOpen;
+    }
 }

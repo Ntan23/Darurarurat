@@ -42,7 +42,7 @@ public class BandAidPeel : MonoBehaviour
 
         if(canAnimate)
         {
-            if(Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            if(Mathf.Abs(mouseDistanceY) <= 20.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
             {
                 if(Input.mousePosition.x < mousePosition.x)
                 {
