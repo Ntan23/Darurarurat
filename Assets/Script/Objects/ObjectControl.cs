@@ -83,72 +83,7 @@ public class ObjectControl : MonoBehaviour
         if(gm.IsPausing() && canHide)
         {
             HideAllButtons();
-
-            for(int i = 0; i < meshRenderer.Length; i++)
-            {
-                if(objectType == Object.Antiseptic) 
-                {
-                    AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
-
-                    if(gm.GetIsAnimating()) 
-                    {
-                        if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                        else if(antisepticAnimation.IsOpen()) 
-                        {
-                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                            if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                        }
-                    }
-                    if(!gm.GetIsAnimating())
-                    {
-                        if(antisepticAnimation.IsOpen())
-                        {
-                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                            else if(i == 1) break;
-                        }
-                        else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                else if(objectType == Object.Cream)
-                {
-                    CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
-
-                    if(gm.GetIsAnimating()) 
-                    {
-                        if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                        else if(creamAnimation.IsOpen()) 
-                        {
-                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                            if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                        }
-                    }
-                    if(!gm.GetIsAnimating())
-                    {
-                        if(creamAnimation.IsOpen())
-                        {
-                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                            else if(i == 1) break;
-                        }
-                        else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                else if(objectType == Object.Wipes)
-                {
-                    WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
-
-                    if(wipesAnimation.IsOpen()) 
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        else break;
-                    }
-                    else if(!wipesAnimation.IsOpen())
-                    {
-                        if(i == 0) continue;
-                        else meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                else meshRenderer[i].material = originalMaterial[i];
-            }
+            HideHoverEffect();
             canHide = false;
         }
         else if(!gm.IsPausing() && !canHide) canHide = true;
@@ -187,71 +122,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         { 
-            if(canShowEffect)
-            {
-                for(int i = 0; i < meshRenderer.Length; i++)
-                {
-                    if(objectType == Object.Antiseptic) 
-                    {
-                        AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
-                        
-                        if(gm.GetIsAnimating())
-                        {
-                            if(antisepticAnimation.CanAnimate())
-                            {
-                                if(i == 0) continue;
-                                if(i == 1) meshRenderer[i].material = hoverMaterial[i];
-                            }
-                        }
-                        else if(!gm.GetIsAnimating())
-                        {
-                            if(antisepticAnimation.IsOpen())
-                            {
-                                if(i == 0) meshRenderer[i].material = hoverMaterial[i];
-                                else if(i == 1) break;
-                            }
-                            else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
-                        }
-                    }
-                    if(objectType == Object.Cream)
-                    {
-                        CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
-                        
-                        if(gm.GetIsAnimating())
-                        {
-                            if(creamAnimation.CanAnimate())
-                            {
-                                if(i == 0) continue;
-                                if(i == 1) meshRenderer[i].material = hoverMaterial[i];
-                            }
-                        }
-                        else if(!gm.GetIsAnimating())
-                        {
-                            if(creamAnimation.IsOpen())
-                            {
-                                if(i == 0) meshRenderer[i].material = hoverMaterial[i];
-                                else if(i == 1) break;
-                            }
-                            else if(!creamAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
-                        }
-                    }
-                    else if(objectType == Object.Wipes)
-                    {
-                        WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
-
-                        if(wipesAnimation.IsOpen()) 
-                        {
-                            if(i == 0) meshRenderer[i].material = hoverMaterial[i];
-                            else break;
-                        }
-                        else if(!wipesAnimation.IsOpen())
-                        {
-                            meshRenderer[i].material = hoverMaterial[i];
-                        }
-                    }
-                    else meshRenderer[i].material = hoverMaterial[i];
-                }
-            }
+            if(canShowEffect) ShowHoverEffect();
 
             if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
@@ -281,73 +152,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            if(canShowEffect)
-            {
-                for(int i = 0; i < meshRenderer.Length; i++)
-                {
-                    if(objectType == Object.Antiseptic) 
-                    {
-                        AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
-
-                        if(gm.GetIsAnimating()) 
-                        {
-                            if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                            else if(antisepticAnimation.IsOpen()) 
-                            {
-                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                                if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                            }
-                        }
-                        if(!gm.GetIsAnimating())
-                        {
-                            if(antisepticAnimation.IsOpen())
-                            {
-                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                                else if(i == 1) break;
-                            }
-                            else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                        }
-                    }
-                    else if(objectType == Object.Cream)
-                    {
-                        CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
-
-                        if(gm.GetIsAnimating()) 
-                        {
-                            if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                            else if(creamAnimation.IsOpen()) 
-                            {
-                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                                if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                            }
-                        }
-                        if(!gm.GetIsAnimating())
-                        {
-                            if(creamAnimation.IsOpen())
-                            {
-                                if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                                else if(i == 1) break;
-                            }
-                            else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                        }
-                    }
-                    else if(objectType == Object.Wipes)
-                    {
-                        WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
-
-                        if(wipesAnimation.IsOpen()) 
-                        {
-                            if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                            else break;
-                        }
-                        else if(!wipesAnimation.IsOpen())
-                        {
-                            meshRenderer[i].material = originalMaterial[i];
-                        }
-                    }
-                    else meshRenderer[i].material = originalMaterial[i];
-                }
-            }
+            if(canShowEffect) HideHoverEffect();
 
             HideAllButtons();
             isDragging = false;
@@ -435,6 +240,142 @@ public class ObjectControl : MonoBehaviour
                 transform.Rotate(Vector3.down, xAxisRotation);
                 transform.Rotate(Vector3.right, yAxisRotation);
             }
+        }
+    }
+
+    private void ShowHoverEffect()
+    {
+        for(int i = 0; i < meshRenderer.Length; i++)
+        {
+            if(objectType == Object.Antiseptic) 
+            {
+                AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+                
+                if(gm.GetIsAnimating())
+                {
+                    if(antisepticAnimation.CanAnimate())
+                    {
+                        if(i == 0) continue;
+                        if(i == 1) meshRenderer[i].material = hoverMaterial[i];
+                    }
+                }
+                else if(!gm.GetIsAnimating())
+                {
+                    if(antisepticAnimation.IsOpen())
+                    {
+                        if(i == 0) meshRenderer[i].material = hoverMaterial[i];
+                        else if(i == 1) break;
+                    }
+                    else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
+                }
+            }
+            else if(objectType == Object.Cream)
+            {
+                CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
+                
+                if(gm.GetIsAnimating())
+                {
+                    if(creamAnimation.CanAnimate())
+                    {
+                        if(i == 0) continue;
+                        if(i == 1) meshRenderer[i].material = hoverMaterial[i];
+                    }
+                }
+                else if(!gm.GetIsAnimating())
+                {
+                    if(creamAnimation.IsOpen())
+                    {
+                        if(i == 0) meshRenderer[i].material = hoverMaterial[i];
+                        else if(i == 1) break;
+                    }
+                    else if(!creamAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
+                }
+            }
+            else if(objectType == Object.Wipes)
+            {
+                WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
+
+                if(!wipesAnimation.IsOpen())
+                {
+                    if(i == 0) continue;
+                    else meshRenderer[i].material = hoverMaterial[i];
+                }
+                else if(wipesAnimation.IsOpen()) 
+                {
+                    if(i == 0) meshRenderer[i].material = hoverMaterial[i];
+                    else break;
+                }
+            }
+            else meshRenderer[i].material = hoverMaterial[i];
+        }
+    }
+
+    private void HideHoverEffect()
+    {
+        for(int i = 0; i < meshRenderer.Length; i++)
+        {
+            if(objectType == Object.Antiseptic) 
+            {
+                AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+
+                if(gm.GetIsAnimating()) 
+                {
+                    if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                    else if(antisepticAnimation.IsOpen()) 
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                if(!gm.GetIsAnimating())
+                {
+                    if(antisepticAnimation.IsOpen())
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        else if(i == 1) break;
+                    }
+                    else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                }
+            }
+            else if(objectType == Object.Cream)
+            {
+                CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
+
+                if(gm.GetIsAnimating()) 
+                {
+                    if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                    else if(creamAnimation.IsOpen()) 
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
+                    }
+                }
+                if(!gm.GetIsAnimating())
+                {
+                    if(creamAnimation.IsOpen())
+                    {
+                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                        else if(i == 1) break;
+                    }
+                    else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
+                }
+            }
+            else if(objectType == Object.Wipes)
+            {
+                WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
+
+                if(!wipesAnimation.IsOpen())
+                {
+                    if(i == 0) continue;
+                    else meshRenderer[i].material = originalMaterial[i];
+                }
+                else if(wipesAnimation.IsOpen()) 
+                {
+                    if(i == 0) meshRenderer[i].material = originalMaterial[i];
+                    else break;
+                }
+            }
+            else meshRenderer[i].material = originalMaterial[i];
         }
     }
 
