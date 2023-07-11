@@ -15,13 +15,24 @@ public class Fade : MonoBehaviour
 
     void UpdateAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
 
-    public void FadeIn()
+    public void FadeIn() 
     {
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if(gm != null)
+        {
+            if(!gm.CanSkip()) dm.DeactivateSkipButton();
+            else if(gm.CanSkip()) dm.DisableSkipButton();
+        }
+
         LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f).setOnComplete(() => 
         {
             if(gm != null) gm.ChangeCanPauseValue(true);
-        });  
+
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if(gm != null) 
+            {
+                if(gm.CanSkip()) dm.EnableSkipButton();
+            }
+        }); 
     }
 
     public void FadeOut() 
@@ -29,5 +40,26 @@ public class Fade : MonoBehaviour
         if(gm != null) gm.ChangeCanPauseValue(false);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         LeanTween.value(gameObject, UpdateAlpha, 0.0f, 1.0f, 1.0f);
+    }
+
+    IEnumerator FadeInAnimation()
+    {
+        if(gm != null)
+        {
+            if(!gm.CanSkip()) dm.DeactivateSkipButton();
+            else if(gm.CanSkip()) dm.DisableSkipButton();
+        }
+
+        LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f).setOnComplete(() => 
+        {
+            if(gm != null) gm.ChangeCanPauseValue(true);
+        });  
+
+        yield return new WaitForSeconds(1.0f);
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if(gm != null) 
+        {
+            if(gm.CanSkip()) dm.EnableSkipButton();
+        }
     }
 }

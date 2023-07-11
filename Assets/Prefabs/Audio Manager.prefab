@@ -133,6 +133,14 @@ MonoBehaviour:
     source: {fileID: 0}
     audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}
+  - name: Error
+    clip: {fileID: 8300000, guid: 676c12c479c21c44e83db22dddaa6511, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
   - name: ButtonClick
     clip: {fileID: 8300000, guid: 10e06ae6aef1eeb4f9a1a6817cb76bd3, type: 3}
     volume: 1

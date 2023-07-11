@@ -60,12 +60,14 @@ public class ObjectControl : MonoBehaviour
     private Rigidbody rb;
     private FirstAidBox firstAidBox;
     private GameManager gm;
+    private AudioManager am;
     [SerializeField] private ObjectAnimationControl objectAnimationControl;
     #endregion
 
     void Start() 
     {
         gm = GameManager.instance;
+        am = AudioManager.instance;
 
         rb = GetComponent<Rigidbody>();
         objCollider = GetComponent<Collider>();
@@ -121,10 +123,10 @@ public class ObjectControl : MonoBehaviour
     void OnMouseEnter()
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
-        { 
-            if(canShowEffect) ShowHoverEffect();
+        {
+            if(!isDragging && canExamine && !gm.GetIsInInspectMode()) ShowHoverEffect();
 
-            if(!isDragging && canExamine && !isInTheBox  && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
+            if(!isDragging && canExamine && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
             if(buttons.Length == 2)
             {
@@ -186,6 +188,7 @@ public class ObjectControl : MonoBehaviour
                     }
                     if(!isProcedureFinished) 
                     {
+                        am.PlayWrongProcedureSFX();
                         if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
                         
                         if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
@@ -201,6 +204,7 @@ public class ObjectControl : MonoBehaviour
                 }
                 else if(objectIndex > gm.GetProcedureIndex())
                 {
+                    am.PlayWrongProcedureSFX();
                     LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
                     gm.ShowWrongProcedureUI();
                 }
@@ -415,73 +419,8 @@ public class ObjectControl : MonoBehaviour
 
     public void Inspect() 
     {
-        for(int i = 0; i < meshRenderer.Length; i++)
-        {
-            if(objectType == Object.Antiseptic) 
-            {
-                AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
+        HideHoverEffect();
 
-                if(gm.GetIsAnimating()) 
-                {
-                    if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                    else if(antisepticAnimation.IsOpen()) 
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                if(!gm.GetIsAnimating())
-                {
-                    if(antisepticAnimation.IsOpen())
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        else if(i == 1) break;
-                    }
-                    else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                }
-            }
-            else if(objectType == Object.Cream)
-            {
-                CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
-
-                if(gm.GetIsAnimating()) 
-                {
-                    if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                    else if(creamAnimation.IsOpen()) 
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                if(!gm.GetIsAnimating())
-                {
-                    if(creamAnimation.IsOpen())
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        else if(i == 1) break;
-                    }
-                    else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                }
-            }
-            else if(objectType == Object.Wipes)
-            {
-                WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
-
-                if(wipesAnimation.IsOpen()) 
-                {
-                    if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                    else break;
-                }
-                else if(!wipesAnimation.IsOpen())
-                {
-                    if(i == 0) continue;
-                    else meshRenderer[i].material = originalMaterial[i];
-                }
-            }
-            else meshRenderer[i].material = originalMaterial[i];
-        }
-
-        canShowEffect = false;
         firstAidBox.SetCanBeClicked(false);
         HideAllButtons();
         beforeInspectPosition = transform.position;

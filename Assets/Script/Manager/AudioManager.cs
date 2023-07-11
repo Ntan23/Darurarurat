@@ -70,5 +70,6 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonClickSFX() => Play("ButtonClick");
     public void PlayTearPaperSFX() => Play("TearPaper");
     public void PlayLevelCompleteSFX() => Play("LevelComplete");
+    public void PlayWrongProcedureSFX() => Play("Error");
 }
 

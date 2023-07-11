@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
         levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
         nextLevelIndex = levelIndex + 1;
 
-        if(dialogueSkipButtonIndicator < levelIndex) dialogueManager.DeactivateSkipButton();
+        if(dialogueSkipButtonIndicator < levelIndex) canSkip = false;
+        else if(dialogueSkipButtonIndicator >= levelIndex) canSkip = true;
 
         gameState = State.Playing;
     }
@@ -97,8 +98,6 @@ public class GameManager : MonoBehaviour
 
     public void OpenInspectUI(int index)
     {
-        //inspectUI.gameObject.SetActive(true);
-        //inspectUI.FadeIn(); 
         inspectUI.MoveIn();
         inspectUI.ChangeUIText(inspectText[index]);
         isInInspectMode = true;
@@ -107,8 +106,6 @@ public class GameManager : MonoBehaviour
 
     public void CloseInspect()
     {
-        // inspectUI.gameObject.SetActive(false);
-        //inspectUI.FadeOut();
         inspectUI.MoveOut();
         isInInspectMode = false;
         objects[selectedObjectIndex].GetComponent<ObjectControl>().CloseInspect();
@@ -148,7 +145,7 @@ public class GameManager : MonoBehaviour
         am.PlayLevelCompleteSFX();
         missionCompleteUI.OpenUI();
         yield return new WaitForSeconds(1.5f);
-        // if(storyManager != null) storyManager.ShowEndStory();
+
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
 
         if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("DialogueSkipIndicator", levelIndex);

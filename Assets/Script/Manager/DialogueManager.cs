@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueContainer;
     [SerializeField] private Button nextButton;
     [SerializeField] private GameObject skipButtonGO;
+    private Button skipButton;
+    private TextMeshProUGUI skipButtonText;
     private TextMeshProUGUI nextButtonText;
     [SerializeField] private int cutDialogueIndex;
     private int dialogueIndex;
@@ -41,6 +43,9 @@ public class DialogueManager : MonoBehaviour
 
         nextButtonText = nextButton.GetComponent<TextMeshProUGUI>();
         nextButtonText.color = inactiveColor;
+
+        skipButton = skipButtonGO.GetComponent<Button>();
+        skipButtonText = skipButtonGO.GetComponent<TextMeshProUGUI>();
 
         foreach(Image img in actorImage) img.color = inactiveColor;
 
@@ -155,15 +160,15 @@ public class DialogueManager : MonoBehaviour
     public void MoveStartBoard() => StartCoroutine(StartDialogueAnimation());
     public void SkipDialogue()
     {
-        am.StopAllSFX();
-
         if(dialogueIndex <= cutDialogueIndex) 
         {
+            StopAllCoroutines();
+            am.StopAllSFX();
+
             for(int i = dialogueIndex; i < cutDialogueIndex; i++) dialogueQueue.Dequeue();
 
             dialogueIndex = cutDialogueIndex + 1;
 
-            StopAllCoroutines();
             EndDialogue();
             return;
         }
@@ -187,6 +192,18 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void DeactivateSkipButton() => skipButtonGO.SetActive(false);
+
+    public void DisableSkipButton() 
+    {
+        skipButton.interactable = false;
+        skipButtonText.color = inactiveColor;
+    }
+
+    public void EnableSkipButton()
+    {
+        skipButton.interactable = true;
+        skipButtonText.color = Color.black;
+    }
 
     IEnumerator ShowEndDialogueAnimation()
     {

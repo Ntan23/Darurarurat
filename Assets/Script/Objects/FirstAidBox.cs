@@ -37,7 +37,7 @@ public class FirstAidBox : MonoBehaviour
         initialRotation = transform.rotation.eulerAngles;
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
         if(canBeClicked && !gm.GetPauseMenuIsAnimating()) boxRenderer.material = hoverMaterial;
     }
@@ -53,26 +53,25 @@ public class FirstAidBox : MonoBehaviour
             {
                 isInTheMiddle = true;
                 am.PlayBoxMoveSFX();
-                LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
+                LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring().setOnComplete(() => canBeClicked = true);
                 LeanTween.rotate(gameObject, targetRotation, 0.4f);
-                StartCoroutine(Wait(0.6f));
             }
             if(clickCount == 2)
             {
                 am.PlayBoxOpenSFX();
                 StartCoroutine(DelayAnimation(0.3f));
-                StartCoroutine(Wait(0.4f));
+                StartCoroutine(Wait(0.3f));
             } 
             if(clickCount == 3)
             {
                 am.PlayBoxOpenSFX();
                 StartCoroutine(DelayAnimation(0.3f));
-                StartCoroutine(Wait(0.4f));
+                StartCoroutine(Wait(0.3f));
             }
             if(clickCount == 4) 
             {
                 StartCoroutine(DelayAnimation(1.4f));
-                StartCoroutine(Wait(1.6f));
+                StartCoroutine(Wait(1.5f));
             }
         }
 
@@ -116,8 +115,6 @@ public class FirstAidBox : MonoBehaviour
             isOpen = true;
             boxCollider.enabled = false;
             gm.EnableCollider();
-            // gm.objects[objectIndex].GetComponent<ObjectControl>().EnableCollider();
-            // objectIndex++;
         }
     }
 
