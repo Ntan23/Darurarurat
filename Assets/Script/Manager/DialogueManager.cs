@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     [SerializeField] private bool isIntro;
+    private bool isOpen = true;
     [SerializeField] private Dialogue[] dialogues;
     [SerializeField] private Image[] actorImage;
     [SerializeField] private Color inactiveColor;
@@ -65,12 +66,14 @@ public class DialogueManager : MonoBehaviour
 
 		if (dialogueQueue.Count == 0)
 		{
+            isOpen = false;
 			EndDialogue();
             sm.GoToNextScene();
 			return;
 		}
         if(dialogueIndex == cutDialogueIndex)
         {
+            isOpen = false;
             EndDialogue();
             dialogueIndex++;
             return;
@@ -162,6 +165,8 @@ public class DialogueManager : MonoBehaviour
     {
         if(dialogueIndex <= cutDialogueIndex) 
         {
+            isOpen = false;
+
             StopAllCoroutines();
             am.StopAllSFX();
 
@@ -189,6 +194,7 @@ public class DialogueManager : MonoBehaviour
             img.gameObject.transform.localScale = Vector3.zero;
             img.color = inactiveColor;
         }
+
     }
 
     public void DeactivateSkipButton() => skipButtonGO.SetActive(false);
@@ -228,5 +234,10 @@ public class DialogueManager : MonoBehaviour
             LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(0.5f);
             LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(1.0f).setOnComplete(() => DisplayNextDialogue());
         }
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
     }
 }

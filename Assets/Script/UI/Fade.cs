@@ -17,22 +17,7 @@ public class Fade : MonoBehaviour
 
     public void FadeIn() 
     {
-        if(gm != null)
-        {
-            if(!gm.CanSkip()) dm.DeactivateSkipButton();
-            else if(gm.CanSkip()) dm.DisableSkipButton();
-        }
-
-        LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f).setOnComplete(() => 
-        {
-            if(gm != null) gm.ChangeCanPauseValue(true);
-
-            GetComponent<CanvasGroup>().blocksRaycasts = false;
-            if(gm != null) 
-            {
-                if(gm.CanSkip()) dm.EnableSkipButton();
-            }
-        }); 
+        StartCoroutine(FadeInAnimation());
     }
 
     public void FadeOut() 
@@ -44,6 +29,7 @@ public class Fade : MonoBehaviour
 
     IEnumerator FadeInAnimation()
     {
+        yield return new WaitForSeconds(0.1f);
         if(gm != null)
         {
             if(!gm.CanSkip()) dm.DeactivateSkipButton();
@@ -55,7 +41,7 @@ public class Fade : MonoBehaviour
             if(gm != null) gm.ChangeCanPauseValue(true);
         });  
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         if(gm != null) 
         {

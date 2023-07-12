@@ -144,8 +144,9 @@ public class CreamAnimation : MonoBehaviour
         LeanTween.rotateZ(gameObject, -120.0f, 0.5f);
         yield return new WaitForSeconds(2.0f);
         animator.Play("Squeze");
+        yield return new WaitForSeconds(0.2f);
         LeanTween.scale(cream, new Vector3(0.1f, 0.1f, 0.1f), 0.8f);
-        LeanTween.move(cream, new Vector3(1.1f, 12.2f, 0.67f), 0.8f).setOnComplete(() => cream.SetActive(false));
+        LeanTween.move(cream, new Vector3(0.95f, 12.5f, 0.6f), 0.8f).setOnComplete(() => cream.SetActive(false));
         yield return new WaitForSeconds(1.0f);
         beforeAnimatePosition = objectControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();

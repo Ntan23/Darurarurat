@@ -1593,7 +1593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.157227, y: 1.511}
+  m_AnchoredPosition: {x: 0, y: 0.000013709068}
   m_SizeDelta: {x: 1360.0505, y: 948.8433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452440930
@@ -2678,7 +2678,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce6f2e3fc73dcb14396ddcb342450d4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a1040e2db1198242ad94ac3e9119ac8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4368,7 +4368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e06c0a7c5b191984c8fc4be7cf2efbaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f6b2e80a6627c14ba97a8a33f37708c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4575,7 +4575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce6f2e3fc73dcb14396ddcb342450d4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a1040e2db1198242ad94ac3e9119ac8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5763,7 +5763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce6f2e3fc73dcb14396ddcb342450d4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a1040e2db1198242ad94ac3e9119ac8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6596,7 +6596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1466}
+  m_AnchoredPosition: {x: 0, y: -1666}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824277164
@@ -6628,8 +6628,10 @@ MonoBehaviour:
     & Hidrokotison dari \n<u>https:<font=\"LiberationSans SDF\">// </font>pixabay.com<font=\"LiberationSans
     SDF\">/</font>\r</u>\nSFX Keramaian, Klik Tombol, Jatuh & Level Selesai dari
     \n<u>https:<font=\"LiberationSans SDF\">// </font>mixkit.co<font=\"LiberationSans
-    SDF\">/ </font></u>\nSFX lainnya dibuat oleh Jouza dan Nicholas Tandinata\n\n<b><size=60px>BGM</size></b>\nSunflowers
-    by Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
+    SDF\">/ </font></u>\nSFX lainnya dibuat oleh Jouza dan Nicholas Tandinata\n\n<b><size=60px>VFX</size></b>\nSimple
+    Toon Shader dibuat oleh  Indie Game Helper dari Unity Asset Store\nPost Processing
+    dibuat oleh Nicholas Tandinata\n\n<b><size=60px>BGM</size></b>\nSunflowers by
+    Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
     SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\nMusic promoted
     by <u>https : <font=\"LiberationSans SDF\">//</font>www.chosic.com<font=\"LiberationSans
     SDF\">/</font>free-music<font=\"LiberationSans SDF\">/</font>all<font=\"LiberationSans
@@ -6922,7 +6924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditText: {fileID: 1824277162}
-  textTimeToReachTheEnd: 30
+  textTimeToReachTheEnd: 20
 --- !u!1 &1914888729
 GameObject:
   m_ObjectHideFlags: 0

@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
 
-        if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("DialogueSkipIndicator", levelIndex);
+        if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt("DialogueSkipIndicator", levelIndex);
         if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
 
         isWin = true;

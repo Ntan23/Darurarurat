@@ -1,22 +1,9 @@
 fileFormatVersion: 2
-guid: 031b569a22fa6144fb205c686042929e
+guid: 56b95c99a0df6af4296e45c1a501afc4
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: 2842539389524025225
-    second: Armature|TearOpen
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 99e1328a0b45ed44b92e48b8b8af8fe2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Paper
-    second: {fileID: 2100000, guid: 6b7986f0f8792444a924ea9c9bff168f, type: 2}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +47,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

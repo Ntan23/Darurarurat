@@ -173,6 +173,14 @@ MonoBehaviour:
     source: {fileID: 0}
     audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}
+  - name: WatchTV
+    clip: {fileID: 8300000, guid: d082c46ca4f05dd448d3254fd1ceedbd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
   - name: Fall
     clip: {fileID: 8300000, guid: 7cb1add2ca2eb7346a2d83edcf138d56, type: 3}
     volume: 1
