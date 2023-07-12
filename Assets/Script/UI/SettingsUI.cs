@@ -36,11 +36,13 @@ public class SettingsUI : MonoBehaviour
         {
             fullscreenToogle.isOn = true;
             Screen.fullScreen = true;
+            Screen.SetResolution(1920, 1080, true);
         }
         else if(isFullscreen == 0) 
         {
             fullscreenToogle.isOn = false;
-            Screen.fullScreen = false;
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+            Screen.SetResolution(1280, 720, false);
         }
         
         QualityDropdown.value = qualityLevel;
@@ -66,10 +68,18 @@ public class SettingsUI : MonoBehaviour
 
     public void UpdateFullscreen(bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
-
-        if (isFullscreen) PlayerPrefs.SetInt("IsFullscreen", 1);
-        else if (!isFullscreen) PlayerPrefs.SetInt("IsFullscreen", 0);
+        if (isFullscreen) 
+        {
+            Screen.fullScreen = isFullscreen;
+            Screen.SetResolution(1920, 1080, true);
+            PlayerPrefs.SetInt("IsFullscreen", 1);
+        }
+        else if (!isFullscreen) 
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+            Screen.SetResolution(1280, 720, false);
+            PlayerPrefs.SetInt("IsFullscreen", 0);
+        }
     }
 
     public void OpenSettings() => LeanTween.moveLocalY(gameObject, 0.0f, 0.8f).setEaseSpring();
