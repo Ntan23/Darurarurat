@@ -17,15 +17,14 @@ public class SettingsUI : MonoBehaviour
     #endregion
 
     public AudioMixer MainMixer;
-    private TMP_Dropdown QualityDropdown;
-    private TMP_Dropdown LanguagesDropdown;
+    // private TMP_Dropdown QualityDropdown;
+    // private TMP_Dropdown LanguagesDropdown;
     [SerializeField] Slider BGMSlider;
     [SerializeField] Slider SFXSlider;
     [SerializeField] Toggle fullscreenToogle;
     private float bgmVolume;
     private float sfxVolume;
     private int isFullscreen;
-    private int qualityLevel, languageIndex;
     private int width, height;
 
     private void Start()
@@ -33,8 +32,6 @@ public class SettingsUI : MonoBehaviour
         bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 0);
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0);
         isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1);
-        qualityLevel = PlayerPrefs.GetInt("QualityLevel", 2);
-        languageIndex = PlayerPrefs.GetInt("LocalIndex", 0);
 
         BGMSlider.value = bgmVolume;
         SFXSlider.value = sfxVolume;
@@ -57,8 +54,6 @@ public class SettingsUI : MonoBehaviour
             height = PlayerPrefs.GetInt("Height", Screen.currentResolution.height);
             Screen.SetResolution(Mathf.RoundToInt(width / 1.5f), Mathf.RoundToInt(height / 1.5f), false);
         }
-
-        StartCoroutine(WaitForDropdownToSapwn());
     }
 
     public void UpdateBGMSound(float value)
@@ -81,7 +76,7 @@ public class SettingsUI : MonoBehaviour
     public void UpdateLanguages(int languageIndex)
     {
         LocalizationManager.instance.ChangeLocale(languageIndex);
-        PlayerPrefs.SetInt("LocalIndex", languageIndex);
+        PlayerPrefs.SetInt("LanguageIndex", languageIndex);
     }
 
     public void UpdateFullscreen(bool isFullscreen)
@@ -107,17 +102,4 @@ public class SettingsUI : MonoBehaviour
     public void OpenSettings() => LeanTween.moveLocalY(gameObject, 0.0f, 0.8f).setEaseSpring();
 
     public void CloseSettings() => LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
-
-    IEnumerator WaitForDropdownToSapwn()
-    {
-        yield return new WaitForSeconds(0.1f);
-        QualityDropdown = GameObject.FindGameObjectWithTag("Graphics").GetComponent<TMP_Dropdown>();
-        LanguagesDropdown = GameObject.FindGameObjectWithTag("Languages").GetComponent<TMP_Dropdown>();
-
-        QualityDropdown.value = qualityLevel;
-        QualitySettings.SetQualityLevel(qualityLevel);
-
-        LanguagesDropdown.value = languageIndex;
-        LocalizationManager.instance.ChangeLocale(languageIndex);
-    }
 }

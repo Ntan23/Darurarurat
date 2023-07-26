@@ -163,12 +163,13 @@ public class DialogueManager : MonoBehaviour
     public void MoveStartBoard() => StartCoroutine(StartDialogueAnimation());
     public void SkipDialogue()
     {
+        StopAllCoroutines();
+        am.StopAllSFX();
+        
         if(dialogueIndex <= cutDialogueIndex) 
         {
             isOpen = false;
 
-            StopAllCoroutines();
-            am.StopAllSFX();
 
             for(int i = dialogueIndex; i < cutDialogueIndex; i++) dialogueQueue.Dequeue();
 
