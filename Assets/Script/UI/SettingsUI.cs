@@ -7,26 +7,35 @@ using TMPro;
 
 public class SettingsUI : MonoBehaviour
 {
+    #region Singleton
+    public static SettingsUI instance;
+
+    void Awake()
+    {
+        if(instance == null) instance = this;
+    }
+    #endregion
+
     public AudioMixer MainMixer;
-    [SerializeField] TMP_Dropdown QualityDropdown;
+    private TMP_Dropdown QualityDropdown;
+    private TMP_Dropdown LanguagesDropdown;
     [SerializeField] Slider BGMSlider;
     [SerializeField] Slider SFXSlider;
     [SerializeField] Toggle fullscreenToogle;
     private float bgmVolume;
     private float sfxVolume;
     private int isFullscreen;
-    private int qualityLevel;
+    private int qualityLevel, languageIndex;
+    private int width, height;
 
-    void Awake()
+    private void Start()
     {
         bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 0);
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0);
         isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1);
         qualityLevel = PlayerPrefs.GetInt("QualityLevel", 2);
-    }
+        languageIndex = PlayerPrefs.GetInt("LocalIndex", 0);
 
-    private void Start()
-    {
         BGMSlider.value = bgmVolume;
         SFXSlider.value = sfxVolume;
         MainMixer.SetFloat("BGM_Volume", bgmVolume);
@@ -36,17 +45,20 @@ public class SettingsUI : MonoBehaviour
         {
             fullscreenToogle.isOn = true;
             Screen.fullScreen = true;
-            Screen.SetResolution(1920, 1080, true);
+            width = PlayerPrefs.GetInt("Width", Screen.currentResolution.width);
+            height = PlayerPrefs.GetInt("Height", Screen.currentResolution.height);
+            Screen.SetResolution(width, height, true);
         }
         else if(isFullscreen == 0) 
         {
             fullscreenToogle.isOn = false;
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            Screen.SetResolution(1280, 720, false);
+            width = PlayerPrefs.GetInt("Width",Screen.currentResolution.width);
+            height = PlayerPrefs.GetInt("Height", Screen.currentResolution.height);
+            Screen.SetResolution(Mathf.RoundToInt(width / 1.5f), Mathf.RoundToInt(height / 1.5f), false);
         }
-        
-        QualityDropdown.value = qualityLevel;
-        QualitySettings.SetQualityLevel(qualityLevel);
+
+        StartCoroutine(WaitForDropdownToSapwn());
     }
 
     public void UpdateBGMSound(float value)
@@ -66,18 +78,28 @@ public class SettingsUI : MonoBehaviour
         PlayerPrefs.SetInt("QualityLevel", qualityIndex);
     }
 
+    public void UpdateLanguages(int languageIndex)
+    {
+        LocalizationManager.instance.ChangeLocale(languageIndex);
+        PlayerPrefs.SetInt("LocalIndex", languageIndex);
+    }
+
     public void UpdateFullscreen(bool isFullscreen)
     {
         if (isFullscreen) 
         {
             Screen.fullScreen = isFullscreen;
-            Screen.SetResolution(1920, 1080, true);
+            width = PlayerPrefs.GetInt("Width", Screen.currentResolution.width);
+            height = PlayerPrefs.GetInt("Height", Screen.currentResolution.height);
+            Screen.SetResolution(width, height, true);
             PlayerPrefs.SetInt("IsFullscreen", 1);
         }
         else if (!isFullscreen) 
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            Screen.SetResolution(1280, 720, false);
+            width = PlayerPrefs.GetInt("Width", Screen.currentResolution.width);
+            height = PlayerPrefs.GetInt("Height", Screen.currentResolution.height);
+            Screen.SetResolution(Mathf.RoundToInt(width / 1.5f), Mathf.RoundToInt(height / 1.5f), false);
             PlayerPrefs.SetInt("IsFullscreen", 0);
         }
     }
@@ -85,4 +107,17 @@ public class SettingsUI : MonoBehaviour
     public void OpenSettings() => LeanTween.moveLocalY(gameObject, 0.0f, 0.8f).setEaseSpring();
 
     public void CloseSettings() => LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
+
+    IEnumerator WaitForDropdownToSapwn()
+    {
+        yield return new WaitForSeconds(0.1f);
+        QualityDropdown = GameObject.FindGameObjectWithTag("Graphics").GetComponent<TMP_Dropdown>();
+        LanguagesDropdown = GameObject.FindGameObjectWithTag("Languages").GetComponent<TMP_Dropdown>();
+
+        QualityDropdown.value = qualityLevel;
+        QualitySettings.SetQualityLevel(qualityLevel);
+
+        LanguagesDropdown.value = languageIndex;
+        LocalizationManager.instance.ChangeLocale(languageIndex);
+    }
 }

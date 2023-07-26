@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenuTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 64aa8b6f847c38649987fc1c1d278179, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 45012353024
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2531722919936
+    m_Localized: Instruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2596449419264
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3227683782656
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3250941198336
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6993975836672
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15972596580352
+    m_Localized: "Controls: Click and Drag\n\nInstructions: \n1. You need to drag
+      the required object to the hand in each level (if it's right then there will
+      be an animation, if it's incorrect then there will be a text that appears to
+      tell you about what you need to do first).\n\n2. For wearable (interaction)
+      objects, you can inspect and interact with the object such as open, close and
+      put cream by clicking the button. The button will appear if you hover over
+      the object. \n\n 3. Once you have clicked the button for interaction, you need
+      to drag it in the given direction (arrow). Objects that can be interacted with
+      will be highlighted in yellow. \n\nNotes: The board below each level can be
+      clicked to view information related to the level."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19868979167232
+    m_Localized: "<b><size=60px>Game Designer</size></b>\r\nJouza\r\n\r\n<b><size=60px>Game
+      3D Artist</size></b>\r\nNicholas\r\n\r\n<b><size=60px>Game Programmer</size></b>\r\nNicholas
+      Tandinata\r\n\r\n<b><size=60px>UI Designer</size></b>\r\nJouza\r\nNicholas
+      Tandinata\r\n\r\n<b><size=60px>Font</size></b>\r\nHand Craft by <b><u>MJ Type</u></b>\r\n\r\n<b><size=60px>Dialogue
+      Avatar</size></b>\r\nAvatar from <u>https:<font=\"LiberationSans SDF\">// </font>avatarmaker.net<font=\"LiberationSans
+      SDF\">/ </font></u>\r\n\r\n<b><size=60px>SFX</size></b>\r\nOpen & Close Antiseptic
+      and Hydrocortisone Cream SFX from \r\n<u>https:<font=\"LiberationSans SDF\">//
+      </font>pixabay.com<font=\"LiberationSans SDF\">/</font>\r\n</u>\r\nCrowd, Click
+      Button, Child Fall & Level Complete SFX from\r\n<u>https:<font=\"LiberationSans
+      SDF\">// </font>mixkit.co<font=\"LiberationSans SDF\">/ </font></u>\r\nThe
+      Other SFX made by Jouza dan Nicholas Tandinata\r\n\r\n<b><size=60px>VFX</size></b>\r\nSimple
+      Toon Shader by Indie Game Helper from Unity Asset Store\r\nPost Processing
+      by oleh Nicholas Tandinata\r\n\r\n<b><size=60px>BGM</size></b>\r\nSunflowers
+      by Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
+      SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\r\nMusic
+      promoted by <u>https : <font=\"LiberationSans SDF\">//</font>www.chosic.com<font=\"LiberationSans
+      SDF\">/</font>free-music<font=\"LiberationSans SDF\">/</font>all<font=\"LiberationSans
+      SDF\">/</font></u>\r\nCreative Commons CC BY 3.0\r\n<u>https : <font=\"LiberationSans
+      SDF\">//</font>creativecommons.org<font=\"LiberationSans SDF\">/</font>licenses<font=\"LiberationSans
+      SDF\">/</font>by<font=\"LiberationSans SDF\">/</font>3.0<font=\"LiberationSans
+      SDF\">/</font></u>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27069269540864
+    m_Localized: Languages
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
