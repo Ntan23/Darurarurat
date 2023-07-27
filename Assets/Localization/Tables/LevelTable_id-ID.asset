@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LevelTable_id-ID
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: id-ID
+  m_SharedData: {fileID: 11400000, guid: 06e9dfe86477a3d459ecd29287074d69, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5030486214747095048
+  m_TableData:
+  - m_Id: 40641888256
+    m_Localized: Kamu harus menggunakan {0} terlebih dahulu
+    m_Metadata:
+      m_Items:
+      - rid: 5030486214747095048
+  - m_Id: 2117887721472
+    m_Localized: Inspeksi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2169800622080
+    m_Localized: Buka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2217217228800
+    m_Localized: Tutup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2349321027584
+    m_Localized: Misi Selesai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2473963159552
+    m_Localized: Lanjut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2574169276416
+    m_Localized: Menu Utama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3188311851008
+    m_Localized: << Tutup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8478109335552
+    m_Localized: Buka
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5030486214747095048
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0000727609000000

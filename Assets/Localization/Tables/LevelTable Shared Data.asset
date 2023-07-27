@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LevelTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LevelTable
+  m_TableCollectionNameGuidString: 06e9dfe86477a3d459ecd29287074d69
+  m_Entries:
+  - m_Id: 40641888256
+    m_Key: WrongProcedureKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2117887721472
+    m_Key: ExamineKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2169800622080
+    m_Key: OpenKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2217217228800
+    m_Key: CloseKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2349321027584
+    m_Key: MissionCompleteKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2473963159552
+    m_Key: ResumeKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2574169276416
+    m_Key: MainMenuKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3188311851008
+    m_Key: CloseButtonKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8478109335552
+    m_Key: PeelKey
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5030486214747095047
+  references:
+    version: 2
+    RefIds:
+    - rid: 5030486214747095047
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1690442036852

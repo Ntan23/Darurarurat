@@ -9137,6 +9137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33a3345e127e5a4f975e401eb55a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  examineTextTable:
+    m_TableReference:
+      m_TableCollectionName: 
   levelIndex: 3
   objects:
   - {fileID: 919132148826913247}

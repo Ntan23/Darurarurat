@@ -15,15 +15,8 @@ public class LocalizationManager : MonoBehaviour
     }
     #endregion
 
-    int index;
-
-    void Start()
-    {
-        index = PlayerPrefs.GetInt("LanguageIndex", 0);
-
-        ChangeLocale(index);
-    }
-
+    void Start() => ChangeLocale(PlayerPrefs.GetInt("LanguageIndex", 0));
+    
     public void ChangeLocale(int localeID) => StartCoroutine(SetLocale(localeID));
     
     private IEnumerator SetLocale(int localeID)

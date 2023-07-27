@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class ObjectControl : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ObjectControl : MonoBehaviour
 
     [SerializeField] private Object objectType;
     #endregion
+
+    [SerializeField] private LocalizedStringTable table;
 
     #region VectorVariables
     private Vector3 offset;
@@ -189,15 +192,15 @@ public class ObjectControl : MonoBehaviour
                     if(!isProcedureFinished) 
                     {
                         am.PlayWrongProcedureSFX();
-                        if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Plesternya Terlebih Dahulu");
+                        if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandAidKey").GetLocalizedString());
                         
-                        if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Antiseptiknya Terlebih Dahulu");
+                        if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongAntisepticKey").GetLocalizedString());
                         
-                        if(objectType == Object.Petroleum) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Petroleum Jellynya Terlebih Dahulu");
+                        if(objectType == Object.Petroleum) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongPetroleumKey").GetLocalizedString());
 
-                        if(objectType == Object.Wipes) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Tisunya Terlebih Dahulu");
+                        if(objectType == Object.Wipes) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongWipesKey").GetLocalizedString());
 
-                        if(objectType == Object.Cream) gm.ShowWrongProcedureUIForProceduralObjects("Kamu Harus Buka Krimnya Terlebih Dahulu");
+                        if(objectType == Object.Cream) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongCreamKey").GetLocalizedString());
 
                         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                     }  

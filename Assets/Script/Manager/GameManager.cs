@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private State gameState;
 
+    [SerializeField] private LocalizedStringTable examineTextTable;
+    [SerializeField] private LocalizedString localString;
     [SerializeField] private int levelIndex;
     private int nextLevelIndex;
     private int levelUnlocked;
@@ -33,10 +37,11 @@ public class GameManager : MonoBehaviour
 
     [Header("For Inspect")]
     [SerializeField] private InspectUI inspectUI;
-    [SerializeField] private string[] inspectText;
+    // [SerializeField] private string[] inspectText;
     private bool isInInspectMode;
     [Header("For Wrong Procedure")]
     [SerializeField] private WrongProcedureUI wrongProcedureUI;
+    private string wrongProcedureText;
     [Header("Pause Menu")]
     [SerializeField] private PauseMenuUI pauseMenuUI;
     [Header("Complete UI")]
@@ -45,6 +50,16 @@ public class GameManager : MonoBehaviour
     private DialogueManager dialogueManager;
     private AudioManager am;
     private int procedureObjectIndex;
+
+    void OnEnable()
+    {
+        localString.Arguments = new object[] {wrongProcedureText};
+        localString.StringChanged += UpdateText;
+    }
+
+    void OnDisable() => localString.StringChanged -= UpdateText;
+
+    private void UpdateText(string value) => wrongProcedureUI.UpdateText(value);
 
     void Start() 
     {
@@ -58,6 +73,11 @@ public class GameManager : MonoBehaviour
 
         if(dialogueSkipButtonIndicator < levelIndex) canSkip = false;
         else if(dialogueSkipButtonIndicator >= levelIndex) canSkip = true;
+
+        // for(int i = 0; i < objects.Length; i++)
+        // {
+        //     inspectText[i] = examineTextTable.GetTable().GetEntry(i.ToString()).GetLocalizedString();
+        // }
 
         gameState = State.Playing;
     }
@@ -99,7 +119,7 @@ public class GameManager : MonoBehaviour
     public void OpenInspectUI(int index)
     {
         inspectUI.MoveIn();
-        inspectUI.ChangeUIText(inspectText[index]);
+        inspectUI.ChangeUIText(examineTextTable.GetTable().GetEntry(index.ToString()).GetLocalizedString());
         isInInspectMode = true;
         selectedObjectIndex = index;
     }
@@ -114,7 +134,9 @@ public class GameManager : MonoBehaviour
     public void ShowWrongProcedureUI()
     {
         wrongProcedureUI.MoveIn();
-        wrongProcedureUI.UpdateText("Kamu Harus Menggunakan " + objects[procedureObjectIndex].name + " Terlebih Dahulu");
+        localString.Arguments[0] = objects[procedureObjectIndex].name;
+        localString.RefreshString();
+        // wrongProcedureUI.UpdateText("Kamu Harus Menggunakan " + objects[procedureObjectIndex].name + " Terlebih Dahulu");
         StartCoroutine(WaitWrongProcedureUI());
     }
 
