@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level1Dialogue_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9017072ee10a06f4e922786e5e30f702, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 456377106432
+    m_Localized: You will play as Mina, a housewife who is very friendly with her
+      neighborhood. Mina's neighbors are surely very humble with her kindness and
+      her help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 888688214016
+    m_Localized: ( Sipping Warm Tea )
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984389648384
+    m_Localized: Mrs. Mina :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1132205309952
+    m_Localized: Yes...? what is it?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1207790862336
+    m_Localized: Mrs. Mina, I hurt my hand playing in the park earlier :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1586549096448
+    m_Localized: How come? Come here, let me take a look at it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1676869238784
+    m_Localized: ( Showing his injured right hand )
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2285177536512
+    m_Localized: Oh, it is just a light wound. Let me treat it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5043033079808
+    m_Localized: Take it easy Mrs. :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5699215163392
+    m_Localized: Alright, the treatment is all done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5779380895744
+    m_Localized: But it still hurts :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5833705521152
+    m_Localized: "You don\u2019t have to worry about it, the pain and wound will
+      be gone over time"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5965557661696
+    m_Localized: Ok, thank you Mrs. Mina, but what should i do with the band aid
+      later?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6048881704960
+    m_Localized: You can take off the band-aid after 2-3 days, the wound will already
+      be healed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6123372544000
+    m_Localized: Woow it's pretty soon, I'll let Mrs. Mina know when it's healed
+      :D
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

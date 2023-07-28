@@ -39,11 +39,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10196096253952
-    m_Localized: You need to open the antiseptic cap first
+    m_Localized: You need to open the lid of the antiseptic first
     m_Metadata:
       m_Items: []
   - m_Id: 10624280166400
-    m_Localized: You need to open the petroleum jelly cap first
+    m_Localized: You need to open the lid of the petroleum jelly first
     m_Metadata:
       m_Items: []
   - m_Id: 10826391093248
@@ -52,6 +52,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11310053064704
     m_Localized: You need to open the cream cap first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370615830839296
+    m_Localized: petroleum jelly
     m_Metadata:
       m_Items: []
   references:

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 public class DialogueManager : MonoBehaviour 
 {
@@ -54,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(StartDialogueAnimation());
     }
 
-	private void DialogueIntialization()
+    private void DialogueIntialization()
 	{
         for(int i = 0; i < dialogues.Length; i++) dialogueQueue.Enqueue(dialogues[i]);
 	}
@@ -64,7 +66,7 @@ public class DialogueManager : MonoBehaviour
         nextButton.interactable = false;
         nextButtonText.color = inactiveColor;
 
-		if (dialogueQueue.Count == 0)
+		if(dialogueQueue.Count == 0)
 		{
             isOpen = false;
 			EndDialogue();
@@ -78,11 +80,6 @@ public class DialogueManager : MonoBehaviour
             dialogueIndex++;
             return;
         }
-        if(isIntro && dialogueIndex == 1)
-        {
-            actorNameText.text = null;
-            dialogueText.text = null;
-        }
         
         Dialogue dialogue = dialogueQueue.Dequeue();
 
@@ -90,12 +87,14 @@ public class DialogueManager : MonoBehaviour
 
         if(isIntro && dialogueIndex == 1)
         {
+            actorNameText.text = null;
+            dialogueText.text = null;
             LeanTween.scale(actorImage[0].gameObject, Vector3.one, 0.5f).setEaseSpring();
             LeanTween.scale(actorImage[1].gameObject, Vector3.one, 0.5f).setEaseSpring().setDelay(0.5f).setOnComplete(() => SettingDialogue(dialogue));
         }
 
         if(!isIntro || (isIntro && dialogueIndex > 1)) SettingDialogue(dialogue);
-
+        
         dialogueIndex++;
 	}
 
@@ -138,8 +137,9 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
-            
+        
         StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
+        //StartCoroutine(TypeSentence(dialogue.dialogue.GetLocalizedString(), dialogue));
     }
 
 	IEnumerator TypeSentence (string sentence, Dialogue dialogue)
@@ -169,7 +169,6 @@ public class DialogueManager : MonoBehaviour
         if(dialogueIndex <= cutDialogueIndex) 
         {
             isOpen = false;
-
 
             for(int i = dialogueIndex; i < cutDialogueIndex; i++) dialogueQueue.Dequeue();
 
@@ -214,6 +213,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator ShowEndDialogueAnimation()
     {
+        isOpen = true;
         LeanTween.moveLocalX(dialogueBoard, 0.0f, 0.8f).setEaseSpring();
         yield return new WaitForSeconds(0.6f);
         LeanTween.scale(dialogueContainer, Vector3.one, 0.5f).setEaseSpring();

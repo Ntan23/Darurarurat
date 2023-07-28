@@ -7774,7 +7774,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:58200dcc41235e442989fd9cee68d8fd
     m_TableEntryReference:
-      m_KeyId: 9243328512
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -9168,17 +9168,12 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  stringEvent: {fileID: 399829987}
   levelIndex: 1
   objects:
   - {fileID: 1473403173}
   - {fileID: 1563421339}
   inspectUI: {fileID: 1960982636}
-  inspectText:
-  - Antiseptik adalah obat luka ringan yang berfungsi untuk mempercepat penyembuhan
-    luka yang ringan seperti tersayat benda tajam dan menghilangkan kuman dan mencegah
-    infeksi.
-  - Plester merupakan pembalut steril yang digunakan untuk menutupi luka ringan,
-    lecet, dan luka berdarah ringan.
   wrongProcedureUI: {fileID: 1668803960}
   pauseMenuUI: {fileID: 977429846}
   missionCompleteUI: {fileID: 820848220}
@@ -12894,6 +12889,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIntro: 1
+  dialogueTable:
+    m_TableReference:
+      m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+  stringEvent: {fileID: 2014774626}
   dialogues:
   - actorName: 
     actorIndex: 2
@@ -12902,80 +12901,215 @@ MonoBehaviour:
     sentences: Kamu akan bermain sebagai Mina, seorang ibu rumah tangga yang sangat
       ramah dengan tetangga di perumahannya. Tetangga Mina tentunya sangat segan
       dengan keramahan dan segala pertolongannya.
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 456377106432
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: Sipping
     sentences: ( Sedang Menikmati Teh Hangat )
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 888688214016
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2db505f5d5fb35545a603e23db0f523a, type: 3}
     audioActionName: 
     sentences: Bu Minaaa :(
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 984389648384
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: 
     sentences: Iyaa.. ada apa ya..?
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 1132205309952
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2db505f5d5fb35545a603e23db0f523a, type: 3}
     audioActionName: 
     sentences: Bu Mina, tanganku terluka saat sedang bermain di taman tadi :(
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 1207790862336
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: 
     sentences: Aduhh kok bisa sih? Coba mana sini Bu Mina lihat lukanya
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 1586549096448
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2db505f5d5fb35545a603e23db0f523a, type: 3}
     audioActionName: 
     sentences: ( Menunjukkan tangan kanannya yang terluka )
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 1676869238784
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: 
     sentences: Oalah cuma gini aja kok lukanya, coba sini Bu Mina obatin yahh
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 2285177536512
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2db505f5d5fb35545a603e23db0f523a, type: 3}
     audioActionName: 
     sentences: Pelan-pelan ya bu.. :(
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 5043033079808
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: 
     sentences: Nahh, udah Bu Mina obatin yaa
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 5699215163392
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2db505f5d5fb35545a603e23db0f523a, type: 3}
     audioActionName: 
     sentences: Tapi masih sakit bu :(
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 5779380895744
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: 
     sentences: Iyaa tapi kamu jangan khawatir, nanti lama-lama sakitnya hilang dan
       lukanya pun juga ikut hilang :)
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 5833705521152
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2fb81d57f1a7af74ba10cdf81649e220, type: 3}
     audioActionName: 
     sentences: Okedeh Bu Mina, terima kasih.. tapi nanti plesternya aku apakan ya
       bu?
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 5965557661696
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Mina
     actorIndex: 0
     actorSprite: {fileID: 21300000, guid: 8145dad0265b1df4a818d155df2b4871, type: 3}
     audioActionName: 
     sentences: Nanti setelah 2-3 hari kamu lepas plesternya, nanti pasti lukanya
       sudah hilang
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 6048881704960
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   - actorName: Budi
     actorIndex: 1
     actorSprite: {fileID: 21300000, guid: 2fb81d57f1a7af74ba10cdf81649e220, type: 3}
     audioActionName: 
     sentences: Woow cepet juga ya bu, siap deh bu Mina nanti aku kasih tahu kalo
       sudah sembuh :D
+    dialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+      m_TableEntryReference:
+        m_KeyId: 6123372544000
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   actorImage:
   - {fileID: 321249870}
   - {fileID: 322446269}
@@ -12988,6 +13122,9 @@ MonoBehaviour:
   nextButton: {fileID: 1798044843}
   skipButtonGO: {fileID: 1192493818}
   cutDialogueIndex: 9
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &1064052253
 Transform:
   m_ObjectHideFlags: 0
@@ -20627,6 +20764,7 @@ GameObject:
   - component: {fileID: 1798044843}
   - component: {fileID: 1798044842}
   - component: {fileID: 1798044841}
+  - component: {fileID: 1798044846}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -20865,6 +21003,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798044839}
   m_CullTransparentMesh: 1
+--- !u!114 &1798044846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798044839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:06e9dfe86477a3d459ecd29287074d69
+    m_TableEntryReference:
+      m_KeyId: 306158224146432
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1798044844}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1829320700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27384,6 +27562,7 @@ GameObject:
   - component: {fileID: 2014774623}
   - component: {fileID: 2014774625}
   - component: {fileID: 2014774624}
+  - component: {fileID: 2014774626}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -27509,6 +27688,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014774622}
   m_CullTransparentMesh: 1
+--- !u!114 &2014774626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014774622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:9017072ee10a06f4e922786e5e30f702
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2014774624}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2046759773
 GameObject:
   m_ObjectHideFlags: 0

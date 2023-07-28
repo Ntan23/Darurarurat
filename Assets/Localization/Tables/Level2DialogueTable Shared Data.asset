@@ -10,60 +10,60 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: ObjectsTable Shared Data
+  m_Name: Level2DialogueTable Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: ObjectsTable
-  m_TableCollectionNameGuidString: 3079e9258cc834a419f113197e6ed049
+  m_TableCollectionName: Level2DialogueTable
+  m_TableCollectionNameGuidString: a1b7ab7fcff648f48af852be2190b7d6
   m_Entries:
-  - m_Id: 37202558976
-    m_Key: AntisepticKey
+  - m_Id: 55175151616
+    m_Key: 1
     m_Metadata:
       m_Items: []
-  - m_Id: 136116830208
-    m_Key: BandAidKey
+  - m_Id: 161588838400
+    m_Key: 2
     m_Metadata:
       m_Items: []
-  - m_Id: 2124502138880
-    m_Key: WipesKey
+  - m_Id: 274981847040
+    m_Key: 3
     m_Metadata:
       m_Items: []
-  - m_Id: 2519068704768
-    m_Key: HydrocortisoneKey
+  - m_Id: 381651386368
+    m_Key: 4
     m_Metadata:
       m_Items: []
-  - m_Id: 8698419347456
-    m_Key: WrongBandAidKey
+  - m_Id: 761089097728
+    m_Key: 5
     m_Metadata:
       m_Items: []
-  - m_Id: 10196096253952
-    m_Key: WrongAntisepticKey
+  - m_Id: 847483371520
+    m_Key: 6
     m_Metadata:
       m_Items: []
-  - m_Id: 10624280166400
-    m_Key: WrongPetroleumKey
+  - m_Id: 1223985070080
+    m_Key: 7
     m_Metadata:
       m_Items: []
-  - m_Id: 10826391093248
-    m_Key: WrongWipesKey
+  - m_Id: 1482555523072
+    m_Key: 8
     m_Metadata:
       m_Items: []
-  - m_Id: 11310053064704
-    m_Key: WrongCreamKey
+  - m_Id: 1569184677888
+    m_Key: 9
     m_Metadata:
       m_Items: []
-  - m_Id: 370615830839296
-    m_Key: PetroleumKey
+  - m_Id: 1915604828160
+    m_Key: 10
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 5030486214747095054
+    rid: 5030486236610166805
   references:
     version: 2
     RefIds:
-    - rid: 5030486214747095054
+    - rid: 5030486236610166805
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1690443893600
+        m_CustomEpoch: 1690535838384

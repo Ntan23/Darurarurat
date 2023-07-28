@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level1Dialogue_id-ID
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: id-ID
+  m_SharedData: {fileID: 11400000, guid: 9017072ee10a06f4e922786e5e30f702, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 456377106432
+    m_Localized: Kamu akan bermain sebagai Mina, seorang ibu rumah tangga yang sangat
+      ramah dengan tetangga di perumahannya. Tetangga Mina tentunya sangat segan
+      dengan keramahan dan segala pertolongannya.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 888688214016
+    m_Localized: ( Sedang Menikmati Teh Hangat )
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984389648384
+    m_Localized: Bu Minaaa :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1132205309952
+    m_Localized: Iyaa.. ada apa ya..?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1207790862336
+    m_Localized: Bu Mina, tanganku terluka saat sedang bermain di taman tadi :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1586549096448
+    m_Localized: Aduhh kok bisa sih? Coba mana sini Bu Mina lihat lukanya
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1676869238784
+    m_Localized: ( Menunjukkan tangan kanannya yang terluka )
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2285177536512
+    m_Localized: Oalah cuma gini aja kok lukanya, coba sini Bu Mina obatin yahh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5043033079808
+    m_Localized: Pelan-pelan ya bu.. :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5699215163392
+    m_Localized: Nahh, udah Bu Mina obatin yaa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5779380895744
+    m_Localized: Tapi masih sakit bu :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5833705521152
+    m_Localized: Iyaa tapi kamu jangan khawatir, nanti lama-lama sakitnya hilang
+      dan lukanya pun juga ikut hilang :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5965557661696
+    m_Localized: Okedeh Bu Mina, terima kasih.. tapi nanti plesternya aku apakan
+      ya bu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6048881704960
+    m_Localized: Nanti setelah 2-3 hari kamu lepas plesternya, nanti pasti lukanya
+      sudah hilang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6123372544000
+    m_Localized: Woow cepet juga ya bu, siap deh bu Mina nanti aku kasih tahu kalo
+      sudah sembuh :D
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

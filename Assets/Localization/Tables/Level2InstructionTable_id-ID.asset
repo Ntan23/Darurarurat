@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level2InstructionTable_id-ID
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: id-ID
+  m_SharedData: {fileID: 11400000, guid: 210308a62b93b344785eaa7093bfd72d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 134229393408
+    m_Localized: Luka Bakar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 377272532992
+    m_Localized: 'Macam - macam luka bakar :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 524752650240
+    m_Localized: 'Luka Bakar Tingkat 1, 2 dan 3
+
+
+      Catatan : Untuk luka bakar
+      tingkat 3 memerlukan bantuan dari dokter'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 757653962752
+    m_Localized: 'Kebutuhan pertolongan pertama untuk luka bakar ringan :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1161137618944
+    m_Localized: 'Prosedur pertolongan pertama untuk luka bakar ringan :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361570824192
+    m_Localized: "1. Siapkan petroleum jelly\n2. Buka tutup petroleum jelly\n3. Ambil
+      petroleum jelly secukupnya \n4. Oleskan ke luka bakarnya "
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

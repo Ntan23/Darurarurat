@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private LocalizedStringTable examineTextTable;
     [SerializeField] private LocalizedString localString;
+    [SerializeField] private LocalizeStringEvent stringEvent;
     [SerializeField] private int levelIndex;
     private int nextLevelIndex;
     private int levelUnlocked;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     [Header("For Inspect")]
     [SerializeField] private InspectUI inspectUI;
-    // [SerializeField] private string[] inspectText;
+    [SerializeField] private string[] inspectText;
     private bool isInInspectMode;
     [Header("For Wrong Procedure")]
     [SerializeField] private WrongProcedureUI wrongProcedureUI;
@@ -84,7 +86,7 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause)
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause && !dialogueManager.IsOpen())
         {
             if(gameState == State.Playing)
             {
@@ -119,6 +121,7 @@ public class GameManager : MonoBehaviour
     public void OpenInspectUI(int index)
     {
         inspectUI.MoveIn();
+        stringEvent.StringReference.SetReference(examineTextTable.ToString(), index.ToString());
         inspectUI.ChangeUIText(examineTextTable.GetTable().GetEntry(index.ToString()).GetLocalizedString());
         isInInspectMode = true;
         selectedObjectIndex = index;

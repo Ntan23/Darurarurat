@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level2DialogueTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: a1b7ab7fcff648f48af852be2190b7d6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55175151616
+    m_Localized: Excuse me, is Mrs. Mina home?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161588838400
+    m_Localized: "Yes, i\u2019m coming. Who is it?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 274981847040
+    m_Localized: "Hi, Mrs. Mina. I\u2019m Steven :D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 381651386368
+    m_Localized: "Oh, you\u2019re Mr. Richard and Mrs. Aurel\u2019s son who live
+      across the street right?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761089097728
+    m_Localized: "You\u2019re right Mrs."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 847483371520
+    m_Localized: "\rHere Steven come in first, what do you need to come here?\r\n\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1223985070080
+    m_Localized: Here Mrs. Mina, my mom brought some souvenirs from out of town for
+      Mrs. Mina :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1482555523072
+    m_Localized: Oooh, thank you for the gift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569184677888
+    m_Localized: ( When Steven reached out his hand to give the souvenir, Mrs. Mina
+      saw the burns on Steven's hand )
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1915604828160
+    m_Localized: Oh my gosh Steven, why are your hands burned?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

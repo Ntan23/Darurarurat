@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level2DialogueTable_id-ID
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: id-ID
+  m_SharedData: {fileID: 11400000, guid: a1b7ab7fcff648f48af852be2190b7d6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55175151616
+    m_Localized: Permisi... bu Mina ada di rumah gak yahh?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161588838400
+    m_Localized: Yaa tunggu, siapa ya?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 274981847040
+    m_Localized: Halo bu Mina, aku Steven :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 381651386368
+    m_Localized: Oalahh Steven, kamu anaknya pak Richard dan bu Aurel yang tinggal
+      di seberang ya?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761089097728
+    m_Localized: Iya bu bener hehe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 847483371520
+    m_Localized: Sini Steven masuk dulu, kamu ada perlu apa ke sini?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1223985070080
+    m_Localized: Ini bu Mina, Ibu saya bawa oleh-oleh dari luar kota untuk bu Mina
+      :D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1482555523072
+    m_Localized: Wahh terima kasih loh untuk oleh-olehnya
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569184677888
+    m_Localized: ( Saat Steven menjulurkan tangannya untuk memberi oleh-oleh, bu
+      Mina melihat luka bakar yang ada di tangannya Steven )
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1915604828160
+    m_Localized: Ya ampun Steven ini tanganmu kenapa ada luka bakar ya?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

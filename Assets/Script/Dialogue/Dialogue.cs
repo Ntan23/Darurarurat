@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 [System.Serializable]
 public class Dialogue
@@ -10,4 +11,5 @@ public class Dialogue
 
 	[TextArea(3, 10)]
 	public string sentences;
+    public LocalizedString dialogue;
 }

@@ -53,6 +53,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-id-ID
     - Preload
+  - m_GUID: 1774752f26bb6f74497daf4c23f1881f
+    m_Address: Level1Dialogue_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
+  - m_GUID: fff6d7ec7bd939349abd7feb3988210c
+    m_Address: Level2ExamineTable_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
+  - m_GUID: 459d735bcbc4e064dbbbdd14d5075ee7
+    m_Address: Level2InstructionTable_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
+  - m_GUID: 72a5e1d8709e47f4585034022c72a7b6
+    m_Address: Level2DialogueTable_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:
