@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level4DescriptionTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 53f601a77b1b4f94696397c430786552, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 274101043200
+    m_Localized: Itchy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342329786368
+    m_Localized: 'Causes of Itching :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 524970754048
+    m_Localized: 'Itching can be caused by: dry skin, allergies, infections, insect
+      bites, scabies or scabies, psoriasis or atopic dermatitis.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 655073869824
+    m_Localized: 'First aid requirements for itching when bitten by insects :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977376772096
+    m_Localized: 'First aid procedures for itching when bitten by insects :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1164824412160
+    m_Localized: '1. Prepare hydrocortisone cream
+
+      2. Open the cap of the cream
+      and squeeze the cream onto your hand.
+
+      3. Apply to the itchy area'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

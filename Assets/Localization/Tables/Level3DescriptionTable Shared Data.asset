@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Level3DescriptionTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Level3DescriptionTable
+  m_TableCollectionNameGuidString: 31ca28e4e8e59e0469ec83248251bd4c
+  m_Entries:
+  - m_Id: 77010698240
+    m_Key: TitleKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 291507404800
+    m_Key: DescriptionKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 756500529152
+    m_Key: NeedsKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1534430674944
+    m_Key: ProceduresKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1906197004288
+    m_Key: ProceduresDescriptionKey
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5030486305416675335
+  references:
+    version: 2
+    RefIds:
+    - rid: 5030486305416675335
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1690778710494

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Level1InstructionTable_id-ID
+  m_Name: Level1DescriptionTable_id-ID
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: id-ID
@@ -50,10 +50,10 @@ MonoBehaviour:
       3.
       Tuang antiseptik ke bagian luka
 
-      4. Buka plester
+      4. Buka plastik yang ada di plesternya
 
-      5. Tempelkan
-      plester ke bagian luka'
+      5.
+      Tempelkan plester ke bagian luka'
     m_Metadata:
       m_Items: []
   references:

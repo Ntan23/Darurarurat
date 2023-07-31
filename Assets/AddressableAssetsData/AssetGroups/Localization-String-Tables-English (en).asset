@@ -48,7 +48,7 @@ MonoBehaviour:
     - Locale-en
     - Preload
   - m_GUID: 4a03badd78199f6429f85655a7412e9d
-    m_Address: Level1InstructionTable_en
+    m_Address: Level1DescriptionTable_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
@@ -66,13 +66,37 @@ MonoBehaviour:
     - Locale-en
     - Preload
   - m_GUID: 4cc2a38c9c8f0e54b81764a840d2ad9c
-    m_Address: Level2InstructionTable_en
+    m_Address: Level2DescriptionTable_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
     - Preload
   - m_GUID: 2728b73f38eb4c54683aaac4aee4dcb9
     m_Address: Level2DialogueTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: bbb1409c29ec4fb498b8a8f63ff7e407
+    m_Address: Level3ExamineTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 4dcbc4be98559c9468291f8f854c3c60
+    m_Address: Level3DescriptionTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: adce2bcb1fb339b44b097ecef25cf9eb
+    m_Address: Level4ExamineTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 2ae66baa5757d3d4398799e96ea2a1fe
+    m_Address: Level4DescriptionTable_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Level1InstructionTable_en
+  m_Name: Level1DescriptionTable_en
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: en
@@ -42,13 +42,13 @@ MonoBehaviour:
   - m_Id: 7175803109376
     m_Localized: '1. Prepare antiseptic and band aid
 
-      2. Open the lid of the
+      2. Open the cap of the
       antiseptic
 
       3. Pour the antiseptic onto the wound
 
-      4. Remove the
-      plaster
+      4. Peel the
+      band aid plastic
 
       5. Apply the band aid to the wound'
     m_Metadata:

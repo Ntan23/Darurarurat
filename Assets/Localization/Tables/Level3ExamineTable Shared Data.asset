@@ -10,44 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Level1InstructionTable Shared Data
+  m_Name: Level3ExamineTable Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Level1InstructionTable
-  m_TableCollectionNameGuidString: 2a6e2429cad3a9949b6d47a42c7c98a1
+  m_TableCollectionName: Level3ExamineTable
+  m_TableCollectionNameGuidString: b0e49f6083ff0c04a93ec6bebda26817
   m_Entries:
-  - m_Id: 131276603392
-    m_Key: TitleKey
+  - m_Id: 29128523776
+    m_Key: 0
     m_Metadata:
       m_Items: []
-  - m_Id: 288537837568
-    m_Key: TypesKey
+  - m_Id: 340639481856
+    m_Key: 1
     m_Metadata:
       m_Items: []
-  - m_Id: 1923301376000
-    m_Key: DescriptionKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5455937142784
-    m_Key: NeedsKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6928716660736
-    m_Key: ProcedureKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7175803109376
-    m_Key: ProcedureInstructionKey
+  - m_Id: 424861106176
+    m_Key: 2
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 5030486214747095060
+    rid: 5030486305416675330
   references:
     version: 2
     RefIds:
-    - rid: 5030486214747095060
+    - rid: 5030486305416675330
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1690447431207
+        m_CustomEpoch: 1690777093903

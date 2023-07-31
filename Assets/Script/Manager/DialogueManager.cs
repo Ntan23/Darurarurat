@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Components;
 
 public class DialogueManager : MonoBehaviour 
 {
@@ -138,8 +137,8 @@ public class DialogueManager : MonoBehaviour
             }
         }
         
-        StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
-        //StartCoroutine(TypeSentence(dialogue.dialogue.GetLocalizedString(), dialogue));
+        //StartCoroutine(TypeSentence(dialogue.sentences, dialogue));
+        StartCoroutine(TypeSentence(dialogue.dialogue.GetLocalizedString(), dialogue));
     }
 
 	IEnumerator TypeSentence (string sentence, Dialogue dialogue)

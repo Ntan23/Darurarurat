@@ -22,9 +22,11 @@ public class GameManager : MonoBehaviour
 
     private State gameState;
 
+    [Header("For Examine UI")]
     [SerializeField] private LocalizedStringTable examineTextTable;
-    [SerializeField] private LocalizedString localString;
     [SerializeField] private LocalizeStringEvent stringEvent;
+    [Header("For Wrong Procedure")]
+    [SerializeField] private LocalizedString wrongProcedureLocalString;
     [SerializeField] private int levelIndex;
     private int nextLevelIndex;
     private int levelUnlocked;
@@ -53,16 +55,7 @@ public class GameManager : MonoBehaviour
     private AudioManager am;
     private int procedureObjectIndex;
 
-    void OnEnable()
-    {
-        localString.Arguments = new object[] {wrongProcedureText};
-        localString.StringChanged += UpdateText;
-    }
-
-    void OnDisable() => localString.StringChanged -= UpdateText;
-
-    private void UpdateText(string value) => wrongProcedureUI.UpdateText(value);
-
+    
     void Start() 
     {
         storyManager = StoryManager.instance;
@@ -84,6 +77,16 @@ public class GameManager : MonoBehaviour
         gameState = State.Playing;
     }
     
+    void OnEnable()
+    {
+        wrongProcedureLocalString.Arguments = new object[] {wrongProcedureText};
+        wrongProcedureLocalString.StringChanged += UpdateText;
+    }
+
+    void OnDisable() => wrongProcedureLocalString.StringChanged -= UpdateText;
+
+    private void UpdateText(string value) => wrongProcedureUI.UpdateText(value);
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause && !dialogueManager.IsOpen())
@@ -137,8 +140,8 @@ public class GameManager : MonoBehaviour
     public void ShowWrongProcedureUI()
     {
         wrongProcedureUI.MoveIn();
-        localString.Arguments[0] = objects[procedureObjectIndex].name;
-        localString.RefreshString();
+        wrongProcedureLocalString.Arguments[0] = objects[procedureObjectIndex].name;
+        wrongProcedureLocalString.RefreshString();
         // wrongProcedureUI.UpdateText("Kamu Harus Menggunakan " + objects[procedureObjectIndex].name + " Terlebih Dahulu");
         StartCoroutine(WaitWrongProcedureUI());
     }

@@ -7738,12 +7738,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1963857919}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 277.4521, y: -154}
-  m_SizeDelta: {x: 554.9042, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &428789852
 MonoBehaviour:
@@ -7915,12 +7915,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1963857919}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 296.21, y: -364.24}
-  m_SizeDelta: {x: 592.41, y: 74.6331}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433344022
 MonoBehaviour:
@@ -8129,10 +8129,10 @@ RectTransform:
   m_Father: {fileID: 1963857919}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8259854, y: -158.69}
-  m_SizeDelta: {x: 591.66, y: 77.87}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464793568
 MonoBehaviour:
@@ -8310,12 +8310,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1963857919}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 306.99, y: -251.39877}
-  m_SizeDelta: {x: 576.59, y: 151.044}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509672604
 MonoBehaviour:
@@ -9860,7 +9860,8 @@ MonoBehaviour:
   examineTextTable:
     m_TableReference:
       m_TableCollectionName: GUID:938b645744600794d89438f1eade0dad
-  localString:
+  stringEvent: {fileID: 399829987}
+  wrongProcedureLocalString:
     m_TableReference:
       m_TableCollectionName: GUID:06e9dfe86477a3d459ecd29287074d69
     m_TableEntryReference:
@@ -9869,7 +9870,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  stringEvent: {fileID: 399829987}
   levelIndex: 2
   objects:
   - {fileID: 655448548}
@@ -9892,6 +9892,7 @@ GameObject:
   - component: {fileID: 606492645}
   - component: {fileID: 606492647}
   - component: {fileID: 606492646}
+  - component: {fileID: 606492648}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10017,6 +10018,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606492644}
   m_CullTransparentMesh: 1
+--- !u!114 &606492648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606492644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:06e9dfe86477a3d459ecd29287074d69
+    m_TableEntryReference:
+      m_KeyId: 1410139788804096
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 606492646}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &616441018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7322878084214806240, guid: 5a3dd5bc65dd91c4793992327f6b1212,
@@ -10954,12 +10995,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1963857919}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -470.28864, y: -27.5}
-  m_SizeDelta: {x: 268.9947, y: 55}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672729721
 MonoBehaviour:
@@ -11794,9 +11835,9 @@ MonoBehaviour:
     sentences: Permisi... bu Mina ada di rumah gak yahh?
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 55175151616
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11808,9 +11849,9 @@ MonoBehaviour:
     sentences: Yaa tunggu, siapa ya?
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 161588838400
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11822,9 +11863,9 @@ MonoBehaviour:
     sentences: Halo bu Mina, aku Steven :D
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 274981847040
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11837,9 +11878,9 @@ MonoBehaviour:
       di seberang ya?
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 381651386368
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11851,9 +11892,9 @@ MonoBehaviour:
     sentences: Iya bu bener hehe
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 761089097728
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11865,9 +11906,9 @@ MonoBehaviour:
     sentences: Sini Steven masuk dulu, kamu ada perlu apa ke sini?
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 847483371520
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11880,9 +11921,9 @@ MonoBehaviour:
       :D
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1223985070080
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11894,9 +11935,9 @@ MonoBehaviour:
     sentences: Wahh terima kasih loh untuk oleh-olehnya
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1482555523072
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11909,9 +11950,9 @@ MonoBehaviour:
       melihat luka bakar yang ada di tangannya Steven )
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1569184677888
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11923,9 +11964,9 @@ MonoBehaviour:
     sentences: Ya ampun Steven ini tanganmu kenapa ada luka bakar ya?
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1915604828160
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11938,9 +11979,9 @@ MonoBehaviour:
       gak sengaja kena api :(
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1048750935113728
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11952,9 +11993,9 @@ MonoBehaviour:
     sentences: Waduh, kalo gitu sini Saya obatin dulu deh sebelum kamu pulang
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1048814919221248
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11966,9 +12007,9 @@ MonoBehaviour:
     sentences: Oke deh bu Mina
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1048867255746560
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11981,9 +12022,9 @@ MonoBehaviour:
       hidup
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1048916631093248
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -11995,9 +12036,9 @@ MonoBehaviour:
     sentences: Siap bu Mina, terima kasih ya bu Mina, Aku pamit dulu
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:a1b7ab7fcff648f48af852be2190b7d6
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1048969689038848
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -13858,10 +13899,10 @@ RectTransform:
   m_Father: {fileID: 1963857919}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 314, y: -682}
-  m_SizeDelta: {x: 576.59, y: 149.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120121582
 MonoBehaviour:
@@ -14658,6 +14699,7 @@ GameObject:
   - component: {fileID: 1231751661}
   - component: {fileID: 1231751660}
   - component: {fileID: 1231751659}
+  - component: {fileID: 1231751664}
   m_Layer: 5
   m_Name: Skip Button
   m_TagString: Untagged
@@ -14896,6 +14938,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231751657}
   m_CullTransparentMesh: 1
+--- !u!114 &1231751664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231751657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:06e9dfe86477a3d459ecd29287074d69
+    m_TableEntryReference:
+      m_KeyId: 1483416141955072
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1231751662}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1237245627
 GameObject:
   m_ObjectHideFlags: 0
@@ -16241,6 +16323,7 @@ GameObject:
   - component: {fileID: 1412632838}
   - component: {fileID: 1412632840}
   - component: {fileID: 1412632839}
+  - component: {fileID: 1412632841}
   m_Layer: 5
   m_Name: Game Paused Text
   m_TagString: Untagged
@@ -16366,6 +16449,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412632837}
   m_CullTransparentMesh: 1
+--- !u!114 &1412632841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412632837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:06e9dfe86477a3d459ecd29287074d69
+    m_TableEntryReference:
+      m_KeyId: 1483330842394624
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1412632839}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1427287613
 GameObject:
   m_ObjectHideFlags: 0
@@ -17101,12 +17224,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1963857919}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -83.53998}
-  m_SizeDelta: {x: 351.1099, y: 57.08}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1490156854
 MonoBehaviour:
@@ -19905,10 +20028,10 @@ RectTransform:
   m_Father: {fileID: 1963857919}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.534, y: -54.152}
-  m_SizeDelta: {x: 558.2791, y: 108.3033}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788843754
 MonoBehaviour:
@@ -20741,6 +20864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963857919}
+  - component: {fileID: 1963857920}
   m_Layer: 5
   m_Name: Group
   m_TagString: Untagged
@@ -20760,11 +20884,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 672729720}
   - {fileID: 1490156853}
   - {fileID: 428789851}
   - {fileID: 509672603}
   - {fileID: 433344021}
-  - {fileID: 672729720}
   - {fileID: 1788843753}
   - {fileID: 464793567}
   - {fileID: 1120121581}
@@ -20773,9 +20897,35 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1233, y: 7.1225}
-  m_SizeDelta: {x: 596.9352, y: 819.7418}
+  m_AnchoredPosition: {x: 1.1233, y: 10.6724}
+  m_SizeDelta: {x: 596.9352, y: 801.9922}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1963857920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963857918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 15
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1974915959
 GameObject:
   m_ObjectHideFlags: 0
