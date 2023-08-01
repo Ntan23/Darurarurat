@@ -500,7 +500,7 @@ public class ObjectControl : MonoBehaviour
     {
         canShowEffect = false;
         gm.ChangeIsAnimatingValue(true);
-        LeanTween.move(gameObject, new Vector3(6.6f, 5.0f, 6.15f), 0.8f).setEaseSpring();
+        LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
         LeanTween.rotateY(gameObject, -90.0f, 0.3f);
         yield return new WaitForSeconds(1.0f);
         GetComponent<Animator>().Play("Pour");

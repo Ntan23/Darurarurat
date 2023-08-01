@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level4DialogueTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 84969d94b6204e645a855198548eb19c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 73214853120
+    m_Localized: "It is night time, Mina is relaxing herself by watching a TV show
+      when a child is knocking on Mina\u2019s front door, looking for help."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3084884508672
+    m_Localized: Please help me Mrs. Mina, my hands are itchy :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29447444103168
+    m_Localized: Come here, let me see where it itches.. wow how come it looks really
+      bad?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29500913090560
+    m_Localized: Arif told me to treat it with Botadine, but i think it just made
+      it itchier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29588188168192
+    m_Localized: Goodness, Arif is wrong, Betadine is not for treating an itchy skin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29644844826624
+    m_Localized: Really..? I am sorry Mrs. Mina, I do not really understand medicines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29699165257728
+    m_Localized: It is alright Fifi, let me treat it for you before it gets worse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29848671223808
+    m_Localized: Alright, I have treated it with the appropriate medicine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29903352365056
+    m_Localized: Hehe, thank you Mrs. Mina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29979546091520
+    m_Localized: By the way, how did your hand itchy in the first place?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30027688312832
+    m_Localized: I was bitten by a small bug, I think it was an ant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30076212215808
+    m_Localized: Ah ok, it was just a bug. Fifi, next time before treating a wound
+      by yourself, please do a quick research first about what medicine to treat
+      it with.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30125629505536
+    m_Localized: Okay Mrs. Mina, i will be more careful next time. Thank you.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

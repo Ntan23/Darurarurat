@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 410087040}
+  m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571498, b: 0.30692357, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: dbdf4f346a08e414ba47df04d91b4689,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2028,7 +2027,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1533281370}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
@@ -7112,7 +7111,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1533281370}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &367687761 stripped
 GameObject:
@@ -7655,9 +7654,9 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Range: 3.97
+  m_SpotAngle: 119.77411
+  m_InnerSpotAngle: 41.841084
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -7712,7 +7711,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_LocalRotation: {x: 0.36599812, y: -0.45315394, z: 0.2113091, w: 0.78488564}
-  m_LocalPosition: {x: 25.47, y: 30, z: 0}
+  m_LocalPosition: {x: 25.47, y: 19.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7732,7 +7731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Version: 1
-  m_UsePipelineSettings: 1
+  m_UsePipelineSettings: 0
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
@@ -7832,6 +7831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 048e67224cf23cc418bd650695c8f8ee,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 048e67224cf23cc418bd650695c8f8ee,
         type: 3}
@@ -8267,7 +8271,7 @@ Transform:
   - {fileID: 1497099630}
   - {fileID: 1518850747}
   m_Father: {fileID: 1533281370}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &464793566
 GameObject:
@@ -8676,7 +8680,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5a3dd5bc65dd91c4793992327f6b1212,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a3dd5bc65dd91c4793992327f6b1212,
         type: 3}
@@ -12253,7 +12257,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e8f8cb100f64690489b6d4fcb9e6f5a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8f8cb100f64690489b6d4fcb9e6f5a4,
         type: 3}
@@ -12942,7 +12946,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 547c0c122796b1749bdc61f5bf743a27,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 547c0c122796b1749bdc61f5bf743a27,
         type: 3}
@@ -13175,7 +13179,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1533281370}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &929335532
 PrefabInstance:
@@ -14245,6 +14249,121 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2175b182d243e49b82f8c30b9591de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1014386766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014386767}
+  - component: {fileID: 1014386769}
+  - component: {fileID: 1014386768}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1014386767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014386766}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 14, z: 7.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1533281370}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
+--- !u!114 &1014386768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014386766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+--- !u!108 &1014386769
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014386766}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 100
+  m_Range: 50
+  m_SpotAngle: 82.8407
+  m_InnerSpotAngle: 65.4011
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 1
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 5225
+  m_UseColorTemperature: 1
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!4 &1016337521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5952345524479694475, guid: 5a3dd5bc65dd91c4793992327f6b1212,
@@ -15329,9 +15448,9 @@ MonoBehaviour:
       ada anak kecil yang datang ke rumahnya.
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 73214853120
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15343,9 +15462,9 @@ MonoBehaviour:
     sentences: Bu Mina tolong aku dong, tanganku gatal-gatal :(
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 3084884508672
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15357,9 +15476,9 @@ MonoBehaviour:
     sentences: 'Coba sini mana Saya lihat dulu... Waduh kok bisa parah ya gatalnya? '
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29447444103168
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15372,9 +15491,9 @@ MonoBehaviour:
       gatal ya bu? '
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29500913090560
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15386,9 +15505,9 @@ MonoBehaviour:
     sentences: Waduh Arif ini tidak benar ya, Botadine bukan untuk luka gatal Fifi
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29588188168192
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15400,9 +15519,9 @@ MonoBehaviour:
     sentences: Ooohh begitu ya bu? Maaf ya bu karena Saya kurang mengerti
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29644844826624
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15415,9 +15534,9 @@ MonoBehaviour:
       parah
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29699165257728
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15429,9 +15548,9 @@ MonoBehaviour:
     sentences: Nahh udah Saya obatin nih menggunakan obat yang sesuai
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29848671223808
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15443,9 +15562,9 @@ MonoBehaviour:
     sentences: Hehe makasih ya bu Mina~
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29903352365056
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15457,9 +15576,9 @@ MonoBehaviour:
     sentences: Ngomong-ngomong kok kamu bisa sih punya luka gatal seperti ini?
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 29979546091520
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15471,9 +15590,9 @@ MonoBehaviour:
     sentences: Aku digigit serangga bu, kayaknya semut sih
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 30027688312832
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15488,9 +15607,9 @@ MonoBehaviour:
       sebelum mengobati luka sendiri cari tau dulu ya tentang luka dan obatnya.'
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 30076212215808
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -15502,9 +15621,9 @@ MonoBehaviour:
     sentences: Iyaa bu Mina, lain kali Aku akan lebih hati-hati
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:84969d94b6204e645a855198548eb19c
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 30125629505536
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -18858,6 +18977,7 @@ Transform:
   m_Children:
   - {fileID: 330585546}
   - {fileID: 410087041}
+  - {fileID: 1014386767}
   - {fileID: 1922889411}
   - {fileID: 463537020}
   - {fileID: 48097485}
@@ -19650,7 +19770,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5a5995271be53514596e60a9c7c00e24,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a5995271be53514596e60a9c7c00e24,
         type: 3}
@@ -19826,6 +19946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775885590194848395, guid: 5a5995271be53514596e60a9c7c00e24,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4497310663347183769, guid: 5a5995271be53514596e60a9c7c00e24,
         type: 3}
@@ -20914,7 +21039,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e19d6c85f643df6408d35650a2ee0928,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e19d6c85f643df6408d35650a2ee0928,
         type: 3}
@@ -20995,6 +21120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticShadowCaster
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e19d6c85f643df6408d35650a2ee0928,
+        type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e19d6c85f643df6408d35650a2ee0928,
         type: 3}

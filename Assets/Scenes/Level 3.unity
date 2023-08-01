@@ -9635,9 +9635,9 @@ MonoBehaviour:
       suasana sore hari )
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 468188266496
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9650,9 +9650,9 @@ MonoBehaviour:
       dan tiba-tiba...
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1080468570112
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9664,9 +9664,9 @@ MonoBehaviour:
     sentences: Aduhhh!!
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1181756817408
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9678,9 +9678,9 @@ MonoBehaviour:
     sentences: Ya ampun hati-hati dong mainnya Arif, sampai jatuh begitu kan jadinya
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1210521354240
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9692,9 +9692,9 @@ MonoBehaviour:
     sentences: Bu Minaa tanganku sakit :(
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1271254876160
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9706,9 +9706,9 @@ MonoBehaviour:
     sentences: Coba mana sini tanganmu saya lihat
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1325109739520
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9720,9 +9720,9 @@ MonoBehaviour:
     sentences: Nahh, lukanya udah Saya bersihkan dan diobati
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1470551425024
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9734,9 +9734,9 @@ MonoBehaviour:
     sentences: Wow, udah gak sakit lagi lukanya setelah diobatin Bu Mina
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1519603810304
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9748,9 +9748,9 @@ MonoBehaviour:
     sentences: Lain kali hati-hati ya Arif kalo lagi main!
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1602500034560
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -9762,9 +9762,9 @@ MonoBehaviour:
     sentences: Siap bu Mina! Terima kasih ya bu Mina
     dialogue:
       m_TableReference:
-        m_TableCollectionName: 
+        m_TableCollectionName: GUID:2a1706f770d880d40aa7d4ef5a193731
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 1655587340288
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -16287,7 +16287,7 @@ MonoBehaviour:
   table:
     m_TableReference:
       m_TableCollectionName: GUID:3079e9258cc834a419f113197e6ed049
-  targetPosition: {x: 7.5, y: 5, z: 7}
+  targetPosition: {x: 7.6, y: 5, z: 6.3}
   inspectPosition: {x: 0, y: 12, z: 1}
   objectIndex: 1
   rotationSpeed: 5

@@ -101,6 +101,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-id-ID
     - Preload
+  - m_GUID: 52b51e2e50225f2439ca0e09fe31fc1a
+    m_Address: Level3DialogueTable_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
+  - m_GUID: 8282335dd37d1934e9ce2fc719151b12
+    m_Address: Level4DialogueTable_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:

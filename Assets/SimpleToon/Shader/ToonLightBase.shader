@@ -167,7 +167,7 @@ Shader "Lpk/LightModel/ToonLightBase"
             }
             ENDHLSL
         }
-        
+
         //Outline
         Pass
         {
