@@ -93,15 +93,19 @@ public class AntisepticAnimation : MonoBehaviour
 
         if(!hasCap) 
         {
-            LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f).setOnComplete(() => 
-            {
-                capSkinnedMeshRenderer.material = normalCapMaterial;
-                instructionArrows[0].SetActive(true);
-                canAnimate = true;
-            });
+            StartCoroutine(CapMeshChange());
         }
 
         animator.enabled = true;
+    }
+
+    IEnumerator CapMeshChange()
+    {
+        LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
+        yield return new WaitForSeconds(1.0f);
+        capSkinnedMeshRenderer.material = normalCapMaterial;
+        instructionArrows[0].SetActive(true);
+        canAnimate = true;
     }
 
     IEnumerator OpenCap()
