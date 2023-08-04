@@ -219,9 +219,9 @@ Material:
     - _SpecShadowStrength: 1
     - _SpecSource: 0
     - _SpecularClipStrength: 0
-    - _SpecularFalloff: 0.5
+    - _SpecularFalloff: 0
     - _SpecularHighlights: 1
-    - _SpecularSize: 0.25
+    - _SpecularSize: 0.059
     - _SpecularStep: 0.05
     - _SpecularStepSmooth: 0
     - _SpherizeNormalEnabled: 0
@@ -247,8 +247,8 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -75, g: 75, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _ShadowColor: {r: 0.11320699, g: 0.012175141, b: 0.11320699, a: 0.9019608}
+    - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0.5}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -304,7 +304,7 @@ Material:
     - _OutlineColor: {r: 1, g: 0.98039216, b: 0, a: 1}
     - _OutlineDistancFade: {r: -75, g: 75, b: 0, a: 0}
     - _RimColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 0.11372549, g: 0.011764706, b: 0.11372549, a: 0.9019608}
     - _ShnColor: {r: 1, g: 1, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
