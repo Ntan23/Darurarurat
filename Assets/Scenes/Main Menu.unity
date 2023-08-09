@@ -277,10 +277,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 423473479}
   m_HandleRect: {fileID: 2020704141}
   m_Direction: 0
-  m_MinValue: -70
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: -7
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1045,7 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7922a7004ba6a2448a053d0ffa9316aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMixer: {fileID: 24100000, guid: 4a753c9ef04d3d9459f31455f4fd5f38, type: 2}
   BGMSlider: {fileID: 567234201}
   SFXSlider: {fileID: 28822142}
   fullscreenToogle: {fileID: 1697232546}
@@ -1869,10 +1868,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 524009406}
   m_HandleRect: {fileID: 1914888730}
   m_Direction: 0
-  m_MinValue: -70
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: -7
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3534,9 +3533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6773dd5157b2c4bbc377d479f78e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  table:
-    m_TableReference:
-      m_TableCollectionName: GUID:64aa8b6f847c38649987fc1c1d278179
 --- !u!4 &1150955448
 Transform:
   m_ObjectHideFlags: 0
@@ -5936,7 +5932,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e8f8cb100f64690489b6d4fcb9e6f5a4,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8f8cb100f64690489b6d4fcb9e6f5a4,
         type: 3}
@@ -5946,7 +5942,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e8f8cb100f64690489b6d4fcb9e6f5a4,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8f8cb100f64690489b6d4fcb9e6f5a4,
         type: 3}

@@ -16,7 +16,7 @@ public class SettingsUI : MonoBehaviour
     }
     #endregion
 
-    public AudioMixer MainMixer;
+    //public AudioMixer MainMixer;
     // private TMP_Dropdown QualityDropdown;
     // private TMP_Dropdown LanguagesDropdown;
     [SerializeField] Slider BGMSlider;
@@ -26,17 +26,22 @@ public class SettingsUI : MonoBehaviour
     private float sfxVolume;
     private int isFullscreen;
     private int width, height;
+    private AudioManager am;
 
     private void Start()
     {
-        bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 0);
-        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0);
+        am = AudioManager.instance;
+
+        bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1);
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
         isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1);
 
         BGMSlider.value = bgmVolume;
         SFXSlider.value = sfxVolume;
-        MainMixer.SetFloat("BGM_Volume", bgmVolume);
-        MainMixer.SetFloat("SFX_Volume", sfxVolume);
+        // MainMixer.SetFloat("BGM_Volume", bgmVolume);
+        // MainMixer.SetFloat("SFX_Volume", sfxVolume);
+        am.SetBGMVolume(bgmVolume);
+        am.SetSFXVolume(sfxVolume);
 
         if(isFullscreen == 1) 
         {
@@ -58,12 +63,14 @@ public class SettingsUI : MonoBehaviour
 
     public void UpdateBGMSound(float value)
     {
-        MainMixer.SetFloat("BGM_Volume", value);
+        // MainMixer.SetFloat("BGM_Volume", value);
+        am.SetBGMVolume(value);
         PlayerPrefs.SetFloat("BGMVolume", value);
     }
     public void UpdateSFXSound(float value)
     {
-        MainMixer.SetFloat("SFX_Volume", value);
+        //MainMixer.SetFloat("SFX_Volume", value);
+        am.SetSFXVolume(value);
         PlayerPrefs.SetFloat("SFXVolume", value);
     }
 

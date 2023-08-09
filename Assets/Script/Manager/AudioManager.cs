@@ -47,6 +47,27 @@ public class AudioManager : MonoBehaviour
         Play("BGM");
     } 
     
+    public void SetSFXVolume(float volume)
+    {
+        foreach(Sound s in sounds) 
+        {
+            if(s.name == "BGM") continue;
+            if(s.name != "BGM") s.source.volume = volume;
+        }
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        foreach(Sound s in sounds) 
+        {
+            if(s.name == "BGM")
+            {
+                s.source.volume = volume;
+                break;
+            }         
+        }
+    }
+
     public void StopAllSFX()
     {
         foreach(Sound s in sounds) 

@@ -12,7 +12,7 @@ public class ButtonFX : MonoBehaviour
 
     void Start() 
     {
-        am =AudioManager.instance;
+        am = AudioManager.instance;
 
         text = GetComponent<TextMeshProUGUI>();
         btn = GetComponent<Button>();

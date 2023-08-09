@@ -2261,10 +2261,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 4660285918860082027}
   m_HandleRect: {fileID: 4660285919221106175}
   m_Direction: 0
-  m_MinValue: -70
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: -7
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3741,10 +3741,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 4660285919937674155}
   m_HandleRect: {fileID: 4660285919980280190}
   m_Direction: 0
-  m_MinValue: -70
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: -7
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3978,7 +3978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7922a7004ba6a2448a053d0ffa9316aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMixer: {fileID: 24100000, guid: 4a753c9ef04d3d9459f31455f4fd5f38, type: 2}
   BGMSlider: {fileID: 4660285919895546981}
   SFXSlider: {fileID: 4660285919069834223}
   fullscreenToogle: {fileID: 4660285919228154625}
