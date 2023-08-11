@@ -20,13 +20,13 @@ public class FirstAidBox : MonoBehaviour
     [SerializeField] private Material hoverMaterial;
     private GameManager gm;
     private AudioManager am;
-    private DialogueManager dm;
+    //private DialogueManager dm;
 
     void Start()
     {
         gm = GameManager.instance;
         am = AudioManager.instance;
-        dm = DialogueManager.instance;
+        //dm = DialogueManager.instance;
 
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
@@ -41,12 +41,12 @@ public class FirstAidBox : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !dm.IsOpen()) boxRenderer.material = hoverMaterial;
+        if(canBeClicked && !gm.GetPauseMenuIsAnimating()) boxRenderer.material = hoverMaterial;
     }
 
     void OnMouseDown()
     {
-        if(!isOpen && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating() && !dm.IsOpen())
+        if(!isOpen && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
             clickCount++;
 

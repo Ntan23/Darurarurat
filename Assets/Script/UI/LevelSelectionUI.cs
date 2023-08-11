@@ -7,14 +7,15 @@ public class LevelSelectionUI : MonoBehaviour
 {
     private int levelUnlocked;
     private int levelIndex;
-    [SerializeField] private GameObject clipboard;
-    [SerializeField] private GameObject box;
-    [SerializeField] private GameObject[] levelButton;
+    // [SerializeField] private GameObject clipboard;
+    // [SerializeField] private GameObject box;
+    // [SerializeField] private GameObject[] levelButton;
     [SerializeField] private GameObject[] levels;
     [SerializeField] private GameObject levelIndicator;
     [SerializeField] private Button previousButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private Button playButton;
+    [SerializeField] private ButtonFX[] buttonFXs;
     private ScenesManager scenesManager;
 
     void Start() 
@@ -58,16 +59,25 @@ public class LevelSelectionUI : MonoBehaviour
     //     }
     // }
 
+    private void UpdatePreviousButtonAlpha(float alpha) => previousButton.GetComponent<CanvasGroup>().alpha = alpha;
+
+    private void UpdateNextButtonAlpha(float alpha) => nextButton.GetComponent<CanvasGroup>().alpha = alpha;
+    
+
     public void MoveNext()
     {
-        if(levelIndex < 4)
+        if(levelIndex < 3)
         {   
             previousButton.interactable = false;
             nextButton.interactable = false;
             playButton.interactable = false;
 
-            if(levelIndex == 0) previousButton.gameObject.SetActive(true);
-            if(levelIndex == 2) nextButton.gameObject.SetActive(false);
+            if(levelIndex == 0) LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 0.0f, 1.0f, 0.5f).setOnComplete(() => buttonFXs[0].EnableSFX());
+            if(levelIndex == 2) 
+            {
+                buttonFXs[1].RemoveSFX();
+                LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 1.0f, 0.0f, 0.5f);
+            }
 
             LeanTween.moveLocalX(levels[levelIndex], -1300.0f, 0.5f).setEaseOutExpo();
             LeanTween.moveLocalX(levels[levelIndex + 1], 0.0f, 0.5f).setEaseOutExpo();
@@ -91,8 +101,12 @@ public class LevelSelectionUI : MonoBehaviour
             nextButton.interactable = false;
             playButton.interactable = false;
 
-            if(levelIndex == 1) previousButton.gameObject.SetActive(false);
-            if(levelIndex == 3) nextButton.gameObject.SetActive(true);
+            if(levelIndex == 1) 
+            {
+                buttonFXs[0].RemoveSFX();
+                LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 1.0f, 0.0f, 0.5f);
+            }
+            if(levelIndex == 3) LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 0.0f, 1.0f, 0.5f).setOnComplete(() => buttonFXs[1].EnableSFX());
 
             LeanTween.moveLocalX(levels[levelIndex], 1300.0f, 0.5f).setEaseOutExpo();
             LeanTween.moveLocalX(levels[levelIndex - 1], 0.0f, 0.5f).setEaseOutExpo();

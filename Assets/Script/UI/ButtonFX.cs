@@ -17,8 +17,14 @@ public class ButtonFX : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
         btn = GetComponent<Button>();
 
-        btn.onClick.AddListener(() => am.PlayButtonClickSFX());
+        btn.onClick.AddListener(PlayButtonSFX);
     }
+
+    public void EnableSFX() => btn.onClick.AddListener(PlayButtonSFX);
+
+    public void RemoveSFX() => btn.onClick.RemoveListener(PlayButtonSFX);
+
+    private void PlayButtonSFX() => am.PlayButtonClickSFX();
 
     void UpdateFontSize(float value) => text.fontSize = value;
 

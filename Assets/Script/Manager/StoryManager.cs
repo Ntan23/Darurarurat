@@ -18,11 +18,12 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private GameObject storyBoard;
     [SerializeField] private GameObject startStoryBoard;
     [SerializeField] private GameObject endStoryboard;
+    [SerializeField] private GameObject skipButton;
     [SerializeField] private int cutStoryIndex;
     private int storyIndex;
     private ScenesManager sm;
 
-    void Start() => sm =ScenesManager.instance;
+    void Start() => sm = ScenesManager.instance;
 
     public void NextStory()
     {
@@ -33,10 +34,11 @@ public class StoryManager : MonoBehaviour
             startStoryBoard.SetActive(false);
             MoveStoryBoard();
         }
-        else if(storyIndex < stories.Length) StartCoroutine(PlayNextStoryAnimation());
+        else if(storyIndex < stories.Length) PlayNextStoryAnimation();
+        else if(storyIndex == stories.Length - 1) sm.GoToNextScene();
     }
 
-    public void PreviousStory() => StartCoroutine(PlayPreviousStoryAnimation());
+    public void PreviousStory() => PlayPreviousStoryAnimation();
     
     public void SkipStory()
     {
@@ -58,22 +60,28 @@ public class StoryManager : MonoBehaviour
         LeanTween.moveLocalX(storyBoard, 0.0f, 0.5f).setEaseSpring();
     }
 
-    IEnumerator PlayNextStoryAnimation()
+    private void PlayNextStoryAnimation()
     {
         LeanTween.moveLocalX(stories[storyIndex - 1], -1924.0f, 0.5f).setEaseSpring();
-        LeanTween.moveLocalX(stories[storyIndex], 0, 0.5f).setEaseSpring();
-        yield return new WaitForSeconds(0.5f);
-        if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
+        LeanTween.moveLocalX(stories[storyIndex], 0, 0.5f).setEaseSpring().setOnComplete(() => 
+        {
+            if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
+        });
+   
     }
 
-    IEnumerator PlayPreviousStoryAnimation()
+    private void PlayPreviousStoryAnimation()
     {
         storyIndex--;
         LeanTween.moveLocalX(stories[storyIndex + 1], 1924.0f, 0.5f).setEaseSpring();
-        LeanTween.moveLocalX(stories[storyIndex], 0.0f, 0.5f).setEaseSpring();
-        yield return new WaitForSeconds(0.5f);
-        if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
+        LeanTween.moveLocalX(stories[storyIndex], 0.0f, 0.5f).setEaseSpring().setOnComplete(() =>
+        {
+            if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
+        });
     }
 
     void MoveStoryBoard() => LeanTween.moveLocalX(storyBoard, 1924.0f, 0.3f); 
+
+    public void EnableSkipButton() => skipButton.SetActive(true);
+    public void DisableSkipButton() => skipButton.SetActive(false);
 }

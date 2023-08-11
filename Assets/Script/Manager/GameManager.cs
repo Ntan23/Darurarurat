@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause && !dialogueManager.IsOpen())
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause)
         {
             if(gameState == State.Playing)
             {
