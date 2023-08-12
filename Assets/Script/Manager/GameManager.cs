@@ -175,6 +175,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
+        if(storyManager != null) storyManager.ShowEndStory();
 
         if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt("DialogueSkipIndicator", levelIndex);
         if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 4) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);

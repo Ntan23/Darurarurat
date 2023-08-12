@@ -11,7 +11,7 @@ public class Fade : MonoBehaviour
     void Start()
     {
         gm = GameManager.instance;
-        //dm = DialogueManager.instance;
+        dm = DialogueManager.instance;
         sm = StoryManager.instance;
     }
 
@@ -34,14 +34,24 @@ public class Fade : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if(gm != null)
         {
-            if(!gm.CanSkip()) sm.DisableSkipButton();
-            else if(gm.CanSkip()) sm.EnableSkipButton();
+            if(!gm.CanSkip() && dm != null) dm.DeactivateSkipButton();
+            else if(gm.CanSkip() && dm != null) dm.DisableSkipButton();
+
+            if(!gm.CanSkip() && sm != null) sm.DisableSkipButton();
+            else if(gm.CanSkip() && sm != null) sm.EnableSkipButton();
         }
 
         LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f).setOnComplete(() => 
         {
             if(gm != null) gm.ChangeCanPauseValue(true);
-            GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if(sm != null) GetComponent<CanvasGroup>().blocksRaycasts = false;
         });  
+
+        yield return new WaitForSeconds(2.0f);
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if(gm != null) 
+        {
+            if(gm.CanSkip() && dm != null) dm.EnableSkipButton();
+        }
     }
 }

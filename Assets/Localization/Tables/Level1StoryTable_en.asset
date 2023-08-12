@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level1StoryTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 18ebfcc8cc3098b4890aa3036f3859a9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10866524160
+    m_Localized: You will be playing as a character named Mina, a housewife who is
+      very friendly to her neighbors and has a sufficient knowledge about first aid
+      due to her husband<font="LiberationSans SDF">'</font>s job, a first responder.
+      Her neighbors likes Mina a lot because of her caring nature.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180844888064
+    m_Localized: In a weekend morning, Mina is a enjoying her warm tea, when suddenly,
+      a boy named Dimas comes to her asking her for help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 387103981568
+    m_Localized: '" Mrs. Mina.. I hurt my hand.. "
+
+      Says Dimas while also reaching
+      out his hand, showing the wound'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 470054731776
+    m_Localized: '" Oh my, come here Dimas, let me
+
+      treat the wound before
+      it gets worse "
+
+
+      Mina then grabs her first aid kit box and starts treating
+      Dimas<font="LiberationSans SDF">''</font> wound'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 664708186112
+    m_Localized: 'Mrs. Mina successfully treated Dimas<font="LiberationSans SDF">''</font>s
+      wound and Dimas thanked her.
+
+
+      " Thank your Mrs. Mina! " Says Dimas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1546002759680
+    m_Localized: '" You can take off the band-aid after 2-3 days but next time, please
+      be more careful! "
+
+
+      " Okay Mrs. Mina, thank you again! "
+
+      Says
+      Dimas while also returning outside to play again'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
