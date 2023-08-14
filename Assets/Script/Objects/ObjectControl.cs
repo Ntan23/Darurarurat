@@ -50,6 +50,7 @@ public class ObjectControl : MonoBehaviour
     private bool isProcedureFinished;
     private bool canHide = true;
     private bool canShowEffect = true;
+    private bool isSelect;
     #endregion
 
     #region OtherVariables
@@ -111,12 +112,12 @@ public class ObjectControl : MonoBehaviour
 
             if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
             {
-                LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
+                LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring().setOnComplete(() => SetBeforeAnimatePosition());
                 
+                if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.Bandage && objectType != Object.GauzePad) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
                 if(objectType == Object.Petroleum) LeanTween.rotateY(gameObject, -180.0f, 0.3f);
-                if(objectType == Object.GauzePad) LeanTween.rotateY(gameObject, 180.0f, 0.3f);
                 if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
-                else if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+                if(objectType == Object.GauzePad) LeanTween.rotateY(gameObject, 180.0f, 0.3f);
 
                 if(rb.isKinematic) rb.isKinematic = false;
             }
@@ -173,6 +174,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            isSelect = false;
             if(isInside)
             {
                 if(objectIndex == gm.GetProcedureIndex())
@@ -228,6 +230,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            isSelect = true;
             if(canMove && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
             {
                 if(!rb.isKinematic) rb.isKinematic = true;
@@ -403,7 +406,39 @@ public class ObjectControl : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player")) isInside = true;
+        if(other.CompareTag("Player")) 
+        {
+            if(!isSelect) LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+            if(isSelect) isInside = true;
+            // if(objectType == Object.GauzePad || objectType == Object.Bandage) 
+            // {
+            //     if(objectIndex == gm.GetProcedureIndex())
+            //     {
+            //         LeanTween.move(gameObject, targetPosition, 0.5f);
+                    
+            //         if(isProcedureFinished) 
+            //         {
+                        
+            //         }
+            //         if(!isProcedureFinished) 
+            //         {
+            //             am.PlayWrongProcedureSFX();
+
+            //             if(objectType == Object.GauzePad) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongGauzeKey").GetLocalizedString());
+
+            //             if(objectType == Object.Bandage) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandageKey").GetLocalizedString());
+
+            //             LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+            //         }  
+            //     }
+            //     else if(objectIndex > gm.GetProcedureIndex())
+            //     {
+            //         am.PlayWrongProcedureSFX();
+            //         LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+            //         gm.ShowWrongProcedureUI();
+            //     }
+            // }
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -413,11 +448,11 @@ public class ObjectControl : MonoBehaviour
 
     public void AfterAnimate()
     {
+        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType != Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
         if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
         if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
-        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType != Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring().setOnComplete(() => 
         {
@@ -449,11 +484,11 @@ public class ObjectControl : MonoBehaviour
         firstAidBox.SetCanBeClicked(true);
         LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
 
+        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType == Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
         if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
         if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
-        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType == Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         if(rb.isKinematic) rb.isKinematic = false;
         

@@ -119,6 +119,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-id-ID
     - Preload
+  - m_GUID: ae1379db9b2798b4dbec032add96dd50
+    m_Address: Level5ExamineTable_id-ID
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-id-ID
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:

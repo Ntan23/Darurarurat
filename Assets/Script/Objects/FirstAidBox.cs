@@ -20,12 +20,14 @@ public class FirstAidBox : MonoBehaviour
     [SerializeField] private Material hoverMaterial;
     private GameManager gm;
     private AudioManager am;
+    private StoryManager sm;
     //private DialogueManager dm;
 
     void Start()
     {
         gm = GameManager.instance;
         am = AudioManager.instance;
+        sm = StoryManager.instance;
         //dm = DialogueManager.instance;
 
         animator = GetComponent<Animator>();

@@ -24,6 +24,7 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private Button previousButton;
     [SerializeField] private ButtonFX previousButtonFX;
     [SerializeField] private int cutStoryIndex;
+    private bool isOpen = true;
     private int storyIndex;
     private ScenesManager sm;
 
@@ -139,6 +140,7 @@ public class StoryManager : MonoBehaviour
     void MoveStoryBoard() => LeanTween.moveLocalX(storyBoard, 2000.0f, 0.3f).setOnComplete(() => 
     {
         LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 1.0f, 0.0f, 0.5f);
+        isOpen = false;
     }); 
 
     public void EnableSkipButton() => skipButton.SetActive(true);
@@ -151,5 +153,10 @@ public class StoryManager : MonoBehaviour
         {
             nextButton.interactable = true;
         });
+    }
+
+    public bool GetIsOpen()
+    {
+        return isOpen;
     }
 }
