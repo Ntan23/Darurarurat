@@ -13074,6 +13074,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6076312692854814016, guid: 9fce38ff259ef1a439efed9f6ca4e523,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076312692854814016, guid: 9fce38ff259ef1a439efed9f6ca4e523,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -13267,7 +13272,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 100
+  m_Intensity: 70
   m_Range: 50
   m_SpotAngle: 124.7045
   m_InnerSpotAngle: 89.75024

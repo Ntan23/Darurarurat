@@ -58,6 +58,22 @@ MonoBehaviour:
     m_Localized: petroleum jelly
     m_Metadata:
       m_Items: []
+  - m_Id: 6447931782725632
+    m_Localized: gauze pad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6448214034219008
+    m_Localized: bandage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6448847927771136
+    m_Localized: You need to open the gauze pad first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6449061887606784
+    m_Localized: You need to open the bandage first
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

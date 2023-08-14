@@ -6,7 +6,7 @@ public class ObjectControl : MonoBehaviour
 {
     #region enum
     private enum Object{
-        Antiseptic, BandAid, Petroleum, Wipes, Cream
+        Antiseptic, BandAid, Petroleum, Wipes, Cream, GauzePad, Bandage
     }
 
     [SerializeField] private Object objectType;
@@ -114,6 +114,8 @@ public class ObjectControl : MonoBehaviour
                 LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring();
                 
                 if(objectType == Object.Petroleum) LeanTween.rotateY(gameObject, -180.0f, 0.3f);
+                if(objectType == Object.GauzePad) LeanTween.rotateY(gameObject, 180.0f, 0.3f);
+                if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
                 else if(objectType != Object.Wipes) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
                 if(rb.isKinematic) rb.isKinematic = false;
@@ -201,6 +203,10 @@ public class ObjectControl : MonoBehaviour
                         if(objectType == Object.Wipes) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongWipesKey").GetLocalizedString());
 
                         if(objectType == Object.Cream) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongCreamKey").GetLocalizedString());
+
+                        if(objectType == Object.GauzePad) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongGauzeKey").GetLocalizedString());
+
+                        if(objectType == Object.Bandage) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandageKey").GetLocalizedString());
 
                         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                     }  
@@ -298,7 +304,7 @@ public class ObjectControl : MonoBehaviour
                     else if(!creamAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
                 }
             }
-            else if(objectType == Object.Wipes)
+            else if(objectType == Object.Wipes || objectType == Object.GauzePad)
             {
                 WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
 
@@ -367,7 +373,7 @@ public class ObjectControl : MonoBehaviour
                     else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
                 }
             }
-            else if(objectType == Object.Wipes)
+            else if(objectType == Object.Wipes || objectType == Object.GauzePad)
             {
                 WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
 
@@ -409,7 +415,9 @@ public class ObjectControl : MonoBehaviour
     {
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        if(objectType != Object.Wipes && objectType != Object.Petroleum) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
+        if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
+        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType != Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring().setOnComplete(() => 
         {
@@ -443,7 +451,9 @@ public class ObjectControl : MonoBehaviour
 
         if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        if(objectType != Object.Wipes && objectType != Object.Petroleum) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
+        if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
+        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType == Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
 
         if(rb.isKinematic) rb.isKinematic = false;
         

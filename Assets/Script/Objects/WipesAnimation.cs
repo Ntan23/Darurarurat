@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WipesAnimation : MonoBehaviour
 {
+    private enum objectType{
+        gauzePad, wipes
+    }
+
+    [SerializeField] private objectType type;
     private Vector3 mousePosition;
     private float mouseDistanceY;
     private bool canAnimate;
@@ -39,7 +44,8 @@ public class WipesAnimation : MonoBehaviour
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.6f);
-        LeanTween.rotateX(gameObject, 90.0f, 0.3f);
+        if(type == objectType.wipes) LeanTween.rotateX(gameObject, 90.0f, 0.3f);
+        if(type == objectType.gauzePad) LeanTween.rotateX(gameObject, -90.0f, 0.3f);
         yield return new WaitForSeconds(0.2f);
 
         instructionArrow.SetActive(true);
@@ -56,7 +62,9 @@ public class WipesAnimation : MonoBehaviour
 
         if(canAnimate)
         {
-            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f) StartCoroutine(PlayAnimation());
+            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && type == objectType.wipes) StartCoroutine(PlayAnimation());
+
+            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && type == objectType.gauzePad) StartCoroutine(PlayAnimation());
         }
     }
 
