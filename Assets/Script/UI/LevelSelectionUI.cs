@@ -76,11 +76,12 @@ public class LevelSelectionUI : MonoBehaviour
             nextButton.interactable = false;
             playButton.interactable = false;
 
-            if(levelIndex == 0) LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 0.0f, 1.0f, 0.5f).setOnComplete(() => buttonFXs[0].EnableSFX());
+            if(levelIndex == 0) LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 0.0f, 1.0f, 1.0f).setOnComplete(() => buttonFXs[0].EnableSFX());
+            
             if(levelIndex == 2) 
             {
                 buttonFXs[1].RemoveSFX();
-                LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 1.0f, 0.0f, 0.5f);
+                LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 1.0f, 0.0f, 1.0f);
             }
 
             if(levelIndex + 2 > levelUnlocked)
@@ -94,9 +95,9 @@ public class LevelSelectionUI : MonoBehaviour
                 levelIconImages[levelIndex + 1].color = unlockedColor;
             }
 
-            LeanTween.moveLocalX(levels[levelIndex], -1300.0f, 0.5f).setEaseOutExpo();
-            LeanTween.moveLocalX(levels[levelIndex + 1], 0.0f, 0.5f).setEaseOutExpo();
-            LeanTween.moveLocalX(levelIndicator.gameObject, levelIndicator.transform.localPosition.x - 239.0f, 0.5f).setEaseOutExpo().setOnComplete(() => 
+            LeanTween.moveLocalX(levels[levelIndex], -1300.0f, 1.0f).setEaseOutExpo();
+            LeanTween.moveLocalX(levels[levelIndex + 1], 0.0f, 1.0f).setEaseOutExpo();
+            LeanTween.moveLocalX(levelIndicator.gameObject, levelIndicator.transform.localPosition.x - 239.0f, 1.0f).setEaseOutExpo().setOnComplete(() => 
             {
                 levelIndex++;
                 previousButton.interactable = true;
@@ -119,9 +120,9 @@ public class LevelSelectionUI : MonoBehaviour
             if(levelIndex == 1) 
             {
                 buttonFXs[0].RemoveSFX();
-                LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 1.0f, 0.0f, 0.5f);
+                LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 1.0f, 0.0f, 1.0f);
             }
-            if(levelIndex == 3) LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 0.0f, 1.0f, 0.5f).setOnComplete(() => buttonFXs[1].EnableSFX());
+            if(levelIndex == 3) LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 0.0f, 1.0f, 1.0f).setOnComplete(() => buttonFXs[1].EnableSFX());
 
             if(levelIndex > levelUnlocked)
             {
@@ -134,9 +135,9 @@ public class LevelSelectionUI : MonoBehaviour
                 levelIconImages[levelIndex - 1].color = unlockedColor;
             }
 
-            LeanTween.moveLocalX(levels[levelIndex], 1300.0f, 0.5f).setEaseOutExpo();
-            LeanTween.moveLocalX(levels[levelIndex - 1], 0.0f, 0.5f).setEaseOutExpo();
-            LeanTween.moveLocalX(levelIndicator.gameObject, levelIndicator.transform.localPosition.x + 239.0f, 0.5f).setEaseOutExpo().setOnComplete(() =>
+            LeanTween.moveLocalX(levels[levelIndex], 1300.0f, 1.0f).setEaseOutExpo();
+            LeanTween.moveLocalX(levels[levelIndex - 1], 0.0f, 1.0f).setEaseOutExpo();
+            LeanTween.moveLocalX(levelIndicator.gameObject, levelIndicator.transform.localPosition.x + 239.0f, 1.0f).setEaseOutExpo().setOnComplete(() =>
             {
                 levelIndex--;
                 previousButton.interactable = true;

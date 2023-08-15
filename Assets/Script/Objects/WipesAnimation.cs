@@ -16,6 +16,7 @@ public class WipesAnimation : MonoBehaviour
     private ObjectControl objectControl;
     private GameManager gm;
     private Animator animator;
+    [SerializeField] private Animator feetAnimator;
     [SerializeField] private MeshRenderer handMesh;
     [SerializeField] private Material cleanMaterial;
     [SerializeField] private GameObject instructionArrow;
@@ -81,6 +82,8 @@ public class WipesAnimation : MonoBehaviour
     }
 
     public void ChangeHandTexture() => handMesh.material = cleanMaterial;
+
+    public void PlayGauzePadAnimation() => feetAnimator.Play("ShowGauzePad");
 
     public bool IsOpen() 
     {

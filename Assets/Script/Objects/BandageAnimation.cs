@@ -7,8 +7,10 @@ public class BandageAnimation : MonoBehaviour
     private Vector3 mousePosition;
     private float mouseDistanceY;
     private bool canAnimate;
+    private bool wrapMode;
     private ObjectControl objectControl;
     private Animator animator;
+    [SerializeField] private Animator feetAnimator;
     [SerializeField] private GameObject instructionArrow;
     private GameManager gm;
     private AudioManager am;
@@ -50,7 +52,12 @@ public class BandageAnimation : MonoBehaviour
 
         if(canAnimate)
         {
-            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f) StartCoroutine(PlayAnimation());
+            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && !wrapMode) StartCoroutine(PlayAnimation());
+
+            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && wrapMode) 
+            {
+
+            }
         }
     }
 
@@ -63,5 +70,18 @@ public class BandageAnimation : MonoBehaviour
         yield return new WaitForSeconds(1.6f);
         objectControl.AfterAnimate();
         canAnimate = false;
+    }
+
+    public void WrapMode()
+    {
+        LeanTween.move(gameObject, new Vector3(4.3f, 6.37f, 4.15f), 0.5f).setOnComplete(() =>
+        {
+            LeanTween.rotate(gameObject, new Vector3(230.0f, 0.0f, -90.0f), 0.3f).setOnComplete(() =>
+            {
+                instructionArrow.SetActive(true);
+                canAnimate = true;
+                wrapMode = true;
+            });
+        });
     }
 }

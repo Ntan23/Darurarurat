@@ -51,6 +51,7 @@ public class ObjectControl : MonoBehaviour
     private bool canHide = true;
     private bool canShowEffect = true;
     private bool isSelect;
+    private bool canBeUse;
     #endregion
 
     #region OtherVariables
@@ -175,51 +176,6 @@ public class ObjectControl : MonoBehaviour
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
             isSelect = false;
-            if(isInside)
-            {
-                if(objectIndex == gm.GetProcedureIndex())
-                {
-                    LeanTween.move(gameObject, targetPosition, 0.5f);
-                    
-                    if(isProcedureFinished) 
-                    {
-                        if(objectType == Object.BandAid) StartCoroutine(Plester());
-
-                        if(objectType == Object.Antiseptic) StartCoroutine(Antiseptic());
-
-                        if(objectType == Object.Petroleum) GetComponent<PetroleumJellyAnimation>().PlayAnimation();
-
-                        if(objectType == Object.Wipes) StartCoroutine(Wipes());
-
-                        if(objectType == Object.Cream) GetComponent<CreamAnimation>().PlayAnimation();
-                    }
-                    if(!isProcedureFinished) 
-                    {
-                        am.PlayWrongProcedureSFX();
-                        if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandAidKey").GetLocalizedString());
-                        
-                        if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongAntisepticKey").GetLocalizedString());
-                        
-                        if(objectType == Object.Petroleum) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongPetroleumKey").GetLocalizedString());
-
-                        if(objectType == Object.Wipes) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongWipesKey").GetLocalizedString());
-
-                        if(objectType == Object.Cream) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongCreamKey").GetLocalizedString());
-
-                        if(objectType == Object.GauzePad) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongGauzeKey").GetLocalizedString());
-
-                        if(objectType == Object.Bandage) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandageKey").GetLocalizedString());
-
-                        LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
-                    }  
-                }
-                else if(objectIndex > gm.GetProcedureIndex())
-                {
-                    am.PlayWrongProcedureSFX();
-                    LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
-                    gm.ShowWrongProcedureUI();
-                }
-            }
 
             if(isInTheBox) isInTheBox = false;
             if(isDragging) isDragging = false;
@@ -410,34 +366,53 @@ public class ObjectControl : MonoBehaviour
         {
             if(!isSelect) LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
             if(isSelect) isInside = true;
-            // if(objectType == Object.GauzePad || objectType == Object.Bandage) 
-            // {
-            //     if(objectIndex == gm.GetProcedureIndex())
-            //     {
-            //         LeanTween.move(gameObject, targetPosition, 0.5f);
+            
+            if(objectIndex == gm.GetProcedureIndex())
+            {
+                LeanTween.move(gameObject, targetPosition, 0.5f);
+                
+                if(isProcedureFinished) 
+                {
+                    if(objectType == Object.BandAid) StartCoroutine(Plester());
+
+                    if(objectType == Object.Antiseptic) StartCoroutine(Antiseptic());
+
+                    if(objectType == Object.Petroleum) GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+
+                    if(objectType == Object.Wipes) StartCoroutine(Wipes());
+
+                    if(objectType == Object.Cream) GetComponent<CreamAnimation>().PlayAnimation();
+
+                    if(objectType == Object.GauzePad) GauzePadAnimation();
+
+                    if(objectType == Object.Bandage) GetComponent<BandageAnimation>().WrapMode();
+                }
+                if(!isProcedureFinished) 
+                {
+                    am.PlayWrongProcedureSFX();
+                    if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandAidKey").GetLocalizedString());
                     
-            //         if(isProcedureFinished) 
-            //         {
-                        
-            //         }
-            //         if(!isProcedureFinished) 
-            //         {
-            //             am.PlayWrongProcedureSFX();
+                    if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongAntisepticKey").GetLocalizedString());
+                    
+                    if(objectType == Object.Petroleum) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongPetroleumKey").GetLocalizedString());
 
-            //             if(objectType == Object.GauzePad) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongGauzeKey").GetLocalizedString());
+                    if(objectType == Object.Wipes) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongWipesKey").GetLocalizedString());
 
-            //             if(objectType == Object.Bandage) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandageKey").GetLocalizedString());
+                    if(objectType == Object.Cream) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongCreamKey").GetLocalizedString());
 
-            //             LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
-            //         }  
-            //     }
-            //     else if(objectIndex > gm.GetProcedureIndex())
-            //     {
-            //         am.PlayWrongProcedureSFX();
-            //         LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
-            //         gm.ShowWrongProcedureUI();
-            //     }
-            // }
+                    if(objectType == Object.GauzePad) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongGauzeKey").GetLocalizedString());
+
+                    if(objectType == Object.Bandage) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandageKey").GetLocalizedString());
+
+                    LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+                }  
+            }
+            else if(objectIndex > gm.GetProcedureIndex())
+            {
+                am.PlayWrongProcedureSFX();
+                LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+                gm.ShowWrongProcedureUI();
+            }
         }
     }
 
@@ -458,6 +433,7 @@ public class ObjectControl : MonoBehaviour
         {
             gm.ChangeIsAnimatingValue(false);
             canShowEffect = true;
+            GetComponent<Collider>().enabled = true;
         });
 
         if(rb.isKinematic) rb.isKinematic = false;
@@ -520,6 +496,11 @@ public class ObjectControl : MonoBehaviour
     
     public void ChangeCanShowEffectValue(bool value) => canShowEffect = value;
 
+    public void CheckWinCondition()
+    {
+        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+    }
+
     IEnumerator CheckCondition()
     {
         gm.AddProcedureObjectIndex();
@@ -527,13 +508,9 @@ public class ObjectControl : MonoBehaviour
         gm.CheckWinCondition();
     }
 
-    public void CheckWinCondition()
-    {
-        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
-    }
-
     IEnumerator Plester()
     {
+        GetComponent<Collider>().enabled = false;
         canShowEffect = false;
         LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
@@ -544,6 +521,7 @@ public class ObjectControl : MonoBehaviour
     IEnumerator Antiseptic()
     {
         canShowEffect = false;
+        GetComponent<Collider>().enabled = false;
         gm.ChangeIsAnimatingValue(true);
         LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
         LeanTween.rotateY(gameObject, -90.0f, 0.3f);
@@ -556,6 +534,7 @@ public class ObjectControl : MonoBehaviour
     IEnumerator Wipes()
     {
         canShowEffect = false;
+        GetComponent<Collider>().enabled = false;
         gm.ChangeIsAnimatingValue(true);
         LeanTween.moveY(gameObject, 1.66f, 0.3f).setDelay(0.6f);
         LeanTween.moveY(gameObject, targetPosition.y, 0.3f).setDelay(1.2f);
@@ -566,4 +545,25 @@ public class ObjectControl : MonoBehaviour
         AfterAnimate();
         CheckWinCondition();
     }
+
+    private void GauzePadAnimation()
+    {
+        canShowEffect = false;
+        GetComponent<Collider>().enabled = false;
+        gm.ChangeIsAnimatingValue(true);
+        LeanTween.move(gameObject, new Vector3(6.0f, 7.0f, 3.0f), 0.5f).setOnComplete(() =>
+        {
+            transform.rotation = Quaternion.Euler(45.0f, 0.0f, -180.0f);
+            //LeanTween.rotate(gameObject, new Vector3(45.0f, 0.0f, 0.0f), 0.2f);
+            LeanTween.move(gameObject, new Vector3(6.0f, 6.0f, 4.0f), 0.5f).setOnComplete(() =>
+            {
+                LeanTween.scale(gameObject, Vector3.zero, 0.2f);
+                gm.ChangeIsAnimatingValue(false);
+                CheckWinCondition();
+                GetComponent<WipesAnimation>().PlayGauzePadAnimation();
+            });
+        });
+    }
+
+    
 }
