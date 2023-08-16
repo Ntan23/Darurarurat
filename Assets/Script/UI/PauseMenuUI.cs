@@ -5,16 +5,16 @@ using UnityEngine;
 public class PauseMenuUI : MonoBehaviour
 {
     private bool isOpen;
-    public GameObject background;
-    public GameObject clipboard;
-    private CanvasGroup backgroundCanvasGroup;
+    // public GameObject background;
+    // public GameObject clipboard;
+    private CanvasGroup canvasGroup;
     private GameManager gm;
 
     void Start() 
     {
         gm = GameManager.instance;
 
-        backgroundCanvasGroup = background.GetComponent<CanvasGroup>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void OpenPauseMenu(bool value)
@@ -22,9 +22,9 @@ public class PauseMenuUI : MonoBehaviour
         if(!gm.IsPausing())
         {
             gm.ChangePauseMenuIsAnimatingValue(true);
-            LeanTween.value(background, UpdateBackgroundAlpha, 0.0f, 1.0f, 0.8f);
-            LeanTween.moveLocalY(clipboard, 0.0f, 0.8f).setEaseSpring();
-            backgroundCanvasGroup.blocksRaycasts = true;
+            LeanTween.value(gameObject, UpdateBackgroundAlpha, 0.0f, 1.0f, 0.5f);
+            //LeanTween.moveLocalY(clipboard, 0.0f, 0.8f).setEaseSpring();
+            canvasGroup.blocksRaycasts = true;
             
             if(value) StartCoroutine(Wait(true));
         }
@@ -35,15 +35,15 @@ public class PauseMenuUI : MonoBehaviour
         if(!gm.IsPausing())
         {
             gm.ChangePauseMenuIsAnimatingValue(true);
-            LeanTween.value(background, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.8f);
-            LeanTween.moveLocalY(clipboard, -1092.0f, 0.8f).setEaseSpring();
-            backgroundCanvasGroup.blocksRaycasts = false;
+            LeanTween.value(gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.5f);
+            //LeanTween.moveLocalY(clipboard, -1092.0f, 0.8f).setEaseSpring();
+            canvasGroup.blocksRaycasts = false;
             
             if(value) StartCoroutine(Wait(false));
         }
     }
 
-    void UpdateBackgroundAlpha(float alpha) => backgroundCanvasGroup.alpha = alpha;
+    void UpdateBackgroundAlpha(float alpha) => canvasGroup.alpha = alpha;
 
     IEnumerator Wait(bool value)
     {

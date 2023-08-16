@@ -554,16 +554,13 @@ public class ObjectControl : MonoBehaviour
         LeanTween.move(gameObject, new Vector3(6.0f, 7.0f, 3.0f), 0.5f).setOnComplete(() =>
         {
             transform.rotation = Quaternion.Euler(45.0f, 0.0f, -180.0f);
-            //LeanTween.rotate(gameObject, new Vector3(45.0f, 0.0f, 0.0f), 0.2f);
             LeanTween.move(gameObject, new Vector3(6.0f, 6.0f, 4.0f), 0.5f).setOnComplete(() =>
             {
-                LeanTween.scale(gameObject, Vector3.zero, 0.2f);
+                gameObject.transform.localScale = Vector3.zero;
                 gm.ChangeIsAnimatingValue(false);
                 CheckWinCondition();
                 GetComponent<WipesAnimation>().PlayGauzePadAnimation();
             });
         });
-    }
-
-    
+    } 
 }

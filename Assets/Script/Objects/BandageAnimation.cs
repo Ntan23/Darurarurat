@@ -6,6 +6,7 @@ public class BandageAnimation : MonoBehaviour
 {
     private Vector3 mousePosition;
     private float mouseDistanceY;
+    private int count;
     private bool canAnimate;
     private bool wrapMode;
     private ObjectControl objectControl;
@@ -54,10 +55,7 @@ public class BandageAnimation : MonoBehaviour
         {
             if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && !wrapMode) StartCoroutine(PlayAnimation());
 
-            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && wrapMode) 
-            {
-
-            }
+            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && wrapMode) StartCoroutine(WrapAnimation());
         }
     }
 
@@ -65,7 +63,7 @@ public class BandageAnimation : MonoBehaviour
     {
         instructionArrow.SetActive(false);
         
-        //am.PlayTearPaperSFX();
+        am.PlayTearPaperSFX();
         animator.Play("Open");
         yield return new WaitForSeconds(1.6f);
         objectControl.AfterAnimate();
@@ -78,10 +76,58 @@ public class BandageAnimation : MonoBehaviour
         {
             LeanTween.rotate(gameObject, new Vector3(230.0f, 0.0f, -90.0f), 0.3f).setOnComplete(() =>
             {
+                instructionArrow.transform.rotation = Quaternion.Euler(45.0f, 0.0f, 0.0f);
                 instructionArrow.SetActive(true);
+                gm.ChangeIsAnimatingValue(true);
                 canAnimate = true;
                 wrapMode = true;
             });
         });
+    }
+
+    IEnumerator WrapAnimation()
+    {
+        count++;
+
+        if(count == 1)
+        {
+            instructionArrow.SetActive(false);
+            canAnimate = false;
+            animator.Play("FadeOut");
+            yield return new WaitForSeconds(0.5f);
+            feetAnimator.Play("BottomWrap");
+            yield return new WaitForSeconds(2.3f);
+            animator.Play("FadeIn");
+            yield return new WaitForSeconds(0.5f);
+            instructionArrow.SetActive(true);
+            canAnimate = true;
+        }
+        if(count == 2)
+        {
+            instructionArrow.SetActive(false);
+            canAnimate = false;
+            animator.Play("FadeOut");
+            yield return new WaitForSeconds(0.5f);
+            feetAnimator.Play("MiddleWrap");
+            yield return new WaitForSeconds(2.3f);
+            animator.Play("FadeIn");
+            yield return new WaitForSeconds(0.5f);
+            instructionArrow.SetActive(true);
+            canAnimate = true;
+        }
+        if(count == 3)
+        {
+            instructionArrow.SetActive(false);
+            canAnimate = false;
+            animator.Play("FadeOut");
+            yield return new WaitForSeconds(0.5f);
+            feetAnimator.Play("TopWrap");
+            yield return new WaitForSeconds(2.3f);
+            animator.Play("FadeIn");
+            yield return new WaitForSeconds(0.5f);
+            instructionArrow.SetActive(false);
+            objectControl.AfterAnimate();
+            objectControl.CheckWinCondition();
+        }
     }
 }

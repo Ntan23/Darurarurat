@@ -106,7 +106,17 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
-    public void OpenSettings() => LeanTween.moveLocalY(gameObject, 0.0f, 0.8f).setEaseSpring();
+    private void UpdateAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
 
-    public void CloseSettings() => LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
+    public void OpenSettings()
+    {
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        LeanTween.value(gameObject, UpdateAlpha, 0.0f, 1.0f, 0.5f);
+    }
+    //LeanTween.moveLocalY(gameObject, 0.0f, 0.8f).setEaseSpring();
+    public void CloseSettings() => LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 0.5f).setOnComplete(() =>
+    {
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+    });
+    //LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
 }
