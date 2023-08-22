@@ -125,6 +125,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: da06a03ae3b64b2438dae419fd9366d9
+    m_Address: Level2StoryTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 1353b85e6090cce4ea2b389b2555d986
+    m_Address: Level3StoryTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 70d7612a51d9eeb459361f2eddb17bfd
+    m_Address: Level4StoryTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 6ba4ff5164578bf4f85dbdc15f946334
+    m_Address: Level5StoryTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:

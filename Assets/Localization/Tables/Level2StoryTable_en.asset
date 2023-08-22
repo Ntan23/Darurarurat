@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Level2StoryTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 64e2cafc28fa87c42bc1e07337e32ae6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 58727727104
+    m_Localized: "\" Excuse me.. is Mrs. Mina home? \" A person is in front of Mina<font=\"LiberationSans
+      SDF\">'</font>s house, looking for Mina\n\n \" Yes.. who is it? \" Answers
+      Mina"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69528059904
+    m_Localized: '" Good afternoon Mrs. Mina, my family wanted to give you some souvenirs
+      from our last trip overseas "'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72984166400
+    m_Localized: '" Oh my, thank you for the consideration " Says Mina
+
+
+      But
+      while Steven hands out the bag of souvenir, Mina notices a burn wound on Steven<font="LiberationSans
+      SDF">''</font>s arm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76209586176
+    m_Localized: '" What happened to your arm Steven? "
+
+
+      " Ah, I had a small
+      accident with fire in a science experiment at school, it is nothing " Says
+      Steven
+
+
+      " Nope, you are not going anywhere before I treat it for you
+      "
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79103655936
+    m_Localized: 'Mrs. Mina successfully treated Steven<font="LiberationSans SDF">''</font>s
+      wound and Steven thanked her.
+
+
+      " Thank your Mrs. Mina! Oh, and please
+      do not forget the souvenirs " Says Steven'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83914522624
+    m_Localized: '" Oh yes, thank you Steven for the souvenirs, and give my thanks
+      to your parents too " Says Mina
+
+
+      " Okay Mrs. Mina, I<font="LiberationSans
+      SDF">''</font>ll be going then "
+
+      Steven then leaves with his burn wound
+      taken care of by Mina'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

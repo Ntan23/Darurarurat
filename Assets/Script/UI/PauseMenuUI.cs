@@ -47,7 +47,7 @@ public class PauseMenuUI : MonoBehaviour
 
     IEnumerator Wait(bool value)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.6f);
         gm.ChangePauseMenuIsAnimatingValue(false);
         gm.ChangeGameState(value);
     }

@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaitForPauseMenuAnimation(bool isPause)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.6f);
         isPauseMenuAnimating = false;
         if(isPause) gameState = State.Playing;
         else if(!isPause) gameState = State.Pause;

@@ -48,7 +48,7 @@ public class FirstAidBox : MonoBehaviour
 
     void OnMouseDown()
     {
-        if(!isOpen && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
+        if(!isOpen && canBeClicked && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating() && !sm.GetIsOpen())
         {
             clickCount++;
 

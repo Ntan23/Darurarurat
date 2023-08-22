@@ -93,6 +93,22 @@ MonoBehaviour:
     m_Address: Assets/Localization/Tables/Level5ExamineTable Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 64e2cafc28fa87c42bc1e07337e32ae6
+    m_Address: Assets/Localization/Tables/Level2StoryTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 89c968d21f9c76040adf3057f59a53ee
+    m_Address: Assets/Localization/Tables/Level3StoryTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: d7dafb087eded5647beabadaf99d8a13
+    m_Address: Assets/Localization/Tables/Level4StoryTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 8c85788f36867724aa60ed45d4d11d47
+    m_Address: Assets/Localization/Tables/Level5StoryTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:

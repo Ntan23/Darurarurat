@@ -49,6 +49,7 @@ public class StoryManager : MonoBehaviour
 
         if(storyIndex == cutStoryIndex) 
         {
+            isOpen = false;
             stories[storyIndex - 1].GetComponent<CanvasGroup>().alpha = 0.0f;
             MoveStoryBoard();
         }
@@ -60,6 +61,7 @@ public class StoryManager : MonoBehaviour
     
     public void SkipStory()
     {
+        isOpen = false;
         storyIndex++;
 
         if(storyIndex <= cutStoryIndex) 
@@ -73,6 +75,7 @@ public class StoryManager : MonoBehaviour
 
     public void ShowEndStory()
     {
+        isOpen = true;
         nextButton.interactable = false;
         // startStoryBoard.SetActive(false);
         // endStoryboard.SetActive(true);
