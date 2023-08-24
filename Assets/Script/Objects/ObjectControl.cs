@@ -369,7 +369,7 @@ public class ObjectControl : MonoBehaviour
             
             if(objectIndex == gm.GetProcedureIndex())
             {
-                LeanTween.move(gameObject, targetPosition, 0.5f);
+                LeanTween.move(gameObject, targetPosition, 0.8f);
                 
                 if(isProcedureFinished) 
                 {
@@ -410,7 +410,7 @@ public class ObjectControl : MonoBehaviour
             else if(objectIndex > gm.GetProcedureIndex())
             {
                 am.PlayWrongProcedureSFX();
-                LeanTween.move(gameObject, beforeAnimatePosition, 0.5f);
+                LeanTween.move(gameObject, beforeAnimatePosition, 0.8f);
                 gm.ShowWrongProcedureUI();
             }
         }
