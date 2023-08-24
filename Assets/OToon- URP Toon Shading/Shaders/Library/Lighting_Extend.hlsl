@@ -187,9 +187,8 @@ half3 LightingSpecularToon(half3 lightColor, half3 lightDir, half3 normal, half3
     float3 halfVec = SafeNormalize(float3(lightDir) + float3(viewDir));
     half NdotH = saturate(dot(normal, halfVec));
     half spec = pow(NdotH, reverseSize);
-    half delta = fwidth(spec);
-    half modifier = smoothstep(reverseSize - delta, reverseSize + delta + smoothness, spec);
-    half3 specularReflection = specular.rgb * modifier;
+    spec = StepFeatherToon(spec, 1, reverseSize, smoothness);
+    half3 specularReflection = specular.rgb * spec;
     return lightColor * specularReflection;
 }
 
@@ -273,7 +272,7 @@ half3 FaceShadowMapColor(half3 baseColor, half3 shadowdColor, float2 uv, OtoonPB
     float shadedArea = 1 - dot(normalize(front.xz), normalize(lightDir.xz));
 
     float lightAttenuation = smoothstep(shadedArea - _FaceShadowSmoothness, shadedArea + _FaceShadowSmoothness, flippedFaceShadow) * light.shadowAttenuation;
-    return lerp(shadowdColor, baseColor, lightAttenuation);
+    return lerp(shadowdColor, baseColor, saturate(lightAttenuation));
 }
 
 half3 LightingPhysicallyBased_Extend(BRDFData brdfData, BRDFData brdfDataClearCoat,

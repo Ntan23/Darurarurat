@@ -21,6 +21,7 @@ public class FirstAidBox : MonoBehaviour
     private GameManager gm;
     private AudioManager am;
     private StoryManager sm;
+    [SerializeField] private PauseMenuUI pauseMenuUI;
     //private DialogueManager dm;
 
     void Start()
@@ -43,7 +44,7 @@ public class FirstAidBox : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(canBeClicked && !gm.GetPauseMenuIsAnimating()) boxRenderer.material = hoverMaterial;
+        if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) boxRenderer.material = hoverMaterial;
     }
 
     void OnMouseDown()

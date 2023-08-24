@@ -21,6 +21,7 @@ public class PauseMenuUI : MonoBehaviour
     {
         if(!gm.IsPausing())
         {
+            isOpen = true;
             gm.ChangePauseMenuIsAnimatingValue(true);
             LeanTween.value(gameObject, UpdateBackgroundAlpha, 0.0f, 1.0f, 0.5f);
             //LeanTween.moveLocalY(clipboard, 0.0f, 0.8f).setEaseSpring();
@@ -34,6 +35,7 @@ public class PauseMenuUI : MonoBehaviour
     {
         if(!gm.IsPausing())
         {
+            isOpen = false;
             gm.ChangePauseMenuIsAnimatingValue(true);
             LeanTween.value(gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.5f);
             //LeanTween.moveLocalY(clipboard, -1092.0f, 0.8f).setEaseSpring();
@@ -50,5 +52,10 @@ public class PauseMenuUI : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         gm.ChangePauseMenuIsAnimatingValue(false);
         gm.ChangeGameState(value);
+    }
+
+    public bool GetIsOpen()
+    {
+        return isOpen;
     }
 }

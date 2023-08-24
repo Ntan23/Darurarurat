@@ -70,7 +70,7 @@ public class LevelSelectionUI : MonoBehaviour
 
     public void MoveNext()
     {
-        if(levelIndex < 3)
+        if(levelIndex < 4)
         {   
             previousButton.interactable = false;
             nextButton.interactable = false;
@@ -78,7 +78,7 @@ public class LevelSelectionUI : MonoBehaviour
 
             if(levelIndex == 0) LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 0.0f, 1.0f, 1.0f).setOnComplete(() => buttonFXs[0].EnableSFX());
             
-            if(levelIndex == 2) 
+            if(levelIndex == 3) 
             {
                 buttonFXs[1].RemoveSFX();
                 LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 1.0f, 0.0f, 1.0f);
@@ -122,7 +122,7 @@ public class LevelSelectionUI : MonoBehaviour
                 buttonFXs[0].RemoveSFX();
                 LeanTween.value(previousButton.gameObject, UpdatePreviousButtonAlpha, 1.0f, 0.0f, 1.0f);
             }
-            if(levelIndex == 3) LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 0.0f, 1.0f, 1.0f).setOnComplete(() => buttonFXs[1].EnableSFX());
+            if(levelIndex == 4) LeanTween.value(nextButton.gameObject, UpdateNextButtonAlpha, 0.0f, 1.0f, 1.0f).setOnComplete(() => buttonFXs[1].EnableSFX());
 
             if(levelIndex > levelUnlocked)
             {

@@ -377,11 +377,11 @@ public class ObjectControl : MonoBehaviour
 
                     if(objectType == Object.Antiseptic) StartCoroutine(Antiseptic());
 
-                    if(objectType == Object.Petroleum) GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+                    if(objectType == Object.Petroleum) PetroleumAnimation();
 
                     if(objectType == Object.Wipes) StartCoroutine(Wipes());
 
-                    if(objectType == Object.Cream) GetComponent<CreamAnimation>().PlayAnimation();
+                    if(objectType == Object.Cream) HydrocortisoneAnimation();
 
                     if(objectType == Object.GauzePad) GauzePadAnimation();
 
@@ -531,6 +531,12 @@ public class ObjectControl : MonoBehaviour
         CheckWinCondition();
     }
 
+    private void PetroleumAnimation()
+    {
+        GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+        gm.AddProcedureObjectIndex();
+    }
+
     IEnumerator Wipes()
     {
         canShowEffect = false;
@@ -544,6 +550,12 @@ public class ObjectControl : MonoBehaviour
         GetComponent<WipesAnimation>().ChangeHandTexture();
         AfterAnimate();
         CheckWinCondition();
+    }
+
+    private void HydrocortisoneAnimation()
+    {
+        GetComponent<CreamAnimation>().PlayAnimation();
+        gm.AddProcedureObjectIndex();
     }
 
     private void GauzePadAnimation()
