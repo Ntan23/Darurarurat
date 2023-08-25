@@ -27,7 +27,7 @@ public class SettingsUI : MonoBehaviour
     private int isFullscreen;
     private int width, height;
     private AudioManager am;
-
+    
     private void Start()
     {
         am = AudioManager.instance;
@@ -36,12 +36,11 @@ public class SettingsUI : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
         isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1);
 
-        BGMSlider.value = bgmVolume;
-        SFXSlider.value = sfxVolume;
+
         // MainMixer.SetFloat("BGM_Volume", bgmVolume);
         // MainMixer.SetFloat("SFX_Volume", sfxVolume);
-        am.SetBGMVolume(bgmVolume);
-        am.SetSFXVolume(sfxVolume);
+        // am.SetBGMVolume(bgmVolume);
+        // am.SetSFXVolume(sfxVolume);
 
         if(isFullscreen == 1) 
         {
@@ -59,6 +58,8 @@ public class SettingsUI : MonoBehaviour
             height = PlayerPrefs.GetInt("Height", Screen.currentResolution.height);
             Screen.SetResolution(Mathf.RoundToInt(width / 1.5f), Mathf.RoundToInt(height / 1.5f), false);
         }
+
+        StartCoroutine(UpdateVolume());
     }
 
     public void UpdateBGMSound(float value)
@@ -67,6 +68,7 @@ public class SettingsUI : MonoBehaviour
         am.SetBGMVolume(value);
         PlayerPrefs.SetFloat("BGMVolume", value);
     }
+
     public void UpdateSFXSound(float value)
     {
         //MainMixer.SetFloat("SFX_Volume", value);
@@ -119,4 +121,14 @@ public class SettingsUI : MonoBehaviour
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     });
     //LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
+
+    IEnumerator UpdateVolume()
+    {
+        yield return new WaitForSeconds(0.1f);
+        BGMSlider.value = bgmVolume;
+        SFXSlider.value = sfxVolume;
+        
+        am.SetBGMVolume(bgmVolume);
+        am.SetSFXVolume(sfxVolume);
+    }
 }

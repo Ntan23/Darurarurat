@@ -22,6 +22,25 @@ MonoBehaviour:
     m_Localized: Bleeding Wounds
     m_Metadata:
       m_Items: []
+  - m_Id: 122707640320
+    m_Localized: Bleeding is the loss of blood from the circulatory system. The causes
+      of bleeding include the following minor cuts and abrasions to deep wounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 204240323739648
+    m_Localized: 'First aid requirements for bleeding wounds :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 204474806304768
+    m_Localized: 'First aid procedures for bleeding wounds :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 204722156994560
+    m_Localized: "1. Prepare sterile gauze pads and bandages\n2. Open the wrapper
+      of the sterile gauze (for those with wrapper)\n3. Apply the bandage to the
+      wound \n4. Open the bandage and wrap it around the wound"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

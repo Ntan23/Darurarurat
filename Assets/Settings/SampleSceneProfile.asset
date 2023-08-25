@@ -188,7 +188,7 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0, z: 0.99871874, w: 0.550142}
+    m_Value: {x: 1, y: 0, z: 0.9761028, w: 0.550142}
   midtones:
     m_OverrideState: 0
     m_Value: {x: 0.9350447, y: 0.95354927, z: 1, w: 0.12642224}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
   m_Name: WhiteBalance
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   temperature:
     m_OverrideState: 1
     m_Value: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
   m_Name: ColorCurves
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   master:
     m_OverrideState: 0
     m_Value:
@@ -405,8 +405,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.9190711
-          value: 0.5636363
+          time: 0.90851516
+          value: 0.539394
           inSlope: 0
           outSlope: 0
           tangentMode: 0
