@@ -43,32 +43,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15972596580352
-    m_Localized: "Controls: Click and Drag\n\nInstructions: \n1. You need to drag
-      the required object to the hand in each level (if it's right then there will
-      be an animation, if it's incorrect then there will be a text that appears to
-      tell you about what you need to do first).\n\n2. For wearable (interaction)
-      objects, you can inspect and interact with the object such as open, close and
-      put cream by clicking the button. The button will appear if you hover over
-      the object. \n\n 3. Once you have clicked the button for interaction, you need
-      to drag it in the given direction (arrow). Objects that can be interacted with
-      will be highlighted in yellow. \n\nNotes: The board below each level can be
-      clicked to view information related to the level."
+    m_Localized: "Controls: Click and Drag\r\n\r\nHow to Play:\r\n1. Click the first
+      aid box until its get open and click the highlighted objects to take out the
+      objects.\r \nYou can click the opened first aid box to take another required
+      object by clicking the box.\n\r\n2. Hold the left mouse click and drag the
+      required object to the hand in each level. \r\n\r\n3. You can inspect and interact
+      with the object by pressing the button that appears when the object is hovered
+      over. \r\n\r\n4. If there is an arrow on top of the object, you need to hold
+      the left mouse click and drag the highlighted part in the given direction.\r\n\r\nNotes:
+      \r\nInteractable objects will be highlighted yellow.\r\nClick on the board
+      below in each level for level related info. "
     m_Metadata:
       m_Items: []
   - m_Id: 19868979167232
     m_Localized: "<b><size=60px>Game Designer</size></b>\r\nJouza\r\n\r\n<b><size=60px>Game
       3D Artist</size></b>\r\nNicholas\r\n\r\n<b><size=60px>Game Programmer</size></b>\r\nNicholas
       Tandinata\r\n\r\n<b><size=60px>UI Designer</size></b>\r\nJouza\r\nNicholas
-      Tandinata\r\n\r\n<b><size=60px>Font</size></b>\r\nHand Craft by <b><u>MJ Type</u></b>\r\n\r\n<b><size=60px>Dialogue
-      Avatar</size></b>\r\nAvatar from <u>https:<font=\"LiberationSans SDF\">// </font>avatarmaker.net<font=\"LiberationSans
-      SDF\">/ </font></u>\r\n\r\n<b><size=60px>SFX</size></b>\r\nOpen & Close Antiseptic
-      and Hydrocortisone Cream SFX from \r\n<u>https:<font=\"LiberationSans SDF\">//
-      </font>pixabay.com<font=\"LiberationSans SDF\">/</font>\r\n</u>\r\nCrowd, Click
-      Button, Child Fall & Level Complete SFX from\r\n<u>https:<font=\"LiberationSans
+      Tandinata\r\n\nAdditional art by <b><u>Shafa</u></b>\r\n\r\n<b><size=60px>Font</size></b>\r\nHand
+      Craft by <b><u>MJ Type</u></b>\r\n\n<b><size=60px>VFX</size></b>\r\nOToon URP
+      Toon Shading by Eric Hu from Unity Asset Store\r\nPost Processing by Nicholas
+      Tandinata\r\n\r\n<b><size=60px>SFX</size></b>\r\nOpen & Close Antiseptic, Sweeping
+      Floor, Itch Scratch and Hydrocortisone Cream SFX from \r\n<u>https:<font=\"LiberationSans
+      SDF\">// </font>pixabay.com<font=\"LiberationSans SDF\">/</font>\r\n</u>\r\nCrowd,
+      Click Button, Child Fall, Kids Cry, Bell & Level Complete SFX from\r\n<u>https:<font=\"LiberationSans
       SDF\">// </font>mixkit.co<font=\"LiberationSans SDF\">/ </font></u>\r\nThe
-      Other SFX made by Jouza dan Nicholas Tandinata\r\n\r\n<b><size=60px>VFX</size></b>\r\nSimple
-      Toon Shader by Indie Game Helper from Unity Asset Store\r\nPost Processing
-      by oleh Nicholas Tandinata\r\n\r\n<b><size=60px>BGM</size></b>\r\nSunflowers
+      Other SFX made by Jouza dan Nicholas Tandinata\r\n\r\n<b><size=60px>BGM</size></b>\r\nSunflowers
       by Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
       SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\r\nMusic
       promoted by <u>https : <font=\"LiberationSans SDF\">//</font>www.chosic.com<font=\"LiberationSans

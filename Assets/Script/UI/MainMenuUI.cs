@@ -17,14 +17,19 @@ public class MainMenuUI : MonoBehaviour
     {
         scenesManager = ScenesManager.instance;
         animator = GetComponent<Animator>();
+
+
+        StartCoroutine(StartDelay());
     }
 
     private void OnMouseDown()
     {
         if(!isOpen && !isAnimating) 
         {
+            GetComponent<Collider>().enabled = false;
             isOpen = true;
             isAnimating = true;
+
             LeanTween.moveX(gameObject, 0.0f, 0.5f).setEaseSpring().setOnComplete(() =>
             {
                 animator.Play("OpenBook");
@@ -97,4 +102,11 @@ public class MainMenuUI : MonoBehaviour
     }
 
     public void SetBackIsAnimating() => isAnimating = false;
+
+    IEnumerator StartDelay()
+    {
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(1.0f);
+        GetComponent<Collider>().enabled = true;
+    }
 }

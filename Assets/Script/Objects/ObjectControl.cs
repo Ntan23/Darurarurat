@@ -22,6 +22,7 @@ public class ObjectControl : MonoBehaviour
     [Header("Position")]
     [SerializeField] private Vector3 targetPosition;
     [SerializeField] private Vector3 inspectPosition;
+    private Vector3 intialRotation;
     #endregion
 
     #region IntegerVaribles
@@ -105,6 +106,7 @@ public class ObjectControl : MonoBehaviour
             if(isInTheBox) HideAllButtons();
 
             if(transform.parent != takenParent) transform.parent = takenParent;
+            
             
             cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
             
@@ -369,7 +371,7 @@ public class ObjectControl : MonoBehaviour
             
             if(objectIndex == gm.GetProcedureIndex())
             {
-                LeanTween.move(gameObject, targetPosition, 0.8f);
+                LeanTween.move(gameObject, targetPosition, 0.5f);
                 
                 if(isProcedureFinished) 
                 {
@@ -383,9 +385,9 @@ public class ObjectControl : MonoBehaviour
 
                     if(objectType == Object.Cream) HydrocortisoneAnimation();
 
-                    if(objectType == Object.GauzePad) GauzePadAnimation();
+                    if(objectType == Object.GauzePad) StartCoroutine(GauzePadAnimation());
 
-                    if(objectType == Object.Bandage) GetComponent<BandageAnimation>().WrapMode();
+                    if(objectType == Object.Bandage) StartCoroutine(GetComponent<BandageAnimation>().WrapMode());
                 }
                 if(!isProcedureFinished) 
                 {
@@ -443,6 +445,8 @@ public class ObjectControl : MonoBehaviour
     {
         HideHoverEffect();
 
+        intialRotation = transform.rotation.eulerAngles;
+
         firstAidBox.SetCanBeClicked(false);
         HideAllButtons();
         beforeInspectPosition = transform.position;
@@ -458,13 +462,15 @@ public class ObjectControl : MonoBehaviour
     public void CloseInspect()
     {
         firstAidBox.SetCanBeClicked(true);
-        LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
 
-        if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType == Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
-        if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
-        if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
-        if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
-        if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
+        LeanTween.rotate(gameObject, intialRotation,  0.3f);
+        // if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType == Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
+        // if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
+        // if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
+        // if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
+        // if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
+
+        LeanTween.move(gameObject, beforeInspectPosition, 0.8f).setEaseSpring();
 
         if(rb.isKinematic) rb.isKinematic = false;
         
@@ -512,6 +518,7 @@ public class ObjectControl : MonoBehaviour
     {
         GetComponent<Collider>().enabled = false;
         canShowEffect = false;
+        yield return new WaitForSeconds(0.5f);
         LeanTween.move(gameObject, new Vector3(9.66f, 1.4f, 7.44f), 0.5f);
         LeanTween.scale(gameObject, new Vector3(0.3f, 0.3f, 0.3f), 0.5f);
         yield return new WaitForSeconds(0.7f);
@@ -558,14 +565,17 @@ public class ObjectControl : MonoBehaviour
         gm.AddProcedureObjectIndex();
     }
 
-    private void GauzePadAnimation()
+    IEnumerator GauzePadAnimation()
     {
-        canShowEffect = false;
         GetComponent<Collider>().enabled = false;
+        canShowEffect = false;
         gm.ChangeIsAnimatingValue(true);
-        LeanTween.move(gameObject, new Vector3(6.0f, 7.0f, 3.0f), 0.5f).setOnComplete(() =>
+        yield return new WaitForSeconds(0.5f);
+        // LeanTween.move(gameObject, new Vector3(6.0f, 6.0f, 3.0f), 0.5f).setOnComplete(() =>
+        // {
+        LeanTween.rotate(gameObject, new Vector3(-34.8f, 180.0f, 0.0f), 0.3f).setOnComplete(()  =>
         {
-            transform.rotation = Quaternion.Euler(45.0f, 0.0f, -180.0f);
+            transform.rotation = Quaternion.Euler(-34.8f, 180.0f, 0.0f);
             LeanTween.move(gameObject, new Vector3(6.0f, 6.0f, 4.0f), 0.5f).setOnComplete(() =>
             {
                 gameObject.transform.localScale = Vector3.zero;
@@ -574,5 +584,6 @@ public class ObjectControl : MonoBehaviour
                 GetComponent<WipesAnimation>().PlayGauzePadAnimation();
             });
         });
+        // });
     } 
 }

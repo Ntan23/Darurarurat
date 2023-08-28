@@ -34,8 +34,8 @@ public class ScenesManager : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         if(gm != null)
         {
-            if(gm.GetLevelIndex() < 4) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            else if(gm.GetLevelIndex() == 4) SceneManager.LoadScene(0);
+            if(gm.GetLevelIndex() < 5) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            else if(gm.GetLevelIndex() == 5) SceneManager.LoadScene(0);
         }
         else if(gm == null) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

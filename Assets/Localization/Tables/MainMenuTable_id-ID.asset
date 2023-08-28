@@ -43,33 +43,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15972596580352
-    m_Localized: "Kontrol : Klik dan Drag\n\nInstruksi : \n1. Anda perlu drag object
-      yang dibutuhkan ke tangan yang ada di setiap level (jika benar maka akan ada
-      animasi, jika salah maka ada text yang muncul untuk memberitahu Anda apa yang
-      perlu dikerjakan terlebih dahulu).\n\n2. Untuk objek yang bisa dipakai (interaksi),
-      Anda dapat melakukan inspeksi dan berinteraksi dengan objeknya seperti buka,
-      tutup dan menaruh krim dengan menekan tombol. Tombol akan muncul jika Anda
-      menghover objeknya. \n\n 3. Setelah klik tombol untuk interaksi, Anda perlu
-      untuk melakukan drag ke arah yang telah diberikan (panah). Objek yang bisa
-      di interaksi akan ke highlight warna kuning. \n\nCatatan : Papan yang ada dibawah
-      yang berada di setiap level dapat di klik untuk melihat informasi yang berkaitan
-      dengan level tersebut."
+    m_Localized: "Kontrol: Klik dan Drag\r\n\r\nCara Bermain:\r\n1. Klik kotak P3K
+      sampai terbuka dan klik objek yang dihighlight untuk mengeluarkan objek tersebut.\r
+      \nAnda dapat mengambil kembali kotak P3K untuk mengambil objek lain yang diperlukan
+      dengan klik kotak tersebut.\n\r\n2. Tahan klik kiri mouse dan drag objek yang
+      diperlukan ke tangan di setiap level. \r\n\r\n3. Anda dapat memeriksa dan berinteraksi
+      dengan objek dengan menekan tombol yang muncul saat objek dilayangkan. \r\n\r\n4.
+      Jika terdapat tanda panah di atas objek, Anda harus menahan klik kiri mouse
+      dan drag bagian yang dihighlight ke arah yang diberikan.\r\n\r\nCatatan: \r\nObjek
+      yang dapat diinteraksikan akan dihighlight dengan warna kuning.\r\nKlik papan
+      di bawah ini di setiap level untuk mengetahui info terkait level. "
     m_Metadata:
       m_Items: []
   - m_Id: 19868979167232
     m_Localized: "<b><size=60px>Game Designer</size></b>\r\nJouza\r\n\r\n<b><size=60px>Game
       3D Artist</size></b>\r\nNicholas\r\n\r\n<b><size=60px>Game Programmer</size></b>\r\nNicholas
       Tandinata\r\n\r\n<b><size=60px>UI Designer</size></b>\r\nJouza\r\nNicholas
-      Tandinata\r\n\r\n<b><size=60px>Font</size></b>\r\nHand Craft dibuat oleh <b><u>MJ
-      Type</u></b>\r\n\r\n<b><size=60px>Dialogue Avatar</size></b>\r\nAvatar dari
-      <u>https:<font=\"LiberationSans SDF\">// </font>avatarmaker.net<font=\"LiberationSans
-      SDF\">/ </font></u>\r\n\r\n<b><size=60px>SFX</size></b>\r\nSFX Buka Tutup Antiseptik
-      & Hidrokotison dari \r\n<u>https:<font=\"LiberationSans SDF\">// </font>pixabay.com<font=\"LiberationSans
-      SDF\">/</font>\r\n</u>\r\nSFX Keramaian, Klik Tombol, Jatuh & Level Selesai
-      dari \r\n<u>https:<font=\"LiberationSans SDF\">// </font>mixkit.co<font=\"LiberationSans
-      SDF\">/ </font></u>\r\nSFX lainnya dibuat oleh Jouza dan Nicholas Tandinata\r\n\r\n<b><size=60px>VFX</size></b>\r\nSimple
-      Toon Shader dibuat oleh  Indie Game Helper dari Unity Asset Store\r\nPost Processing
-      dibuat oleh Nicholas Tandinata\r\n\r\n<b><size=60px>BGM</size></b>\r\nSunflowers
+      Tandinata\r\n\r\nArt tambahan dari <b><u>Shafa</u></b>\r\n\n<b><size=60px>Font</size></b>\r\nHand
+      Craft dibuat oleh <b><u>MJ Type</u></b>\r\n\r\n<b><size=60px>VFX</size></b>\r\nOToon
+      URP Toon Shading dibuat oleh Eric Hu dari Unity Asset Store\r\nPost Processing
+      dibuat oleh Nicholas Tandinata\r\n\r\n<b><size=60px>SFX</size></b>\r\nSFX Buka
+      Tutup Antiseptik, Sapu Lantai, Garuk & Hidrokotison dari \r\n<u>https:<font=\"LiberationSans
+      SDF\">// </font>pixabay.com<font=\"LiberationSans SDF\">/</font>\r\n</u>\r\nSFX
+      Keramaian, Klik Tombol, Jatuh, Tangisan, Bel & Level Selesai dari \r\n<u>https:<font=\"LiberationSans
+      SDF\">// </font>mixkit.co<font=\"LiberationSans SDF\">/ </font></u>\r\nSFX
+      lainnya dibuat oleh Jouza dan Nicholas Tandinata\r\n\r\n<b><size=60px>BGM</size></b>\r\nSunflowers
       dibuat oleh Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
       SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\r\nMusik
       dipromosikan oleh <u>https : <font=\"LiberationSans SDF\">//</font>www.chosic.com<font=\"LiberationSans

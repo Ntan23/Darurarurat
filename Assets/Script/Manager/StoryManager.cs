@@ -27,10 +27,14 @@ public class StoryManager : MonoBehaviour
     private bool isOpen = true;
     private int storyIndex;
     private ScenesManager sm;
+    private GameManager gm;
+    private AudioManager am;
 
     void Start()
     {
         sm = ScenesManager.instance;
+        am = AudioManager.instance;
+        gm = GameManager.instance;
 
         StartCoroutine(StartAnimation());
     }
@@ -42,6 +46,7 @@ public class StoryManager : MonoBehaviour
 
     public void NextStory()
     {
+        am.StopAllSFX();
         previousButton.interactable = false;
         nextButton.interactable = false;
         
@@ -61,6 +66,8 @@ public class StoryManager : MonoBehaviour
     
     public void SkipStory()
     {
+        am.StopAllSFX();
+
         isOpen = false;
         storyIndex++;
 
@@ -105,12 +112,15 @@ public class StoryManager : MonoBehaviour
             {
                 previousButton.interactable = true;
                 nextButton.interactable = true;
+
+                if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
             });
         });
     }
 
     private void PlayPreviousStoryAnimation()
     {
+        am.StopAllSFX();
         if(storyIndex > 0 && storyIndex != cutStoryIndex)
         {
             previousButton.interactable = false;
@@ -135,6 +145,8 @@ public class StoryManager : MonoBehaviour
                 {
                     previousButton.interactable = true;
                     nextButton.interactable = true;
+
+                    if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
                 });
             });
         }
@@ -155,6 +167,7 @@ public class StoryManager : MonoBehaviour
         LeanTween.value(stories[storyIndex], UpdateCurrentStoryAlpha, 0.0f, 1.0f, 0.5f).setOnComplete(() => 
         {
             nextButton.interactable = true;
+            if(stories[storyIndex].GetComponent<StorySFX>() != null) stories[storyIndex].GetComponent<StorySFX>().PlaySFX();
         });
     }
 

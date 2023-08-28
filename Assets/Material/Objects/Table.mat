@@ -147,6 +147,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
+    - _BlendOp: 0
     - _BrushLowerCut: 0
     - _BrushSize: 0.8
     - _BumpScale: 1
@@ -211,11 +212,12 @@ Material:
     - _RimStep: 0.7
     - _RimStepSmooth: 0
     - _Roughness_Value: 0
+    - _SampleGI: 0
     - _ShadowStep: 0.7
     - _ShadowStepSmooth: 0
     - _Shininess: 0
     - _SizeFalloff: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1

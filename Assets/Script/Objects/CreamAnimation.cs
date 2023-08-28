@@ -151,7 +151,7 @@ public class CreamAnimation : MonoBehaviour
         beforeAnimatePosition = objectControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
         LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.2f);
         playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
         gm.ChangeIsAnimatingValue(false);
     }

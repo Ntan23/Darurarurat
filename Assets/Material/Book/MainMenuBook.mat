@@ -180,7 +180,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 8
+    - _OutlineWidth: 0.808
     - _OverrideShadowColor: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -189,6 +189,10 @@ Material:
     - _RimLightAlign: 0
     - _RimLightSmoothness: 0
     - _RimPower: 0.55
+    - _RimStep: 0.65
+    - _RimStepSmooth: 0.4
+    - _ShadowStep: 0.5
+    - _ShadowStepSmooth: 0.04
     - _Shininess: 0
     - _SizeFalloff: 0
     - _Smoothness: 0.5
@@ -201,6 +205,8 @@ Material:
     - _SpecularFalloff: 0.5
     - _SpecularHighlights: 1
     - _SpecularSize: 0.25
+    - _SpecularStep: 0
+    - _SpecularStepSmooth: 0
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
     - _StencilComp: 0
@@ -223,7 +229,8 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -75, g: 75, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.11372549, g: 0.011764706, b: 0.11372549, a: 1}
+    - _ShadowColor: {r: 0.11372543, g: 0.011764706, b: 0.11372543, a: 0.9019608}
     - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0.5}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

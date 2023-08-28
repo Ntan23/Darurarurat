@@ -79,6 +79,7 @@ public class AudioManager : MonoBehaviour
     public void PlayDialogueActionSFX(string name) => Play(name);
     public void PlaySippingTeaSFX() => Play("Sipping");
     public void StopSippingTeaSFX() => Stop("Sipping");
+    public void StopKidsPlaySFX() => Stop("KidsPlay");
     public void PlayWritingSFX() => Play("Writing");
     public void StopWritingSFX() => Stop("Writing");
     public void PlayBoxOpenSFX() => Play("BoxOpen");
@@ -92,5 +93,13 @@ public class AudioManager : MonoBehaviour
     public void PlayTearPaperSFX() => Play("TearPaper");
     public void PlayLevelCompleteSFX() => Play("LevelComplete");
     public void PlayWrongProcedureSFX() => Play("Error");
-}
+    public void PlayKidsPlaySFX() => Play("KidsPlay");
+    public void PlayFallSFX() => Play("Fall");
+    public void PlayWatchTVSFX() => Play("WatchTV");
+    public void PlayKnockDoorSFX() => Play("KnockDoor");
+    public void PlayBellSFX() => Play("Bell");
+    public void PlayKidsCrySFX() => Play("KidsCry");
+    public void PlaySweepingSFx() => Play("Sweeping");
+    public void PlayItchScratchSFX() => Play("ItchScratch");
+} 
 

@@ -12,7 +12,7 @@ public class BandageAnimation : MonoBehaviour
     private ObjectControl objectControl;
     private Animator animator;
     [SerializeField] private Animator feetAnimator;
-    [SerializeField] private GameObject instructionArrow;
+    [SerializeField] private GameObject[] instructionArrows;
     private GameManager gm;
     private AudioManager am;
     
@@ -24,7 +24,7 @@ public class BandageAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
 
-        instructionArrow.SetActive(false);
+        foreach(GameObject go in instructionArrows) go.SetActive(false);
     }
 
     public void Open()
@@ -39,7 +39,7 @@ public class BandageAnimation : MonoBehaviour
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.6f);
-        instructionArrow.SetActive(true);
+        instructionArrows[0].SetActive(true);
 
         animator.enabled = true;
         canAnimate = true; 
@@ -61,7 +61,7 @@ public class BandageAnimation : MonoBehaviour
 
     IEnumerator PlayAnimation()
     {
-        instructionArrow.SetActive(false);
+        instructionArrows[0].SetActive(false);
         
         am.PlayTearPaperSFX();
         animator.Play("Open");
@@ -70,19 +70,22 @@ public class BandageAnimation : MonoBehaviour
         canAnimate = false;
     }
 
-    public void WrapMode()
+    public IEnumerator WrapMode()
     {
-        LeanTween.move(gameObject, new Vector3(4.3f, 6.37f, 4.15f), 0.5f).setOnComplete(() =>
-        {
+        gm.ChangeIsAnimatingValue(true);
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        // LeanTween.move(gameObject, new Vector3(4.3f, 6.37f, 4.15f), 0.5f).setOnComplete(() =>
+        // {
             LeanTween.rotate(gameObject, new Vector3(230.0f, 0.0f, -90.0f), 0.3f).setOnComplete(() =>
             {
-                instructionArrow.transform.rotation = Quaternion.Euler(45.0f, 0.0f, 0.0f);
-                instructionArrow.SetActive(true);
-                gm.ChangeIsAnimatingValue(true);
+                GetComponent<Collider>().enabled = true;
+                instructionArrows[1].SetActive(true);
+                instructionArrows[1].transform.rotation = Quaternion.Euler(45f, 0.0f, 0.0f);
                 canAnimate = true;
                 wrapMode = true;
             });
-        });
+        // });
     }
 
     IEnumerator WrapAnimation()
@@ -91,7 +94,7 @@ public class BandageAnimation : MonoBehaviour
 
         if(count == 1)
         {
-            instructionArrow.SetActive(false);
+            instructionArrows[1].SetActive(false);
             canAnimate = false;
             animator.Play("FadeOut");
             yield return new WaitForSeconds(0.5f);
@@ -99,12 +102,12 @@ public class BandageAnimation : MonoBehaviour
             yield return new WaitForSeconds(2.3f);
             animator.Play("FadeIn");
             yield return new WaitForSeconds(0.5f);
-            instructionArrow.SetActive(true);
+            instructionArrows[1].SetActive(true);
             canAnimate = true;
         }
         if(count == 2)
         {
-            instructionArrow.SetActive(false);
+            instructionArrows[1].SetActive(false);
             canAnimate = false;
             animator.Play("FadeOut");
             yield return new WaitForSeconds(0.5f);
@@ -112,12 +115,12 @@ public class BandageAnimation : MonoBehaviour
             yield return new WaitForSeconds(2.3f);
             animator.Play("FadeIn");
             yield return new WaitForSeconds(0.5f);
-            instructionArrow.SetActive(true);
+            instructionArrows[1].SetActive(true);
             canAnimate = true;
         }
         if(count == 3)
         {
-            instructionArrow.SetActive(false);
+            instructionArrows[1].SetActive(false);
             canAnimate = false;
             animator.Play("FadeOut");
             yield return new WaitForSeconds(0.5f);
@@ -125,7 +128,7 @@ public class BandageAnimation : MonoBehaviour
             yield return new WaitForSeconds(2.3f);
             animator.Play("FadeIn");
             yield return new WaitForSeconds(0.5f);
-            instructionArrow.SetActive(false);
+            instructionArrows[1].SetActive(false);
             objectControl.AfterAnimate();
             objectControl.CheckWinCondition();
         }

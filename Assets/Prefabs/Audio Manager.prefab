@@ -189,3 +189,35 @@ MonoBehaviour:
     source: {fileID: 0}
     audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
       type: 2}
+  - name: Bell
+    clip: {fileID: 8300000, guid: 5df39480bb1dfa945966be0e7c4effb9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: KidsCry
+    clip: {fileID: 8300000, guid: 8f25034d2fad85c4c9d5f2bfaf882047, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: Sweeping
+    clip: {fileID: 8300000, guid: 8b739681a1731ba43adf2694fc4ae808, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}
+  - name: Scratch
+    clip: {fileID: 8300000, guid: 5ec14284c2cbe3247a24ddeb264200f5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 8376154415291021193, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+      type: 2}

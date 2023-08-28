@@ -36,7 +36,6 @@ public class SettingsUI : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
         isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 1);
 
-
         // MainMixer.SetFloat("BGM_Volume", bgmVolume);
         // MainMixer.SetFloat("SFX_Volume", sfxVolume);
         // am.SetBGMVolume(bgmVolume);
@@ -59,7 +58,7 @@ public class SettingsUI : MonoBehaviour
             Screen.SetResolution(Mathf.RoundToInt(width / 1.5f), Mathf.RoundToInt(height / 1.5f), false);
         }
 
-        StartCoroutine(UpdateVolume());
+        StartCoroutine(ChangeVolume());
     }
 
     public void UpdateBGMSound(float value)
@@ -122,9 +121,9 @@ public class SettingsUI : MonoBehaviour
     });
     //LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
 
-    IEnumerator UpdateVolume()
+    IEnumerator ChangeVolume()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         BGMSlider.value = bgmVolume;
         SFXSlider.value = sfxVolume;
         
