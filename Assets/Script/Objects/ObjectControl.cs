@@ -118,7 +118,7 @@ public class ObjectControl : MonoBehaviour
                 LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring().setOnComplete(() => SetBeforeAnimatePosition());
                 
                 if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.Bandage && objectType != Object.GauzePad) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
-                if(objectType == Object.Petroleum) LeanTween.rotateY(gameObject, -180.0f, 0.3f);
+                if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(270.0f, 0.0f, 180.0f), 0.3f);
                 if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
                 if(objectType == Object.GauzePad) LeanTween.rotateY(gameObject, 180.0f, 0.3f);
 
@@ -426,7 +426,7 @@ public class ObjectControl : MonoBehaviour
     public void AfterAnimate()
     {
         if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType != Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
-        if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(0.0f, -180.0f, 0.0f), 0.3f);
+        if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(270.0f, 0.0f, 180.0f), 0.3f);
         if(objectType == Object.Wipes) LeanTween.rotate(gameObject, new Vector3(90.0f, 0.0f, 0.0f), 0.3f);
         if(objectType == Object.GauzePad) LeanTween.rotate(gameObject, new Vector3(-90.0f, 180.0f, 0.0f), 0.3f);
         if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);

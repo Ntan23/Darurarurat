@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class MainMenuUI : MonoBehaviour
     // [SerializeField] private GameObject clipoard;
     // [SerializeField] private GameObject settingsUI;
     // [SerializeField] private GameObject instructionUI;\
+    [SerializeField] private GameObject cam;
+    [SerializeField] private Image gameTitle;
     private Animator animator;
     private bool isAnimating;
     private bool isOpen;
@@ -35,6 +38,14 @@ public class MainMenuUI : MonoBehaviour
                 animator.Play("OpenBook");
             });
         }
+    }   
+
+    private void UpdateAlpha(float alpha) => gameTitle.color = new Color(1f, 1f, 1f, alpha);
+
+    private void ZoomCamera() 
+    {
+        LeanTween.move(cam, new Vector3(0f, 11.0f, 0.8f), 1.0f);
+        LeanTween.value(gameTitle.gameObject, UpdateAlpha, 1.0f, 0.0f, 1.0f);
     }
 
     public void OpenSettings() 

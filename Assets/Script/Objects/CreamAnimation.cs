@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreamAnimation : MonoBehaviour
 {
     private Vector3 mousePosition;
-    private float mouseDistanceY;
+    private float mouseDistanceX;
     [SerializeField] private Vector3 animationPosition;
     [SerializeField] private GameObject playerArm;
     private Vector3 beforeAnimatePosition;
@@ -24,6 +24,7 @@ public class CreamAnimation : MonoBehaviour
     private GameManager gm;
     [Header("For Arrow Instruction UI")]
     [SerializeField] private GameObject[] instructionArrows;
+    [SerializeField] private GameObject arrowParent;
     private AudioManager am;
     
     void Start()
@@ -37,17 +38,19 @@ public class CreamAnimation : MonoBehaviour
         playerArmAnimator = playerArm.GetComponent<Animator>();
 
         foreach(GameObject go in instructionArrows) go.SetActive(false);
+    
+        arrowParent.SetActive(false);
     }
 
     void OnMouseDown() => mousePosition = Input.mousePosition;
 
     void OnMouseUp()
     {
-        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
 
         if(canAnimate)
         {
-            if(Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            if(Mathf.Abs(mouseDistanceX) >= 50.0f)
             {
                 if(Input.mousePosition.x < mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
 
@@ -87,6 +90,8 @@ public class CreamAnimation : MonoBehaviour
         LeanTween.rotateX(gameObject, 60.0f, 0.3f);
         yield return new WaitForSeconds(0.5f);
 
+        arrowParent.SetActive(true);
+
         if(hasCap) instructionArrows[1].SetActive(true);
         if(!hasCap) 
         {
@@ -102,6 +107,8 @@ public class CreamAnimation : MonoBehaviour
 
     IEnumerator OpenCap()
     {
+        arrowParent.SetActive(false);
+
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
         objectControl.ChangeCanShowEffectValue(false);
@@ -121,6 +128,8 @@ public class CreamAnimation : MonoBehaviour
 
     IEnumerator CloseCap()
     {
+        arrowParent.SetActive(false);
+
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
         objectControl.ChangeCanShowEffectValue(false);

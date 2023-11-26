@@ -6,7 +6,7 @@ public class AntisepticAnimation : MonoBehaviour
 {
     private bool canAnimate;
     private bool isOpen;
-    private float mouseDistanceY;
+    private float mouseDistanceX;
     private Vector3 mousePosition;
     private Animator animator;
     private ObjectControl objectControl;
@@ -23,6 +23,7 @@ public class AntisepticAnimation : MonoBehaviour
 
     [Header("For Arrow Instruction UI")]
     [SerializeField] private GameObject[] instructionArrows;
+    [SerializeField] private GameObject instructionArrowParent;
 
     private AudioManager am;
 
@@ -43,11 +44,11 @@ public class AntisepticAnimation : MonoBehaviour
 
     void OnMouseUp()
     {
-        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
         
         if(canAnimate)
         {
-            if(Mathf.Abs(mouseDistanceY) <= 20.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f)
+            if(Mathf.Abs(mouseDistanceX) >= 50.0f)
             {
                 if(Input.mousePosition.x > mousePosition.x && !isOpen && capCollider.enabled) StartCoroutine(OpenCap());
 
@@ -87,6 +88,7 @@ public class AntisepticAnimation : MonoBehaviour
 
         if(hasCap) 
         {
+            instructionArrowParent.SetActive(true);
             instructionArrows[1].SetActive(true);
             canAnimate = true;
         }
@@ -104,6 +106,7 @@ public class AntisepticAnimation : MonoBehaviour
         LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
         yield return new WaitForSeconds(1.0f);
         capSkinnedMeshRenderer.material = normalCapMaterial;
+        instructionArrowParent.SetActive(true);
         instructionArrows[0].SetActive(true);
         canAnimate = true;
     }
@@ -111,6 +114,8 @@ public class AntisepticAnimation : MonoBehaviour
     IEnumerator OpenCap()
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
+
+        instructionArrowParent.SetActive(false);
         
         objectControl.ChangeCanShowEffectValue(false);
         am.PlayOpenCloseSFX();
@@ -132,6 +137,8 @@ public class AntisepticAnimation : MonoBehaviour
     IEnumerator CloseCap()
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
+
+        instructionArrowParent.SetActive(false);
 
         objectControl.ChangeCanShowEffectValue(false);
         am.PlayOpenCloseSFX();

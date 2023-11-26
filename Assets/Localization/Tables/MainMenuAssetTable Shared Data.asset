@@ -23,9 +23,14 @@ MonoBehaviour:
     m_Key: LanguageDropdownKey
     m_Metadata:
       m_Items: []
+  - m_Id: 44556553070706688
+    m_Key: InstructionImageKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 5030486195251970107
+    - rid: 5522697967432630274
   m_KeyGenerator:
     rid: 5030486195251970105
   references:
@@ -49,4 +54,14 @@ MonoBehaviour:
           - en
           - id-ID
         m_TypeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - rid: 5522697967432630274
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 44556553070706688
+          m_TableCodes:
+          - id-ID
+          - en
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null

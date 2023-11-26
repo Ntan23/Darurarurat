@@ -10,7 +10,7 @@ public class WipesAnimation : MonoBehaviour
 
     [SerializeField] private objectType type;
     private Vector3 mousePosition;
-    private float mouseDistanceY;
+    private float mouseDistanceX;
     private bool canAnimate;
     private bool isOpen;
     private ObjectControl objectControl;
@@ -20,6 +20,7 @@ public class WipesAnimation : MonoBehaviour
     [SerializeField] private MeshRenderer handMesh;
     [SerializeField] private Material cleanMaterial;
     [SerializeField] private GameObject instructionArrow;
+    [SerializeField] private GameObject arrowParent;
     private AudioManager am;
 
     void Start()
@@ -29,6 +30,8 @@ public class WipesAnimation : MonoBehaviour
 
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
+
+        arrowParent.SetActive(false);
 
         instructionArrow.SetActive(false);
     }
@@ -49,6 +52,7 @@ public class WipesAnimation : MonoBehaviour
         if(type == objectType.gauzePad) LeanTween.rotateX(gameObject, -90.0f, 0.3f);
         yield return new WaitForSeconds(0.2f);
 
+        arrowParent.SetActive(true);
         instructionArrow.SetActive(true);
 
         animator.enabled = true;
@@ -59,18 +63,19 @@ public class WipesAnimation : MonoBehaviour
 
     void OnMouseUp()
     {
-        mouseDistanceY = Input.mousePosition.y - mousePosition.y;
+        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
 
         if(canAnimate)
         {
-            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && type == objectType.wipes) StartCoroutine(PlayAnimation());
+            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && type == objectType.wipes) StartCoroutine(PlayAnimation());
 
-            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceY) <= 15.0f && Mathf.Abs(Vector3.Distance(Input.mousePosition, mousePosition)) >= 80.0f && type == objectType.gauzePad) StartCoroutine(PlayAnimation());
+            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && type == objectType.gauzePad) StartCoroutine(PlayAnimation());
         }
     }
 
     IEnumerator PlayAnimation()
     {
+        arrowParent.SetActive(false);
         instructionArrow.SetActive(false);
         
         am.PlayTearPaperSFX();
