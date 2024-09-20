@@ -131,7 +131,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
     {
         gm.ChangeIsAnimatingValue(true);
         LeanTween.move(gameObject, animationPosition, 0.8f).setEaseSpring();
-        LeanTween.rotateX(gameObject, 180.0f, 0.3f);
+        LeanTween.rotate(gameObject, new Vector3(180.0f, 0.0f, -180.0f), 0.3f);
         yield return new WaitForSeconds(0.8f);
         playerHandAnimator.Play("Grab Vaseline");
         yield return new WaitForSeconds(3.1f);

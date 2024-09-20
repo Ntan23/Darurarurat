@@ -23,7 +23,10 @@ public class WrongProcedureUI : MonoBehaviour
 
     private void UpdateAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
 
-    public void UpdateText(string sentence) => wrongText.text = sentence;
+    public void UpdateText(string sentence) 
+    {
+        if(sentence != null) wrongText.text = sentence;
+    }
 
     IEnumerator Wait()
     {
