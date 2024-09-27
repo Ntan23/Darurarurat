@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour
     #endregion
     [SerializeField] private Sound[] sounds;
 
+    ///summary
+    ///     Play Audio
+    ///summary
     private void Play(string name)
     {
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
@@ -22,7 +25,9 @@ public class AudioManager : MonoBehaviour
 
         s.source.Play();
     }
-
+    ///summary
+    ///     Stop Audio
+    ///summary
     private void Stop(string name)
     { 
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
@@ -32,8 +37,12 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+
     void Start() 
     {
+        ///summary
+        ///     Create AudioSource for each Audio
+        ///summary
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -47,6 +56,9 @@ public class AudioManager : MonoBehaviour
         Play("BGM");
     } 
     
+    ///summary
+    ///     Set Volume, Maybe ganti cr set lsg d audio mixer drpd foreach? ||Ganti Ga Ya||
+    ///summary
     public void SetSFXVolume(float volume)
     {
         foreach(Sound s in sounds) 
@@ -76,6 +88,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+///summary
+///     Maybe Change to Enum ? ||Ganti ga ya||
+///summary
     public void PlayDialogueActionSFX(string name) => Play(name);
     public void PlaySippingTeaSFX() => Play("Sipping");
     public void StopSippingTeaSFX() => Stop("Sipping");

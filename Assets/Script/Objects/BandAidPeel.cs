@@ -4,47 +4,44 @@ using UnityEngine;
 
 public class BandAidPeel : MonoBehaviour
 {
-    private Vector3 mousePosition;
-    private float mouseDistanceY;
-    private float mouseDistanceX;
-    private bool canAnimate;
-    private bool isLeftPeeled;
-    private bool isRightPeeled;
-    [SerializeField] private ObjectControl objectControl;
+    private GameManager gm;// Sama
+    private AudioManager am;// Sama
     private Animator animator;
-    [SerializeField] private GameObject[] bandAidPeels;
-    [SerializeField] private GameObject[] instructionArrow;
-    [SerializeField] private GameObject arrowParent;
-    private GameManager gm;
-    private AudioManager am;
+    private bool canAnimate;// Sama
+    [SerializeField] private ObjectControl objectControl;// Sama ? Why this one is not getcomponent?
+    private Vector3 mousePosition;// Sama
+    private float mouseDistanceX;// Sama
+    private float mouseDistanceY;// Beda, it's Y :o
+    private bool isLeftPeeled;// Beda
+    private bool isRightPeeled;// Beda
+    [SerializeField] private GameObject[] bandAidPeels;// Beda
+    [SerializeField] private GameObject[] instructionArrow;// Sama
+    [SerializeField] private GameObject arrowParent;// Sama
 
     void Start() 
     {
-        gm = GameManager.instance;
-        am = AudioManager.instance;
+        gm = GameManager.instance;// Sama
+        am = AudioManager.instance;// Sama
 
-        animator = GetComponentInChildren<Animator>();
-
-        foreach(GameObject go in instructionArrow) go.SetActive(false);
+        animator = GetComponentInChildren<Animator>();// Sama
+        ///summary
+        ///    Get All Instruction Arrows & Turn it off
+        ///summary
+        foreach(GameObject go in instructionArrow) go.SetActive(false);// Sama
         
-        arrowParent.SetActive(false);
+        arrowParent.SetActive(false);// Sama
     }
+    
+    ///summary
+    ///    Mouse Input
+    ///summary
+    void OnMouseDown() => mousePosition = Input.mousePosition;// Sama
 
-    public void Peel()
-    {
-        objectControl.SetBeforeAnimatePosition();
-        gm.ChangeIsAnimatingValue(true);
-        objectControl.ChangeIsProcedureFinishedValue();
-        StartCoroutine(PeelAnimation());
-    }   
-
-    void OnMouseDown() => mousePosition = Input.mousePosition;
-
-    void OnMouseUp()
+    void OnMouseUp()// Sama Beda Courotine; Ganti jd Fungsi Kepisah aja ||Want Change||
     {
         mouseDistanceX = Input.mousePosition.x - mousePosition.x;
 
-        if(canAnimate)
+        if(canAnimate)// Sama
         {
             if(Mathf.Abs(mouseDistanceX) >= 50.0f)
             {
@@ -78,7 +75,19 @@ public class BandAidPeel : MonoBehaviour
         }
     }
 
-    IEnumerator PeelAnimation()
+    ///summary
+    ///    Peeling Band Aid
+    ///summary
+    public void Peel()// Beda - Tp bisa jdiin nama open kali.. ?
+    {
+        objectControl.SetBeforeAnimatePosition();
+        gm.ChangeIsAnimatingValue(true);
+        objectControl.ChangeIsProcedureFinishedValue();
+        StartCoroutine(PeelAnimation());
+    }   
+
+
+    IEnumerator PeelAnimation()// Beda
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.6f);
@@ -93,7 +102,7 @@ public class BandAidPeel : MonoBehaviour
         canAnimate = true;
     }
 
-    IEnumerator Wait(string direction)
+    IEnumerator Wait(string direction)// Beda
     {
         yield return new WaitForSeconds(1.0f);
         if(direction == "Left") 
@@ -113,7 +122,7 @@ public class BandAidPeel : MonoBehaviour
         canAnimate = true;
     }
 
-    IEnumerator AfterAnimate()
+    IEnumerator AfterAnimate()// Beda
     {
         arrowParent.SetActive(false);
         yield return new WaitForSeconds(0.2f);

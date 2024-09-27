@@ -4,6 +4,7 @@ using UnityEngine.Localization;
 
 public class ObjectControl : MonoBehaviour
 {
+    // ||Ganti ga ya|| mau dijadiin ke kelas kecil kecil
     #region enum
     private enum Object{
         Antiseptic, BandAid, Petroleum, Wipes, Cream, GauzePad, Bandage
@@ -67,7 +68,6 @@ public class ObjectControl : MonoBehaviour
     private FirstAidBox firstAidBox;
     private GameManager gm;
     private AudioManager am;
-    [SerializeField] private ObjectAnimationControl objectAnimationControl;
     #endregion
 
     void Start() 
@@ -84,6 +84,7 @@ public class ObjectControl : MonoBehaviour
         HideAllButtons();
     }
 
+
     void Update() 
     {
         if(rb.velocity.x != 0 || rb.velocity.y != 0 || rb.velocity.z != 0) rb.velocity = Vector3.zero;
@@ -97,26 +98,46 @@ public class ObjectControl : MonoBehaviour
         else if(!gm.IsPausing() && !canHide) canHide = true;
     }
 
+    #region MouseInput
     void OnMouseDown()
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            ///summary
+            ///     If item Clicked, Get firstaidbox to initial place
+            ///summary  
             if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBox();
 
             if(isInTheBox) HideAllButtons();
-
+            ///summary
+            ///     Parent change from first aid to target parent
+            ///summary  
             if(transform.parent != takenParent) transform.parent = takenParent;
             
-            
+            ///summary
+            ///     Get the correct z of the item
+            ///summary 
             cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
             
-            offset = transform.position - GetMouseWorldPos();
+            ///summary
+            ///     Get distance between mouse and item
+            ///summary  
+            offset = transform.position - GetMouseWorldPos(); 
+            ///summary
+            ///     If not animating/moving, get item pos rn
+            ///summary
             if(!gm.GetIsAnimating()) SetBeforeAnimatePosition();
 
+            ///summary
+            ///     If not inspecting and in the box, get it out
+            ///summary 
             if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
             {
                 LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring().setOnComplete(() => SetBeforeAnimatePosition());
                 
+                ///summary
+                ///     Rotating the item to the correct rotation
+                ///summary 
                 if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.Bandage && objectType != Object.GauzePad) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
                 if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(270.0f, 0.0f, 180.0f), 0.3f);
                 if(objectType == Object.Bandage) LeanTween.rotate(gameObject, new Vector3(270.0f, -90.0f, 0.0f), 0.3f);
@@ -125,6 +146,9 @@ public class ObjectControl : MonoBehaviour
                 if(rb.isKinematic) rb.isKinematic = false;
             }
             
+            ///summary
+            ///     If not inspecting and outside the box, we can move around the item
+            ///summary 
             if(!gm.GetIsInInspectMode() && !gm.GetIsAnimating()) canMove = true;
         }
     }
@@ -133,8 +157,14 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            ///summary
+            ///     HoverEffect if it's not inspect and inside box
+            ///summary
             if(!isDragging && canExamine && !gm.GetIsInInspectMode()) ShowHoverEffect();
 
+            ///summary
+            ///     Show buttons to examine, open etc, if outside box
+            ///summary
             if(!isDragging && canExamine && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode()) buttons[0].SetActive(true);
 
             if(buttons.Length == 2)
@@ -188,6 +218,9 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            ///summary
+            ///     if it's selected, outside box, and not inspect mode, we can drag around based on boundaries; if it's exit boundaries pull it back
+            ///summary
             isSelect = true;
             if(canMove && !isInTheBox && !gm.GetIsAnimating() && !gm.GetIsInInspectMode())
             {
@@ -206,6 +239,9 @@ public class ObjectControl : MonoBehaviour
                 if(transform.position.z <= zBoundaries[1]) transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaries[1]); 
             }
 
+            ///summary
+            ///     inspect mode
+            ///summary
             if(canRotate && gm.GetIsInInspectMode())
             {
                 xAxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
@@ -217,6 +253,11 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    #endregion
+    #region HoverEffect
+    ///summary
+    ///     Hover, tp krn ini ga ada hub ama control object, we should separate this, syarat syarat yg ada yg penting adl, apakah si A ada sesuatu yg bs dibuka
+    ///summary
     private void ShowHoverEffect()
     {
         for(int i = 0; i < meshRenderer.Length; i++)
@@ -284,6 +325,9 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    ///summary
+    ///     Hover Effects of everyone
+    ///summary  
     private void HideHoverEffect()
     {
         for(int i = 0; i < meshRenderer.Length; i++)
@@ -352,7 +396,10 @@ public class ObjectControl : MonoBehaviour
             else meshRenderer[i].material = originalMaterial[i];
         }
     }
-
+    #endregion
+    ///summary
+    ///     GetMousePos but the z is the same as item.
+    ///summary
     private Vector3 GetMouseWorldPos()
     {
         mousePos = Input.mousePosition;
@@ -362,6 +409,10 @@ public class ObjectControl : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
+    #region Doing Something with Item
+    ///summary
+    ///     If the item got close to the body, do something based on the item function
+    ///summary
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player")) 
@@ -389,6 +440,9 @@ public class ObjectControl : MonoBehaviour
 
                     if(objectType == Object.Bandage) StartCoroutine(GetComponent<BandageAnimation>().WrapMode());
                 }
+                ///summary
+                ///     Wrong procedure
+                ///summary
                 if(!isProcedureFinished) 
                 {
                     am.PlayWrongProcedureSFX();
@@ -417,12 +471,16 @@ public class ObjectControl : MonoBehaviour
             }
         }
     }
-
+    ///summary
+    ///     item not close to body anymore
+    ///summary
     void OnTriggerExit(Collider other)
     {
         if(isInside) isInside = false;
     }
-
+    ///summary
+    ///     After finishing what it's doing make it go back
+    ///summary
     public void AfterAnimate()
     {
         if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType != Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
@@ -441,6 +499,9 @@ public class ObjectControl : MonoBehaviour
         if(rb.isKinematic) rb.isKinematic = false;
      }
 
+    ///summary
+    ///     inspect pos
+    ///summary
     public void Inspect() 
     {
         HideHoverEffect();
@@ -480,8 +541,12 @@ public class ObjectControl : MonoBehaviour
         canShowEffect = true;
     }
 
+    #endregion
     public void EnableCollider() => objCollider.enabled = true;
 
+    ///summary
+    ///     Hide All Buttons; Examine, Open
+    ///summary  
     private void HideAllButtons() 
     {
         foreach(GameObject go in buttons)
@@ -490,6 +555,9 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    ///summary
+    ///     Get Starting Pos of Item Before Animation
+    ///summary  
     public void SetBeforeAnimatePosition() => beforeAnimatePosition = transform.position;
 
     public Vector3 GetBeforeAnimatePosition()

@@ -4,49 +4,53 @@ using UnityEngine;
 
 public class AntisepticAnimation : MonoBehaviour
 {
-    private bool canAnimate;
-    private bool isOpen;
-    private float mouseDistanceX;
-    private Vector3 mousePosition;
-    private Animator animator;
-    private ObjectControl objectControl;
-    private GameManager gm;
+    private GameManager gm;// Sama
+    private AudioManager am;// Sama
+    private Animator animator;// Sama
+    private bool canAnimate;// Sama
+    private ObjectControl objectControl;// Sama
+    private Vector3 mousePosition;// Sama
+    private float mouseDistanceX;// Sama
+    private bool isOpen;// Beda - Can Open Bottle
 
     [Header("For Object Animation")]
-    [SerializeField] private GameObject capMesh;
-    private Collider objectCollider;
-    [SerializeField] private Collider capCollider;
-    private SkinnedMeshRenderer capSkinnedMeshRenderer;
-    [SerializeField] private Material normalCapMaterial;
-    [SerializeField] private Material transparentCapMaterial;
-    [SerializeField] private ParticleSystem liquidParticleSystem;
+    private Collider objectCollider;// Beda - Sama Tutup
+    [SerializeField] private Collider capCollider;// Beda - Sama Tutup
+    [SerializeField] private GameObject capMesh;// Beda - Sama Tutup
+    private SkinnedMeshRenderer capSkinnedMeshRenderer;// Beda - Sama Tutup
+    [SerializeField] private Material normalCapMaterial;// Beda - Sama Tutup
+    [SerializeField] private Material transparentCapMaterial;// Beda - Sama Tutup
+    [SerializeField] private ParticleSystem liquidParticleSystem;// Beda
 
     [Header("For Arrow Instruction UI")]
-    [SerializeField] private GameObject[] instructionArrows;
-    [SerializeField] private GameObject instructionArrowParent;
+    [SerializeField] private GameObject[] instructionArrows;// Sama
+    [SerializeField] private GameObject instructionArrowParent;// Sama
 
-    private AudioManager am;
 
     void Start() 
     {
-        gm = GameManager.instance;
-        am = AudioManager.instance;
+        gm = GameManager.instance;// Sama
+        am = AudioManager.instance;// Sama
 
-        animator = GetComponent<Animator>();
-        objectControl = GetComponent<ObjectControl>();
-        objectCollider = GetComponent<Collider>();
-        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
+        animator = GetComponent<Animator>();// Sama
+        objectControl = GetComponent<ObjectControl>();// Sama
+        objectCollider = GetComponent<Collider>();//Beda - Sama Tutup
+        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();//Beda - Sama Tutup
 
-        foreach(GameObject go in instructionArrows) go.SetActive(false);
+        ///summary
+        ///    Get All Instruction Arrows & Turn it off
+        ///summary
+        foreach(GameObject go in instructionArrows) go.SetActive(false);// Sama
+        //di sini arrowParent not setactive false ||Ganti ga ya||
     }
 
-    void OnMouseDown() => mousePosition = Input.mousePosition;
+    void OnMouseDown() => mousePosition = Input.mousePosition;// Sama - mungkin jdiin interface kali(?)
 
-    void OnMouseUp()
+    void OnMouseUp()// Sama Beda Courotine; Ganti jd Fungsi Kepisah aja ||Want Change||
     {
         mouseDistanceX = Input.mousePosition.x - mousePosition.x;
         
-        if(canAnimate)
+        if(canAnimate)// Sama
         {
             if(Mathf.Abs(mouseDistanceX) >= 50.0f)
             {
@@ -56,8 +60,10 @@ public class AntisepticAnimation : MonoBehaviour
             }
         }
     }
+    
+    #region OpenCloseCap
 
-    public void Open()
+    public void Open()// Sama, Beda Isi ||Want Change|| // Sama - Beda Tutup (Sama Isi)
     {
         objectControl.SetBeforeAnimatePosition();
         gm.ChangeIsAnimatingValue(true);
@@ -67,7 +73,7 @@ public class AntisepticAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation(true));
     }
 
-    public void Close()
+    public void Close()// Sama - Beda Tutup (Sama Isi)
     {
         objectControl.SetBeforeAnimatePosition();
         gm.ChangeIsAnimatingValue(true);
@@ -77,15 +83,16 @@ public class AntisepticAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation(false));
     }
 
-    private void UpdateAlpha(float alpha) => capSkinnedMeshRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+    private void UpdateAlpha(float alpha) => capSkinnedMeshRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, alpha);// Sama - Beda Tutup (Sama Isi)
     
-    IEnumerator OpenMoveRotateAnimation(bool hasCap)
+    IEnumerator OpenMoveRotateAnimation(bool hasCap)// Sama - Beda Tutup 
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.8f);
         LeanTween.rotateX(gameObject, 60.0f, 0.3f);
         yield return new WaitForSeconds(0.5f);
 
+        //Bagian ini Beda
         if(hasCap) 
         {
             instructionArrowParent.SetActive(true);
@@ -97,11 +104,13 @@ public class AntisepticAnimation : MonoBehaviour
         {
             StartCoroutine(CapMeshChange());
         }
+        
 
         animator.enabled = true;
+        //Bagian ini Beda
     }
 
-    IEnumerator CapMeshChange()
+    IEnumerator CapMeshChange()//Tak ada di sebelah
     {
         LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
         yield return new WaitForSeconds(1.0f);
@@ -111,7 +120,7 @@ public class AntisepticAnimation : MonoBehaviour
         canAnimate = true;
     }
 
-    IEnumerator OpenCap()
+    IEnumerator OpenCap() // Sama - Beda Tutup (Beda urutan, abis yield return jg ada beda dikit)
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
@@ -134,7 +143,7 @@ public class AntisepticAnimation : MonoBehaviour
         });
     }
 
-    IEnumerator CloseCap()
+    IEnumerator CloseCap() // Sama - Beda Tutup (Neda urutan)
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
 
@@ -150,15 +159,20 @@ public class AntisepticAnimation : MonoBehaviour
         capCollider.enabled = false;
         isOpen = false;
     }
+    #endregion
 
+    ///summary
+    ///    Particle System Keluar Antiseptic
+    ///summary    
     public void PlayLiquidParticleSystem() => liquidParticleSystem.Play();
 
-    public bool IsOpen()
+
+    public bool IsOpen()//Jadiin yg bool getset aja ||Want Change||
     {
         return isOpen;
     }
 
-    public bool CanAnimate()
+    public bool CanAnimate()//Sama mungkin ini semua perlu?? ato ini jadiin itu aja yg bool get set etc ||Want Change||
     {
         return canAnimate;
     }

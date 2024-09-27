@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
+    private GameManager gm;
+    private Animator animator;
+    [SerializeField] private ObjectControl targetObjectControl;
     private bool canInteract;
     [SerializeField] private GameObject button;
     [SerializeField] private ParticleSystem particleFX;
-    [SerializeField] private ObjectControl targetObjectControl;
-    private GameManager gm;
-    private Animator animator;
     
     void Start() 
     {
@@ -45,7 +45,7 @@ public class PlayerHand : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         particleFX.Pause();
         yield return new WaitForSeconds(0.2f);
-        targetObjectControl.CheckWinCondition();
+        targetObjectControl.CheckWinCondition(); //Keknya jgn di sini ||Want Change||
     }
 
     public void ChangeCanInteract() => canInteract = !canInteract;

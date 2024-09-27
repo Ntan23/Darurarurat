@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PetroleumCream : MonoBehaviour
 {
+    //Cream is on the hand
     [SerializeField] private GameObject creamObj;
     [SerializeField] private Material originalMaterial;
     [SerializeField] private Material transparentMaterial;

@@ -4,51 +4,51 @@ using UnityEngine;
 
 public class CreamAnimation : MonoBehaviour
 {
-    private Vector3 mousePosition;
-    private float mouseDistanceX;
-    [SerializeField] private Vector3 animationPosition;
-    [SerializeField] private GameObject playerArm;
-    private Vector3 beforeAnimatePosition;
-    private bool canAnimate;
-    private bool isOpen;
-    [SerializeField] private Collider objectCollider;
-    [SerializeField] private Collider capCollider;
-    [SerializeField] private GameObject capMesh;
-    [SerializeField] private GameObject cream;
-    private SkinnedMeshRenderer capSkinnedMeshRenderer;
-    [SerializeField] private Material normalCapMaterial;
-    [SerializeField] private Material transparentCapMaterial;
-    private Animator animator;
-    private Animator playerArmAnimator;
-    private ObjectControl objectControl;
-    private GameManager gm;
+    private GameManager gm;// Sama
+    private AudioManager am;// Sama
+    private Animator animator;// Sama
+    private bool canAnimate;// Sama
+    private Vector3 mousePosition;// Sama
+    private float mouseDistanceX;// Sama
+    private bool isOpen;//Beda - Can Open Cap 
+    [SerializeField] private Vector3 animationPosition;//Beda - For GrabCream
+    private Vector3 beforeAnimatePosition;//Beda - Ini buat?
+    private Animator playerArmAnimator;//Beda
+    [SerializeField] private GameObject playerArm;////Beda - PlayerArm Take GrabCream
+    [SerializeField] private Collider objectCollider;// Beda - Sama Tutup
+    [SerializeField] private Collider capCollider;// Beda - Sama Tutup
+    [SerializeField] private GameObject capMesh;//Beda
+    private SkinnedMeshRenderer capSkinnedMeshRenderer;// Beda - Sama Tutup
+    [SerializeField] private Material normalCapMaterial;// Beda - Sama Tutup
+    [SerializeField] private Material transparentCapMaterial;// Beda - Sama Tutup
+    [SerializeField] private GameObject cream;//Beda - It's something that come out of the item
+    private ObjectControl objectControl;// Sama
     [Header("For Arrow Instruction UI")]
-    [SerializeField] private GameObject[] instructionArrows;
-    [SerializeField] private GameObject arrowParent;
-    private AudioManager am;
+    [SerializeField] private GameObject[] instructionArrows;// Sama
+    [SerializeField] private GameObject arrowParent;// Sama
     
     void Start()
     {
-        gm = GameManager.instance;
-        am = AudioManager.instance;
+        gm = GameManager.instance;// Sama
+        am = AudioManager.instance;// Sama
 
-        animator = GetComponent<Animator>();
-        objectControl = GetComponent<ObjectControl>();
-        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
-        playerArmAnimator = playerArm.GetComponent<Animator>();
+        animator = GetComponent<Animator>();// Sama
+        objectControl = GetComponent<ObjectControl>();// Sama
+        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();//Beda - Sama Tutup
+        playerArmAnimator = playerArm.GetComponent<Animator>();//Beda
 
-        foreach(GameObject go in instructionArrows) go.SetActive(false);
+        foreach(GameObject go in instructionArrows) go.SetActive(false);// Sama
     
-        arrowParent.SetActive(false);
+        arrowParent.SetActive(false);// Sama
     }
 
-    void OnMouseDown() => mousePosition = Input.mousePosition;
+    void OnMouseDown() => mousePosition = Input.mousePosition;// Sama
 
-    void OnMouseUp()
+    void OnMouseUp()// Sama Beda Courotine; Ganti jd Fungsi Kepisah aja ||Want Change||
     {
         mouseDistanceX = Input.mousePosition.x - mousePosition.x;
 
-        if(canAnimate)
+        if(canAnimate)// Sam
         {
             if(Mathf.Abs(mouseDistanceX) >= 50.0f)
             {
@@ -58,8 +58,8 @@ public class CreamAnimation : MonoBehaviour
             }
         }
     }
-
-    public void Open()
+    #region OpenCloseCap
+    public void Open()// Sama - Beda Tutup (Sama Isi)
     {
         objectControl.SetBeforeAnimatePosition();
         gm.ChangeIsAnimatingValue(true);
@@ -69,7 +69,7 @@ public class CreamAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation(true));
     }
 
-    public void Close()
+    public void Close()// Sama - Beda Tutup (Sama Isi)
     {
         objectControl.SetBeforeAnimatePosition();
         gm.ChangeIsAnimatingValue(true);
@@ -79,17 +79,17 @@ public class CreamAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation(false));
     }
 
-    public void PlayAnimation() => StartCoroutine(GrabCreamAnimation());
 
-    private void UpdateAlpha(float alpha) => capSkinnedMeshRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+    private void UpdateAlpha(float alpha) => capSkinnedMeshRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, alpha);// Sama - Beda Tutup (Sama Isi)
 
-    IEnumerator OpenMoveRotateAnimation(bool hasCap)
+    IEnumerator OpenMoveRotateAnimation(bool hasCap)// Sama - Beda Tutup 
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.8f);
         LeanTween.rotateX(gameObject, 60.0f, 0.3f);
         yield return new WaitForSeconds(0.5f);
 
+        //Bagian ini Beda
         arrowParent.SetActive(true);
 
         if(hasCap) instructionArrows[1].SetActive(true);
@@ -103,6 +103,7 @@ public class CreamAnimation : MonoBehaviour
         
         animator.enabled = true;
         canAnimate = true;
+        //Bagian ini Beda
     }
 
     IEnumerator OpenCap()
@@ -143,7 +144,13 @@ public class CreamAnimation : MonoBehaviour
 
         isOpen = false;
     }
+    #endregion
 
+    #region GrabCream
+    ///summary
+    ///    Grab Cream
+    ///summary 
+    public void PlayAnimation() => StartCoroutine(GrabCreamAnimation());
     IEnumerator GrabCreamAnimation()
     {
         gm.ChangeIsAnimatingValue(true);
@@ -164,7 +171,7 @@ public class CreamAnimation : MonoBehaviour
         playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
         gm.ChangeIsAnimatingValue(false);
     }
-
+    #endregion
     public bool CanAnimate()
     {
         return canAnimate;

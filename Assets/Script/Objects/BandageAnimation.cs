@@ -4,33 +4,57 @@ using UnityEngine;
 
 public class BandageAnimation : MonoBehaviour
 {
-    private Vector3 mousePosition;
-    private float mouseDistanceX;
-    private int count;
-    private bool canAnimate;
-    private bool wrapMode;
-    private ObjectControl objectControl;
-    private Animator animator;
-    [SerializeField] private Animator feetAnimator;
-    [SerializeField] private GameObject[] instructionArrows;
-    [SerializeField] private GameObject arrowParent;
-    private GameManager gm;
-    private AudioManager am;
+    private GameManager gm;// Sama
+    private AudioManager am;// Sama
+    private Animator animator;// Sama
+    private bool canAnimate;// Sama
+    private ObjectControl objectControl;// Sama
+    private Vector3 mousePosition;// Sama
+    private float mouseDistanceX;// Sama
+    private int count;// Beda
+    private bool wrapMode;// Beda
+    [SerializeField] private Animator feetAnimator;// Beda
+    [Header("For Arrow Instruction UI")]
+    [SerializeField] private GameObject[] instructionArrows;// Sama
+    [SerializeField] private GameObject arrowParent;// Sama
     
     void Start()
     {
-        gm = GameManager.instance;
-        am = AudioManager.instance;
+        gm = GameManager.instance;// Sama
+        am = AudioManager.instance;// Sama
 
-        animator = GetComponent<Animator>();
-        objectControl = GetComponent<ObjectControl>();
+        animator = GetComponent<Animator>();// Sama
+        objectControl = GetComponent<ObjectControl>();// Sama
 
-        foreach(GameObject go in instructionArrows) go.SetActive(false);
+        ///summary
+        ///    Get All Instruction Arrows & Turn it off
+        ///summary
+        foreach(GameObject go in instructionArrows) go.SetActive(false);// Sama
 
-        arrowParent.SetActive(false);
+        arrowParent.SetActive(false);// Sama
     }
 
-    public void Open()
+    ///summary
+    ///    Mouse Input
+    ///summary
+    void OnMouseDown() => mousePosition = Input.mousePosition;// Sama
+
+    void OnMouseUp()// Sama Beda Courotine; Ganti jd Fungsi Kepisah aja ||Want Change||
+    {
+        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
+
+        if(canAnimate)// Sama
+        {
+            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && !wrapMode) StartCoroutine(PlayAnimation());
+
+            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && wrapMode) StartCoroutine(WrapAnimation());
+        }
+    }
+
+    ///summary
+    ///    Open Bandage
+    ///summary
+    public void Open()// Sama, Beda Isi ||Want Change||
     {
         objectControl.SetBeforeAnimatePosition();
         gm.ChangeIsAnimatingValue(true);
@@ -38,7 +62,7 @@ public class BandageAnimation : MonoBehaviour
         StartCoroutine(OpenAnimation());
     } 
 
-    IEnumerator OpenAnimation()
+    IEnumerator OpenAnimation()// Beda
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
         yield return new WaitForSeconds(0.6f);
@@ -47,20 +71,6 @@ public class BandageAnimation : MonoBehaviour
 
         animator.enabled = true;
         canAnimate = true; 
-    }
-
-    void OnMouseDown() => mousePosition = Input.mousePosition;
-
-    void OnMouseUp()
-    {
-        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
-
-        if(canAnimate)
-        {
-            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && !wrapMode) StartCoroutine(PlayAnimation());
-
-            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && wrapMode) StartCoroutine(WrapAnimation());
-        }
     }
 
     IEnumerator PlayAnimation()
@@ -74,7 +84,9 @@ public class BandageAnimation : MonoBehaviour
         objectControl.AfterAnimate();
         canAnimate = false;
     }
-
+    ///summary
+    ///    Wrap Bandage
+    ///summary
     public IEnumerator WrapMode()
     {
         gm.ChangeIsAnimatingValue(true);

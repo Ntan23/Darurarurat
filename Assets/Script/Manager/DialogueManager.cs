@@ -40,26 +40,44 @@ public class DialogueManager : MonoBehaviour
 
     void Start() 
     {
+        ///summary
+        ///     Get Other Instance
+        ///summary
         sm = ScenesManager.instance;
         am = AudioManager.instance;
 
+        ///summary
+        ///     Get Next Button and Change Color to inactive
+        ///summary
         nextButtonText = nextButton.GetComponent<TextMeshProUGUI>();
         nextButtonText.color = inactiveColor;
 
+        ///summary
+        ///     Get Skip Button 
+        ///summary
         skipButton = skipButtonGO.GetComponent<Button>();
         skipButtonText = skipButtonGO.GetComponent<TextMeshProUGUI>();
 
+        ///summary
+        ///     Get all actorImage and make it inactive 
+        ///summary
         foreach(Image img in actorImage) img.color = inactiveColor;
 
         DialogueIntialization();
         StartCoroutine(StartDialogueAnimation());
     }
 
+    ///summary
+    ///     Queue the Dialogue 
+    ///summary
     private void DialogueIntialization()
 	{
         for(int i = 0; i < dialogues.Length; i++) dialogueQueue.Enqueue(dialogues[i]);
 	}
 
+    ///summary
+    ///     Queue the Dialogue 
+    ///summary
 	public void DisplayNextDialogue()
 	{
         nextButton.interactable = false;

@@ -25,7 +25,7 @@ public class WrongProcedureUI : MonoBehaviour
 
     public void UpdateText(string sentence) 
     {
-        if(sentence != null) wrongText.text = sentence;
+        if(sentence != null && wrongText != null) wrongText.text = sentence;
     }
 
     IEnumerator Wait()

@@ -4,47 +4,47 @@ using UnityEngine;
 
 public class PetroleumJellyAnimation : MonoBehaviour
 {
-    private Vector3 mousePosition;
-    private bool canAnimate;
-    private bool isOpen;
-    private float mouseDistanceY;
-    private Animator animator;
-    private Animator playerHandAnimator;
-    private Collider objCollider;
-    [SerializeField] private Collider capCollider;
+    private GameManager gm;// Sama
+    private AudioManager am;// Sama
+    private Animator animator;// Sama
+    private bool canAnimate;// Sama
+    private ObjectControl objControl;
+    private Vector3 mousePosition;// Sama
+    private float mouseDistanceY;// Sama
+    private bool isOpen; //Another Open open
+    private Collider objCollider;// Beda - Sama Tutup
+    [SerializeField] private Collider capCollider;// ada tutup tp bedanya di sini ga pake mesh
+    [Header("Player Hand")]
     [SerializeField] private Vector3 animationPosition;
     private Vector3 beforeAnimatePosition;
-    [Header("Player Hand")]
-    [SerializeField] private GameObject playerHand;
+    private Animator playerHandAnimator;// Another Hand
+    [SerializeField] private GameObject playerHand;//another hand
     [Header("For Instruction Arrow")]
-    [SerializeField] private GameObject[] instructionArrows;
-    [SerializeField] private GameObject arrowParent;
-    private ObjectControl objControl;
-    private GameManager gm;
-    private AudioManager am;
+    [SerializeField] private GameObject[] instructionArrows;// Sama
+    [SerializeField] private GameObject arrowParent;// Sama
 
     void Start() 
     {
-        gm = GameManager.instance;
-        am = AudioManager.instance;
+        gm = GameManager.instance;// Sama
+        am = AudioManager.instance;// Sama
 
-        animator = GetComponent<Animator>();
-        objCollider = GetComponent<Collider>();
-        objControl = GetComponent<ObjectControl>();
-        playerHandAnimator = playerHand.GetComponent<Animator>();
+        animator = GetComponent<Animator>();// Sama
+        objControl = GetComponent<ObjectControl>();// Sama
+        objCollider = GetComponent<Collider>();// Beda
+        playerHandAnimator = playerHand.GetComponent<Animator>();// Beda
 
-        arrowParent.SetActive(false);
+        arrowParent.SetActive(false);// Sama
 
-        foreach(GameObject go in instructionArrows) go.SetActive(false);
+        foreach(GameObject go in instructionArrows) go.SetActive(false);// Sama
     }
 
-    void OnMouseDown() => mousePosition = Input.mousePosition;
+    void OnMouseDown() => mousePosition = Input.mousePosition;// Sama
     
-    void OnMouseUp()
+    void OnMouseUp()// Sama Beda Courotine; Ganti jd Fungsi Kepisah aja ||Want Change||
     {   
         mouseDistanceY = Input.mousePosition.y - mousePosition.y;
 
-        if(canAnimate)
+        if(canAnimate)// Sam
         {
             if(Mathf.Abs(mouseDistanceY) >= 50.0f)
             {
@@ -54,7 +54,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
             }
         }   
     }
-
+    #region OpenCloseCap
     public void Open()
     {
         objControl.SetBeforeAnimatePosition();
@@ -75,7 +75,6 @@ public class PetroleumJellyAnimation : MonoBehaviour
         StartCoroutine(OpenMoveRotateAnimation(true));
     }
 
-    public void PlayAnimation() => StartCoroutine(GrabVaselineAnimation());
     
     IEnumerator OpenMoveRotateAnimation(bool isOpen)
     {
@@ -126,6 +125,10 @@ public class PetroleumJellyAnimation : MonoBehaviour
         isOpen = false;
         canAnimate = false;
     }
+    #endregion
+    
+    #region  GrabCream
+    public void PlayAnimation() => StartCoroutine(GrabVaselineAnimation());
 
     IEnumerator GrabVaselineAnimation()
     {
@@ -140,4 +143,5 @@ public class PetroleumJellyAnimation : MonoBehaviour
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
         gm.ChangeIsAnimatingValue(false);
     }
+    #endregion
 }

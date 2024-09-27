@@ -21,23 +21,29 @@ public class GameManager : MonoBehaviour
     }
 
     private State gameState;
+    
+    ///summary
+    ///     Localization
+    ///summary
 
     [Header("For Examine UI")]
     [SerializeField] private LocalizedStringTable examineTextTable;
     [SerializeField] private LocalizeStringEvent stringEvent;
     [Header("For Wrong Procedure")]
     [SerializeField] private LocalizedString wrongProcedureLocalString;
+
+    [Tooltip ("Level Number")]
     [SerializeField] private int levelIndex;
-    private int nextLevelIndex;
-    private int levelUnlocked;
+    private int nextLevelIndex; //getting next lvl idx
+    private int levelUnlocked; //getting total lvl unlocked
     private int selectedObjectIndex;
     private int dialogueSkipButtonIndicator;
-    private bool isWin;
-    private bool isAnimating;
-    private bool isPauseMenuAnimating;
-    private bool canSkip;
-    private bool canPause;
-    public GameObject[] objects;
+    private bool isWin;//dowewin this level
+    private bool isAnimating;//
+    private bool isPauseMenuAnimating;//isPauseMenuAnimating rn
+    private bool canSkip;//can we skip this dialogue
+    private bool canPause;//can we pause rn
+    public GameObject[] objects; //||Ganti Ga ya||
 
     [Header("For Inspect")]
     [SerializeField] private InspectUI inspectUI;
@@ -55,17 +61,28 @@ public class GameManager : MonoBehaviour
     private AudioManager am;
     private int procedureObjectIndex;
 
-    
+    //CONST
+    private const string PREFS_DIALOGUESKIP_INDICATOR = "DialogueSkipIndicator";
+    private const string PREFS_LEVEL_UNLOCKED ="LevelUnlocked";
     void Start() 
     {
+        ///summary
+        ///     Get Other Instance
+        ///summary
         storyManager = StoryManager.instance;
         dialogueManager = DialogueManager.instance;
         am = AudioManager.instance;
 
-        dialogueSkipButtonIndicator = PlayerPrefs.GetInt("DialogueSkipIndicator", 0);
-        levelUnlocked = PlayerPrefs.GetInt("LevelUnlocked", 1);
+        ///summary
+        ///     Getting Levels Data
+        ///summary
+        dialogueSkipButtonIndicator = PlayerPrefs.GetInt(PREFS_DIALOGUESKIP_INDICATOR, 0);
+        levelUnlocked = PlayerPrefs.GetInt(PREFS_LEVEL_UNLOCKED, 1);
         nextLevelIndex = levelIndex + 1;
 
+        ///summary
+        ///     For Skipping Dialogue
+        ///summary
         if(dialogueSkipButtonIndicator < levelIndex) canSkip = false;
         else if(dialogueSkipButtonIndicator >= levelIndex) canSkip = true;
 
@@ -74,9 +91,14 @@ public class GameManager : MonoBehaviour
         //     inspectText[i] = examineTextTable.GetTable().GetEntry(i.ToString()).GetLocalizedString();
         // }
 
+        ///summary
+        ///     Set Game State
+        ///summary
         gameState = State.Playing;
     }
-    
+
+    #region Localization
+    //||Ganti Ga ya||
     void OnEnable()
     {
         wrongProcedureLocalString.Arguments = new object[] {wrongProcedureText};
@@ -86,8 +108,18 @@ public class GameManager : MonoBehaviour
     void OnDisable() => wrongProcedureLocalString.StringChanged -= UpdateText;
 
     private void UpdateText(string value) => wrongProcedureUI.UpdateText(value);
+    #endregion
 
     void Update()
+    {
+        Pause();
+    }
+
+    ///summary
+    ///     Pause (Is there a way to make the pause animation outside here?; Input di luar sini kali?) ||Want Change||
+    ///summary
+    #region Pause
+    private void Pause()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause)
         {
@@ -104,6 +136,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
 
     IEnumerator WaitForPauseMenuAnimation(bool isPause)
     {
@@ -112,7 +145,11 @@ public class GameManager : MonoBehaviour
         if(isPause) gameState = State.Playing;
         else if(!isPause) gameState = State.Pause;
     }
-
+    #endregion
+    
+    ///summary
+    ///     Enable Collider
+    ///summary
     public void EnableCollider()
     {
         foreach(GameObject go in objects)
@@ -120,7 +157,9 @@ public class GameManager : MonoBehaviour
             go.GetComponent<Collider>().enabled = true;
         }
     }
-
+    ///summary
+    ///     Inspect UI (Pisah dr sini krn ini UI) ||Want Change||
+    ///summary
     public void OpenInspectUI(int index)
     {
         inspectUI.MoveIn();
@@ -136,7 +175,10 @@ public class GameManager : MonoBehaviour
         isInInspectMode = false;
         objects[selectedObjectIndex].GetComponent<ObjectControl>().CloseInspect();
     }
-    
+
+    ///summary
+    ///     Show Wrong Procedure UI (Pisah dr sini krn ini UI -> Implementasi penggunaan lokalisasi jg hrs dipikirin) ||Want Change||
+    ///summary    
     public void ShowWrongProcedureUI()
     {
         wrongProcedureUI.MoveIn();
@@ -161,6 +203,9 @@ public class GameManager : MonoBehaviour
 
     public void AddProcedureObjectIndex() => procedureObjectIndex += 1;
 
+    ///summary
+    ///     Check win Condition, kalo menang dianimasiiin UI, tp ini blk lg UI dipisah ||Want Change||
+    ///summary  
     public void CheckWinCondition()
     {
         if(procedureObjectIndex == objects.Length && !isWin) StartCoroutine(CompleteAnimation());
@@ -177,11 +222,15 @@ public class GameManager : MonoBehaviour
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
 
-        if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt("DialogueSkipIndicator", levelIndex);
-        if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt("LevelUnlocked", nextLevelIndex);
+        if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
+        if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
         isWin = true;
     }
+
+    ///summary
+    ///     Animating value nya item ||Ganti Ga ya||
+    ///summary 
 
     public void ChangeIsAnimatingValue(bool value) => isAnimating = value;
     
@@ -191,6 +240,9 @@ public class GameManager : MonoBehaviour
         else if(!isPause) gameState = State.Playing;
     }
 
+    ///summary
+    ///     Animating Pause ||Ganti Ga ya||
+    ///summary 
     public void ChangePauseMenuIsAnimatingValue(bool value) => isPauseMenuAnimating = value;
 
     public void ChangeCanPauseValue(bool value) => canPause = value;

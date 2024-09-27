@@ -9,19 +9,19 @@ public class WipesAnimation : MonoBehaviour
     }
 
     [SerializeField] private objectType type;
-    private Vector3 mousePosition;
-    private float mouseDistanceX;
-    private bool canAnimate;
-    private bool isOpen;
-    private ObjectControl objectControl;
-    private GameManager gm;
-    private Animator animator;
-    [SerializeField] private Animator feetAnimator;
+    private GameManager gm;// Sama
+    private AudioManager am;// Sama
+    private Animator animator;// Sama
+    private bool canAnimate;// Sama
+    private ObjectControl objectControl;// Sama
+    private Vector3 mousePosition;// Sama
+    private float mouseDistanceX;// Sama
+    private bool isOpen; //only temporary cap
+    [SerializeField] private Animator feetAnimator;//feet animator
     [SerializeField] private MeshRenderer handMesh;
     [SerializeField] private Material cleanMaterial;
-    [SerializeField] private GameObject instructionArrow;
-    [SerializeField] private GameObject arrowParent;
-    private AudioManager am;
+    [SerializeField] private GameObject instructionArrow;// Sama
+    [SerializeField] private GameObject arrowParent;// Sama
 
     void Start()
     {
@@ -34,6 +34,19 @@ public class WipesAnimation : MonoBehaviour
         arrowParent.SetActive(false);
 
         instructionArrow.SetActive(false);
+    }
+    void OnMouseDown() => mousePosition = Input.mousePosition;// Sama
+
+    void OnMouseUp()// Sama Beda Courotine; Ganti jd Fungsi Kepisah aja ||Want Change||
+    {
+        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
+
+        if(canAnimate)
+        {
+            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && type == objectType.wipes) StartCoroutine(PlayAnimation());
+
+            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && type == objectType.gauzePad) StartCoroutine(PlayAnimation());
+        }
     }
 
     public void Open()
@@ -59,19 +72,6 @@ public class WipesAnimation : MonoBehaviour
         canAnimate = true;
     }
 
-    void OnMouseDown() => mousePosition = Input.mousePosition;
-
-    void OnMouseUp()
-    {
-        mouseDistanceX = Input.mousePosition.x - mousePosition.x;
-
-        if(canAnimate)
-        {
-            if(Input.mousePosition.x < mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && type == objectType.wipes) StartCoroutine(PlayAnimation());
-
-            if(Input.mousePosition.x > mousePosition.x && Mathf.Abs(mouseDistanceX) >= 50.0f && type == objectType.gauzePad) StartCoroutine(PlayAnimation());
-        }
-    }
 
     IEnumerator PlayAnimation()
     {
@@ -85,6 +85,7 @@ public class WipesAnimation : MonoBehaviour
         canAnimate = false;
         isOpen = true;
     }
+    //away to make yg dibwh ga nyangkut di sini
 
     public void ChangeHandTexture() => handMesh.material = cleanMaterial;
 
