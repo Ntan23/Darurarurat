@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LevelObjectsExamineTable_id-ID
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: id-ID
+  m_SharedData: {fileID: 11400000, guid: fa24dab5ab093ff4bae1152cf66938a9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 32462995456
+    m_Localized: Tisu basah non alkohol atau tisu antiseptik ini digunakan untuk
+      membersihkan luka dan kulit disekitarnya atau bisa untuk membersihkan tangan
+      dengan cepat sebelum merawat luka.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1540642439168
+    m_Localized: Antiseptik adalah obat luka ringan yang berfungsi untuk mempercepat
+      penyembuhan luka yang ringan seperti tersayat benda tajam dan menghilangkan
+      kuman dan mencegah infeksi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809740595200
+    m_Localized: Plester merupakan pembalut steril yang digunakan untuk menutupi
+      luka ringan, lecet, dan luka berdarah ringan.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2274037465088
+    m_Localized: Petroleum Jelly adalah pelembap yang bisa digunakan untuk mencegah
+      atau mengatasi kulit kering, kasar, pecah-pecah atau gatal dan bisa juga untuk
+      luka bakar ringan.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2604288573440
+    m_Localized: Krim hidrokortion adalah krim kulit yang bisa digunakan untuk meredakan
+      rasa gatal bila kamu digigit serangga dan memiliki fungsi lain seperti meredakan
+      peradangan, mengurangi reaksi sistem kekebalan tubuh yang berlebihan, dan mengatasi
+      kekurangan hormon kortisol.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2616917622784
+    m_Localized: 'Bantalan kasa adalah sepotong kain kasa yang dilipat menjadi persegi,
+      yang digunakan dalam perawatan luka. Kasa adalah kain medis tipis dengan tenunan
+      terbuka yang longgar, biasanya terbuat dari katun. Kain kasa digunakan untuk
+      membersihkan luka, menyerap darah dan cairan lain, serta mengangkat sel kulit
+      mati. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4561359208448
+    m_Localized: Perban adalah sepotong bahan yang digunakan untuk menopang perangkat
+      medis seperti balutan atau bidai, atau digunakan sendiri untuk menopang pergerakan
+      bagian tubuh. Ketika digunakan dengan balutan, balutan diaplikasikan langsung
+      pada luka, dan perban digunakan untuk menahan balutan di tempatnya.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

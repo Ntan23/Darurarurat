@@ -35,7 +35,7 @@ public class CreamAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
         capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
-        playerArmAnimator = playerArm.GetComponent<Animator>();
+        if(playerArm != null) playerArmAnimator = playerArm.GetComponent<Animator>();
 
         foreach(GameObject go in instructionArrows) go.SetActive(false);
     

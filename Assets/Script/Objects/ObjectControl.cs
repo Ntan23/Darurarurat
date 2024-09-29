@@ -107,7 +107,6 @@ public class ObjectControl : MonoBehaviour
 
             if(transform.parent != takenParent) transform.parent = takenParent;
             
-            
             cameraZPos = Camera.main.WorldToScreenPoint(transform.position).z;
             
             offset = transform.position - GetMouseWorldPos();
@@ -115,7 +114,7 @@ public class ObjectControl : MonoBehaviour
 
             if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
             {
-                LeanTween.move(gameObject, new Vector3(transform.position.x, 5.0f, 0.0f), 0.8f).setEaseSpring().setOnComplete(() => SetBeforeAnimatePosition());
+                LeanTween.moveY(gameObject, 5.0f, 0.8f).setEaseSpring().setOnComplete(() => SetBeforeAnimatePosition());
                 
                 if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.Bandage && objectType != Object.GauzePad) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
                 if(objectType == Object.Petroleum) LeanTween.rotate(gameObject, new Vector3(270.0f, 0.0f, 180.0f), 0.3f);
@@ -389,6 +388,7 @@ public class ObjectControl : MonoBehaviour
 
                     if(objectType == Object.Bandage) StartCoroutine(GetComponent<BandageAnimation>().WrapMode());
                 }
+
                 if(!isProcedureFinished) 
                 {
                     am.PlayWrongProcedureSFX();
@@ -409,11 +409,26 @@ public class ObjectControl : MonoBehaviour
                     LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
                 }  
             }
-            else if(objectIndex > gm.GetProcedureIndex())
+            else if(objectIndex > gm.GetProcedureIndex() || objectIndex < gm.GetProcedureIndex())
             {
                 am.PlayWrongProcedureSFX();
                 LeanTween.move(gameObject, beforeAnimatePosition, 0.8f);
-                gm.ShowWrongProcedureUI();
+
+                for(int i = 0; i < gm.neededObjects.Length; i++)
+                {
+                    if(objectIndex == gm.neededObjects[i].GetComponent<ObjectControl>().objectIndex) 
+                    {
+                        gm.ShowWrongProcedureUI();
+                        break;
+                    }
+                    else
+                    {
+                        if(i == gm.neededObjects.Length - 1 && objectIndex != gm.neededObjects[i].GetComponent<ObjectControl>().objectIndex) 
+                        {
+                            gm.ShowWrongProcedureUIV2();  
+                        }
+                    }
+                }
             }
         }
     }
@@ -504,7 +519,7 @@ public class ObjectControl : MonoBehaviour
 
     public void CheckWinCondition()
     {
-        if(gm.GetProcedureIndex() <= gm.objects.Length && isProcedureFinished) StartCoroutine(CheckCondition());
+        if(isProcedureFinished) StartCoroutine(CheckCondition());
     }
 
     IEnumerator CheckCondition()
@@ -538,12 +553,8 @@ public class ObjectControl : MonoBehaviour
         CheckWinCondition();
     }
 
-    private void PetroleumAnimation()
-    {
-        GetComponent<PetroleumJellyAnimation>().PlayAnimation();
-        gm.AddProcedureObjectIndex();
-    }
-
+    private void PetroleumAnimation() => GetComponent<PetroleumJellyAnimation>().PlayAnimation();
+    
     IEnumerator Wipes()
     {
         canShowEffect = false;
@@ -559,11 +570,7 @@ public class ObjectControl : MonoBehaviour
         CheckWinCondition();
     }
 
-    private void HydrocortisoneAnimation()
-    {
-        GetComponent<CreamAnimation>().PlayAnimation();
-        gm.AddProcedureObjectIndex();
-    }
+    private void HydrocortisoneAnimation() => GetComponent<CreamAnimation>().PlayAnimation();
 
     IEnumerator GauzePadAnimation()
     {

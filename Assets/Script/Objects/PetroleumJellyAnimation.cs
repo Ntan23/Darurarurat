@@ -31,7 +31,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objCollider = GetComponent<Collider>();
         objControl = GetComponent<ObjectControl>();
-        playerHandAnimator = playerHand.GetComponent<Animator>();
+        if(playerHand != null) playerHandAnimator = playerHand.GetComponent<Animator>();
 
         arrowParent.SetActive(false);
 

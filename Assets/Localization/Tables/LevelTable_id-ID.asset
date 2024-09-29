@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 5030486214747095048
   m_TableData:
   - m_Id: 40641888256
-    m_Localized: Kamu harus menggunakan {0} terlebih dahulu
+    m_Localized: Kamu harus menggunakan {0}
     m_Metadata:
       m_Items:
       - rid: 5030486214747095048
@@ -70,6 +70,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1483416141955072
     m_Localized: lewati >>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 155825988430856192
+    m_Localized: Kamu tidak perlu menggunakan ini
     m_Metadata:
       m_Items: []
   references:

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LocalizeStringEvent stringEvent;
     [Header("For Wrong Procedure")]
     [SerializeField] private LocalizedString wrongProcedureLocalString;
+    [SerializeField] private LocalizedString wrongProcedureLocalStringV2;
     [SerializeField] private int levelIndex;
     private int nextLevelIndex;
     private int levelUnlocked;
@@ -37,9 +38,9 @@ public class GameManager : MonoBehaviour
     private bool isPauseMenuAnimating;
     private bool canSkip;
     private bool canPause;
-    public GameObject[] objects;
-
+    public GameObject[] neededObjects;
     [Header("For Inspect")]
+    public GameObject[] objects;
     [SerializeField] private InspectUI inspectUI;
     [SerializeField] private string[] inspectText;
     private bool isInInspectMode;
@@ -54,7 +55,8 @@ public class GameManager : MonoBehaviour
     private DialogueManager dialogueManager;
     private AudioManager am;
     private int procedureObjectIndex;
-
+    [SerializeField] private int startProcedureIndex;
+    public int indexToWinTheGame;
     
     void Start() 
     {
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour
 
         if(dialogueSkipButtonIndicator < levelIndex) canSkip = false;
         else if(dialogueSkipButtonIndicator >= levelIndex) canSkip = true;
+
+        procedureObjectIndex = startProcedureIndex;
 
         // for(int i = 0; i < objects.Length; i++)
         // {
@@ -146,6 +150,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitWrongProcedureUI());
     }
 
+    public void ShowWrongProcedureUIV2()
+    {
+        wrongProcedureUI.MoveIn();
+        wrongProcedureUI.UpdateText(wrongProcedureLocalStringV2.GetLocalizedString());
+        StartCoroutine(WaitWrongProcedureUI());
+    }
+
     public void ShowWrongProcedureUIForProceduralObjects(string sentence)
     {
         wrongProcedureUI.MoveIn();
@@ -163,7 +174,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckWinCondition()
     {
-        if(procedureObjectIndex == objects.Length && !isWin) StartCoroutine(CompleteAnimation());
+        if(procedureObjectIndex == indexToWinTheGame && !isWin) StartCoroutine(CompleteAnimation());
     }
 
     IEnumerator CompleteAnimation()
