@@ -11,7 +11,6 @@ public class FirstAidBox : MonoBehaviour
     private bool canBeClicked = true; // I can say this as caninteract
     private bool isInTheMiddle;
     private int clickCount;
-    private int objectIndex;
     [SerializeField] private Vector3 targetPosition;
     [SerializeField] private Vector3 targetRotation;
     private Vector3 intialPosition;
@@ -52,6 +51,7 @@ public class FirstAidBox : MonoBehaviour
     ///summary
     ///    Hover UnHover
     ///summary
+    
     void OnMouseOver()
     {
         if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) boxRenderer.material = hoverMaterial;

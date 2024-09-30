@@ -8,6 +8,7 @@ public class CreamAnimation : MonoBehaviour
     private AudioManager am;// Sama
     private Animator animator;// Sama
     private bool canAnimate;// Sama
+    private ObjectControl objectControl;// Sama
     private Vector3 mousePosition;// Sama
     private float mouseDistanceX;// Sama
     private bool isOpen;//Beda - Can Open Cap 
@@ -22,7 +23,6 @@ public class CreamAnimation : MonoBehaviour
     [SerializeField] private Material normalCapMaterial;// Beda - Sama Tutup
     [SerializeField] private Material transparentCapMaterial;// Beda - Sama Tutup
     [SerializeField] private GameObject cream;//Beda - It's something that come out of the item
-    private ObjectControl objectControl;// Sama
     [Header("For Arrow Instruction UI")]
     [SerializeField] private GameObject[] instructionArrows;// Sama
     [SerializeField] private GameObject arrowParent;// Sama

@@ -11,7 +11,6 @@ public class BandAidPeel : MonoBehaviour
     [SerializeField] private ObjectControl objectControl;// Sama ? Why this one is not getcomponent?
     private Vector3 mousePosition;// Sama
     private float mouseDistanceX;// Sama
-    private float mouseDistanceY;// Beda, it's Y :o
     private bool isLeftPeeled;// Beda
     private bool isRightPeeled;// Beda
     [SerializeField] private GameObject[] bandAidPeels;// Beda
