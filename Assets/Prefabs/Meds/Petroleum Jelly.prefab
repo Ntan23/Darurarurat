@@ -1810,6 +1810,7 @@ GameObject:
   - component: {fileID: 8613408933372001395}
   - component: {fileID: 8613408933372001394}
   - component: {fileID: 8613408933372001393}
+  - component: {fileID: 1113706125422182326}
   m_Layer: 0
   m_Name: Petroleum Jelly
   m_TagString: Untagged
@@ -1930,18 +1931,11 @@ MonoBehaviour:
   zBoundaries:
   - 8
   - -0.5
-  meshRenderer:
-  - {fileID: 6688349575166267473}
-  hoverMaterial:
-  - {fileID: 2100000, guid: 140fea74378308843a7afd2bf46bf6a1, type: 2}
-  originalMaterial:
-  - {fileID: 2100000, guid: 5b12c5290ef017246ba3c4634387f8af, type: 2}
   buttons:
   - {fileID: 8613408934466151010}
   - {fileID: 8613408933414042391}
   - {fileID: 8613408933781383730}
   takenParent: {fileID: 0}
-  objectAnimationControl: {fileID: 8613408933372001394}
 --- !u!114 &8613408933372001394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,3 +1989,21 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1113706125422182326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883790188076447684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fa37ec8b61a184da38cffd75ef60a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 6688349575166267473}
+  hoverMaterial:
+  - {fileID: 2100000, guid: 140fea74378308843a7afd2bf46bf6a1, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 5b12c5290ef017246ba3c4634387f8af, type: 2}

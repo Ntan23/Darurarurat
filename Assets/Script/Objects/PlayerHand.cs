@@ -49,4 +49,5 @@ public class PlayerHand : MonoBehaviour
     }
 
     public void ChangeCanInteract() => canInteract = !canInteract;
+
 }

@@ -1612,6 +1612,7 @@ GameObject:
   - component: {fileID: 4897511847302084142}
   - component: {fileID: 4897511847302084143}
   - component: {fileID: 4897511847302084139}
+  - component: {fileID: 4224838766771947264}
   m_Layer: 0
   m_Name: Antiseptik
   m_TagString: Untagged
@@ -1699,8 +1700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260ea447bdb815242863e20c40a7f2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capMesh: {fileID: 1843767632645331620}
   capCollider: {fileID: 4897511848406751060}
+  capMesh: {fileID: 1843767632645331620}
   normalCapMaterial: {fileID: 2100000, guid: 58b1ee5bf2ad8fe48923fa590430c882, type: 2}
   transparentCapMaterial: {fileID: 2100000, guid: 3e69048811d7229469bc0d3c167e2955,
     type: 2}
@@ -1735,21 +1736,11 @@ MonoBehaviour:
   zBoundaries:
   - 8
   - -0.5
-  meshRenderer:
-  - {fileID: 8295476821328999558}
-  - {fileID: 6144524163971540709}
-  hoverMaterial:
-  - {fileID: 2100000, guid: 78aaa0964268e8744af285611bd73b92, type: 2}
-  - {fileID: 2100000, guid: fad41194b96a5b64a9a2697015cea301, type: 2}
-  originalMaterial:
-  - {fileID: 2100000, guid: 2f852b79d775afa4098bd762af75dbea, type: 2}
-  - {fileID: 2100000, guid: 58b1ee5bf2ad8fe48923fa590430c882, type: 2}
   buttons:
   - {fileID: 4897511846706063750}
   - {fileID: 4897511846463439528}
   - {fileID: 4897511847032015105}
   takenParent: {fileID: 0}
-  objectAnimationControl: {fileID: 4897511847302084143}
 --- !u!114 &4897511847302084143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,6 +1794,28 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &4224838766771947264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707781197868207827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac923f8e7ecbde14c8d2faa9b6968ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 8295476821328999558}
+  - {fileID: 6144524163971540709}
+  hoverMaterial:
+  - {fileID: 2100000, guid: 78aaa0964268e8744af285611bd73b92, type: 2}
+  - {fileID: 2100000, guid: fad41194b96a5b64a9a2697015cea301, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 2f852b79d775afa4098bd762af75dbea, type: 2}
+  - {fileID: 2100000, guid: 58b1ee5bf2ad8fe48923fa590430c882, type: 2}
+  objType: 0
 --- !u!1 &8144600223692019286
 GameObject:
   m_ObjectHideFlags: 0

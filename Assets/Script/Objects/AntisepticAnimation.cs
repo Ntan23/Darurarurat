@@ -63,6 +63,9 @@ public class AntisepticAnimation : MonoBehaviour
     
     #region OpenCloseCap
 
+    /// <summary>
+    /// Do the Open or Close Animation
+    /// </summary>
     public void Open()// Sama, Beda Isi ||Want Change|| // Sama - Beda Tutup (Sama Isi)
     {
         objectControl.SetBeforeAnimatePosition();
@@ -85,6 +88,9 @@ public class AntisepticAnimation : MonoBehaviour
 
     private void UpdateAlpha(float alpha) => capSkinnedMeshRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, alpha);// Sama - Beda Tutup (Sama Isi)
     
+    /// <summary>
+    /// Do it and show InstructionUI
+    /// </summary>
     IEnumerator OpenMoveRotateAnimation(bool hasCap)// Sama - Beda Tutup 
     {
         LeanTween.move(gameObject, new Vector3(0.0f, 8.0f, 2.0f), 0.5f).setEaseSpring();
@@ -120,6 +126,9 @@ public class AntisepticAnimation : MonoBehaviour
         canAnimate = true;
     }
 
+    /// <summary>
+    /// Do Open the cap
+    /// </summary>
     IEnumerator OpenCap() // Sama - Beda Tutup (Beda urutan, abis yield return jg ada beda dikit)
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);
@@ -143,6 +152,9 @@ public class AntisepticAnimation : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Do Close the cap
+    /// </summary>
     IEnumerator CloseCap() // Sama - Beda Tutup (Neda urutan)
     {
         foreach(GameObject go in instructionArrows) go.SetActive(false);

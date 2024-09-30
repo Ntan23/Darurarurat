@@ -912,6 +912,7 @@ GameObject:
   - component: {fileID: 4669867654177896619}
   - component: {fileID: 4669867654177896613}
   - component: {fileID: 4669867654177896616}
+  - component: {fileID: 5119375128947132555}
   m_Layer: 0
   m_Name: Tisu Basah Non Alkohol
   m_TagString: Untagged
@@ -999,6 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4cbc3667759448fc4250f06af7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useHoverControl: 1
   objectType: 3
   table:
     m_TableReference:
@@ -1029,7 +1031,6 @@ MonoBehaviour:
   - {fileID: 4669867654150628374}
   - {fileID: 4669867653923469138}
   takenParent: {fileID: 0}
-  objectAnimationControl: {fileID: 4669867654177896619}
 --- !u!114 &4669867654177896619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,6 +1102,31 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &5119375128947132555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669867654177896615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac923f8e7ecbde14c8d2faa9b6968ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 4669867653906284304}
+  - {fileID: 4669867654334301016}
+  - {fileID: 4669867655434775030}
+  hoverMaterial:
+  - {fileID: 2100000, guid: c9da3ec11b4337c4485cf49015b2e3ad, type: 2}
+  - {fileID: 2100000, guid: 4f114e13cfc0401438df404198d5c1c9, type: 2}
+  - {fileID: 2100000, guid: 4f114e13cfc0401438df404198d5c1c9, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 99e1328a0b45ed44b92e48b8b8af8fe2, type: 2}
+  - {fileID: 2100000, guid: 6b7986f0f8792444a924ea9c9bff168f, type: 2}
+  - {fileID: 2100000, guid: 6b7986f0f8792444a924ea9c9bff168f, type: 2}
+  objType: 3
 --- !u!1 &4669867654334301019
 GameObject:
   m_ObjectHideFlags: 0

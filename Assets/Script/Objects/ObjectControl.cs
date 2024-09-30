@@ -6,7 +6,8 @@ public class ObjectControl : MonoBehaviour
 {
     // ||Ganti ga ya|| mau dijadiin ke kelas kecil kecil
     #region enum
-    private enum Object{
+    //Ntr kuganti lg
+    public enum Object{
         Antiseptic, BandAid, Petroleum, Wipes, Cream, GauzePad, Bandage
     }
 
@@ -58,9 +59,11 @@ public class ObjectControl : MonoBehaviour
 
     #region OtherVariables
     [Header("Other Variables")]
-    [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
-    [SerializeField] private Material[] hoverMaterial;
-    [SerializeField] private Material[] originalMaterial;
+    private IHover hoverControl;
+    // [SerializeField]bool useHoverControl;
+    // [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
+    // [SerializeField] private Material[] hoverMaterial;
+    // [SerializeField] private Material[] originalMaterial;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private Transform takenParent;
     private Collider objCollider;
@@ -78,6 +81,7 @@ public class ObjectControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         objCollider = GetComponent<Collider>();
         firstAidBox = GetComponentInParent<FirstAidBox>();
+        hoverControl = GetComponent<IHover>();
 
         objCollider.enabled = false;
         SetBeforeAnimatePosition();
@@ -92,7 +96,11 @@ public class ObjectControl : MonoBehaviour
         if(gm.IsPausing() && canHide)
         {
             HideAllButtons();
-            HideHoverEffect();
+
+            hoverControl?.HideHoverVisual();
+            // if(useHoverControl)hoverControl?.HideHoverVisual();
+            // else if(!useHoverControl)HideHoverEffect();
+
             canHide = false;
         }
         else if(!gm.IsPausing() && !canHide) canHide = true;
@@ -160,7 +168,12 @@ public class ObjectControl : MonoBehaviour
             ///summary
             ///     HoverEffect if it's not inspect and inside box
             ///summary
-            if(!isDragging && canExamine && !gm.GetIsInInspectMode()) ShowHoverEffect();
+            if(!isDragging && canExamine && !gm.GetIsInInspectMode())hoverControl?.ShowHoverVisual();
+            // {
+            //     if(useHoverControl)hoverControl?.ShowHoverVisual();
+            //     else if(!useHoverControl)ShowHoverEffect();
+            // }
+            
 
             ///summary
             ///     Show buttons to examine, open etc, if outside box
@@ -193,7 +206,11 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            if(canShowEffect) HideHoverEffect();
+            if(canShowEffect)hoverControl?.HideHoverVisual();
+            // {
+            //     if(useHoverControl)hoverControl?.HideHoverVisual();
+            //     else if(!useHoverControl)HideHoverEffect();
+            // }
 
             HideAllButtons();
             isDragging = false;
@@ -253,149 +270,6 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-    #endregion
-    #region HoverEffect
-    ///summary
-    ///     Hover, tp krn ini ga ada hub ama control object, we should separate this, syarat syarat yg ada yg penting adl, apakah si A ada sesuatu yg bs dibuka
-    ///summary
-    private void ShowHoverEffect()
-    {
-        for(int i = 0; i < meshRenderer.Length; i++)
-        {
-            if(objectType == Object.Antiseptic) 
-            {
-                AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
-                
-                if(gm.GetIsAnimating())
-                {
-                    if(antisepticAnimation.CanAnimate())
-                    {
-                        if(i == 0) continue;
-                        if(i == 1) meshRenderer[i].material = hoverMaterial[i];
-                    }
-                }
-                else if(!gm.GetIsAnimating())
-                {
-                    if(antisepticAnimation.IsOpen())
-                    {
-                        if(i == 0) meshRenderer[i].material = hoverMaterial[i];
-                        else if(i == 1) break;
-                    }
-                    else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
-                }
-            }
-            else if(objectType == Object.Cream)
-            {
-                CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
-                
-                if(gm.GetIsAnimating())
-                {
-                    if(creamAnimation.CanAnimate())
-                    {
-                        if(i == 0) continue;
-                        if(i == 1) meshRenderer[i].material = hoverMaterial[i];
-                    }
-                }
-                else if(!gm.GetIsAnimating())
-                {
-                    if(creamAnimation.IsOpen())
-                    {
-                        if(i == 0) meshRenderer[i].material = hoverMaterial[i];
-                        else if(i == 1) break;
-                    }
-                    else if(!creamAnimation.IsOpen()) meshRenderer[i].material = hoverMaterial[i];
-                }
-            }
-            else if(objectType == Object.Wipes || objectType == Object.GauzePad)
-            {
-                WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
-
-                if(!wipesAnimation.IsOpen())
-                {
-                    if(i == 0) continue;
-                    else meshRenderer[i].material = hoverMaterial[i];
-                }
-                else if(wipesAnimation.IsOpen()) 
-                {
-                    if(i == 0) meshRenderer[i].material = hoverMaterial[i];
-                    else break;
-                }
-            }
-            else meshRenderer[i].material = hoverMaterial[i];
-        }
-    }
-
-    ///summary
-    ///     Hover Effects of everyone
-    ///summary  
-    private void HideHoverEffect()
-    {
-        for(int i = 0; i < meshRenderer.Length; i++)
-        {
-            if(objectType == Object.Antiseptic) 
-            {
-                AntisepticAnimation antisepticAnimation = GetComponent<AntisepticAnimation>();
-
-                if(gm.GetIsAnimating()) 
-                {
-                    if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                    else if(antisepticAnimation.IsOpen()) 
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        if(i == 1 && antisepticAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                if(!gm.GetIsAnimating())
-                {
-                    if(antisepticAnimation.IsOpen())
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        else if(i == 1) break;
-                    }
-                    else if(!antisepticAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                }
-            }
-            else if(objectType == Object.Cream)
-            {
-                CreamAnimation creamAnimation = GetComponent<CreamAnimation>();
-
-                if(gm.GetIsAnimating()) 
-                {
-                    if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                    else if(creamAnimation.IsOpen()) 
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        if(i == 1 && creamAnimation.CanAnimate()) meshRenderer[i].material = originalMaterial[i];
-                    }
-                }
-                if(!gm.GetIsAnimating())
-                {
-                    if(creamAnimation.IsOpen())
-                    {
-                        if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                        else if(i == 1) break;
-                    }
-                    else if(!creamAnimation.IsOpen()) meshRenderer[i].material = originalMaterial[i];
-                }
-            }
-            else if(objectType == Object.Wipes || objectType == Object.GauzePad)
-            {
-                WipesAnimation wipesAnimation = GetComponent<WipesAnimation>();
-
-                if(!wipesAnimation.IsOpen())
-                {
-                    if(i == 0) continue;
-                    else meshRenderer[i].material = originalMaterial[i];
-                }
-                else if(wipesAnimation.IsOpen()) 
-                {
-                    if(i == 0) meshRenderer[i].material = originalMaterial[i];
-                    else break;
-                }
-            }
-            else meshRenderer[i].material = originalMaterial[i];
-        }
-    }
     #endregion
     ///summary
     ///     GetMousePos but the z is the same as item.
@@ -520,7 +394,9 @@ public class ObjectControl : MonoBehaviour
     ///summary
     public void Inspect() 
     {
-        HideHoverEffect();
+        hoverControl?.HideHoverVisual();
+        // if(useHoverControl)hoverControl?.HideHoverVisual();
+        // else if(!useHoverControl)HideHoverEffect();
 
         intialRotation = transform.rotation.eulerAngles;
 

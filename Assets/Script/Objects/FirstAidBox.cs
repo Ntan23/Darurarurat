@@ -19,9 +19,7 @@ public class FirstAidBox : MonoBehaviour
     ///summary
     ///    Hover Visual
     ///summary
-    private SkinnedMeshRenderer boxRenderer;
-    [SerializeField] private Material originalMaterial;
-    [SerializeField] private Material hoverMaterial;
+    private IHover hoverControl; //Controlling Hover Visual
     private StoryManager sm;
     [SerializeField] private PauseMenuUI pauseMenuUI;
     //private DialogueManager dm;
@@ -35,7 +33,7 @@ public class FirstAidBox : MonoBehaviour
 
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
-        boxRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        hoverControl = GetComponent<IHover>();
 
         ///summary
         ///    Get initial pos of firstaid box
@@ -54,11 +52,11 @@ public class FirstAidBox : MonoBehaviour
     
     void OnMouseOver()
     {
-        if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) boxRenderer.material = hoverMaterial;
+        if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) hoverControl.ShowHoverVisual();
     }
     void OnMouseExit()
     {
-        boxRenderer.material = originalMaterial;
+        hoverControl.HideHoverVisual();
     }
 
     void OnMouseDown()

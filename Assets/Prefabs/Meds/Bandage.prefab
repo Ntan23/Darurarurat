@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 705955542586965477}
   - component: {fileID: 705955542586965476}
   - component: {fileID: 705955542586965480}
+  - component: {fileID: -301637669742113413}
   m_Layer: 0
   m_Name: Bandage
   m_TagString: Untagged
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4cbc3667759448fc4250f06af7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useHoverControl: 1
   objectType: 6
   table:
     m_TableReference:
@@ -201,7 +203,6 @@ MonoBehaviour:
   - {fileID: 705955541118330664}
   - {fileID: 705955541958434961}
   takenParent: {fileID: 0}
-  objectAnimationControl: {fileID: 0}
 --- !u!114 &705955542586965480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,27 @@ MonoBehaviour:
   - {fileID: 705955542991880305}
   - {fileID: 705955540994484906}
   arrowParent: {fileID: 705955542119387435}
+--- !u!114 &-301637669742113413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364060406312861878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fa37ec8b61a184da38cffd75ef60a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 2386265836465490807}
+  - {fileID: 4037260623266750210}
+  hoverMaterial:
+  - {fileID: 2100000, guid: a2e80c38ab4de0748ab26d51e4251363, type: 2}
+  - {fileID: 2100000, guid: 9ddcdd07b04a4e148ac53bf05be171ca, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 0fa23bac8708eed42b0096291b18dd84, type: 2}
+  - {fileID: 2100000, guid: ec7493ce5f0f9854baf1e88a7c561693, type: 2}
 --- !u!1 &690739875130805993
 GameObject:
   m_ObjectHideFlags: 0

@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 7903323120339559576}
   - component: {fileID: 7903323120339559591}
   - component: {fileID: 7903323120339559588}
+  - component: {fileID: 6031419514559384254}
   m_Layer: 0
   m_Name: Plester
   m_TagString: Object
@@ -477,23 +478,10 @@ MonoBehaviour:
   zBoundaries:
   - 8
   - -0.5
-  meshRenderer:
-  - {fileID: 299539095564247348}
-  - {fileID: 2883032043307067616}
-  - {fileID: 9012201724011426563}
-  hoverMaterial:
-  - {fileID: 2100000, guid: 6c5a5a627dcad394aa77b270313eeecd, type: 2}
-  - {fileID: 2100000, guid: 9327ef557afeea04a98d21899dc67ad7, type: 2}
-  - {fileID: 2100000, guid: 9327ef557afeea04a98d21899dc67ad7, type: 2}
-  originalMaterial:
-  - {fileID: 2100000, guid: 22625ed7165406f4c8a4cbfa41972e60, type: 2}
-  - {fileID: 2100000, guid: 10f49c72d6cddc74093bd1d1720457b6, type: 2}
-  - {fileID: 2100000, guid: 10f49c72d6cddc74093bd1d1720457b6, type: 2}
   buttons:
   - {fileID: 7903323120141074401}
   - {fileID: 7903323121262326168}
   takenParent: {fileID: 0}
-  objectAnimationControl: {fileID: 7903323120116789362}
 --- !u!114 &7903323120339559591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +542,30 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &6031419514559384254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020926347393802753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fa37ec8b61a184da38cffd75ef60a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 299539095564247348}
+  - {fileID: 2883032043307067616}
+  - {fileID: 9012201724011426563}
+  hoverMaterial:
+  - {fileID: 2100000, guid: 6c5a5a627dcad394aa77b270313eeecd, type: 2}
+  - {fileID: 2100000, guid: 9327ef557afeea04a98d21899dc67ad7, type: 2}
+  - {fileID: 2100000, guid: 9327ef557afeea04a98d21899dc67ad7, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 22625ed7165406f4c8a4cbfa41972e60, type: 2}
+  - {fileID: 2100000, guid: 10f49c72d6cddc74093bd1d1720457b6, type: 2}
+  - {fileID: 2100000, guid: 10f49c72d6cddc74093bd1d1720457b6, type: 2}
 --- !u!1 &7589384653124128931
 GameObject:
   m_ObjectHideFlags: 0
