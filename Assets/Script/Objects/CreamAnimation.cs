@@ -32,10 +32,10 @@ public class CreamAnimation : MonoBehaviour
         gm = GameManager.instance;// Sama
         am = AudioManager.instance;// Sama
 
-        animator = GetComponent<Animator>();// Sama
-        objectControl = GetComponent<ObjectControl>();// Sama
-        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();//Beda - Sama Tutup
-        playerArmAnimator = playerArm.GetComponent<Animator>();//Beda
+        animator = GetComponent<Animator>();
+        objectControl = GetComponent<ObjectControl>();
+        capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
+        if(playerArm != null) playerArmAnimator = playerArm.GetComponent<Animator>();
 
         foreach(GameObject go in instructionArrows) go.SetActive(false);// Sama
     

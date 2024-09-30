@@ -28,10 +28,10 @@ public class PetroleumJellyAnimation : MonoBehaviour
         gm = GameManager.instance;// Sama
         am = AudioManager.instance;// Sama
 
-        animator = GetComponent<Animator>();// Sama
-        objControl = GetComponent<ObjectControl>();// Sama
-        objCollider = GetComponent<Collider>();// Beda
-        playerHandAnimator = playerHand.GetComponent<Animator>();// Beda
+        animator = GetComponent<Animator>();
+        objCollider = GetComponent<Collider>();
+        objControl = GetComponent<ObjectControl>();
+        if(playerHand != null) playerHandAnimator = playerHand.GetComponent<Animator>();
 
         arrowParent.SetActive(false);// Sama
 

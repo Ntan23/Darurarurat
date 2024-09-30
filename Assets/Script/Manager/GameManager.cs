@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LocalizedString wrongProcedureLocalString;
 
     [Tooltip ("Level Number")]
+    [SerializeField] private LocalizedString wrongProcedureLocalStringV2;
     [SerializeField] private int levelIndex;
     private int nextLevelIndex; //getting next lvl idx
     private int levelUnlocked; //getting total lvl unlocked
@@ -43,9 +44,10 @@ public class GameManager : MonoBehaviour
     private bool isPauseMenuAnimating;//isPauseMenuAnimating rn
     private bool canSkip;//can we skip this dialogue
     private bool canPause;//can we pause rn
-    public GameObject[] objects; //||Ganti Ga ya||
+    public GameObject[] neededObjects; //||Ganti Ga ya||
 
     [Header("For Inspect")]
+    public GameObject[] objects;
     [SerializeField] private InspectUI inspectUI;
     [SerializeField] private string[] inspectText;
     private bool isInInspectMode;
@@ -64,6 +66,9 @@ public class GameManager : MonoBehaviour
     //CONST
     private const string PREFS_DIALOGUESKIP_INDICATOR = "DialogueSkipIndicator";
     private const string PREFS_LEVEL_UNLOCKED ="LevelUnlocked";
+    [SerializeField] private int startProcedureIndex;
+    public int indexToWinTheGame;
+    
     void Start() 
     {
         ///summary
@@ -85,6 +90,8 @@ public class GameManager : MonoBehaviour
         ///summary
         if(dialogueSkipButtonIndicator < levelIndex) canSkip = false;
         else if(dialogueSkipButtonIndicator >= levelIndex) canSkip = true;
+
+        procedureObjectIndex = startProcedureIndex;
 
         // for(int i = 0; i < objects.Length; i++)
         // {
@@ -188,6 +195,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitWrongProcedureUI());
     }
 
+    public void ShowWrongProcedureUIV2()
+    {
+        wrongProcedureUI.MoveIn();
+        wrongProcedureUI.UpdateText(wrongProcedureLocalStringV2.GetLocalizedString());
+        StartCoroutine(WaitWrongProcedureUI());
+    }
+
     public void ShowWrongProcedureUIForProceduralObjects(string sentence)
     {
         wrongProcedureUI.MoveIn();
@@ -208,7 +222,7 @@ public class GameManager : MonoBehaviour
     ///summary  
     public void CheckWinCondition()
     {
-        if(procedureObjectIndex == objects.Length && !isWin) StartCoroutine(CompleteAnimation());
+        if(procedureObjectIndex == indexToWinTheGame && !isWin) StartCoroutine(CompleteAnimation());
     }
 
     IEnumerator CompleteAnimation()
