@@ -1251,9 +1251,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PetroleumJellyAnimation, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 655448558}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12262,6 +12262,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.0376577, y: 3.5777516, z: 2.9372165}
   m_Center: {x: 0.0000000024430231, y: 2.0703614, z: -0.010246783}
+--- !u!137 &539347282 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6099787823517066556, guid: 76d55ddd99008f94fb1df5ac94b0bd80,
+    type: 3}
+  m_PrefabInstance: {fileID: 1304603211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &553330298
 GameObject:
   m_ObjectHideFlags: 0
@@ -13473,7 +13479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer:
-  - {fileID: 0}
+  - {fileID: 539347282}
   hoverMaterial:
   - {fileID: 2100000, guid: 140fea74378308843a7afd2bf46bf6a1, type: 2}
   originalMaterial:
@@ -21329,9 +21335,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PetroleumJellyAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 655448558}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -21,10 +21,11 @@ public class CreamHidrocortisol__ObjIntUsable : ObjInt_UsableItem_PermanentCap_C
     
     protected override void ShowInstructionNow()
     {
-        instructionArrowParent.SetActive(true);
+        
 
         if(!isOpen)
         {
+            instructionArrowParent.SetActive(true);
             instructionArrows[1].SetActive(true);
             canAnimate = true;
         }
@@ -40,7 +41,7 @@ public class CreamHidrocortisol__ObjIntUsable : ObjInt_UsableItem_PermanentCap_C
         LeanTween.value(capMesh, UpdateAlpha, 0.0f, 1.0f, 0.8f);
         yield return new WaitForSeconds(1.0f);
         ChangeCapMeshToNormal();
-
+        instructionArrowParent.SetActive(true);
         instructionArrows[0].SetActive(true);
 
         canAnimate = true;

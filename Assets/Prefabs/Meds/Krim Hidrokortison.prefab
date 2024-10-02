@@ -988,8 +988,10 @@ GameObject:
   - component: {fileID: 8591302526309693499}
   - component: {fileID: 4192633058635300749}
   - component: {fileID: 4390753906038860408}
+  - component: {fileID: 9016396532568502974}
   - component: {fileID: 3820507219037738665}
   - component: {fileID: 2381635898664452374}
+  - component: {fileID: 5015317269103221699}
   m_Layer: 0
   m_Name: Krim Hidrokortison
   m_TagString: Untagged
@@ -1133,6 +1135,35 @@ MonoBehaviour:
   - {fileID: 209232848161080737}
   - {fileID: 4484683845308405055}
   arrowParent: {fileID: 3948876150784822926}
+--- !u!114 &9016396532568502974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958189478588357350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3acfa9d43179484db03f241dcb9680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 209232848161080737}
+  - {fileID: 4484683845308405055}
+  instructionArrowParent: {fileID: 3948876150784822926}
+  capCollider: {fileID: 2670307253536061779}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  rotateXPosition_OpenClose: 60
+  moveToTarget_Duration: 0.5
+  rotateToTarget_Duration: 0.3
+  capMesh: {fileID: 16775362182531559}
+  normalCapMaterial: {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
+  transparentCapMaterial: {fileID: 2100000, guid: 92d48a6070807754c95e1afc90e35154,
+    type: 2}
+  cream: {fileID: 0}
+  animationPosition: {x: 1, y: 10.46, z: 1.64}
 --- !u!114 &3820507219037738665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1226,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
   - {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
   IsHavePermanentCap: 1
+--- !u!114 &5015317269103221699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958189478588357350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197bc3c4a056b947a41cc0dcb650ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4005788679281865675
 GameObject:
   m_ObjectHideFlags: 0

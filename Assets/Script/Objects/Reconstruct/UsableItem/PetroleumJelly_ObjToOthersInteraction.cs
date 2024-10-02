@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PetroleumJelly_ObjToOthersInteraction : ObjectToOthersInteraction
 {
-    private CreamHidrocortisol__ObjIntUsable creamHidrocortisol__ObjIntUsable;
+    private PetroleumJelly__ObjIntUsable petroleumJelly__ObjIntUsable;
+    private void Start() 
+    {
+        petroleumJelly__ObjIntUsable = GetComponent<PetroleumJelly__ObjIntUsable>();
+    }
     public override void InteractionWithPatient()
     {
         GetCream();
     }
     public void GetCream()
     {
-        creamHidrocortisol__ObjIntUsable.GrabCream();
+        petroleumJelly__ObjIntUsable.GrabCream();
     }
 }

@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 2218151752391856239}
   - component: {fileID: 2218151752391856233}
   - component: {fileID: 2218151752391856213}
+  - component: {fileID: 7771104128972216119}
   - component: {fileID: -7595974615824553231}
   m_Layer: 0
   m_Name: Kasa Steril
@@ -552,7 +553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4cbc3667759448fc4250f06af7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useHoverControl: 1
   objectType: 5
   table:
     m_TableReference:
@@ -567,18 +567,6 @@ MonoBehaviour:
   zBoundaries:
   - 8
   - -0.5
-  meshRenderer:
-  - {fileID: 2218151752160895156}
-  - {fileID: 2218151752201572857}
-  - {fileID: 2218151752292466327}
-  hoverMaterial:
-  - {fileID: 2100000, guid: 02da2835cdbaeea42a9a1cf590e81ada, type: 2}
-  - {fileID: 2100000, guid: 7157bce242edbd34b8b2f1a30a90e733, type: 2}
-  - {fileID: 2100000, guid: 7157bce242edbd34b8b2f1a30a90e733, type: 2}
-  originalMaterial:
-  - {fileID: 2100000, guid: 997b7ac41a6bd894e9bc426d8836ab79, type: 2}
-  - {fileID: 2100000, guid: e854840cd3c0a61428f3354a75581732, type: 2}
-  - {fileID: 2100000, guid: e854840cd3c0a61428f3354a75581732, type: 2}
   buttons:
   - {fileID: 2218151753408153920}
   - {fileID: 2218151752661141080}
@@ -641,6 +629,26 @@ MonoBehaviour:
   cleanMaterial: {fileID: 0}
   instructionArrow: {fileID: 2218151753143372979}
   arrowParent: {fileID: 2218151753043642558}
+--- !u!114 &7771104128972216119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218151752391856226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530daf16e44ebc34584bc940b9b53fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 2218151753143372979}
+  instructionArrowParent: {fileID: 2218151753043642558}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  moveToTarget_Duration: 0.5
+  type: 0
 --- !u!114 &-7595974615824553231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +673,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 997b7ac41a6bd894e9bc426d8836ab79, type: 2}
   - {fileID: 2100000, guid: e854840cd3c0a61428f3354a75581732, type: 2}
   - {fileID: 2100000, guid: e854840cd3c0a61428f3354a75581732, type: 2}
-  objType: 5
+  IsHavePermanentCap: 0
 --- !u!1 &2218151752419414227
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,9 +896,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2218151752391856213}
-        m_TargetAssemblyTypeName: WipesAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 7771104128972216119}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_TemporaryWrap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -2796,9 +2796,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1563421345}
-        m_TargetAssemblyTypeName: BandAidPeel, Assembly-CSharp
-        m_MethodName: Peel
+      - m_Target: {fileID: 1563421349}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_TemporaryWrap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11104,6 +11104,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba80040baf573f8459b3c5b0041cb717, type: 3}
+--- !u!137 &620551301 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1635590890561492327, guid: ba80040baf573f8459b3c5b0041cb717,
+    type: 3}
+  m_PrefabInstance: {fileID: 620551300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &620551302 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3524067964684240644, guid: ba80040baf573f8459b3c5b0041cb717,
+    type: 3}
+  m_PrefabInstance: {fileID: 620551300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &625326408
 GameObject:
   m_ObjectHideFlags: 0
@@ -11507,6 +11519,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba7a48e5b07ddc04db3298ea3fba3154, type: 3}
+--- !u!137 &659345751 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7603786706384944740, guid: ba7a48e5b07ddc04db3298ea3fba3154,
+    type: 3}
+  m_PrefabInstance: {fileID: 659345750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &672729719
 GameObject:
   m_ObjectHideFlags: 0
@@ -13206,9 +13224,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 880084118}
-        m_TargetAssemblyTypeName: WipesAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 919132148826913250}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_TemporaryWrap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13361,24 +13379,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 3
---- !u!114 &880084118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148826913247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e876299f651b1c41887ae2b1a88887d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  feetAnimator: {fileID: 0}
-  handMesh: {fileID: 1708966758}
-  cleanMaterial: {fileID: 2100000, guid: 50dd2691f9ad6a446a8d46f8c1f9e3d4, type: 2}
-  instructionArrow: {fileID: 1465790504}
-  arrowParent: {fileID: 1760326406}
 --- !u!1 &880881908
 GameObject:
   m_ObjectHideFlags: 0
@@ -16661,9 +16661,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1473403175}
-        m_TargetAssemblyTypeName: AntisepticAnimation, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 1473403184}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19047,28 +19047,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 620551300}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1473403175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473403173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 260ea447bdb815242863e20c40a7f2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capCollider: {fileID: 367687762}
-  capMesh: {fileID: 373126104}
-  normalCapMaterial: {fileID: 2100000, guid: 58b1ee5bf2ad8fe48923fa590430c882, type: 2}
-  transparentCapMaterial: {fileID: 2100000, guid: 3e69048811d7229469bc0d3c167e2955,
-    type: 2}
-  liquidParticleSystem: {fileID: 1894961862}
-  instructionArrows:
-  - {fileID: 2138711553}
-  - {fileID: 699401778}
-  instructionArrowParent: {fileID: 2003622391}
 --- !u!114 &1473403176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19202,6 +19180,69 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1473403182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473403173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4097c6291a2be82489e221b96d79c1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetHandPosition: {x: 7.6, y: 5, z: 6.3}
+--- !u!114 &1473403183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473403173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac923f8e7ecbde14c8d2faa9b6968ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 620551302}
+  - {fileID: 620551301}
+  hoverMaterial:
+  - {fileID: 2100000, guid: 78aaa0964268e8744af285611bd73b92, type: 2}
+  - {fileID: 2100000, guid: fad41194b96a5b64a9a2697015cea301, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 2f852b79d775afa4098bd762af75dbea, type: 2}
+  - {fileID: 2100000, guid: 58b1ee5bf2ad8fe48923fa590430c882, type: 2}
+  IsHavePermanentCap: 1
+--- !u!114 &1473403184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473403173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bdee22140b7a84b93923fe26c579e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 2138711553}
+  - {fileID: 699401778}
+  instructionArrowParent: {fileID: 2003622391}
+  capCollider: {fileID: 367687762}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  rotateXPosition_OpenClose: 60
+  moveToTarget_Duration: 0.5
+  rotateToTarget_Duration: 0.3
+  capMesh: {fileID: 373126104}
+  normalCapMaterial: {fileID: 2100000, guid: 58b1ee5bf2ad8fe48923fa590430c882, type: 2}
+  transparentCapMaterial: {fileID: 2100000, guid: 3e69048811d7229469bc0d3c167e2955,
+    type: 2}
+  liquidParticleSystem: {fileID: 1894961862}
 --- !u!1 &1477087787
 GameObject:
   m_ObjectHideFlags: 0
@@ -19989,26 +20030,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.6262918, y: 1.4664078, z: 1.3508064}
   m_Center: {x: 0.02848959, y: 0.025379658, z: 0.00020051682}
---- !u!114 &1563421345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563421339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6923f843e21aca94aaae89ea82a23a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectControl: {fileID: 1563421342}
-  bandAidPeels:
-  - {fileID: 1039063420}
-  - {fileID: 1558528516}
-  instructionArrow:
-  - {fileID: 1331088692}
-  - {fileID: 1043302684}
-  arrowParent: {fileID: 521195954}
 --- !u!114 &1563421346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20049,6 +20070,59 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1563421347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563421339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fa37ec8b61a184da38cffd75ef60a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 659345751}
+  hoverMaterial:
+  - {fileID: 2100000, guid: 6c5a5a627dcad394aa77b270313eeecd, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 22625ed7165406f4c8a4cbfa41972e60, type: 2}
+--- !u!114 &1563421348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563421339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7607c561ee946a844ae09d54b8627f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1563421349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563421339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5d68fc84cad5144bb62b30fb01774a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 1331088692}
+  - {fileID: 1043302684}
+  instructionArrowParent: {fileID: 521195954}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  moveToTarget_Duration: 0.5
+  bandAidPeels:
+  - {fileID: 1039063420}
+  - {fileID: 1558528516}
 --- !u!4 &1567342211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e19d6c85f643df6408d35650a2ee0928,
@@ -20347,9 +20421,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1473403175}
-        m_TargetAssemblyTypeName: AntisepticAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 1473403184}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30950,8 +31024,10 @@ GameObject:
   - component: {fileID: 880084115}
   - component: {fileID: 880084114}
   - component: {fileID: 880084113}
-  - component: {fileID: 880084118}
   - component: {fileID: 919132148826913248}
+  - component: {fileID: 919132148826913250}
+  - component: {fileID: 919132148826913249}
+  - component: {fileID: 919132148826913251}
   m_Layer: 0
   m_Name: Tisu Basah Non Alkohol
   m_TagString: Untagged
@@ -30999,6 +31075,66 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &919132148826913249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148826913247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc966cea0f42cf940bdbe413113e1f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinMesh: {fileID: 1708966758}
+  cleanMaterial: {fileID: 2100000, guid: 50dd2691f9ad6a446a8d46f8c1f9e3d4, type: 2}
+  targetWipePosition: {x: 9.44, y: 2.33, z: 7.21}
+--- !u!114 &919132148826913250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148826913247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530daf16e44ebc34584bc940b9b53fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 1465790504}
+  instructionArrowParent: {fileID: 1760326406}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  moveToTarget_Duration: 0.5
+  type: 1
+--- !u!114 &919132148826913251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148826913247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac923f8e7ecbde14c8d2faa9b6968ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 5873959851016584574}
+  - {fileID: 7831909060987091492}
+  - {fileID: 231210047850598989}
+  hoverMaterial:
+  - {fileID: 2100000, guid: c9da3ec11b4337c4485cf49015b2e3ad, type: 2}
+  - {fileID: 2100000, guid: 4f114e13cfc0401438df404198d5c1c9, type: 2}
+  - {fileID: 2100000, guid: 4f114e13cfc0401438df404198d5c1c9, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 99e1328a0b45ed44b92e48b8b8af8fe2, type: 2}
+  - {fileID: 2100000, guid: 6b7986f0f8792444a924ea9c9bff168f, type: 2}
+  - {fileID: 2100000, guid: 6b7986f0f8792444a924ea9c9bff168f, type: 2}
+  IsHavePermanentCap: 0
 --- !u!4 &1348816971084495976
 Transform:
   m_ObjectHideFlags: 0

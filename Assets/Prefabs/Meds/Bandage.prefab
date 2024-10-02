@@ -48,6 +48,8 @@ GameObject:
   - component: {fileID: 705955542586965476}
   - component: {fileID: 705955542586965480}
   - component: {fileID: -301637669742113413}
+  - component: {fileID: 4014610795814993962}
+  - component: {fileID: 4995841547623373446}
   m_Layer: 0
   m_Name: Bandage
   m_TagString: Untagged
@@ -175,7 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4cbc3667759448fc4250f06af7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useHoverControl: 1
   objectType: 6
   table:
     m_TableReference:
@@ -190,15 +191,6 @@ MonoBehaviour:
   zBoundaries:
   - 8
   - -0.5
-  meshRenderer:
-  - {fileID: 2386265836465490807}
-  - {fileID: 4037260623266750210}
-  hoverMaterial:
-  - {fileID: 2100000, guid: a2e80c38ab4de0748ab26d51e4251363, type: 2}
-  - {fileID: 2100000, guid: 9ddcdd07b04a4e148ac53bf05be171ca, type: 2}
-  originalMaterial:
-  - {fileID: 2100000, guid: 0fa23bac8708eed42b0096291b18dd84, type: 2}
-  - {fileID: 2100000, guid: ec7493ce5f0f9854baf1e88a7c561693, type: 2}
   buttons:
   - {fileID: 705955541118330664}
   - {fileID: 705955541958434961}
@@ -210,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364060406312861878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08927bf50796784790d0350378b3a12, type: 3}
   m_Name: 
@@ -241,6 +233,40 @@ MonoBehaviour:
   originalMaterial:
   - {fileID: 2100000, guid: 0fa23bac8708eed42b0096291b18dd84, type: 2}
   - {fileID: 2100000, guid: ec7493ce5f0f9854baf1e88a7c561693, type: 2}
+--- !u!114 &4014610795814993962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364060406312861878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ce6c5c7b1d81d459ae56d6a5e84f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 705955542991880305}
+  - {fileID: 705955540994484906}
+  instructionArrowParent: {fileID: 705955542119387435}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  moveToTarget_Duration: 0.5
+--- !u!114 &4995841547623373446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364060406312861878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ddca42dcba5f644a2fdf6f8789bbec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFeet: 0
+  patientBodyAnimator: {fileID: 0}
 --- !u!1 &690739875130805993
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,9 +664,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705955542586965480}
-        m_TargetAssemblyTypeName: BandageAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 4014610795814993962}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_TemporaryWrap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
