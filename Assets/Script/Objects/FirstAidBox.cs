@@ -125,7 +125,7 @@ public class FirstAidBox : MonoBehaviour
     ///summary
     ///    Move it to the initial place
     ///summary
-    public void MoveBox()
+    public void MoveBoxToInitialPosition()
     {
         am.PlayBoxMoveBackSFX();
         LeanTween.move(gameObject, intialPosition, 0.8f).setEaseSpring();
@@ -137,7 +137,7 @@ public class FirstAidBox : MonoBehaviour
         return isInTheMiddle;
     }
 
-    public void SetCanBeClicked(bool canBeClick) => canBeClicked = canBeClick;
+    public void SetCanInteract(bool canBeClick) => canBeClicked = canBeClick;
     ///summary
     ///    Open Box
     ///summary

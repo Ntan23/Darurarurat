@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class ObjectInteraction_BasicInteraction : ObjectInteraction
 {
-
+    protected bool canInteract;
+    public void SetCanInteract(bool change) => canInteract = change;
 }

@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
 
+/// <summary>
+/// Moving, Rotating, Dragging, Examine, Show Interaction Buttons -> Everything that makes you can make item do interaction (with itself: open wrap or cap & with patient - do this or do that)
+/// </summary>
 public class ObjectControl : MonoBehaviour
 {
     // ||Ganti ga ya|| mau dijadiin ke kelas kecil kecil
@@ -60,15 +63,11 @@ public class ObjectControl : MonoBehaviour
     #region OtherVariables
     [Header("Other Variables")]
     private IHover hoverControl;
-    // [SerializeField]bool useHoverControl;
-    // [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
-    // [SerializeField] private Material[] hoverMaterial;
-    // [SerializeField] private Material[] originalMaterial;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private Transform takenParent;
     private Collider objCollider;
     private Rigidbody rb;
-    private FirstAidBox firstAidBox;
+    private FirstAidBox_ObjIntB firstAidBox;
     private GameManager gm;
     private AudioManager am;
     #endregion
@@ -80,7 +79,7 @@ public class ObjectControl : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         objCollider = GetComponent<Collider>();
-        firstAidBox = GetComponentInParent<FirstAidBox>();
+        firstAidBox = GetComponentInParent<FirstAidBox_ObjIntB>();
         hoverControl = GetComponent<IHover>();
 
         objCollider.enabled = false;
@@ -98,8 +97,6 @@ public class ObjectControl : MonoBehaviour
             HideAllButtons();
 
             hoverControl?.HideHoverVisual();
-            // if(useHoverControl)hoverControl?.HideHoverVisual();
-            // else if(!useHoverControl)HideHoverEffect();
 
             canHide = false;
         }
@@ -114,7 +111,7 @@ public class ObjectControl : MonoBehaviour
             ///summary
             ///     If item Clicked, Get firstaidbox to initial place
             ///summary  
-            if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBox();
+            if(firstAidBox.IsInTheMiddle()) firstAidBox.MoveBoxToInitialPosition();
 
             if(isInTheBox) HideAllButtons();
             ///summary
@@ -169,11 +166,6 @@ public class ObjectControl : MonoBehaviour
             ///     HoverEffect if it's not inspect and inside box
             ///summary
             if(!isDragging && canExamine && !gm.GetIsInInspectMode())hoverControl?.ShowHoverVisual();
-            // {
-            //     if(useHoverControl)hoverControl?.ShowHoverVisual();
-            //     else if(!useHoverControl)ShowHoverEffect();
-            // }
-            
 
             ///summary
             ///     Show buttons to examine, open etc, if outside box
@@ -207,10 +199,6 @@ public class ObjectControl : MonoBehaviour
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
             if(canShowEffect)hoverControl?.HideHoverVisual();
-            // {
-            //     if(useHoverControl)hoverControl?.HideHoverVisual();
-            //     else if(!useHoverControl)HideHoverEffect();
-            // }
 
             HideAllButtons();
             isDragging = false;
@@ -395,12 +383,10 @@ public class ObjectControl : MonoBehaviour
     public void Inspect() 
     {
         hoverControl?.HideHoverVisual();
-        // if(useHoverControl)hoverControl?.HideHoverVisual();
-        // else if(!useHoverControl)HideHoverEffect();
 
         intialRotation = transform.rotation.eulerAngles;
 
-        firstAidBox.SetCanBeClicked(false);
+        firstAidBox.SetCanInteract(false);
         HideAllButtons();
         beforeInspectPosition = transform.position;
         LeanTween.move(gameObject, inspectPosition, 0.8f).setEaseSpring();
@@ -414,7 +400,7 @@ public class ObjectControl : MonoBehaviour
 
     public void CloseInspect()
     {
-        firstAidBox.SetCanBeClicked(true);
+        firstAidBox.SetCanInteract(true);
 
         LeanTween.rotate(gameObject, intialRotation,  0.3f);
         // if(objectType != Object.Wipes && objectType != Object.Petroleum && objectType != Object.GauzePad && objectType == Object.Bandage) LeanTween.rotate(gameObject, Vector3.zero, 0.3f);

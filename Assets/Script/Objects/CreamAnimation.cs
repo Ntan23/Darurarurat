@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class CreamAnimation : MonoBehaviour
+public class CreamAnimation : MonoBehaviour, IHaveCream
 {
     private GameManager gm;// Sama
     private AudioManager am;// Sama
@@ -14,8 +16,6 @@ public class CreamAnimation : MonoBehaviour
     private bool isOpen;//Beda - Can Open Cap 
     [SerializeField] private Vector3 animationPosition;//Beda - For GrabCream
     private Vector3 beforeAnimatePosition;//Beda - Ini buat?
-    private Animator playerArmAnimator;//Beda
-    [SerializeField] private GameObject playerArm;////Beda - PlayerArm Take GrabCream
     [SerializeField] private Collider objectCollider;// Beda - Sama Tutup
     [SerializeField] private Collider capCollider;// Beda - Sama Tutup
     [SerializeField] private GameObject capMesh;//Beda
@@ -26,7 +26,10 @@ public class CreamAnimation : MonoBehaviour
     [Header("For Arrow Instruction UI")]
     [SerializeField] private GameObject[] instructionArrows;// Sama
     [SerializeField] private GameObject arrowParent;// Sama
-    
+
+    public event EventHandler OnGettingCream;
+    public event EventHandler OnCreamReady;
+
     void Start()
     {
         gm = GameManager.instance;// Sama
@@ -35,7 +38,7 @@ public class CreamAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objectControl = GetComponent<ObjectControl>();
         capSkinnedMeshRenderer = capMesh.GetComponent<SkinnedMeshRenderer>();
-        if(playerArm != null) playerArmAnimator = playerArm.GetComponent<Animator>();
+        // if(playerArm != null) playerArmAnimator = playerArm.GetComponent<Animator>();
 
         foreach(GameObject go in instructionArrows) go.SetActive(false);// Sama
     
@@ -154,7 +157,9 @@ public class CreamAnimation : MonoBehaviour
     IEnumerator GrabCreamAnimation()
     {
         gm.ChangeIsAnimatingValue(true);
-        playerArmAnimator.Play("Take Rash Cream");
+        // playerArmAnimator.Play("Take Rash Cream");
+        OnGettingCream?.Invoke(this, EventArgs.Empty);
+
         yield return new WaitForSeconds(0.1f);
         LeanTween.move(gameObject, animationPosition, 1.0f).setEaseSpring();
         LeanTween.rotateZ(gameObject, -120.0f, 0.5f);
@@ -168,7 +173,8 @@ public class CreamAnimation : MonoBehaviour
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
         LeanTween.rotate(gameObject, Vector3.zero, 0.3f);
         yield return new WaitForSeconds(1.2f);
-        playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
+        // playerArm.GetComponent<PlayerHand>().ChangeCanInteract();
+        OnCreamReady?.Invoke(this, EventArgs.Empty);
         gm.ChangeIsAnimatingValue(false);
     }
     #endregion

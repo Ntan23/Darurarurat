@@ -13,7 +13,7 @@ public class VisualInteraction_Complex : VisualInteraction_Basic
     {
         gm = GameManager.instance;
     }
-    public override void HideHover(int idx)
+    protected override void HideHover(int idx)
     {
         if(objType == ObjectControl.Object.Antiseptic) 
         {
@@ -78,7 +78,7 @@ public class VisualInteraction_Complex : VisualInteraction_Basic
         }
     }
 
-    public override void ShowHover(int idx)
+    protected override void ShowHover(int idx)
     {
         if(objType == ObjectControl.Object.Antiseptic) 
         {

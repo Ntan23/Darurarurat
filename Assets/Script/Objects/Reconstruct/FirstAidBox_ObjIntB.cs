@@ -2,45 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstAidBox_IntObj : ObjectInteraction
+public class FirstAidBox_ObjIntB : ObjectInteraction_BasicInteraction
 {
-    private AudioManager am;// Sama
-        private bool isOpen;
-    private bool caninteract = true; // can be interacted/clicked
-    private bool isInTheMiddle;
-    private int clickCount;
-    [Header("Target Moving and Rotating Position")]
-    [SerializeField] private Vector3 targetPosition;
-    [SerializeField] private Vector3 targetRotation;
-    private Vector3 intialPosition;
-    private Vector3 initialRotation;
-    private BoxCollider boxCollider;
-    ///summary
-    ///    Hover Visual
-    ///summary
-    private SkinnedMeshRenderer boxRenderer;
-    [SerializeField] private Material originalMaterial;
-    [SerializeField] private Material hoverMaterial;
+    private AudioManager am;// Sama   
     private StoryManager sm;
     [SerializeField] private PauseMenuUI pauseMenuUI;
-    //private DialogueManager dm;
-    public bool IsInTheMiddle {get {return isInTheMiddle;} private set { isInTheMiddle = value;} }
+    private IHover hoverControl; //Controlling Hover Visual
 
-    void Start()
+    
+    private bool isOpen;
+    private int clickCount;//How many clicks rn to open the box
+    [Header("Target Move Position")]
+    [SerializeField] private Vector3 targetPosition;
+    [SerializeField] private Vector3 targetRotation;
+    private const float INITIAL_POSITION_X = -13.0f;
+    private Vector3 intialPosition;
+    private Vector3 initialRotation;
+    private bool isInTheMiddle;
+    private BoxCollider boxCollider;
+
+    
+    [Header("Lean Tween Duration")]
+    [SerializeField]private float movingDuration = 0.8f;
+    [SerializeField]private float rotateDuration = 0.4f;
+
+    protected override void Start()
     {
-        gm = GameManager.instance;
+        base.Start();
+        canInteract = true;
         am = AudioManager.instance;
         sm = StoryManager.instance;
-        //dm = DialogueManager.instance;
 
-        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
-        boxRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        hoverControl = GetComponent<IHover>();
 
         ///summary
         ///    Get initial pos of firstaid box
         ///summary
-        intialPosition.x = -13.0f;
+        intialPosition.x = INITIAL_POSITION_X;
         intialPosition.y = targetPosition.y;
         intialPosition.z = transform.position.z;
 
@@ -54,11 +53,11 @@ public class FirstAidBox_IntObj : ObjectInteraction
     
     void OnMouseOver()
     {
-        if(caninteract && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) boxRenderer.material = hoverMaterial;
+        if(canInteract && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) hoverControl.ShowHoverVisual();
     }
     void OnMouseExit()
     {
-        boxRenderer.material = originalMaterial;
+        hoverControl.HideHoverVisual();
     }
 
     void OnMouseDown()
@@ -66,11 +65,11 @@ public class FirstAidBox_IntObj : ObjectInteraction
         ///summary
         ///    unlocking the box
         ///summary
-        if(!isOpen && caninteract && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating() && !sm.GetIsOpen())
+        if(!isOpen && canInteract && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating() && !sm.GetIsOpen())
         {
             clickCount++;
 
-            caninteract = false;
+            canInteract = false;
             ///summary
             ///    Move it to the target place
             ///summary  
@@ -78,8 +77,7 @@ public class FirstAidBox_IntObj : ObjectInteraction
             {
                 isInTheMiddle = true;
                 am.PlayBoxMoveSFX();
-                LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring().setOnComplete(() => caninteract = true);
-                LeanTween.rotate(gameObject, targetRotation, 0.4f);
+                MoveBoxToMiddle();
             }
             ///summary
             ///    Unlock 1
@@ -112,13 +110,9 @@ public class FirstAidBox_IntObj : ObjectInteraction
         ///summary
         ///    Move it to the target place
         ///summary
-        if(isOpen && !isInTheMiddle && caninteract && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating()) 
+        if(isOpen && !isInTheMiddle && canInteract && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating()) 
         {
-            am.PlayBoxMoveSFX();
-
-            LeanTween.move(gameObject, targetPosition, 0.8f).setEaseSpring();
-            
-            StartCoroutine(WaitTheBox(0.8f, false));
+            MoveBoxToMiddle();
         }
     }
 
@@ -127,14 +121,33 @@ public class FirstAidBox_IntObj : ObjectInteraction
     ///summary
     ///    Move it to the initial place
     ///summary
-    public void MoveBox()
+    public void MoveBoxToInitialPosition()
     {
         am.PlayBoxMoveBackSFX();
-        LeanTween.move(gameObject, intialPosition, 0.8f).setEaseSpring();
+        LeanTween.move(gameObject, intialPosition, movingDuration).setEaseSpring();
         StartCoroutine(WaitTheBox(0.5f, true));
     }
+    public void MoveBoxToMiddle()
+    {
+        am.PlayBoxMoveSFX();
+        if(clickCount == 1)
+        {
+            LeanTween.move(gameObject, targetPosition, movingDuration).setEaseSpring().setOnComplete(() => canInteract = true);
+            LeanTween.rotate(gameObject, targetRotation, rotateDuration);
+        }
+        else
+        {
+            LeanTween.move(gameObject, targetPosition, movingDuration).setEaseSpring();
+            StartCoroutine(WaitTheBox(0.8f, false)); //||Want Change||
+        }
+    }
 
-    public void SetCanInteract(bool canInteract) => caninteract = canInteract;
+    public bool IsInTheMiddle()
+    {
+        return isInTheMiddle;
+    }
+
+    // public void SetCanBeClicked(bool canBeClick) => canBeClicked = canBeClick;
     ///summary
     ///    Open Box
     ///summary
@@ -157,7 +170,7 @@ public class FirstAidBox_IntObj : ObjectInteraction
     IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
-        caninteract = true;
+        canInteract = true;
     }
 
     IEnumerator WaitTheBox(float time, bool enable)

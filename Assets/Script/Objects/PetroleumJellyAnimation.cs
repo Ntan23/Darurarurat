@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PetroleumJellyAnimation : MonoBehaviour
+public class PetroleumJellyAnimation : MonoBehaviour, IHaveCream
 {
     private GameManager gm;// Sama
     private AudioManager am;// Sama
@@ -17,11 +18,13 @@ public class PetroleumJellyAnimation : MonoBehaviour
     [Header("Player Hand")]
     [SerializeField] private Vector3 animationPosition;
     private Vector3 beforeAnimatePosition;
-    private Animator playerHandAnimator;// Another Hand
-    [SerializeField] private GameObject playerHand;//another hand
+
     [Header("For Instruction Arrow")]
     [SerializeField] private GameObject[] instructionArrows;// Sama
     [SerializeField] private GameObject arrowParent;// Sama
+
+    public event EventHandler OnGettingCream;
+    public event EventHandler OnCreamReady;
 
     void Start() 
     {
@@ -31,7 +34,7 @@ public class PetroleumJellyAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         objCollider = GetComponent<Collider>();
         objControl = GetComponent<ObjectControl>();
-        if(playerHand != null) playerHandAnimator = playerHand.GetComponent<Animator>();
+        // if(playerHand != null) playerHandAnimator = playerHand.GetComponent<Animator>();
 
         arrowParent.SetActive(false);// Sama
 
@@ -136,9 +139,12 @@ public class PetroleumJellyAnimation : MonoBehaviour
         LeanTween.move(gameObject, animationPosition, 0.8f).setEaseSpring();
         LeanTween.rotate(gameObject, new Vector3(180.0f, 0.0f, -180.0f), 0.3f);
         yield return new WaitForSeconds(0.8f);
-        playerHandAnimator.Play("Grab Vaseline");
+        // playerHandAnimator.Play("Grab Vaseline");
+        OnGettingCream?.Invoke(this, EventArgs.Empty);
+
         yield return new WaitForSeconds(3.1f);
-        playerHand.GetComponent<PlayerHand>().ChangeCanInteract();
+        // playerHand.GetComponent<PlayerHand>().ChangeCanInteract();
+        OnCreamReady?.Invoke(this, EventArgs.Empty);
         beforeAnimatePosition = objControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
         gm.ChangeIsAnimatingValue(false);

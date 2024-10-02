@@ -4,10 +4,12 @@ using UnityEngine;
 
 public interface IChangedCapsMesh
 {
-    SkinnedMeshRenderer capSkinnedMeshRenderer {get;}
-    Material normalCapMaterial {get;}
-    Material transparentCapMaterial {get;}
+    // [SerializeField] private GameObject capMesh;
+    // SkinnedMeshRenderer capSkinnedMeshRenderer {get;}
+    // Material normalCapMaterial {get;}
+    // Material transparentCapMaterial {get;}
 
-    void UpdateAlpha();
-    void CapMeshChange();
+    void UpdateAlpha(float alpha);
+    void ChangeCapMeshToNormal();
+    void ChangeCapMeshToTransparent();
 }

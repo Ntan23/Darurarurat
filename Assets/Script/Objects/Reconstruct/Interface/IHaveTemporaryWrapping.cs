@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IHaveTemporaryWrapping
 {
-    bool IsOpen{ get; }
     void OpenWrapping();
-
+    
 }

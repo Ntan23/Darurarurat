@@ -4,8 +4,9 @@ using UnityEngine;
 
 public interface IHaveInstruction
 {
-    GameObject[] instructionArrows {get;}// Sama
-    GameObject instructionArrowParent {get;}// Sama
+    // GameObject[] instructionArrows {get;}// Sama
+    // GameObject instructionArrowParent {get;}// Sama
     void DoShowInstruction();
     void ShowInstruction();
+    void HideAllInstruction();
 }

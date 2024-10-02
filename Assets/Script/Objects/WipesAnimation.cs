@@ -87,6 +87,8 @@ public class WipesAnimation : MonoBehaviour
     }
     //away to make yg dibwh ga nyangkut di sini
 
+
+    //Hand texture????
     public void ChangeHandTexture() => handMesh.material = cleanMaterial;
 
     public void PlayGauzePadAnimation() => feetAnimator.Play("ShowGauzePad");

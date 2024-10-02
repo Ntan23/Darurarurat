@@ -24,7 +24,7 @@ public abstract class VisualInteraction : MonoBehaviour, IHover
             }
         }
     }
-    public virtual void HideHover(int idx){}
+    protected abstract void HideHover(int idx);
 
     /// <summary>
     /// Change all render material to hoverMaterial
@@ -42,6 +42,6 @@ public abstract class VisualInteraction : MonoBehaviour, IHover
         }
     }
 
-    public virtual void ShowHover(int idx){}
+    protected abstract void ShowHover(int idx);
     
 }
