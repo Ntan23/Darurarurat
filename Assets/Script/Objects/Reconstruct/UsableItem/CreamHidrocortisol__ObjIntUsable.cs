@@ -91,7 +91,7 @@ public class CreamHidrocortisol__ObjIntUsable : ObjInt_UsableItem_PermanentCap_C
         gm.ChangeIsAnimatingValue(true);
         // playerArmAnimator.Play("Take Rash Cream");
         OnGettingCream?.Invoke(this, EventArgs.Empty);
-
+        
         yield return new WaitForSeconds(0.1f);
         LeanTween.move(gameObject, animationPosition, 1.0f).setEaseSpring();
         LeanTween.rotateZ(gameObject, -120.0f, 0.5f);

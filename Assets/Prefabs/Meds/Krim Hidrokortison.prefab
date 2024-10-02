@@ -406,9 +406,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4390753906038860408}
-        m_TargetAssemblyTypeName: CreamAnimation, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 9016396532568502974}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -734,9 +734,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4390753906038860408}
-        m_TargetAssemblyTypeName: CreamAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 9016396532568502974}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

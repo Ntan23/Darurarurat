@@ -67,6 +67,7 @@ public class ObjectControl : MonoBehaviour
     private IHover hoverControl;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private Transform takenParent;
+    private Camera cam;
     private Collider objCollider;
     private Rigidbody rb;
     private FirstAidBox_ObjIntB firstAidBox;
@@ -78,6 +79,8 @@ public class ObjectControl : MonoBehaviour
     {
         gm = GameManager.instance;
         am = AudioManager.instance;
+
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         interactWithPatient = GetComponent<IInteractWithPatient>();
         rb = GetComponent<Rigidbody>();
@@ -168,7 +171,7 @@ public class ObjectControl : MonoBehaviour
             ///summary
             ///     HoverEffect if it's not inspect and inside box
             ///summary
-            if(!isDragging && canExamine && !gm.GetIsInInspectMode())hoverControl?.ShowHoverVisual();
+            if(!isDragging && canExamine && !gm.GetIsInInspectMode()) hoverControl?.ShowHoverVisual();
 
             ///summary
             ///     Show buttons to examine, open etc, if outside box
@@ -201,7 +204,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            if(canShowEffect)hoverControl?.HideHoverVisual();
+            if(canShowEffect) hoverControl?.HideHoverVisual();
 
             HideAllButtons();
             isDragging = false;
@@ -255,8 +258,15 @@ public class ObjectControl : MonoBehaviour
                 xAxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
                 yAxisRotation = Input.GetAxis("Mouse Y") * rotationSpeed;
 
-                transform.Rotate(Vector3.down, xAxisRotation);
-                transform.Rotate(Vector3.right, yAxisRotation);
+                Vector3 right = Vector3.Cross(cam.transform.up, transform.position - cam.transform.position);
+                Vector3 up = Vector3.Cross(transform.position - cam.transform.position, right);
+
+                transform.rotation = Quaternion.AngleAxis(-xAxisRotation, up) * transform.rotation;
+                transform.rotation = Quaternion.AngleAxis(yAxisRotation, right) * transform.rotation;
+                // transform.Rotate(Vector3.down, xAxisRotation);
+                // transform.Rotate(Vector3.right, yAxisRotation);
+
+                
             }
         }
     }

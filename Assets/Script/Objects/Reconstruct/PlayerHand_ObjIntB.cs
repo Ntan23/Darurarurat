@@ -43,7 +43,7 @@ public class PlayerHand_ObjIntB : ObjectInteraction_BasicInteraction
     }
     public void GrabCream()
     {
-        if(isVaseline)animator.Play("Grab Vaseline");
+        if(isVaseline) animator.Play("Grab Vaseline");
         else animator.Play("Take Rash Cream");
     }
 

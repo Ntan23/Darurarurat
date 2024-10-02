@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 705955542586965481}
   - component: {fileID: 705955542586965477}
   - component: {fileID: 705955542586965476}
-  - component: {fileID: 705955542586965480}
   - component: {fileID: -301637669742113413}
   - component: {fileID: 4014610795814993962}
   - component: {fileID: 4995841547623373446}
@@ -195,23 +194,6 @@ MonoBehaviour:
   - {fileID: 705955541118330664}
   - {fileID: 705955541958434961}
   takenParent: {fileID: 0}
---- !u!114 &705955542586965480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364060406312861878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08927bf50796784790d0350378b3a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feetAnimator: {fileID: 0}
-  instructionArrows:
-  - {fileID: 705955542991880305}
-  - {fileID: 705955540994484906}
-  arrowParent: {fileID: 705955542119387435}
 --- !u!114 &-301637669742113413
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -463,7 +463,6 @@ GameObject:
   - component: {fileID: 2218151752391856232}
   - component: {fileID: 2218151752391856239}
   - component: {fileID: 2218151752391856233}
-  - component: {fileID: 2218151752391856213}
   - component: {fileID: 7771104128972216119}
   - component: {fileID: -7595974615824553231}
   m_Layer: 0
@@ -611,24 +610,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!114 &2218151752391856213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2218151752391856226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e876299f651b1c41887ae2b1a88887d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  feetAnimator: {fileID: 0}
-  handMesh: {fileID: 0}
-  cleanMaterial: {fileID: 0}
-  instructionArrow: {fileID: 2218151753143372979}
-  arrowParent: {fileID: 2218151753043642558}
 --- !u!114 &7771104128972216119
 MonoBehaviour:
   m_ObjectHideFlags: 0

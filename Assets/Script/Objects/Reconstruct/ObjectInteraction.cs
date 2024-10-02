@@ -16,6 +16,7 @@ public abstract class ObjectInteraction : MonoBehaviour
         gm = GameManager.instance;
         animator = GetComponent<Animator>();
     }
+    
     // protected virtual void StopActiveCoroutine()
     // {
     //     if(isCorotineActive)

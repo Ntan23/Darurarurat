@@ -82,6 +82,7 @@ public class PetroleumJelly__ObjIntUsable : ObjInt_UsableItem_PermanentCap, IHav
         OnCreamReady?.Invoke(this, EventArgs.Empty);
         beforeAnimatePosition = objControl.GetBeforeAnimatePosition();
         LeanTween.move(gameObject, beforeAnimatePosition, 0.8f).setEaseSpring();
+        LeanTween.rotateX(gameObject, 270.0f, 0.3f);
         gm.ChangeIsAnimatingValue(false);
     }
     #endregion

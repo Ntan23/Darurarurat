@@ -474,9 +474,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8613408933372001396}
-        m_TargetAssemblyTypeName: PetroleumJellyAnimation, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 7678755318898387214}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -894,9 +894,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8613408933372001396}
-        m_TargetAssemblyTypeName: PetroleumJellyAnimation, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 7678755318898387214}
+        m_TargetAssemblyTypeName: ObjInt_UsableItem_PermanentCap, Assembly-CSharp
+        m_MethodName: DoShowInstruction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1806,11 +1806,12 @@ GameObject:
   - component: {fileID: 8613408933372001406}
   - component: {fileID: 8613408933372001407}
   - component: {fileID: 8613408933372001392}
-  - component: {fileID: 8613408933372001396}
   - component: {fileID: 8613408933372001395}
   - component: {fileID: 8613408933372001394}
   - component: {fileID: 8613408933372001393}
   - component: {fileID: 1113706125422182326}
+  - component: {fileID: 1497606032731159209}
+  - component: {fileID: 7678755318898387214}
   m_Layer: 0
   m_Name: Petroleum Jelly
   m_TagString: Untagged
@@ -1886,25 +1887,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8613408933372001396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8883790188076447684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61eb6ffee0790f045a21843c11562087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capCollider: {fileID: 8613408933667359007}
-  animationPosition: {x: 0, y: 10, z: 0.5}
-  playerHand: {fileID: 0}
-  instructionArrows:
-  - {fileID: 8613408933433723054}
-  - {fileID: 8613408933760255704}
-  arrowParent: {fileID: 8613408933417009665}
 --- !u!114 &8613408933372001395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,3 +1989,39 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 140fea74378308843a7afd2bf46bf6a1, type: 2}
   originalMaterial:
   - {fileID: 2100000, guid: 5b12c5290ef017246ba3c4634387f8af, type: 2}
+--- !u!114 &1497606032731159209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883790188076447684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1479a5044d53e364b8a8471716f06c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7678755318898387214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883790188076447684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda8a352475275146873b9a402fe8dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 1
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 8613408933433723054}
+  - {fileID: 8613408933760255704}
+  instructionArrowParent: {fileID: 8613408933417009665}
+  capCollider: {fileID: 8613408933667359007}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  rotateXPosition_OpenClose: -60
+  moveToTarget_Duration: 0.5
+  rotateToTarget_Duration: 0.3
+  animationPosition: {x: 0, y: 10, z: 0.5}
