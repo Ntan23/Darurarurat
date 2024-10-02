@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 655448555}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PetroleumJellyAnimation, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
@@ -13329,19 +13329,6 @@ MonoBehaviour:
   - {fileID: 1386279360}
   - {fileID: 126643375}
   takenParent: {fileID: 870933546}
---- !u!114 &655448550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655448548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faaff92e12683414e99c92826e7aaa82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectControl: {fileID: 655448549}
 --- !u!95 &655448551
 Animator:
   serializedVersion: 4
@@ -13397,24 +13384,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1304603211}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &655448555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655448548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61eb6ffee0790f045a21843c11562087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capCollider: {fileID: 539347280}
-  animationPosition: {x: 0, y: 10, z: 0.5}
-  instructionArrows:
-  - {fileID: 1749171277}
-  - {fileID: 80442319}
-  arrowParent: {fileID: 201056757}
 --- !u!114 &655448556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13455,6 +13424,60 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &655448557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655448548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1479a5044d53e364b8a8471716f06c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &655448558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655448548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda8a352475275146873b9a402fe8dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 1
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 1749171277}
+  - {fileID: 80442319}
+  instructionArrowParent: {fileID: 201056757}
+  capCollider: {fileID: 539347280}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  rotateXPosition_OpenClose: -60
+  moveToTarget_Duration: 0.5
+  rotateToTarget_Duration: 0.3
+  animationPosition: {x: 0, y: 10, z: 0.5}
+--- !u!114 &655448559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655448548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fa37ec8b61a184da38cffd75ef60a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer:
+  - {fileID: 0}
+  hoverMaterial:
+  - {fileID: 2100000, guid: 140fea74378308843a7afd2bf46bf6a1, type: 2}
+  originalMaterial:
+  - {fileID: 2100000, guid: 5b12c5290ef017246ba3c4634387f8af, type: 2}
 --- !u!1001 &659345750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21306,7 +21329,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 655448555}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PetroleumJellyAnimation, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1

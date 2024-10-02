@@ -187,4 +187,5 @@ public class CreamAnimation : MonoBehaviour, IHaveCream
     {
         return isOpen;
     }
+    public void GrabCream(){}
 }

@@ -8,5 +8,4 @@ using UnityEngine;
 public abstract class ObjectToOthersInteraction : MonoBehaviour, IInteractWithPatient
 {
     public abstract void InteractionWithPatient();
-
 }

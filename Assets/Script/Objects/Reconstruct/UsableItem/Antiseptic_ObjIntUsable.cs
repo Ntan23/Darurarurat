@@ -6,12 +6,14 @@ public class Antiseptic_ObjIntUsable : ObjInt_UsableItem_PermanentCap_ChangeCapM
 {
     [Header("Antiseptic Liquid")]
     [SerializeField] private ParticleSystem liquidParticleSystem;
+
     public override void DoThingsBasedOnMousePosition()
     {
         if(Input.mousePosition.x > mousePosition.x && !isOpen && capCollider.enabled) OpenCap();
 
         if(Input.mousePosition.x < mousePosition.x && isOpen && capCollider.enabled) CloseCap();
     }
+    
 
     protected override void ShowInstructionNow()
     {
@@ -48,7 +50,7 @@ public class Antiseptic_ObjIntUsable : ObjInt_UsableItem_PermanentCap_ChangeCapM
         canAnimate = false;
         yield return new WaitForSeconds(1.8f);
         // cap.transform.parent = targetParent;
-        capSkinnedMeshRenderer.material = transparentCapMaterial;
+        ChangeCapMeshToTransparent();
         LeanTween.value(capMesh, UpdateAlpha, 1.0f, 0.0f, 0.8f).setOnComplete(() =>
         {
             objControl.AfterAnimate();
@@ -73,5 +75,7 @@ public class Antiseptic_ObjIntUsable : ObjInt_UsableItem_PermanentCap_ChangeCapM
     }
     #endregion
     
+    public void PourAntiseptic() => animator.Play("Pour");
     public void PlayLiquidParticleSystem() => liquidParticleSystem.Play();
+
 }

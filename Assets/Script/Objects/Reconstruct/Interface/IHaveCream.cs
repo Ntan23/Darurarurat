@@ -6,6 +6,6 @@ using UnityEngine;
 
 public interface IHaveCream
 {
-    // void GrabCream();
+    void GrabCream();
     event EventHandler OnGettingCream, OnCreamReady;
 }

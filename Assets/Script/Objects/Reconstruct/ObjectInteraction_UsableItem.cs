@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractableObj_UsableItem : ObjectInteraction, IGetMousePositionDistance, IHaveInstruction
+public abstract class ObjectInteraction_UsableItem : ObjectInteraction, IGetMousePositionDistance, IHaveInstruction
 {
     protected AudioManager am;
     protected ObjectControl objControl;
@@ -35,7 +35,7 @@ public abstract class InteractableObj_UsableItem : ObjectInteraction, IGetMouseP
     protected override void Start() 
     {
         base.Start();
-        
+
         am = AudioManager.instance;
         objControl = GetComponent<ObjectControl>();
 

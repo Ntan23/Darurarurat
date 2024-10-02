@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ObjInt_UsableItem_PermanentCap : InteractableObj_UsableItem, IHavePermanentCap
+public abstract class ObjInt_UsableItem_PermanentCap : ObjectInteraction_UsableItem, IHavePermanentCap
 {
     [Header("Permanent Cap Collider")]
     protected Collider objCollider;  
@@ -27,6 +27,8 @@ public abstract class ObjInt_UsableItem_PermanentCap : InteractableObj_UsableIte
         
         objCollider = GetComponent<Collider>();//Beda - Sama Tutup
     }
+
+    //Ini yang buat di button utk animasi dsb
     public override void DoShowInstruction()
     {   
         objControl.SetBeforeAnimatePosition();

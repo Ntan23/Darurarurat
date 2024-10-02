@@ -396,7 +396,9 @@ GameObject:
   - component: {fileID: 7903323120339559576}
   - component: {fileID: 7903323120339559591}
   - component: {fileID: 7903323120339559588}
+  - component: {fileID: 1598139863417273308}
   - component: {fileID: 6031419514559384254}
+  - component: {fileID: 3803152348774245647}
   m_Layer: 0
   m_Name: Plester
   m_TagString: Object
@@ -489,7 +491,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7020926347393802753}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6923f843e21aca94aaae89ea82a23a4f, type: 3}
   m_Name: 
@@ -542,6 +544,29 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1598139863417273308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020926347393802753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5d68fc84cad5144bb62b30fb01774a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCheckDirection: 0
+  mouseDistanceTargetMinimal: 50
+  instructionArrows:
+  - {fileID: 7903323120096871218}
+  - {fileID: 7903323122000512794}
+  instructionArrowParent: {fileID: 7903323121443643316}
+  targetPosition_OpenClose: {x: 0, y: 8, z: 2}
+  moveToTarget_Duration: 0.5
+  bandAidPeels:
+  - {fileID: 315947616500737559}
+  - {fileID: 1452830018116102540}
 --- !u!114 &6031419514559384254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +591,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 22625ed7165406f4c8a4cbfa41972e60, type: 2}
   - {fileID: 2100000, guid: 10f49c72d6cddc74093bd1d1720457b6, type: 2}
   - {fileID: 2100000, guid: 10f49c72d6cddc74093bd1d1720457b6, type: 2}
+--- !u!114 &3803152348774245647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020926347393802753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7607c561ee946a844ae09d54b8627f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7589384653124128931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,9 +1518,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7903323120339559591}
-        m_TargetAssemblyTypeName: BandAidPeel, Assembly-CSharp
-        m_MethodName: Peel
+      - m_Target: {fileID: 1598139863417273308}
+        m_TargetAssemblyTypeName: BandAid__ObjIntUsable, Assembly-CSharp
+        m_MethodName: OpenWrapping
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2309,19 +2346,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7903323120116789362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020926349312538553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faaff92e12683414e99c92826e7aaa82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectControl: {fileID: 7903323120339559576}
 --- !u!4 &7648387585433431299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b21e7429737595340adead84f7eb670b,

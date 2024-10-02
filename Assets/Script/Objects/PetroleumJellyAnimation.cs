@@ -150,4 +150,5 @@ public class PetroleumJellyAnimation : MonoBehaviour, IHaveCream
         gm.ChangeIsAnimatingValue(false);
     }
     #endregion
+    public void GrabCream(){}
 }

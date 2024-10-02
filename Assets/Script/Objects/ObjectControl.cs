@@ -7,6 +7,8 @@ using UnityEngine.Localization;
 /// </summary>
 public class ObjectControl : MonoBehaviour
 {
+    //Testing
+    private IInteractWithPatient interactWithPatient;
     // ||Ganti ga ya|| mau dijadiin ke kelas kecil kecil
     #region enum
     //Ntr kuganti lg
@@ -77,6 +79,7 @@ public class ObjectControl : MonoBehaviour
         gm = GameManager.instance;
         am = AudioManager.instance;
 
+        interactWithPatient = GetComponent<IInteractWithPatient>();
         rb = GetComponent<Rigidbody>();
         objCollider = GetComponent<Collider>();
         firstAidBox = GetComponentInParent<FirstAidBox_ObjIntB>();
@@ -288,19 +291,20 @@ public class ObjectControl : MonoBehaviour
                 
                 if(isProcedureFinished) 
                 {
-                    if(objectType == Object.BandAid) StartCoroutine(Plester());
+                    interactWithPatient.InteractionWithPatient();
+                    // if(objectType == Object.BandAid) StartCoroutine(Plester());
 
-                    if(objectType == Object.Antiseptic) StartCoroutine(Antiseptic());
+                    // if(objectType == Object.Antiseptic) interactWithPatient.InteractionWithPatient();
 
-                    if(objectType == Object.Petroleum) PetroleumAnimation();
+                    // if(objectType == Object.Petroleum) PetroleumAnimation();
 
-                    if(objectType == Object.Wipes) StartCoroutine(Wipes());
+                    // if(objectType == Object.Wipes) StartCoroutine(Wipes());
 
-                    if(objectType == Object.Cream) HydrocortisoneAnimation();
+                    // if(objectType == Object.Cream) HydrocortisoneAnimation();
 
-                    if(objectType == Object.GauzePad) StartCoroutine(GauzePadAnimation());
+                    // if(objectType == Object.GauzePad) StartCoroutine(GauzePadAnimation());
 
-                    if(objectType == Object.Bandage) StartCoroutine(GetComponent<BandageAnimation>().WrapMode());
+                    // if(objectType == Object.Bandage) StartCoroutine(GetComponent<BandageAnimation>().WrapMode());
                 }
                 ///summary
                 ///     Wrong procedure

@@ -1090,7 +1090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4cbc3667759448fc4250f06af7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useHoverControl: 1
   objectType: 4
   table:
     m_TableReference:
@@ -1105,15 +1104,6 @@ MonoBehaviour:
   zBoundaries:
   - 8
   - -0.5
-  meshRenderer:
-  - {fileID: 2641906342429568679}
-  - {fileID: 3109443820033016668}
-  hoverMaterial:
-  - {fileID: 2100000, guid: 92ea2c1161da6ed4d84da6fad467aa84, type: 2}
-  - {fileID: 2100000, guid: 92ea2c1161da6ed4d84da6fad467aa84, type: 2}
-  originalMaterial:
-  - {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
-  - {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
   buttons:
   - {fileID: 974047249929473706}
   - {fileID: 1548994458135382405}
@@ -1132,7 +1122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationPosition: {x: 1, y: 10.46, z: 1.64}
-  playerArm: {fileID: 0}
   objectCollider: {fileID: 8299273731199997754}
   capCollider: {fileID: 2670307253536061779}
   capMesh: {fileID: 16775362182531559}
@@ -1205,7 +1194,7 @@ MonoBehaviour:
   originalMaterial:
   - {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
   - {fileID: 2100000, guid: ba6a9ae7f839d8342b7e3b1191c718ae, type: 2}
-  objType: 4
+  IsHavePermanentCap: 1
 --- !u!1 &4005788679281865675
 GameObject:
   m_ObjectHideFlags: 0
