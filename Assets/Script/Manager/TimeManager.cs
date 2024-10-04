@@ -13,26 +13,56 @@ public class TimeManager : MonoBehaviour
     }
     #endregion
 
-    public event EventHandler<DateTime> TimeChanged;
     private int day;
-    [SerializeField] private float timeMultiplier;
-    [SerializeField] private float startHour;
-    [SerializeField] private TextMeshProUGUI digitalClockText;
-    private DateTime currentTime;
 
-    void Start() 
+    private const int hoursInDay = 24, minutesInHour = 60;
+
+    [SerializeField] private float timeMultiplier;
+
+    private float totalTime;
+    private float currentTime;
+    [SerializeField] private float startHour;
+    private float startOffset;
+
+    [SerializeField] private TextMeshProUGUI digitalClockText;
+    public bool canStart;
+
+    void Start()
     {
         day = PlayerPrefs.GetInt("DaySaved", 1);
 
-        currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
+        startOffset = (startHour / hoursInDay) * timeMultiplier;
+        currentTime = (totalTime + startOffset) % timeMultiplier;
+        
+        digitalClockText.SetText(Clock24Hour());
     }
 
-    void Update() => UpdateTimeOfDay();
+    void Update() 
+    {
+        if(canStart) UpdateTimeOfDay();
+    }
 
     private void UpdateTimeOfDay()
     {
-        currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
-        TimeChanged?.Invoke(this, currentTime);
-        digitalClockText.text = currentTime.ToString("HH:mm");
+        totalTime += Time.deltaTime;
+        currentTime = (totalTime + startOffset) % timeMultiplier;
+        // TimeChanged?.Invoke(this, currentTime);
+        digitalClockText.SetText(Clock24Hour());
     }
+
+    public float GetHour()
+    {
+        return currentTime * hoursInDay / timeMultiplier;
+    }
+
+    public float GetMinutes()
+    {
+        return (currentTime * hoursInDay * minutesInHour / timeMultiplier)%minutesInHour;
+    }
+
+    public string Clock24Hour()
+    {
+        return Mathf.FloorToInt(GetHour()).ToString("00") + ":" + Mathf.FloorToInt(GetMinutes()).ToString("00");
+    }
+
 }

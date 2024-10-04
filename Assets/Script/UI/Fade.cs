@@ -7,12 +7,14 @@ public class Fade : MonoBehaviour
     private GameManager gm;
     private DialogueManager dm;
     private StoryManager sm;
+    private TimeManager tm;
 
     void Start()
     {
         gm = GameManager.instance;
         dm = DialogueManager.instance;
         sm = StoryManager.instance;
+        tm = TimeManager.instance;
     }
 
     void UpdateAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
@@ -43,6 +45,7 @@ public class Fade : MonoBehaviour
 
         LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f).setOnComplete(() => 
         {
+            if(tm != null) tm.canStart = true;
             if(gm != null) gm.ChangeCanPauseValue(true);
             if(sm != null) GetComponent<CanvasGroup>().blocksRaycasts = false;
         });  
