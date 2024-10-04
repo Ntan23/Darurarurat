@@ -55,30 +55,6 @@ public class AudioManager : MonoBehaviour
 
         Play("BGM");
     } 
-    
-    ///summary
-    ///     Set Volume, Maybe ganti cr set lsg d audio mixer drpd foreach? ||Ganti Ga Ya||
-    ///summary
-    public void SetSFXVolume(float volume)
-    {
-        foreach(Sound s in sounds) 
-        {
-            if(s.name == "BGM") continue;
-            if(s.name != "BGM") s.source.volume = volume;
-        }
-    }
-
-    public void SetBGMVolume(float volume)
-    {
-        foreach(Sound s in sounds) 
-        {
-            if(s.name == "BGM")
-            {
-                s.source.volume = volume;
-                break;
-            }         
-        }
-    }
 
     public void StopAllSFX()
     {

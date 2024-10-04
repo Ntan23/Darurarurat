@@ -15,6 +15,7 @@ public class ScenesManager : MonoBehaviour
     #endregion
 
     [SerializeField] private Fade fade;
+    [SerializeField] private bool is2D;
     private GameManager gm;
     
     void Start() 
@@ -22,6 +23,9 @@ public class ScenesManager : MonoBehaviour
         gm = GameManager.instance;
 
         fade.FadeIn();
+
+        if(is2D) QualitySettings.SetQualityLevel(3);
+        else if(!is2D) QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("QualityLevel", 2));
     }
 
     public void GoToNextScene() => StartCoroutine(GoToNextSceneAnimation());

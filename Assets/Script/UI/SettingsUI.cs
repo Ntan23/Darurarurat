@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Audio;
-using TMPro;
+using UnityEngine.UI;
 
 public class SettingsUI : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class SettingsUI : MonoBehaviour
     }
     #endregion
 
-    //public AudioMixer MainMixer;
+    public AudioMixer MainMixer;
     // private TMP_Dropdown QualityDropdown;
     // private TMP_Dropdown LanguagesDropdown;
     [SerializeField] Slider BGMSlider;
@@ -40,6 +38,11 @@ public class SettingsUI : MonoBehaviour
         // MainMixer.SetFloat("SFX_Volume", sfxVolume);
         // am.SetBGMVolume(bgmVolume);
         // am.SetSFXVolume(sfxVolume);
+        MainMixer.SetFloat("BGMVolume", Mathf.Log10(bgmVolume) * 20);
+        MainMixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
+
+        BGMSlider.value = bgmVolume;
+        SFXSlider.value = sfxVolume;
 
         if(isFullscreen == 1) 
         {
@@ -58,20 +61,20 @@ public class SettingsUI : MonoBehaviour
             Screen.SetResolution(Mathf.RoundToInt(width / 1.5f), Mathf.RoundToInt(height / 1.5f), false);
         }
 
-        StartCoroutine(ChangeVolume());
+        PlayerPrefs.GetInt("QualityLevel", 2);
     }
 
     public void UpdateBGMSound(float value)
     {
         // MainMixer.SetFloat("BGM_Volume", value);
-        am.SetBGMVolume(value);
+        MainMixer.SetFloat("BGMVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("BGMVolume", value);
     }
 
     public void UpdateSFXSound(float value)
     {
         //MainMixer.SetFloat("SFX_Volume", value);
-        am.SetSFXVolume(value);
+        MainMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("SFXVolume", value);
     }
 
@@ -120,14 +123,4 @@ public class SettingsUI : MonoBehaviour
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     });
     //LeanTween.moveLocalY(gameObject, -1092.0f, 0.8f).setEaseSpring();
-
-    IEnumerator ChangeVolume()
-    {
-        yield return new WaitForSeconds(0.01f);
-        BGMSlider.value = bgmVolume;
-        SFXSlider.value = sfxVolume;
-        
-        am.SetBGMVolume(bgmVolume);
-        am.SetSFXVolume(sfxVolume);
-    }
 }
