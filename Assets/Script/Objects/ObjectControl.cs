@@ -60,6 +60,7 @@ public class ObjectControl : MonoBehaviour
     private bool canShowEffect = true;
     private bool isSelect;
     private bool canBeUse;
+    private bool isUnlocked;
     #endregion
 
     #region OtherVariables
@@ -92,7 +93,6 @@ public class ObjectControl : MonoBehaviour
         SetBeforeAnimatePosition();
         HideAllButtons();
     }
-
 
     void Update() 
     {
@@ -265,8 +265,6 @@ public class ObjectControl : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(yAxisRotation, right) * transform.rotation;
                 // transform.Rotate(Vector3.down, xAxisRotation);
                 // transform.Rotate(Vector3.right, yAxisRotation);
-
-                
             }
         }
     }
@@ -538,4 +536,9 @@ public class ObjectControl : MonoBehaviour
         });
         // });
     } 
+
+    public bool GetIsUnlocked()
+    {
+        return isUnlocked;
+    }
 }
