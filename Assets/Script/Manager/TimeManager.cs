@@ -46,7 +46,6 @@ public class TimeManager : MonoBehaviour
     {
         totalTime += Time.deltaTime;
         currentTime = (totalTime + startOffset) % timeMultiplier;
-        // TimeChanged?.Invoke(this, currentTime);
         digitalClockText.SetText(Clock24Hour());
     }
 

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4fa99f2ff7a8f41960c1bed5057013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeMultiplier: 30
+  timeMultiplier: 300
   startHour: 8
   digitalClockText: {fileID: 251402203}
   canStart: 0

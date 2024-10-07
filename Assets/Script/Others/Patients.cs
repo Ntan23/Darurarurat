@@ -15,8 +15,7 @@ public class Patients : MonoBehaviour
     [SerializeField] private Transform _object;
     private int nextLocation;
     private Transform goalpos;
-    private Animator playerAnimator;
-    private int locationChangerValue = 1;
+    //private Animator playerAnimator;
     private bool canMove;
 
     void Update()
@@ -47,6 +46,12 @@ public class Patients : MonoBehaviour
     {
         for(int i = 0; i < pos.Length; i++) positions[i] = pos[i];
 
+        StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.0f);
         canMove = true;
     }
 
