@@ -92,5 +92,7 @@ public class AudioManager : MonoBehaviour
     public void PlayKidsCrySFX() => Play("KidsCry");
     public void PlaySweepingSFx() => Play("Sweeping");
     public void PlayItchScratchSFX() => Play("ItchScratch");
+    public void PlayDialogueTypeSFX(){}
+    public void PlayDialogueVASFX(string name){}
 } 
 
