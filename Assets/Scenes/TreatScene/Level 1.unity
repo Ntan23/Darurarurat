@@ -27204,6 +27204,12 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4660285920014617185, guid: 21487bb9600dc8d43a5974e691dd67fe,
+        type: 3}
+      propertyPath: MainMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 4a753c9ef04d3d9459f31455f4fd5f38,
+        type: 2}
     - target: {fileID: 4660285920014617186, guid: 21487bb9600dc8d43a5974e691dd67fe,
         type: 3}
       propertyPath: m_Pivot.x
