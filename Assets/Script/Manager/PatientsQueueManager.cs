@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PatientsQueueManager : MonoBehaviour
 {
+    public static PatientsQueueManager instance;
+
+    void Awake()
+    {
+        if(instance == null) instance = this;
+    }
+
     [SerializeField] private List<PatientWoundSO> allWounds;
     [SerializeField] private List<PatientWoundSO> availableWounds;
     [SerializeField] private int medsCount;
@@ -35,11 +42,12 @@ public class PatientsQueueManager : MonoBehaviour
         }
     }
 
-    private void GenerateQueue()
+    public void GenerateQueue()
     {
         randomPatientsIndex = Random.Range(0, patients.Length);
         
-        spawnedPatient = Instantiate(patients[randomPatientsIndex], spawnPos);
+        spawnedPatient = Instantiate(patients[randomPatientsIndex]);
+        spawnedPatient.transform.position = spawnPos.position;
         GenerateWoundsToPatient();
     }
 
@@ -67,5 +75,10 @@ public class PatientsQueueManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         GenerateQueue();
+    }
+
+    public Transform[] GetTargetPositions()
+    {
+        return positions;
     }
 }

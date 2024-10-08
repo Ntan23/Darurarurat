@@ -65,46 +65,13 @@ public class FirstAidBox_ObjIntB : ObjectInteraction_BasicInteraction
         ///summary
         ///    unlocking the box
         ///summary
-        if(!isOpen && canInteract && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating() && !sm.GetIsOpen())
+        if(!isOpen && canInteract && gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
-            clickCount++;
-
-            canInteract = false;
-            ///summary
-            ///    Move it to the target place
-            ///summary  
-            if(clickCount == 1)
+            if(sm != null)
             {
-                isInTheMiddle = true;
-                am.PlayBoxMoveSFX();
-                MoveBoxToMiddle();
+                if(!sm.GetIsOpen()) OpenBox();
             }
-            ///summary
-            ///    Unlock 1
-            ///summary             
-            if(clickCount == 2)
-            {
-                am.PlayBoxOpenSFX();
-                StartCoroutine(DelayAnimation(0.3f));
-                StartCoroutine(Wait(0.3f));
-            } 
-            ///summary
-            ///    Unlock 2
-            ///summary  
-            if(clickCount == 3)
-            {
-                am.PlayBoxOpenSFX();
-                StartCoroutine(DelayAnimation(0.3f));
-                StartCoroutine(Wait(0.3f));
-            }
-            ///summary
-            ///    Open Box
-            ///summary  
-            if(clickCount == 4) 
-            {
-                StartCoroutine(DelayAnimation(1.4f));
-                StartCoroutine(Wait(1.5f));
-            }
+            if(sm == null) OpenBox();
         }
 
         ///summary
@@ -118,6 +85,47 @@ public class FirstAidBox_ObjIntB : ObjectInteraction_BasicInteraction
 
     #endregion
 
+    private void OpenBox()
+    {
+        clickCount++;
+
+        canInteract = false;
+        ///summary
+        ///    Move it to the target place
+        ///summary  
+        if(clickCount == 1)
+        {
+            isInTheMiddle = true;
+            am.PlayBoxMoveSFX();
+            MoveBoxToMiddle();
+        }
+        ///summary
+        ///    Unlock 1
+        ///summary             
+        if(clickCount == 2)
+        {
+            am.PlayBoxOpenSFX();
+            StartCoroutine(DelayAnimation(0.3f));
+            StartCoroutine(Wait(0.3f));
+        } 
+        ///summary
+        ///    Unlock 2
+        ///summary  
+        if(clickCount == 3)
+        {
+            am.PlayBoxOpenSFX();
+            StartCoroutine(DelayAnimation(0.3f));
+            StartCoroutine(Wait(0.3f));
+        }
+        ///summary
+        ///    Open Box
+        ///summary  
+        if(clickCount == 4) 
+        {
+            StartCoroutine(DelayAnimation(1.4f));
+            StartCoroutine(Wait(1.5f));
+        }
+    }
     ///summary
     ///    Move it to the initial place
     ///summary

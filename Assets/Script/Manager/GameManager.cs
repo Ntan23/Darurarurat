@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     private bool isPauseMenuAnimating;//isPauseMenuAnimating rn
     private bool canSkip;//can we skip this dialogue
     private bool canPause;//can we pause rn
+    [SerializeField] private bool isSpecial;
     public GameObject[] neededObjects; //||Ganti Ga ya||
 
     [Header("For Inspect")]
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
     private StoryManager storyManager;
     private DialogueManager dialogueManager;
     private AudioManager am;
+    private ScenesManager sm;
     private int procedureObjectIndex;
 
     //CONST
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         storyManager = StoryManager.instance;
         dialogueManager = DialogueManager.instance;
         am = AudioManager.instance;
+        sm = ScenesManager.instance;
 
         ///summary
         ///     Getting Levels Data
@@ -238,6 +241,8 @@ public class GameManager : MonoBehaviour
 
         if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
         if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
+
+        if(!isSpecial) sm.GoToTargetScene("PatientReception");
 
         isWin = true;
     }

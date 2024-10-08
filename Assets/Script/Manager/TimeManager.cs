@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TimeManager : MonoBehaviour
     void Awake()
     {
         if(instance == null) instance = this;
+
+        DontDestroyOnLoad(this);
     }
     #endregion
 
@@ -24,7 +27,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float startHour;
     private float startOffset;
 
-    [SerializeField] private TextMeshProUGUI digitalClockText;
+    //[SerializeField] private TextMeshProUGUI digitalClockText;
     public bool canStart;
 
     void Start()
@@ -34,19 +37,19 @@ public class TimeManager : MonoBehaviour
         startOffset = (startHour / hoursInDay) * timeMultiplier;
         currentTime = (totalTime + startOffset) % timeMultiplier;
         
-        digitalClockText.SetText(Clock24Hour());
+        //digitalClockText.SetText(Clock24Hour());
     }
 
     void Update() 
     {
-        if(canStart) UpdateTimeOfDay();
+        if(canStart && GetHour() <= 17) UpdateTimeOfDay();
     }
 
     private void UpdateTimeOfDay()
     {
         totalTime += Time.deltaTime;
         currentTime = (totalTime + startOffset) % timeMultiplier;
-        digitalClockText.SetText(Clock24Hour());
+        //digitalClockText.SetText(Clock24Hour());
     }
 
     public float GetHour()
@@ -56,12 +59,12 @@ public class TimeManager : MonoBehaviour
 
     public float GetMinutes()
     {
-        return (currentTime * hoursInDay * minutesInHour / timeMultiplier)%minutesInHour;
+        return (currentTime * hoursInDay * minutesInHour / timeMultiplier)% minutesInHour;
     }
 
-    public string Clock24Hour()
-    {
-        return Mathf.FloorToInt(GetHour()).ToString("00") + ":" + Mathf.FloorToInt(GetMinutes()).ToString("00");
-    }
+    // public string Clock24Hour()
+    // {
+    //     return Mathf.FloorToInt(GetHour()).ToString("00") + ":" + Mathf.FloorToInt(GetMinutes()).ToString("00");
+    // }
 
 }

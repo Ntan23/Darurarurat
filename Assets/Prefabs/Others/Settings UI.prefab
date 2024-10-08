@@ -4010,6 +4010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7922a7004ba6a2448a053d0ffa9316aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMixer: {fileID: 24100000, guid: 4a753c9ef04d3d9459f31455f4fd5f38, type: 2}
   BGMSlider: {fileID: 4660285919895546981}
   SFXSlider: {fileID: 4660285919069834223}
   fullscreenToogle: {fileID: 4660285919228154625}
