@@ -321,6 +321,7 @@ public class ObjectControl : MonoBehaviour
                 if(!isProcedureFinished) 
                 {
                     am.PlayWrongProcedureSFX();
+            
                     if(objectType == Object.BandAid) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongBandAidKey").GetLocalizedString());
                     
                     if(objectType == Object.Antiseptic) gm.ShowWrongProcedureUIForProceduralObjects(table.GetTable().GetEntry("WrongAntisepticKey").GetLocalizedString());
@@ -341,6 +342,7 @@ public class ObjectControl : MonoBehaviour
             else if(objectIndex > gm.GetProcedureIndex() || objectIndex < gm.GetProcedureIndex())
             {
                 am.PlayWrongProcedureSFX();
+
                 LeanTween.move(gameObject, beforeAnimatePosition, 0.8f);
 
                 for(int i = 0; i < gm.neededObjects.Length; i++)
@@ -352,10 +354,7 @@ public class ObjectControl : MonoBehaviour
                     }
                     else
                     {
-                        if(i == gm.neededObjects.Length - 1 && objectIndex != gm.neededObjects[i].GetComponent<ObjectControl>().objectIndex) 
-                        {
-                            gm.ShowWrongProcedureUIV2();  
-                        }
+                        if(i == gm.neededObjects.Length - 1 && objectIndex != gm.neededObjects[i].GetComponent<ObjectControl>().objectIndex) gm.ShowWrongProcedureUIV2();  
                     }
                 }
             }

@@ -15,4 +15,6 @@ MonoBehaviour:
   woundName: Minor Injuries
   woundIndex: 0
   woundSprite: {fileID: 21300000, guid: bcdd378e494102c43a5f9712c8b7c13f, type: 3}
+  treatPrice: 3
+  failPrice: 2
   objectNeededToTreatIndex: 0100000002000000

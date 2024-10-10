@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PatientsQueueManager : MonoBehaviour
@@ -20,6 +21,7 @@ public class PatientsQueueManager : MonoBehaviour
     private GameObject spawnedPatient;
     [SerializeField] private Transform spawnPos;
     [SerializeField] private Transform[] positions;
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     void Start()
     {
@@ -80,5 +82,10 @@ public class PatientsQueueManager : MonoBehaviour
     public Transform[] GetTargetPositions()
     {
         return positions;
+    }
+
+    public TextMeshProUGUI GetMoneyText()
+    {
+        return moneyText;
     }
 }

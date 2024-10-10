@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class GameManager : MonoBehaviour
     ///summary
     ///     Localization
     ///summary
+    [Header("For Money")]
+    [SerializeField] private PatientWoundSO woundSO;
+    [SerializeField] private TextMeshProUGUI[] moneyText;
+    private float currentPrice;
+    private int error;
+    private MoneyManager mm;
 
     [Header("For Examine UI")]
     [SerializeField] private LocalizedStringTable examineTextTable;
@@ -57,19 +64,21 @@ public class GameManager : MonoBehaviour
     private string wrongProcedureText;
     [Header("Pause Menu")]
     [SerializeField] private PauseMenuUI pauseMenuUI;
-    [Header("Complete UI")]
-    [SerializeField] private MissionCompleteUI missionCompleteUI;
+    [Header("Mission UI")]
+    [SerializeField] private MissionUI missionCompleteUI;
+    [SerializeField] private MissionUI missionFailUI;
     private StoryManager storyManager;
     private DialogueManager dialogueManager;
     private AudioManager am;
     private ScenesManager sm;
     private int procedureObjectIndex;
+    [SerializeField] private int startProcedureIndex;
+    public int indexToWinTheGame;
+    private bool canError = true;
 
     //CONST
     private const string PREFS_DIALOGUESKIP_INDICATOR = "DialogueSkipIndicator";
     private const string PREFS_LEVEL_UNLOCKED ="LevelUnlocked";
-    [SerializeField] private int startProcedureIndex;
-    public int indexToWinTheGame;
     
     void Start() 
     {
@@ -80,7 +89,9 @@ public class GameManager : MonoBehaviour
         dialogueManager = DialogueManager.instance;
         am = AudioManager.instance;
         sm = ScenesManager.instance;
+        mm = MoneyManager.instance;
 
+        currentPrice = woundSO.treatPrice;
         ///summary
         ///     Getting Levels Data
         ///summary
@@ -200,6 +211,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowWrongProcedureUIV2()
     {
+        CheckNApplyErrorCount();
         wrongProcedureUI.MoveIn();
         wrongProcedureUI.UpdateText(wrongProcedureLocalStringV2.GetLocalizedString());
         StartCoroutine(WaitWrongProcedureUI());
@@ -207,6 +219,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowWrongProcedureUIForProceduralObjects(string sentence)
     {
+        CheckNApplyErrorCount();
         wrongProcedureUI.MoveIn();
         wrongProcedureUI.UpdateText(sentence);
         StartCoroutine(WaitWrongProcedureUI());
@@ -228,23 +241,65 @@ public class GameManager : MonoBehaviour
         if(procedureObjectIndex == indexToWinTheGame && !isWin) StartCoroutine(CompleteAnimation());
     }
 
+    private void CheckNApplyErrorCount()
+    {
+        if(canError)
+        {
+            StartCoroutine(DelayErrorCount());
+            error++;
+            currentPrice--;
+            Debug.Log(currentPrice);
+
+            if(error > 2) StartCoroutine(LossAnimation());
+        }
+    }
+
+    IEnumerator DelayErrorCount()
+    {
+        canError = false;
+        yield return new WaitForSeconds(0.1f);
+        canError = true;
+    }
+
     IEnumerator CompleteAnimation()
     {
         gameState = State.Pause;
 
         am.PlayLevelCompleteSFX();
         missionCompleteUI.OpenUI();
+        mm.AddMoney(currentPrice);
+        moneyText[0].text = currentPrice.ToString("0.00");
         yield return new WaitForSeconds(1.5f);
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
 
-        if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
-        if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
+        // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
+        // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
         if(!isSpecial) sm.GoToTargetScene("PatientReception");
-
+        
         isWin = true;
+    }
+
+    IEnumerator LossAnimation()
+    {
+        gameState = State.Pause;
+
+        //am.PlayLevelCompleteSFX();
+        //missionCompleteUI.OpenUI();
+        mm.DecreaseMoney(woundSO.failPrice);
+        moneyText[1].text = woundSO.failPrice.ToString("0.00");
+        missionFailUI.OpenUI();
+        yield return new WaitForSeconds(1.5f);
+
+        if(dialogueManager != null) dialogueManager.ShowEndDialogue();
+        if(storyManager != null) storyManager.ShowEndStory();
+
+        // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
+        // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
+
+        if(!isSpecial) sm.GoToTargetScene("PatientReception");
     }
 
     ///summary

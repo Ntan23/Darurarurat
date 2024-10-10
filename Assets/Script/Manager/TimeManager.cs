@@ -11,8 +11,9 @@ public class TimeManager : MonoBehaviour
     void Awake()
     {
         if(instance == null) instance = this;
+        else Destroy(gameObject);
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 

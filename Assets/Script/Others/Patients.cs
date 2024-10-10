@@ -52,18 +52,21 @@ public class Patients : MonoBehaviour
         if(canMove)
         {
             goalpos = positions[nextLocation];
-
-            if(Vector2.Distance(_object.transform.position, goalpos.position) > 0) MovingToNextPos();
-            if(Vector2.Distance(_object.transform.position, goalpos.position) <= 0) 
+            
+            if(goalpos != null)
             {
-                if(Vector2.Distance(_object.transform.position,goalpos.position) == 0) canBeTreated = true;
-                
-                if(nextLocation == 1) LeanTween.scale(woundIndicator, new Vector3(0.5f, 0.5f, 0.5f), 2.0f).setEaseSpring().setOnComplete(() => canMove = false);
-                
-                if(nextLocation < 1) 
+                if(Vector2.Distance(_object.transform.position, goalpos.position) > 0) MovingToNextPos();
+                if(Vector2.Distance(_object.transform.position, goalpos.position) <= 0) 
                 {
-                    LeanTween.scale(_object.gameObject, new Vector3(2.0f, 2.0f, 2.0f), 2.0f);
-                    nextLocation++;
+                    if(Vector2.Distance(_object.transform.position,goalpos.position) == 0) canBeTreated = true;
+                    
+                    if(nextLocation == 1) LeanTween.scale(woundIndicator, new Vector3(0.5f, 0.5f, 0.5f), 2.0f).setEaseSpring().setOnComplete(() => canMove = false);
+                    
+                    if(nextLocation < 1) 
+                    {
+                        LeanTween.scale(_object.gameObject, new Vector3(2.0f, 2.0f, 2.0f), 2.0f);
+                        nextLocation++;
+                    }
                 }
             }
         } 

@@ -15,4 +15,6 @@ MonoBehaviour:
   woundName: Burn Wound
   woundIndex: 1
   woundSprite: {fileID: 21300000, guid: ec508d86af47b7240b78c1a5e7e92925, type: 3}
+  treatPrice: 2
+  failPrice: 1
   objectNeededToTreatIndex: 03000000
