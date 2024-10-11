@@ -32,6 +32,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TreatScene/Level 5.unity
     guid: 2f3bd37916f5b924383c1d4b61cad954
+  - enabled: 1
+    path: Assets/Scenes/Special Patient Scene/Special 1.unity
+    guid: e53b31fcfb5855645bf61ae8230dc038
+  - enabled: 1
+    path: Assets/Scenes/Special Patient Scene/Special 2.unity
+    guid: 23b3fb2d3495bcd498ece728a8956d90
+  - enabled: 1
+    path: Assets/Scenes/Special Patient Scene/Special 3.unity
+    guid: 91aa088efc38555489538212e2de7054
+  - enabled: 1
+    path: Assets/Scenes/Special Patient Scene/Special 4.unity
+    guid: dbc2ea507ab435b40ba5c4e4b1530fe6
+  - enabled: 1
+    path: Assets/Scenes/Special Patient Scene/Special 5.unity
+    guid: a276a48961dd09248a876e9e171f9b42
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 00e54ea6261694041a022b0bb292701b,
       type: 2}

@@ -30,6 +30,7 @@ public class TimeManager : MonoBehaviour
 
     //[SerializeField] private TextMeshProUGUI digitalClockText;
     public bool canStart;
+    private bool haveSpecialNPC;
 
     void Start()
     {
@@ -38,6 +39,8 @@ public class TimeManager : MonoBehaviour
         startOffset = (startHour / hoursInDay) * timeMultiplier;
         currentTime = (totalTime + startOffset) % timeMultiplier;
         
+        if(day == 1 && day % 6 == 0) haveSpecialNPC = true;
+        else haveSpecialNPC = false;
         //digitalClockText.SetText(Clock24Hour());
     }
 
@@ -63,9 +66,22 @@ public class TimeManager : MonoBehaviour
         return (currentTime * hoursInDay * minutesInHour / timeMultiplier)% minutesInHour;
     }
 
+    public int GetDay()
+    {
+        return day;
+    }
+
+    public void UpdateDay()
+    {
+        day++;
+        PlayerPrefs.SetInt("DaySaved", day);
+
+        //reset Time
+        startOffset = (startHour / hoursInDay) * timeMultiplier;
+        currentTime = (totalTime + startOffset) % timeMultiplier;
+    }
     // public string Clock24Hour()
     // {
     //     return Mathf.FloorToInt(GetHour()).ToString("00") + ":" + Mathf.FloorToInt(GetMinutes()).ToString("00");
     // }
-
 }

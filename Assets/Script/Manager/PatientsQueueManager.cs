@@ -18,13 +18,21 @@ public class PatientsQueueManager : MonoBehaviour
     private int randomPatientsIndex;
     private bool[] isUnlocked = new bool[7];
     [SerializeField] private GameObject[] patients;
+    [SerializeField] private GameObject[] specialPatients;
     private GameObject spawnedPatient;
     [SerializeField] private Transform spawnPos;
     [SerializeField] private Transform[] positions;
     [SerializeField] private TextMeshProUGUI moneyText;
+    private int currentSpecialID = 0;
+    private TimeManager tm;
 
     void Start()
     {
+        tm = TimeManager.instance;
+
+        PlayerPrefs.SetInt("Special", 0);
+        currentSpecialID = PlayerPrefs.GetInt("Special", 0);
+
         StartCoroutine(CheckAvailableInjuries());
     }
 
@@ -76,7 +84,21 @@ public class PatientsQueueManager : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(0.1f);
-        GenerateQueue();
+        if(tm.GetHour() < 16) GenerateQueue();
+        if(tm.GetHour() > 16) SpawnSpecialNPC(); 
+    }
+
+    private void SpawnSpecialNPC()
+    {
+        int specialNPCIndex;
+
+        spawnedPatient = Instantiate(specialPatients[currentSpecialID]);
+        specialNPCIndex = spawnedPatient.GetComponent<Patients>().GetSpecialID();
+        spawnedPatient.transform.position = spawnPos.position;
+
+        spawnedPatient.GetComponent<Patients>().SetWound(availableWounds[specialNPCIndex]);
+        spawnedPatient.GetComponent<Patients>().SetWoundSprite(availableWounds[specialNPCIndex]);
+        spawnedPatient.GetComponent<Patients>().SetTargetPositions(positions);
     }
 
     public Transform[] GetTargetPositions()

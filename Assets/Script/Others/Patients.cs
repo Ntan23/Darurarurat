@@ -22,6 +22,9 @@ public class Patients : MonoBehaviour
     private bool canMove;
     private bool canBeTreated;
     private PatientsQueueManager pqm;
+    [SerializeField] private bool isSpecial;
+    [Header("For Special Patients Only")]
+    [SerializeField] private int specialID;
 
     void Awake()
     {
@@ -74,7 +77,12 @@ public class Patients : MonoBehaviour
 
     public void TreatWound()
     {
-        if(canBeTreated) ScenesManager.instance.GoToTargetScene("Level " + (_wound.woundIndex + 1).ToString());
+        if(canBeTreated) 
+        {
+            if(!isSpecial) ScenesManager.instance.GoToTargetScene("Level " + (_wound.woundIndex + 1).ToString());
+
+            if(isSpecial) ScenesManager.instance.GoToTargetScene("Special " + (specialID + 1).ToString());
+        }
     }
 
     void MovingToNextPos() => _object.position = Vector2.MoveTowards(_object.position, goalpos.position, Time.deltaTime * speed); 
@@ -100,4 +108,8 @@ public class Patients : MonoBehaviour
         canMove = true;
     }
 
+    public int GetSpecialID()
+    {
+        return specialID;
+    }
 }

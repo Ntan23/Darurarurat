@@ -1239,6 +1239,8 @@ MonoBehaviour:
   - {fileID: 2761049375810975800, guid: 8e8110d6eef5da848ae5718eb8350007, type: 3}
   - {fileID: 2761049375810975800, guid: 03a2ced0b662a7a4a8dfb9b70beea341, type: 3}
   - {fileID: 2761049375810975800, guid: d4ecca78264675743bebf1d389fb0b96, type: 3}
+  specialPatients:
+  - {fileID: 2761049375810975800, guid: 28771df3b9b2c664da10da2cae46fe7f, type: 3}
   spawnPos: {fileID: 270739229}
   positions:
   - {fileID: 1905148060}
@@ -2404,6 +2406,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1834912863688766054, guid: 6d82245683f3067459f19bf61640fd19,
+        type: 3}
+      propertyPath: timeMultiplier
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1834912863688766054, guid: 6d82245683f3067459f19bf61640fd19,
         type: 3}
       propertyPath: digitalClockText
