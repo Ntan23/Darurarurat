@@ -1,24 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
 namespace DialogueSystem{
     public class DialogueBase : MonoBehaviour
     {
+        [SerializeField] protected int _maxWords_ForFullText = 1;
         protected bool _finished;
-        public bool Finished { get { return _finished;}}
         private bool isRichText = false;
-        string saveRichText;
+        private string saveRichText;
+
         /// Kalo mo tambahin sfx tengah-tengah bisa pake isrichtext juga modelannya :D, tp bikin penanda sendiri; delay jg bisa
         /// kek misal <sfx: sfxname> or <delay: 0.2f>
-        public IEnumerator typeText(string inputText, TMP_Text textHolder, float delayTypeText, float delayBetweenLines, string vaName, Color textColor)
+        
+        public bool Finished { get { return _finished;}}
+        public IEnumerator typeText(string inputText, TMP_Text textHolder, float delayTypeText, float delayBetweenLines)
         {
-            // textHolder.color = textColor;
-            // textHolder.font = textFont;
+            
+            isRichText = false;
             
             for(int i=0; i<inputText.Length;i++)
             {
+                
+                if(i > _maxWords_ForFullText && Input.GetKey(KeyCode.Space)){
+                    textHolder.text = inputText;
+                    break;
+                }
                 if(inputText[i] == '<' && !isRichText)
                 {
                     isRichText = true;
@@ -36,29 +45,43 @@ namespace DialogueSystem{
                     continue;
                 }
                 
+
                 textHolder.text += inputText[i];
-                
+
+                TypeFunction(i);
                 // Debug.Log(inputText[i] + " " + i);
                 yield return new WaitForSeconds(delayTypeText);
                 
             }
+            AfterDone_BeforeInput();
+            
             yield return new WaitForSeconds(delayBetweenLines);
-
-            // yield return new WaitUntil(()=>GameInput.Instance.GetInputNextLine_Dialogue());
-            // pressToContinue_textHolder.SetActive(false);
+            
+            yield return new WaitUntil(()=> IsInputTrue());
+            
+            AfterDone_AfterInput();
             
             _finished = true;
-            // textHolder.gameObject.SetActive(false);
-            // imageHolder.SetActive(false);
-            // nameHolder.SetActive(false);
-            // backgroundHolder.SetActive(false);
-            
-            
+                        
         }
+        public virtual void AfterDone_BeforeInput(){}
+        public virtual void AfterDone_AfterInput(){}
         public void ChangeFinished_false()
         {
             _finished = false;
         }
+
+        public virtual void TypeFunction(int inputText_IDX)
+        {
+            
+
+        }
+        public bool IsInputTrue()
+        {
+            if(Input.GetKeyDown(KeyCode.Space)) return true;
+            return false;
+        }
+
     }
 
 }

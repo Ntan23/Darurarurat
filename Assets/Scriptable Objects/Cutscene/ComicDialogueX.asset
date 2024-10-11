@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e440d112dcde543a9f28c481a0901e, type: 3}
+  m_Name: ComicDialogueX
+  m_EditorClassIdentifier: 
+  dialoguesTitle: 0
+  isUseVA: 0
+  isUseSprite: 0
+  dialogue_Lines:
+  - dialogueType: 0
+    charaName: 1
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Kaze ni fukarete dare mo kizukanu you
+
+      Kubetsu ga tsukanai
+      monokuro no sekai
+
+      Iro wo tashite mo nani mo mienakute
+
+      Marude
+      watashi wa iki wo tometeita'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Mou ii yo
+
+      Tookute mo kanaetai watashi wa
+
+      Konna
+      sekai omoi mo dakishimeteitai noni
+
+      Yume no kyanbasu ni itsuzukeru imi
+      wa
+
+      Kono mune ni kagayaiteiru sutoorii'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Ataeru koto ni imi nado nai kedo
+
+      Hiroi atsumeta kakera
+      ushinau no?
+
+      Soshite yoru wa sono tsumetasa o
+
+      Tokashite te o
+      nobashita'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Mou ii yo
+
+      Tookute mo todoke tai watashi wa
+
+      Uketometeku
+      namida mo dakishimeteitai noni
+
+      Yume no kyanbasu ni kokoro komeru no
+      wa
+
+      Kono sora ni egakidashiteku sutoorii'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Soshite yoru wa sono tsumetasa o
+
+      Tokashite te o nobashite'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Mou ii no
+
+      Tookute mo kanaetai watashi no'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Konna sekai omoi mo kotoba de tsutsunda
+
+      Yume no kyanbasu
+      ni iro o tashiteyuku
+
+      Kono mune ni ima kagayaite'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Tsuyokunakute mo ii
+
+      Kowarekakate mo ii'
+  - dialogueType: 0
+    charaName: 2
+    spriteNumber: 0
+    delayTypeText: 0.1
+    delayBetweenLines: 0.1
+    VAname: 
+    dialogueText: 'Kono kokoro wa towa ni habataite
+
+      Hibiku youni nurikaeteiku
+      Palette'

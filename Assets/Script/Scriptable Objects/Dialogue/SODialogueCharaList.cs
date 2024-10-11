@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[Serializable]
 public class DialogueCharacter
 {
     public DialogueCharaName dialogueCharaName;
@@ -19,7 +21,7 @@ public class SODialogueCharaList : ScriptableObject
     {
         SODialogueCharaList asset = CreateInstance<SODialogueCharaList>();
         string name =
-            AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/Cutscene//DialogueCharaList.asset");
+            AssetDatabase.GenerateUniqueAssetPath("Assets/Scriptable Objects/Cutscene//DialogueCharaList.asset");
         AssetDatabase.CreateAsset(asset, name);
         AssetDatabase.SaveAssets();
         EditorUtility.FocusProjectWindow();
@@ -27,17 +29,5 @@ public class SODialogueCharaList : ScriptableObject
     }
     #endif
 
-    public List<Dialogues> dialoguesList;
-
-    public Dialogues SearchDialogues(DialoguesTitle title)
-    {
-        foreach(Dialogues dialogues in dialoguesList)
-        {
-            if(dialogues.dialoguesTitle == title)
-            {
-                return dialogues;
-            }
-        }
-        return null;
-    }
+    public List<DialogueCharacter> dialogueCharacterList;
 }
