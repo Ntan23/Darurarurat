@@ -21,16 +21,14 @@ public class Patients : MonoBehaviour
     //private Animator playerAnimator;
     private bool canMove;
     private bool canBeTreated;
+    private bool isTreated;
     private PatientsQueueManager pqm;
     [SerializeField] private bool isSpecial;
     [Header("For Special Patients Only")]
     [SerializeField] private int specialID;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
-
+    void Awake() => DontDestroyOnLoad(this);
+    
     void Start()
     {
         pqm = PatientsQueueManager.instance;
@@ -47,7 +45,11 @@ public class Patients : MonoBehaviour
     {
         woundIndicator.SetActive(false);
 
-        if(SceneManager.GetActiveScene().name == "PatientReception" && savedPosition != null) MoveBack();
+        if(SceneManager.GetActiveScene().name == "PatientReception" && savedPosition != null) 
+        {
+            MoveBack();
+            pqm.UpdateProgress(isTreated);
+        }
     }
 
     void Update()
@@ -102,6 +104,8 @@ public class Patients : MonoBehaviour
         StartCoroutine(Delay());
     }
 
+    public void SetTreatValue(bool value) => isTreated = value;
+    
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(1.0f);

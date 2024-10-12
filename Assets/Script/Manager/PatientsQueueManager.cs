@@ -24,15 +24,31 @@ public class PatientsQueueManager : MonoBehaviour
     [SerializeField] private Transform[] positions;
     [SerializeField] private TextMeshProUGUI moneyText;
     private int currentSpecialID = 0;
-    private TimeManager tm;
+    private int totalPatientServed;
+    private int totalPatientTreated;
+    private int totalPatientFailed;
+    private bool specialPatientSpawned;
+    private TimeManager tm; 
+    [SerializeField] private ProgressReportUI progressReportUI;
 
     void Start()
     {
         tm = TimeManager.instance;
 
-        PlayerPrefs.SetInt("Special", 0);
+        //PlayerPrefs.SetInt("SpecialSpawned", 0);
+
+        if(tm.GetHaveSpecialNPC())
+        {
+            if(PlayerPrefs.GetInt("SpecialSpawned", 0) == 0) specialPatientSpawned = false;
+            else if(PlayerPrefs.GetInt("SpecialSpawned", 0) == 1) specialPatientSpawned = true;
+        }
+
         currentSpecialID = PlayerPrefs.GetInt("Special", 0);
 
+        totalPatientServed = PlayerPrefs.GetInt("Served", 0);
+        totalPatientTreated = PlayerPrefs.GetInt("Treated", 0);
+        totalPatientFailed = PlayerPrefs.GetInt("Failed", 0);
+ 
         StartCoroutine(CheckAvailableInjuries());
     }
 
@@ -84,13 +100,35 @@ public class PatientsQueueManager : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(0.1f);
-        if(tm.GetHour() < 16) GenerateQueue();
-        if(tm.GetHour() > 16) SpawnSpecialNPC(); 
+
+        if(tm.GetHaveSpecialNPC()) 
+        {
+            if(tm.GetHour() <= 16) GenerateQueue();
+            if(tm.GetHour() > 16 && !specialPatientSpawned) SpawnSpecialNPC(); 
+            if(Mathf.Floor(tm.GetHour()) == 17 && specialPatientSpawned)
+            {
+                Debug.Log("Day " + tm.GetDay().ToString() + " Finish !");
+                StartCoroutine(progressReportUI.ShowProgress());
+                PlayerPrefs.SetInt("SpecialSpawned", 0);
+            }
+        }
+
+        if(!tm.GetHaveSpecialNPC())
+        {
+            if(tm.GetHour() < 17) GenerateQueue();
+            if(Mathf.Floor(tm.GetHour()) == 17)
+            {
+                Debug.Log("Day " + tm.GetDay().ToString() + " Finish !");
+                StartCoroutine(progressReportUI.ShowProgress());
+            }
+        }
     }
 
     private void SpawnSpecialNPC()
     {
         int specialNPCIndex;
+
+        PlayerPrefs.SetInt("SpecialSpawned", 1);
 
         spawnedPatient = Instantiate(specialPatients[currentSpecialID]);
         specialNPCIndex = spawnedPatient.GetComponent<Patients>().GetSpecialID();
@@ -101,6 +139,18 @@ public class PatientsQueueManager : MonoBehaviour
         spawnedPatient.GetComponent<Patients>().SetTargetPositions(positions);
     }
 
+    public void UpdateProgress(bool isTreated)
+    {
+        totalPatientServed++;
+
+        if(isTreated) totalPatientTreated++;
+        if(!isTreated) totalPatientFailed++;
+
+        PlayerPrefs.SetInt("Served", totalPatientServed);
+        PlayerPrefs.SetInt("Treated", totalPatientTreated);
+        PlayerPrefs.SetInt("Failed", totalPatientFailed);
+    }
+
     public Transform[] GetTargetPositions()
     {
         return positions;
@@ -109,5 +159,20 @@ public class PatientsQueueManager : MonoBehaviour
     public TextMeshProUGUI GetMoneyText()
     {
         return moneyText;
+    }
+
+    public int GetTotalPatientServed()
+    {
+        return totalPatientServed;
+    }
+
+    public int GetTotalPatientTreated()
+    {
+        return totalPatientTreated;
+    }
+
+    public int GetTotalPatientFailed()
+    {
+        return totalPatientFailed;
     }
 }

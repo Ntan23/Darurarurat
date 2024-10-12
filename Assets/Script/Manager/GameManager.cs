@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
     private bool isPauseMenuAnimating;//isPauseMenuAnimating rn
     private bool canSkip;//can we skip this dialogue
     private bool canPause;//can we pause rn
-    [SerializeField] private bool isSpecial;
     public GameObject[] neededObjects; //||Ganti Ga ya||
 
     [Header("For Inspect")]
@@ -75,7 +74,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int startProcedureIndex;
     public int indexToWinTheGame;
     private bool canError = true;
-
+    [SerializeField] private bool isSpecial;
     //CONST
     private const string PREFS_DIALOGUESKIP_INDICATOR = "DialogueSkipIndicator";
     private const string PREFS_LEVEL_UNLOCKED ="LevelUnlocked";
@@ -248,9 +247,8 @@ public class GameManager : MonoBehaviour
             StartCoroutine(DelayErrorCount());
             error++;
             currentPrice--;
-            Debug.Log(currentPrice);
 
-            if(error > 2) StartCoroutine(LossAnimation());
+            if(error >= 3) StartCoroutine(LossAnimation());
         }
     }
 
@@ -269,6 +267,8 @@ public class GameManager : MonoBehaviour
         missionCompleteUI.OpenUI();
         mm.AddMoney(currentPrice);
         moneyText[0].text = currentPrice.ToString("0.00");
+
+        GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(true);
         yield return new WaitForSeconds(1.5f);
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
@@ -291,6 +291,8 @@ public class GameManager : MonoBehaviour
         mm.DecreaseMoney(woundSO.failPrice);
         moneyText[1].text = woundSO.failPrice.ToString("0.00");
         missionFailUI.OpenUI();
+
+        GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(false);
         yield return new WaitForSeconds(1.5f);
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();

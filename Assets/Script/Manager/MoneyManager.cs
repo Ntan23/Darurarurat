@@ -56,5 +56,9 @@ public class MoneyManager : MonoBehaviour
         moneyText.text = currentMoney.ToString("0.00");
     }
 
+    public float GetCurrentMoney()
+    {
+        return currentMoney;
+    }
 }
 

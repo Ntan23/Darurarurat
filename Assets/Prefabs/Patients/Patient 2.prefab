@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8238839698255935039}
   m_Layer: 0
   m_Name: Patient 2
-  m_TagString: Untagged
+  m_TagString: Patient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,6 +250,8 @@ MonoBehaviour:
   savedPosition:
   - {x: 0, y: 4.57, z: 0}
   - {x: 9.43, y: 4.57, z: 0}
+  isSpecial: 0
+  specialID: 0
 --- !u!1 &2761049376004640994
 GameObject:
   m_ObjectHideFlags: 0
