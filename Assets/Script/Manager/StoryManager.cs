@@ -59,7 +59,7 @@ public class StoryManager : MonoBehaviour
             MoveStoryBoard();
         }
         else if(storyIndex < stories.Length) PlayNextStoryAnimation();
-        else if(storyIndex == stories.Length) sm.GoToTargetScene("PatientReception");
+        else if(storyIndex == stories.Length) sm.GoToTargetScene("TeaTime");
     }
 
     public void PreviousStory() => PlayPreviousStoryAnimation();
@@ -77,7 +77,7 @@ public class StoryManager : MonoBehaviour
             storyIndex = cutStoryIndex;
             MoveStoryBoard();
         }
-        else if(storyIndex > cutStoryIndex) sm.GoToTargetScene("PatientReception");
+        else if(storyIndex > cutStoryIndex) sm.GoToTargetScene("TeaTime");
     }
 
     public void ShowEndStory()

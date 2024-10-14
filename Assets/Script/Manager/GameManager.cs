@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] moneyText;
     private float currentPrice;
     private int error;
-    private MoneyManager mm;
 
     [Header("For Examine UI")]
     [SerializeField] private LocalizedStringTable examineTextTable;
@@ -70,6 +69,8 @@ public class GameManager : MonoBehaviour
     private DialogueManager dialogueManager;
     private AudioManager am;
     private ScenesManager sm;
+    private TimeManager tm;
+    private MoneyManager mm;
     private int procedureObjectIndex;
     [SerializeField] private int startProcedureIndex;
     public int indexToWinTheGame;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     //CONST
     private const string PREFS_DIALOGUESKIP_INDICATOR = "DialogueSkipIndicator";
     private const string PREFS_LEVEL_UNLOCKED ="LevelUnlocked";
+
     
     void Start() 
     {
@@ -89,6 +91,7 @@ public class GameManager : MonoBehaviour
         am = AudioManager.instance;
         sm = ScenesManager.instance;
         mm = MoneyManager.instance;
+        tm  = TimeManager.instance;
 
         currentPrice = woundSO.treatPrice;
         ///summary
@@ -201,6 +204,7 @@ public class GameManager : MonoBehaviour
     ///summary    
     public void ShowWrongProcedureUI()
     {
+        CheckNApplyErrorCount();
         wrongProcedureUI.MoveIn();
         wrongProcedureLocalString.Arguments[0] = objects[procedureObjectIndex].name;
         wrongProcedureLocalString.RefreshString();
@@ -278,6 +282,7 @@ public class GameManager : MonoBehaviour
         // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
         if(!isSpecial) sm.GoToTargetScene("PatientReception");
+        if(tm.GetHour() >= 17) mm.SaveMoney();
         
         isWin = true;
     }
@@ -302,6 +307,7 @@ public class GameManager : MonoBehaviour
         // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
         if(!isSpecial) sm.GoToTargetScene("PatientReception");
+        if(tm.GetHour() >= 17) mm.SaveMoney();
     }
 
     ///summary

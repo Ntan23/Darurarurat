@@ -27,7 +27,6 @@ public class TimeManager : MonoBehaviour
     private float currentTime;
     [SerializeField] private float startHour;
     private float startOffset;
-    //[SerializeField] private TextMeshProUGUI digitalClockText;
     public bool canStart;
     private bool haveSpecialNPC;
 
@@ -37,7 +36,14 @@ public class TimeManager : MonoBehaviour
 
         startOffset = (startHour / hoursInDay) * timeMultiplier;
         currentTime = (totalTime + startOffset) % timeMultiplier;
-        
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy() => SceneManager.sceneLoaded -= OnSceneLoaded;
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
         if(day == 1 || day % 6 == 0) haveSpecialNPC = true;
         else haveSpecialNPC = false;
     }
@@ -56,16 +62,18 @@ public class TimeManager : MonoBehaviour
     public void UpdateDay()
     {
         day++;
-        // PlayerPrefs.SetInt("DaySaved", day);
+        PlayerPrefs.SetInt("DaySaved", day);
         PlayerPrefs.SetInt("Served", 0);
         PlayerPrefs.SetInt("Treated", 0);
         PlayerPrefs.SetInt("Failed", 0);
-
+        
         //reset Time
-        startOffset = (startHour / hoursInDay) * timeMultiplier;
-        currentTime = (totalTime + startOffset) % timeMultiplier;
+        // startOffset = (startHour / hoursInDay) * timeMultiplier;
+        // currentTime = (totalTime + startOffset) % timeMultiplier;
 
-        //MoneyManager.instance.SaveMoney();
+        // canStart = false;
+
+        Destroy(this.gameObject);
     }
 
     public float GetHour()
@@ -75,7 +83,7 @@ public class TimeManager : MonoBehaviour
 
     public float GetMinutes()
     {
-        return (currentTime * hoursInDay * minutesInHour / timeMultiplier)% minutesInHour;
+        return (currentTime * hoursInDay * minutesInHour / timeMultiplier) % minutesInHour;
     }
 
     public int GetDay()

@@ -14,7 +14,6 @@ public class Patients : MonoBehaviour
     [Header("For Movement")]
     [SerializeField] private float speed = 2;
     private Transform[] positions = new Transform[2];
-    [SerializeField] private Transform _object;
     private int nextLocation;
     private Transform goalpos;
     [SerializeField] private Vector3[] savedPosition;
@@ -60,22 +59,24 @@ public class Patients : MonoBehaviour
             
             if(goalpos != null)
             {
-                if(Vector2.Distance(_object.transform.position, goalpos.position) > 0) MovingToNextPos();
-                if(Vector2.Distance(_object.transform.position, goalpos.position) <= 0) 
+                if(Vector2.Distance(transform.position, goalpos.position) > 0) MovingToNextPos();
+                if(Vector2.Distance(transform.position, goalpos.position) <= 0) 
                 {
-                    if(Vector2.Distance(_object.transform.position,goalpos.position) == 0) canBeTreated = true;
+                    if(Vector2.Distance(transform.position,goalpos.position) == 0) canBeTreated = true;
                     
                     if(nextLocation == 1) LeanTween.scale(woundIndicator, new Vector3(0.5f, 0.5f, 0.5f), 2.0f).setEaseSpring().setOnComplete(() => canMove = false);
                     
                     if(nextLocation < 1) 
                     {
-                        LeanTween.scale(_object.gameObject, new Vector3(2.0f, 2.0f, 2.0f), 2.0f);
+                        LeanTween.scale(gameObject, new Vector3(2.0f, 2.0f, 2.0f), 2.0f);
                         nextLocation++;
                     }
                 }
             }
         } 
     }
+
+    void OnMouseDown() => TreatWound();
 
     public void TreatWound()
     {
@@ -86,13 +87,12 @@ public class Patients : MonoBehaviour
             if(isSpecial) ScenesManager.instance.GoToTargetScene("Special " + (specialID + 1).ToString());
         }
     }
-
-    void MovingToNextPos() => _object.position = Vector2.MoveTowards(_object.position, goalpos.position, Time.deltaTime * speed); 
+    void MovingToNextPos() => transform.position = Vector2.MoveTowards(transform.position, goalpos.position, Time.deltaTime * speed); 
     
     private void MoveBack()
     {
-        LeanTween.scale(_object.gameObject, Vector3.one, 2.0f);
-        LeanTween.move(_object.gameObject, savedPosition[0], 2.0f).setOnComplete(() => LeanTween.move(_object.gameObject, savedPosition[1], 2.0f).setOnComplete(() => Destroy(this.gameObject)));
+        LeanTween.scale(gameObject, Vector3.one, 2.0f);
+        LeanTween.move(gameObject, savedPosition[0], 2.0f).setOnComplete(() => LeanTween.move(gameObject, savedPosition[1], 2.0f).setOnComplete(() => Destroy(this.gameObject)));
     }
 
     public void SetWound(PatientWoundSO wound) => _wound = wound;

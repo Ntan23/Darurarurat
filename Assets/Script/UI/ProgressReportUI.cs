@@ -19,16 +19,14 @@ public class ProgressReportUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI profitText;
     [SerializeField] private GameObject progressBoard;
     private TimeManager tm;
-    private MoneyManager mm;
-    private PatientsQueueManager pqm;
     
-    void Start()
+    void Start() 
     {
         tm = TimeManager.instance;
-        mm = MoneyManager.instance;
-        pqm = PatientsQueueManager.instance;
-    }
 
+        StartCoroutine(ShowProgress());
+    }
+    
     void OnEnable()
     {
        dayString.Arguments = new string[1];
@@ -75,19 +73,25 @@ public class ProgressReportUI : MonoBehaviour
         LeanTween.moveLocalY(progressBoard, 0.0f, 0.8f).setEaseSpring().setOnComplete(() => tm.UpdateDay());
     }
 
+    public void DisableProgressReport()
+    {
+        LeanTween.value(this.gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.5f);
+        LeanTween.moveLocalY(progressBoard, -970.0f, 0.8f).setEaseSpring();
+    }
+
     private void UpdateBackgroundAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
 
     private void UpdateProgress()
     {
-        dayString.Arguments[0] = tm.GetDay().ToString();
+        dayString.Arguments[0] = PlayerPrefs.GetInt("DaySaved").ToString();
         dayString.RefreshString();  
-        totalPatientsServedString.Arguments[0] = pqm.GetTotalPatientServed().ToString();
+        totalPatientsServedString.Arguments[0] = PlayerPrefs.GetInt("Served").ToString();
         totalPatientsServedString.RefreshString();
-        totalPatientsTreatedString.Arguments[0] = pqm.GetTotalPatientTreated().ToString();
+        totalPatientsTreatedString.Arguments[0] = PlayerPrefs.GetInt("Treated").ToString();
         totalPatientsTreatedString.RefreshString();
-        totalPatientsFailedString.Arguments[0] = pqm.GetTotalPatientFailed().ToString();
+        totalPatientsFailedString.Arguments[0] = PlayerPrefs.GetInt("Failed").ToString();
         totalPatientsFailedString.RefreshString();
-        profitString.Arguments[0] = mm.GetCurrentMoney().ToString("0.00");
+        profitString.Arguments[0] = PlayerPrefs.GetFloat("Money").ToString("0.00");
         profitString.RefreshString();
     }
 }

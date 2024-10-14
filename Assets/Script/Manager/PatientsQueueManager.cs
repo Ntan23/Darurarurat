@@ -29,7 +29,6 @@ public class PatientsQueueManager : MonoBehaviour
     private int totalPatientFailed;
     private bool specialPatientSpawned;
     private TimeManager tm; 
-    [SerializeField] private ProgressReportUI progressReportUI;
 
     void Start()
     {
@@ -108,7 +107,6 @@ public class PatientsQueueManager : MonoBehaviour
             if(Mathf.Floor(tm.GetHour()) == 17 && specialPatientSpawned)
             {
                 Debug.Log("Day " + tm.GetDay().ToString() + " Finish !");
-                StartCoroutine(progressReportUI.ShowProgress());
                 PlayerPrefs.SetInt("SpecialSpawned", 0);
             }
         }
@@ -116,11 +114,7 @@ public class PatientsQueueManager : MonoBehaviour
         if(!tm.GetHaveSpecialNPC())
         {
             if(tm.GetHour() < 17) GenerateQueue();
-            if(Mathf.Floor(tm.GetHour()) == 17)
-            {
-                Debug.Log("Day " + tm.GetDay().ToString() + " Finish !");
-                StartCoroutine(progressReportUI.ShowProgress());
-            }
+            if(Mathf.Floor(tm.GetHour()) == 17) Debug.Log("Day " + tm.GetDay().ToString() + " Finish !");
         }
     }
 
