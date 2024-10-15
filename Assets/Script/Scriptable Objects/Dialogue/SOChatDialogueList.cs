@@ -5,15 +5,15 @@ using UnityEditor.EditorTools;
 using UnityEngine;
 
 
-public class SODialogueList : ScriptableObject
+public class SOChatDialogueList : ScriptableObject
 {
     #if UNITY_EDITOR
     [MenuItem("SO/SODialogueList")]
     public static void QuickCreate()
     {
-        SODialogueList asset = CreateInstance<SODialogueList>();
+        SOChatDialogueList asset = CreateInstance<SOChatDialogueList>();
         string name =
-            AssetDatabase.GenerateUniqueAssetPath("Assets/Scriptable Objects/Cutscene//DialogueList.asset");
+            AssetDatabase.GenerateUniqueAssetPath("Assets/Scriptable Objects/Cutscene//ChatDialogueList.asset");
         AssetDatabase.CreateAsset(asset, name);
         AssetDatabase.SaveAssets();
         EditorUtility.FocusProjectWindow();
@@ -21,11 +21,11 @@ public class SODialogueList : ScriptableObject
     }
     #endif
 
-    public List<SODialogues> dialoguesList;
+    public List<SOChatDialogues> dialoguesList;
 
-    public SODialogues SearchDialogues(DialoguesTitle title)
+    public SOChatDialogues SearchDialogues(DialoguesTitle title)
     {
-        foreach(SODialogues dialogues in dialoguesList)
+        foreach(SOChatDialogues dialogues in dialoguesList)
         {
             if(dialogues.dialoguesTitle == title)
             {

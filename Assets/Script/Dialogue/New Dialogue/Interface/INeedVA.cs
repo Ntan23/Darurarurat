@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DialogueType
+public interface INeedVA
 {
-    Character, Instruction
+    string VAname {get;}
 }

@@ -14,62 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguesTitle: 0
   isUseVA: 0
-  isUseSprite: 0
   dialogue_Lines:
-  - dialogueType: 0
-    charaName: 1
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Kaze ni fukarete dare mo kizukanu you
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Kaze ni fukarete dare mo kizukanu you
 
       Kubetsu ga tsukanai
       monokuro no sekai
 
-      Iro wo tashite mo nani mo mienakute
+      Iro wo tashite mo nani mo mienakute'
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Kaze ni fukarete dare mo kizukanu you
 
-      Marude
-      watashi wa iki wo tometeita'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Mou ii yo
+      Kubetsu ga tsukanai
+      monokuro no sekai
 
-      Tookute mo kanaetai watashi wa
-
-      Konna
-      sekai omoi mo dakishimeteitai noni
-
-      Yume no kyanbasu ni itsuzukeru imi
-      wa
-
-      Kono mune ni kagayaiteiru sutoorii'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Ataeru koto ni imi nado nai kedo
+'
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: Iro wo tashite mo nani mo mienakute
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Ataeru koto ni imi nado nai kedo
 
       Hiroi atsumeta kakera
       ushinau no?
 
-      Soshite yoru wa sono tsumetasa o
-
-      Tokashite te o
-      nobashita'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Mou ii yo
+      Soshite yoru wa sono tsumetasa o'
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Mou ii yo
 
       Tookute mo todoke tai watashi wa
 
@@ -80,52 +59,36 @@ MonoBehaviour:
       wa
 
       Kono sora ni egakidashiteku sutoorii'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Soshite yoru wa sono tsumetasa o
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Soshite yoru wa sono tsumetasa o
 
       Tokashite te o nobashite'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Mou ii no
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Mou ii no
 
       Tookute mo kanaetai watashi no'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Konna sekai omoi mo kotoba de tsutsunda
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Konna sekai omoi mo kotoba de tsutsunda
 
       Yume no kyanbasu
       ni iro o tashiteyuku
 
       Kono mune ni ima kagayaite'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Tsuyokunakute mo ii
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueText: 'Tsuyokunakute mo ii
 
-      Kowarekakate mo ii'
-  - dialogueType: 0
-    charaName: 2
-    spriteNumber: 0
-    delayTypeText: 0.1
-    delayBetweenLines: 0.1
-    VAname: 
-    dialogueText: 'Kono kokoro wa towa ni habataite
+      Kowarekakate mo ii
 
-      Hibiku youni nurikaeteiku
-      Palette'
+      Kono kokoro
+      wa towa ni habataite
+
+      Hibiku youni nurikaeteiku Palette'
+    _vaName: 

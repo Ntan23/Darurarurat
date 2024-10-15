@@ -62,6 +62,7 @@ namespace DialogueSystem{
             AfterDone_AfterInput();
             
             _finished = true;
+            // Debug.Log("this dialog done");
                         
         }
         public virtual void AfterDone_BeforeInput(){}
@@ -69,13 +70,10 @@ namespace DialogueSystem{
         public void ChangeFinished_false()
         {
             _finished = false;
+            // Debug.Log("fakse lg");
         }
 
-        public virtual void TypeFunction(int inputText_IDX)
-        {
-            
-
-        }
+        public virtual void TypeFunction(int inputText_IDX){}
         public bool IsInputTrue()
         {
             if(Input.GetKeyDown(KeyCode.Space)) return true;

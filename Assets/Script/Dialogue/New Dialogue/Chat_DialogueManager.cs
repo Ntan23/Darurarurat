@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ComicDialogueManager : MonoBehaviour
+public class Chat_DialogueManager : MonoBehaviour
 {
     [Header("Testing")]
     public bool isGO;
@@ -16,15 +16,16 @@ public class ComicDialogueManager : MonoBehaviour
     #endregion
 
     [Header("Component Variable")]
-    [SerializeField] private SODialogueList _comicDialogueList;
-    [SerializeField] private DialogueHolder _dialogueHolder;
-    private SODialogues _chosenDialogue;
-    [Header("Container")]
-    [SerializeField] private GameObject _bgContainer, _namatextContainer;
-    [SerializeField] private TMP_Text _textContainer;
+    [SerializeField] private SOChatDialogueList _comicDialogueList;
+    [SerializeField] private Chat_DialogueHolder _dialogueHolder;
+    private SOChatDialogues _chosenDialogue;
+
+    // [Header("Container")]
+    // [SerializeField] private GameObject _bgContainer;
+    // [SerializeField] private TMP_Text _textContainer, _nameTextContainer;
     private void Awake() 
     {
-        if(_dialogueHolder == null)_dialogueHolder = GetComponent<DialogueHolder>();
+        if(_dialogueHolder == null)_dialogueHolder = GetComponent<Chat_DialogueHolder>();
     }
     private void Update() {
         if(isGO)
@@ -36,7 +37,7 @@ public class ComicDialogueManager : MonoBehaviour
         if(isStop)
         {
             isStop = false;
-            StopDialogue();
+            HideFinishedDialogueNow();
         }
     }
     public void PlayDialogueScene(DialoguesTitle dialoguesTitle)
@@ -44,7 +45,7 @@ public class ComicDialogueManager : MonoBehaviour
         _chosenDialogue = _comicDialogueList.SearchDialogues(dialoguesTitle);
         if(_chosenDialogue != null)
         {
-            _dialogueHolder.ShowDialogue(_chosenDialogue, _textContainer);
+            _dialogueHolder.ShowDialogue(_chosenDialogue);
         }
     }
     public void HideFinishedDialogueNow()
@@ -56,4 +57,5 @@ public class ComicDialogueManager : MonoBehaviour
     {
         _dialogueHolder.StopCourotineNow();
     }
+    
 }

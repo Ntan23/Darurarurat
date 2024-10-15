@@ -3,19 +3,23 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using System;
-using Unity.VisualScripting;
+using UnityEngine.UI;
+
 
 namespace DialogueSystem
 {
-    public class DialogueHolder : MonoBehaviour
+    public class Chat_DialogueHolder : MonoBehaviour
     {
-        [Header("Dialogue Line")]
-        [SerializeField] private DialogueLine _dialogueLineContainer;
-
-        [Header("Reference")]
-        [SerializeField] private GameObject _bgContainer, _namatextContainer;
-        [SerializeField] private TMP_Text _textContainer;
+        [Header("Character")]
         [SerializeField] private SODialogueCharaList _SOdialogueCharaList;
+
+        [Header("Dialogue Line")]
+        [SerializeField] private Chat_DialogueLine _dialogueLineContainer;
+
+        [Header("Containers")]
+        [SerializeField] private GameObject _bgContainer, _pressToConContainer;
+        [SerializeField] private TMP_Text _textContainer, _nameTextContainer;
+        [SerializeField] private Image _spriteContainer;
 
         [Tooltip("If true, langsung hide, if not true, tunggu Action apa baru tutup dr sana")]
         [SerializeField]private bool hasSceneDialogueFinish;
@@ -23,23 +27,25 @@ namespace DialogueSystem
         [SerializeField]IEnumerator dialogSeq;
         private void Awake() 
         {
-            if(_dialogueLineContainer == null) _dialogueLineContainer = GetComponent<DialogueLine>();
-            // HideDialogue();
+            if(_dialogueLineContainer == null) _dialogueLineContainer = GetComponent<Chat_DialogueLine>();
+            HideDialogue();
         }
 
-        private IEnumerator dialogueSequence(SODialogues SceneDialogue)
+        private IEnumerator dialogueSequence(SOChatDialogues SceneDialogue)
         {
             _dialogueLineContainer.GetTextContainer(_textContainer);
+            _dialogueLineContainer.GetCharaContainer(_nameTextContainer, _spriteContainer, _pressToConContainer);
+            
             for(int i=0;i<SceneDialogue.dialogue_Lines.Count;i++)
             {
                 if(!_dialogueLineContainer.gameObject.activeSelf)_dialogueLineContainer.gameObject.SetActive(true);
                 
                 
-                // line.GoLineText();
-                // yield return new WaitUntil(()=> line.finished);
-                // line.ChangeFinished_false();
-                Dialogue_Line dialogueNow = SceneDialogue.dialogue_Lines[i];
-                int dialogueTalkerNow = (int)dialogueNow.charaName;
+                Chat_Dialogue_Line dialogueNow = SceneDialogue.dialogue_Lines[i];
+                
+                int dialogueTalkerNow = (int)dialogueNow.CharaName;
+
+                _dialogueLineContainer.CurrCharacter = _SOdialogueCharaList.SearchCharacter(dialogueTalkerNow);
                 _dialogueLineContainer.SetDialogue(dialogueNow);
 
                 yield return new WaitUntil(()=> _dialogueLineContainer.Finished);
@@ -47,6 +53,7 @@ namespace DialogueSystem
                 
             }
             hasSceneDialogueFinish = true;
+            HideDialogue();
 
             // if(DialogueManager.DoSomethingAfterFinish != null)DialogueManager.DoSomethingAfterFinish();
         }
@@ -54,11 +61,11 @@ namespace DialogueSystem
         {
             _dialogueLineContainer.gameObject.SetActive(false);
         }
-        public void ShowDialogue(SODialogues SceneDialogue, TMP_Text textContainer)
+        public void ShowDialogue(SOChatDialogues SceneDialogue)
         {
-            _textContainer = textContainer;
+
             StopCourotineNow();
-            gameObject.SetActive(true);
+            _bgContainer.SetActive(true);
             dialogSeq = dialogueSequence(SceneDialogue);
 
             if(dialogSeq != null)StartCoroutine(dialogSeq);
@@ -72,9 +79,12 @@ namespace DialogueSystem
         public void HideDialogue()
         {
             if(hasSceneDialogueFinish)hasSceneDialogueFinish = false;
-            _namatextContainer.SetActive(false);
+
+            _pressToConContainer.SetActive(false);
+            _nameTextContainer.gameObject.SetActive(false);
+            _spriteContainer.gameObject.SetActive(false);
             _bgContainer.SetActive(false);
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
             
         }
         public void StopCourotineNow()
@@ -91,12 +101,11 @@ namespace DialogueSystem
             StopCourotineNow();
             HideDialogue();
 
-            //gaperlu bawah krn ini bakal cuma terjadi di A suruh ngapain, yg biasanya di akhirnya bakal disuru hal lain yg bukan manggil dialog ke dialog, ex : suruh ambil barang, kalo brgnya ud diambil si brg ini yg bakal ngelakuin itu, bukan dr sininya, biasanya ini kalo dr dialog abis itu lanjut dialog, ato dialog abis itu lanjut timeline, krn emg gabisa diskip lol
-            
-            // DialogueManager.DoSomethingAfterFinish();
         }
 
         public bool HasSceneDialogueFinish() {return hasSceneDialogueFinish;}
+
+        // public void GetContainer()
     }
 }
 

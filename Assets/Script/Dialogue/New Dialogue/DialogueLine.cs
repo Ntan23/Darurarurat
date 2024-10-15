@@ -12,7 +12,7 @@ namespace DialogueSystem
 
 
         [Header("Character")]
-        [SerializeField] protected TMP_Text _textContainer;
+        protected TMP_Text _textContainer;
 
         protected string _dialogueText;
         protected IEnumerator _dialogue;
@@ -23,7 +23,7 @@ namespace DialogueSystem
         public void GetTextContainer(TMP_Text textContainer)
         {
             _textContainer = textContainer;
-            Debug.Log(textContainer.name);
+            // Debug.Log(textContainer.name);
         }
 
         public virtual void SetDialogue(Dialogue_Line dialogueInput)
@@ -34,9 +34,9 @@ namespace DialogueSystem
             // textHolder.color = textColor;
             // textHolder.font = textFont;
 
-            _dialogue = typeText(dialogueInput.dialogueText, _textContainer, dialogueInput.delayTypeText, dialogueInput.delayBetweenLines);
+            _dialogue = typeText(dialogueInput.DialogueText, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);
 
-            Debug.Log("???????");
+            // Debug.Log("???????");
             StartCoroutine(_dialogue);
         }
         public virtual void StopDialogue()

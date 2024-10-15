@@ -8,30 +8,55 @@ namespace DialogueSystem
 {
     public class Chat_DialogueLine : DialogueLine
     {
-        [SerializeField] private string charaName;
-        [SerializeField] private TMP_Text _nameTextContainer;
-        [SerializeField] private GameObject _bgContainer;
-        [SerializeField] private Image _imgContainer;
-        [SerializeField] private GameObject _pressToContinueContainer;
+        private TMP_Text _nameTextContainer;
+        private GameObject _bgContainer;
+        private Image _spriteContainer;
+        private GameObject _pressToContinueContainer;
+
+        private INeedChatDialogue _getChatDialogueData;
 
         protected DialogueCharacter _currCharacter;
         public DialogueCharacter CurrCharacter { get { return _currCharacter; } set { _currCharacter = value; } }
+
+        public void GetCharaContainer(TMP_Text nameContainer, Image spriteContainer, GameObject pressToCon)
+        {
+            _nameTextContainer = nameContainer;
+            _spriteContainer = spriteContainer;
+            _pressToContinueContainer = pressToCon;
+        }
         public override void SetDialogue(Dialogue_Line dialogueInput)
         {
-            
+            _currdialogueInput = dialogueInput;
             _textContainer.text = "";
-            // if(dialogueInput.dialogueType == DialogueType.Character || dialogueInput.dialogueType == DialogueType.SFX)
-            // {
-            //     _bgContainer.gameObject.SetActive(true);
-            //     if(dialogueInput.dialogueType == DialogueType.Character)
-            //     {
-            //         _nameTextContainer.color = character._textColor; // or colornya bs buat ganti color bg idk
-            //         _nameTextContainer.text = character.name;
-            //         _nameTextContainer.gameObject.SetActive(true);
-            //     }
-            // }
-            // dialogue = typeText(dialogueInput.dialogueText, _textContainer, dialogueInput.delayTypeText, dialogueInput.delayBetweenLines, dialogueInput.VAname, character._textColor, _pressToContinueContainer);
-            // StartCoroutine(dialogue);
+            
+            _getChatDialogueData = dialogueInput as INeedChatDialogue;
+            if(_getChatDialogueData.DialogueTypeNow == DialogueType.Character )
+            {
+                // _bgContainer.gameObject.SetActive(true);
+                _nameTextContainer.text = CurrCharacter.name;
+                if(CurrCharacter.charaSprites.Length > 0)_spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
+                _spriteContainer.gameObject.SetActive(true);
+            }
+            else if(_getChatDialogueData.DialogueTypeNow == DialogueType.Instruction)
+            {
+                _nameTextContainer.text = "Instruction";
+            }
+            _nameTextContainer.gameObject.SetActive(true);
+
+            
+            _dialogue = typeText(dialogueInput.DialogueText, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);
+
+            // Debug.Log("???????");
+            StartCoroutine(_dialogue);
+        }
+
+        public override void AfterDone_BeforeInput()
+        {
+            _pressToContinueContainer.SetActive(true);
+        }
+        public override void AfterDone_AfterInput()
+        {
+            _pressToContinueContainer.SetActive(false);
         }
     }
 

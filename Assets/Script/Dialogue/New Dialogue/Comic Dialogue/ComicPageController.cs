@@ -3,80 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using DialogueSystem;
 using TMPro;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public enum ComicEffectAnimEffect
-{
-    MoveLeft, MoveRight, MoveUp, MoveDown, ShowingABit
-}
-[Serializable]
-public class ComicPage
-{
-    [SerializeField] private Image _comicImagePage;
-    private int _currDialogueBoxIdx;
-    [SerializeField] private List<GameObject> _dialogueBoxsPage;
-    [SerializeField] private List<TMP_Text> _dialogTextContainersPage;
-    private bool _isFinished;
-    public int TotalBox { get { return _dialogueBoxsPage.Count;}}
-    public bool IsFInished {get { return _isFinished; } }
-
-    public void ClearAllTextContainers()
-    {
-        foreach(TMP_Text dialogueText in _dialogTextContainersPage)
-        {
-            dialogueText.text = "";
-        }
-    }
-    public void HideAllDialogueBox()
-    {
-        foreach(GameObject dialogueBox in _dialogueBoxsPage)
-        {
-            dialogueBox.SetActive(false);
-            LeanTween.alpha(dialogueBox, 0f, 0);
-        }
-        _currDialogueBoxIdx = 0;
-        _isFinished = false;
-    }
-    // public void SetTransparentImage(float transparentPoint)
-    // {
-    //     Color newColor = _comicImagePage.color;
-    //     newColor.a = transparentPoint;
-    //     _comicImagePage.color = newColor;
-    // }
-
-    public void SetTransparentImage_Animated(Action functionAfterFade, float toAlpha, float duration)
-    {
-        LeanTween.alpha(_comicImagePage.rectTransform, toAlpha, duration).setOnComplete(functionAfterFade);
-    }
-    public void ShowDialogueBox(Action functionAfterFade, float duration)
-    {
-        if(_currDialogueBoxIdx == _dialogueBoxsPage.Count)
-        {
-            return;
-        }
-        _dialogueBoxsPage[_currDialogueBoxIdx].SetActive(true);
-        LeanTween.alpha(_dialogueBoxsPage[_currDialogueBoxIdx], 1f, duration).setOnComplete(functionAfterFade);
-        _currDialogueBoxIdx++;
-        if(_currDialogueBoxIdx == _dialogueBoxsPage.Count)
-        {
-            _isFinished = true;
-        }
-    }
-    public TMP_Text GiveDialogueText()
-    {
-        if(_currDialogueBoxIdx - 1 == _dialogueBoxsPage.Count) return null;
-        return _dialogTextContainersPage[_currDialogueBoxIdx - 1];
-    }
-
-}
-[Serializable]
-public class ComicPageEffect
-{
-
-}
+/// <summary>
+/// CONTROL PER COMIC PART
+/// </summary>
 public class ComicPageController : MonoBehaviour
 {
     [Header("Test")]
@@ -84,7 +16,7 @@ public class ComicPageController : MonoBehaviour
     public bool isStop;
 
     [Header("The SODialogues")]
-    [SerializeField] private SODialogues _comicPagesAllDialogues_SODIALOGUES;
+    [SerializeField] private SOComicDialogues _comicPagesAllDialogues_SODIALOGUES;
     private Dialogue_Line _currDialogue;
     private int _currDialogueIdx;
 
@@ -107,10 +39,13 @@ public class ComicPageController : MonoBehaviour
     private bool _canMovePage;
     public bool Finished { get { return _finished; } }
 
-    private void Awake() {
+    private void Awake() 
+    {
+        GetAllTextContainersFromComicPagesBox();
         HideAllDialogueBox();
     }
-    private void Update() {
+    private void Update() 
+    {
         if(isGo)
         {
             isGo =false;
@@ -119,29 +54,41 @@ public class ComicPageController : MonoBehaviour
         if(isStop)
         {
             isStop = false;
-            StopComicTime();
+            HideComic();
         }
     }
+    public void GetAllTextContainersFromComicPagesBox()
+    {
+        for(int i=0 ; i < _comicPages.Count;i++)
+        {
+            ComicPage currPage = _comicPages[i];
+            currPage.DialogueTextContainersPage = new List<TMP_Text>();
+            for(int j=0; j < currPage.DialogueBoxsPage.Count;j++)
+            {
+                TMP_Text newContainer = currPage.DialogueBoxsPage[j].GetComponentInChildren<TMP_Text>();
+                if(newContainer != null)currPage.DialogueTextContainersPage.Add(newContainer);
+            }
+        }
+        
+    }
+
     public void ShowComic()
     {
         if(_fade)_fade.Fade_WithFunction(PreparingComic, _fadeInDuration, 1);
         else PreparingComic();
-
-        
     }
+
     public void HideComic()
     {
-        _comicTime = null;
+        StopComicTime();
+
         _finished = false;
         HideAllParent();
         
     }
-    public void HideAllParent()
-    {
-        if(_dialogueBoxParent.gameObject.activeSelf)_dialogueBoxParent.gameObject.SetActive(false);
-        if(_comicImageParent.gameObject.activeSelf)_comicImageParent.gameObject.SetActive(false);
-    }
-    public void PreparingComic()
+
+    //Prepare Comic before showing
+    private void PreparingComic()
     {
         HideAllDialogueBox();
         _dialogueBoxParent.localPosition = _startingPoint;
@@ -155,7 +102,12 @@ public class ComicPageController : MonoBehaviour
         StartComicTime();
         
     }
-    public void HideAllDialogueBox()
+    private void HideAllParent()
+    {
+        if(_dialogueBoxParent.gameObject.activeSelf)_dialogueBoxParent.gameObject.SetActive(false);
+        if(_comicImageParent.gameObject.activeSelf)_comicImageParent.gameObject.SetActive(false);
+    }
+    private void HideAllDialogueBox()
     {
         HideAllParent();
         foreach(ComicPage page in _comicPages)
@@ -165,18 +117,19 @@ public class ComicPageController : MonoBehaviour
             page.SetTransparentImage_Animated(null, 0.5f, _fadeComicBGDuration);
         }
     }
-    public void StartComicTime()
+    private void StartComicTime()
     {
         _comicTime = ComicTime();
         StartCoroutine(_comicTime);
     }
-    public void StopComicTime()
+    private void StopComicTime()
     {
         if(_comicTime == null)return;
 
         StopCoroutine(_comicTime);
+
+        _dialogueLineContainer.StopDialogue();
         
-        HideComic();
     }
 
     public IEnumerator ComicTime()
@@ -210,14 +163,15 @@ public class ComicPageController : MonoBehaviour
 
             _currPage.SetTransparentImage_Animated(null, 0.2f, _fadeComicBGDuration);
             if( i + 1 != _comicPages.Count) _comicPages[i+1].SetTransparentImage_Animated(MoveNext, 1f, _fadeComicBGDuration);
-
+            else _canMovePage = true;
             yield return new WaitUntil(()=> _canMovePage);
             _canMovePage = false;
             
         }
+        // Debug.Log("ALOOO");
         yield return new WaitUntil(()=> IsInputTrue());
         _finished = true;
-
+        // Debug.Log("??????");
         if(_fade)_fade.Fade_WithFunction(HideComic, _fadeInDuration, 1);
 
     }
@@ -225,7 +179,7 @@ public class ComicPageController : MonoBehaviour
     {
         if(_currDialogue != null)
         {
-            Debug.Log("Halo");
+            // Debug.Log("Halo");
             _dialogueLineContainer.GetTextContainer(_currPage.GiveDialogueText());
             _dialogueLineContainer.SetDialogue(_currDialogue);
         }
