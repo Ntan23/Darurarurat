@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChatDialogues
   m_EditorClassIdentifier: 
   dialoguesTitle: 0
-  isUseSprite: 0
+  isWholeDialogueUseSprite: 1
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2

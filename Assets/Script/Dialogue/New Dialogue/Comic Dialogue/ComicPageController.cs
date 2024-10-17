@@ -12,11 +12,14 @@ using UnityEngine.UI;
 public class ComicPageController : MonoBehaviour
 {
     [Header("Test")]
-    public bool isGo;
+    public bool isGo, istest;
     public bool isStop;
+    private ComicManager comicManager;
 
     [Header("The SODialogues")]
     [SerializeField] private SOComicDialogues _comicPagesAllDialogues_SODIALOGUES;
+    private ComicDialoguesTitle _comicTitle;
+    private string _comicTitleInString;
     private Dialogue_Line _currDialogue;
     private int _currDialogueIdx;
 
@@ -34,18 +37,35 @@ public class ComicPageController : MonoBehaviour
     [Header("GetComponent")]
     [SerializeField] private FadeFrontUI _fade;
     [SerializeField] private float _fadeInDuration = 0.2f, _fadeOutDuration = 0.5f, _fadeComicBGDuration = 0.2f, _fadeDialogBoxDuration = 0.2f;
-    private IEnumerator _comicTime;
+    private IEnumerator _comicTime, _scrollRectSave, xxx;
     private bool _finished;
     private bool _canMovePage;
+    #region  GETTER SETTER VARIABLE
     public bool Finished { get { return _finished; } }
+    public ComicDialoguesTitle ComicTitle {get {return _comicTitle;}}
+    public String ComicTitleInString {get {return _comicTitleInString;}}
+    #endregion
+    
 
     private void Awake() 
     {
-        GetAllTextContainersFromComicPagesBox();
+        GetAllTextContainersScrollsFromComicPagesBox();
         HideAllDialogueBox();
+
+        _comicTitle = _comicPagesAllDialogues_SODIALOGUES.dialoguesTitle;
+        _comicTitleInString = _comicTitle.ToString();
+
+        
+    }
+
+    private void Start() 
+    {
+        comicManager = ComicManager.Instance;
+        
     }
     private void Update() 
     {
+
         if(isGo)
         {
             isGo =false;
@@ -57,16 +77,20 @@ public class ComicPageController : MonoBehaviour
             HideComic();
         }
     }
-    public void GetAllTextContainersFromComicPagesBox()
+    public void GetAllTextContainersScrollsFromComicPagesBox()
     {
         for(int i=0 ; i < _comicPages.Count;i++)
         {
             ComicPage currPage = _comicPages[i];
             currPage.DialogueTextContainersPage = new List<TMP_Text>();
+            currPage.DialogueBoxScrollRect = new List<ScrollRect>();
             for(int j=0; j < currPage.DialogueBoxsPage.Count;j++)
             {
                 TMP_Text newContainer = currPage.DialogueBoxsPage[j].GetComponentInChildren<TMP_Text>();
                 if(newContainer != null)currPage.DialogueTextContainersPage.Add(newContainer);
+
+                ScrollRect newScrollRect = currPage.DialogueBoxsPage[j].GetComponentInChildren<ScrollRect>();
+                if(newScrollRect != null)currPage.DialogueBoxScrollRect.Add(newScrollRect);
             }
         }
         
@@ -84,12 +108,16 @@ public class ComicPageController : MonoBehaviour
 
         _finished = false;
         HideAllParent();
-        
+
+        comicManager.OnComicFinished?.Invoke(ComicTitle);
     }
 
     //Prepare Comic before showing
     private void PreparingComic()
     {
+        StopComicTime();
+        _finished = false;
+
         HideAllDialogueBox();
         _dialogueBoxParent.localPosition = _startingPoint;
         _comicImageParent.localPosition = _startingPoint;
@@ -97,6 +125,8 @@ public class ComicPageController : MonoBehaviour
         _currDialogueIdx = 0;
         _currDialogue = null;
         _currPage = null;
+        _scrollRectSave = null;
+        
         _dialogueBoxParent.gameObject.SetActive(true);
         _comicImageParent.gameObject.SetActive(true);
         StartComicTime();
@@ -127,7 +157,11 @@ public class ComicPageController : MonoBehaviour
         if(_comicTime == null)return;
 
         StopCoroutine(_comicTime);
-
+        if(_scrollRectSave != null)
+        {
+            StopCoroutine(_scrollRectSave);
+            _scrollRectSave = null;
+        }
         _dialogueLineContainer.StopDialogue();
         
     }
@@ -155,8 +189,10 @@ public class ComicPageController : MonoBehaviour
                 _currDialogueIdx++;
                 yield return new WaitUntil(()=> 
                 _dialogueLineContainer.Finished);
+                StopCoroutine(_scrollRectSave);
 
                 _dialogueLineContainer.ChangeFinished_false();
+                _scrollRectSave = null;
             }
             
             yield return new WaitUntil(()=> IsInputTrue());
@@ -181,6 +217,10 @@ public class ComicPageController : MonoBehaviour
         {
             // Debug.Log("Halo");
             _dialogueLineContainer.GetTextContainer(_currPage.GiveDialogueText());
+
+            _scrollRectSave = _currPage.ScrollRectChecker();
+            StartCoroutine(_scrollRectSave);
+
             _dialogueLineContainer.SetDialogue(_currDialogue);
         }
     }

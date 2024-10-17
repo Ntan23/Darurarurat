@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySweepingSFx() => Play("Sweeping");
     public void PlayItchScratchSFX() => Play("ItchScratch");
     public void PlayDialogueTypeSFX(){}
-    public void PlayDialogueVASFX(string name){}
-    public void StopDialogueVASFX(string name){}
+    public void PlayDialogueVAAudio_SFX(string name) => Play(name);
+    public void StopDialogueVAAudio_SFX(string name) => Stop(name);
 } 
 

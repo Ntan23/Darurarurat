@@ -4,22 +4,27 @@ using TMPro;
 using UnityEngine.Events;
 using System;
 using UnityEngine.UI;
+using UnityEditor.SearchService;
 
 
 namespace DialogueSystem
 {
     public class Chat_DialogueHolder : MonoBehaviour
     {
+        private Chat_DialogueManager DialogueManager;
         [Header("Character")]
         [SerializeField] private SODialogueCharaList _SOdialogueCharaList;
+        private SOChatDialogues _currSceneDialogue;
 
         [Header("Dialogue Line")]
         [SerializeField] private Chat_DialogueLine _dialogueLineContainer;
 
         [Header("Containers")]
-        [SerializeField] private GameObject _bgContainer, _pressToConContainer;
+        [SerializeField] private RectTransform _bgContainer;
+        [SerializeField] private GameObject _pressToConContainer, _nameContainer;
         [SerializeField] private TMP_Text _textContainer, _nameTextContainer;
         [SerializeField] private Image _spriteContainer;
+        [SerializeField] private float _showBGDuration = 0.2f;
 
         [Tooltip("If true, langsung hide, if not true, tunggu Action apa baru tutup dr sana")]
         [SerializeField]private bool hasSceneDialogueFinish;
@@ -30,11 +35,16 @@ namespace DialogueSystem
             if(_dialogueLineContainer == null) _dialogueLineContainer = GetComponent<Chat_DialogueLine>();
             HideDialogue();
         }
+        private void Start() 
+        {
+            DialogueManager = Chat_DialogueManager.Instance;
+        }
 
         private IEnumerator dialogueSequence(SOChatDialogues SceneDialogue)
         {
+            _currSceneDialogue = SceneDialogue;
             _dialogueLineContainer.GetTextContainer(_textContainer);
-            _dialogueLineContainer.GetCharaContainer(_nameTextContainer, _spriteContainer, _pressToConContainer);
+            _dialogueLineContainer.GetCharaContainer(_nameTextContainer, _spriteContainer, _nameContainer, _pressToConContainer, SceneDialogue.isWholeDialogueUseSprite);
             
             for(int i=0;i<SceneDialogue.dialogue_Lines.Count;i++)
             {
@@ -55,25 +65,38 @@ namespace DialogueSystem
             hasSceneDialogueFinish = true;
             HideDialogue();
 
-            // if(DialogueManager.DoSomethingAfterFinish != null)DialogueManager.DoSomethingAfterFinish();
+            //Subs to this if you want to do something after dialogue finish
+            DialogueManager.OnDialogueFinish?.Invoke(SceneDialogue.dialoguesTitle);
+            _currSceneDialogue = null;
+            
         }
-        private void Deactivate()
-        {
-            _dialogueLineContainer.gameObject.SetActive(false);
-        }
+
         public void ShowDialogue(SOChatDialogues SceneDialogue)
         {
 
             StopCourotineNow();
-            _bgContainer.SetActive(true);
-            dialogSeq = dialogueSequence(SceneDialogue);
 
-            if(dialogSeq != null)StartCoroutine(dialogSeq);
-            else
-            {
-                Debug.Log("WHY IT'S NULL");
-                Debug.Log(SceneDialogue);
-            }
+
+
+            
+            _bgContainer.gameObject.SetActive(true);
+            //Nyalakan ini dan matikan bawah jika gamau animasi
+            // dialogSeq = dialogueSequence(SceneDialogue);
+
+            // if(dialogSeq != null)StartCoroutine(dialogSeq);
+
+            LeanTween.alpha(_bgContainer, 1, _showBGDuration).setOnComplete(
+                ()=>
+                {
+                    dialogSeq = dialogueSequence(SceneDialogue);
+
+                    if(dialogSeq != null)StartCoroutine(dialogSeq);
+                }
+            );
+            
+
+
+            
             
         }
         public void HideDialogue()
@@ -81,9 +104,13 @@ namespace DialogueSystem
             if(hasSceneDialogueFinish)hasSceneDialogueFinish = false;
 
             _pressToConContainer.SetActive(false);
+            _nameContainer.gameObject.SetActive(false);
             _nameTextContainer.gameObject.SetActive(false);
             _spriteContainer.gameObject.SetActive(false);
-            _bgContainer.SetActive(false);
+            _bgContainer.gameObject.SetActive(false);
+            _textContainer.text = "";
+            LeanTween.alpha(_bgContainer, 0f, 0); //matikan ini jika gamau animasi
+
             // gameObject.SetActive(false);
             
         }
@@ -92,8 +119,7 @@ namespace DialogueSystem
             if(!_dialogueLineContainer.Finished)_dialogueLineContainer.StopDialogue();
             if(dialogSeq == null)return;
             if(!hasSceneDialogueFinish)StopCoroutine(dialogSeq);
-            dialogSeq = null;
-            
+            dialogSeq = null; 
         }
 
         public void StopCoroutineAbruptly()
@@ -101,6 +127,11 @@ namespace DialogueSystem
             StopCourotineNow();
             HideDialogue();
 
+            if(_currSceneDialogue != null)
+            {
+                DialogueManager.OnDialogueFinish?.Invoke(_currSceneDialogue.dialoguesTitle);
+                _currSceneDialogue = null;
+            }
         }
 
         public bool HasSceneDialogueFinish() {return hasSceneDialogueFinish;}

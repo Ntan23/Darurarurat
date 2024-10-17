@@ -31,13 +31,13 @@ namespace DialogueSystem
                 if(_currVA == null) return;
                 if(inputText_IDX == _delayTimeForVA && _currVA.VAname != "")
                 {
-                    AudioManager.instance.PlayDialogueVASFX(_currVA.VAname);
+                    AudioManager.instance.PlayDialogueVAAudio_SFX(_currVA.VAname);
                 }
             }
         }
         private void StopVA()
         {
-            AudioManager.instance.StopDialogueVASFX(_currVA.VAname);
+            AudioManager.instance.StopDialogueVAAudio_SFX(_currVA.VAname);
         }
     }
 

@@ -21,11 +21,7 @@ public class SOComicDialogues : ScriptableObject
     }
     #endif
 
-    [Header("Reminder - don't need to put it in DialogueList")]
-    public DialoguesTitle dialoguesTitle;
-    [Tooltip("Kalau Pake VA, VA bakal dijalanin; Kalau Gapake VA, ketik ketik sound")]
-    public bool isUseVA;
-    [Tooltip("Kalau Comic Style gapake sprite")]
+    public ComicDialoguesTitle dialoguesTitle;
     public List<Comic_Dialogue_Line> dialogue_Lines;
 
 }

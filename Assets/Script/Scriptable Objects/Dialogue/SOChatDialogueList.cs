@@ -23,11 +23,22 @@ public class SOChatDialogueList : ScriptableObject
 
     public List<SOChatDialogues> dialoguesList;
 
-    public SOChatDialogues SearchDialogues(DialoguesTitle title)
+    public SOChatDialogues SearchDialogues(ChatDialoguesTitle title)
     {
         foreach(SOChatDialogues dialogues in dialoguesList)
         {
             if(dialogues.dialoguesTitle == title)
+            {
+                return dialogues;
+            }
+        }
+        return null;
+    }
+    public SOChatDialogues SearchDialoguesUsingString(string title)
+    {
+        foreach(SOChatDialogues dialogues in dialoguesList)
+        {
+            if(dialogues.dialoguesTitle.ToString() == title)
             {
                 return dialogues;
             }

@@ -9,20 +9,23 @@ namespace DialogueSystem
     public class Chat_DialogueLine : DialogueLine
     {
         private TMP_Text _nameTextContainer;
-        private GameObject _bgContainer;
+        private GameObject _nameContainer;
         private Image _spriteContainer;
         private GameObject _pressToContinueContainer;
+        private bool _isWholeDialogueUseSprite;
 
         private INeedChatDialogue _getChatDialogueData;
 
         protected DialogueCharacter _currCharacter;
         public DialogueCharacter CurrCharacter { get { return _currCharacter; } set { _currCharacter = value; } }
 
-        public void GetCharaContainer(TMP_Text nameContainer, Image spriteContainer, GameObject pressToCon)
+        public void GetCharaContainer(TMP_Text nameTextContainer, Image spriteContainer, GameObject nameContainer, GameObject pressToCon, bool isWholeDialogueUseSprite)
         {
-            _nameTextContainer = nameContainer;
+            _nameTextContainer = nameTextContainer;
             _spriteContainer = spriteContainer;
+            _nameContainer = nameContainer;
             _pressToContinueContainer = pressToCon;
+            _isWholeDialogueUseSprite = isWholeDialogueUseSprite;
         }
         public override void SetDialogue(Dialogue_Line dialogueInput)
         {
@@ -34,14 +37,19 @@ namespace DialogueSystem
             {
                 // _bgContainer.gameObject.SetActive(true);
                 _nameTextContainer.text = CurrCharacter.name;
-                if(CurrCharacter.charaSprites.Length > 0)_spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
-                _spriteContainer.gameObject.SetActive(true);
+                if(_isWholeDialogueUseSprite)
+                {
+                    if(CurrCharacter.charaSprites.Length > 0)_spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
+                    _spriteContainer.gameObject.SetActive(true);
+                }
             }
             else if(_getChatDialogueData.DialogueTypeNow == DialogueType.Instruction)
             {
                 _nameTextContainer.text = "Instruction";
             }
+            _nameContainer.SetActive(true);
             _nameTextContainer.gameObject.SetActive(true);
+            
 
             
             _dialogue = typeText(dialogueInput.DialogueText, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);

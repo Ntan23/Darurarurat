@@ -26,7 +26,9 @@ public class Chat_Dialogue_Line : Dialogue_Line, INeedChatDialogue
     [Space(1)]
     [SerializeField]private DialogueType _dialogueType;
     [SerializeField]private DialogueCharaName _charaName;
-    [Tooltip("Sesuaikan dgn banyak sprite character - kalo gapake tulis angka >= length sprite asli")]
+
+    [Space(1)]
+    [Header("Sesuaikan dgn banyak sprite character | kalo gamau ada sprite pake saat ini tulis angka >= length sprite asli")]
     [SerializeField]private int _spriteNumber;
 
     public DialogueType DialogueTypeNow { get { return _dialogueType;}}
@@ -39,6 +41,7 @@ public class Chat_Dialogue_Line : Dialogue_Line, INeedChatDialogue
 public class Comic_Dialogue_Line : Dialogue_Line, INeedVA
 {
     [Space(1)]
+    [Header("If you dont want va, empty it")]
     [SerializeField]private string _vaName;
 
     public string VAname {get {return _vaName;}}
