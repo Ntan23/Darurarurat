@@ -80,10 +80,15 @@ MonoBehaviour:
     m_Localized: 'Mission Failed '
     m_Metadata:
       m_Items: []
+  - m_Id: 162649509719048192
+    m_Localized: Buy {0} for {1} Kp ?
+    m_Metadata:
+      m_Items:
+      - rid: 5030486214747095049
   references:
     version: 2
     RefIds:
     - rid: 5030486214747095049
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0000727609000000
+        m_Entries: 00007276090000000000b209ded84102
