@@ -20,7 +20,7 @@ public class SOChatDialogues : ScriptableObject
     #endif
 
     public ChatDialoguesTitle dialoguesTitle;
-    [Tooltip("Kalau Pake VA, VA bakal dijalanin; Kalau Gapake VA, ketik ketik sound")]
+    [Tooltip("Kalau Pake Sprite, centang; kalo ga gausa - ini buat semuanya")]
     public bool isWholeDialogueUseSprite;
     public List<Chat_Dialogue_Line> dialogue_Lines;
 }

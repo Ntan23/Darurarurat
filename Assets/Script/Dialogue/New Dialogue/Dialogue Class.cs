@@ -13,6 +13,7 @@ public class Dialogue_Line
     [SerializeField]private float _delayBetweenLines = 0.2f;
     //Tambah Sound effect kalo mau
     
+    [Header("Kalau mau ada sfx di tengah-tengah audio tulisnya->  <sfx:namaSFX>")]
     [TextArea(3, 7)][SerializeField]private string _dialogueText;
 
     public float DelayTypeText { get { return _delayTypeText; }}

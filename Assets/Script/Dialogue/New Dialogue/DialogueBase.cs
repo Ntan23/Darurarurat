@@ -11,6 +11,7 @@ namespace DialogueSystem{
         protected bool _finished;
         private bool isRichText = false;
         private string saveRichText;
+        private const string RICH_TEXT_SFX = "sfx";
 
         /// Kalo mo tambahin sfx tengah-tengah bisa pake isrichtext juga modelannya :D, tp bikin penanda sendiri; delay jg bisa
         /// kek misal <sfx: sfxname> or <delay: 0.2f>
@@ -40,11 +41,15 @@ namespace DialogueSystem{
                     if(inputText[i] == '>')
                     {
                         isRichText = false;
-                        textHolder.text += saveRichText;
+                        if(saveRichText.Contains(RICH_TEXT_SFX))
+                        {
+                            PlaySFXBaseOnDialogue();
+                        }
+                        else textHolder.text += saveRichText;
                     }
                     continue;
                 }
-                
+                   
 
                 textHolder.text += inputText[i];
 
@@ -65,15 +70,24 @@ namespace DialogueSystem{
             // Debug.Log("this dialog done");
                         
         }
+
+
         public virtual void AfterDone_BeforeInput(){}
         public virtual void AfterDone_AfterInput(){}
+        public virtual void TypeFunction(int inputText_IDX){}
         public void ChangeFinished_false()
         {
             _finished = false;
             // Debug.Log("fakse lg");
         }
+        public void PlaySFXBaseOnDialogue()
+        {
+            int startIdx = saveRichText.IndexOf(":") + 1;
+            string sfxName = saveRichText.Substring(startIdx, saveRichText.Length - startIdx - 1);
+            // Debug.Log(sfxName);
+            AudioManager.instance.PlayDialogueVAAudio_SFX(sfxName);
+        }
 
-        public virtual void TypeFunction(int inputText_IDX){}
         public bool IsInputTrue()
         {
             if(Input.GetKeyDown(KeyCode.Space)) return true;

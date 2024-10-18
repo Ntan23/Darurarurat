@@ -17,7 +17,7 @@ MonoBehaviour:
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Kamu gapapaa??
+    _dialogueText: Kamu gapapaa ??>
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 1
@@ -29,7 +29,7 @@ MonoBehaviour:
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Syukurlah
+    _dialogueText: Syukurlah <sfx:KnockDoor> *Tok TOk
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 3
