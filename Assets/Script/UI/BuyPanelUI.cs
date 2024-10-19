@@ -10,6 +10,7 @@ public class BuyPanelUI : MonoBehaviour
     [SerializeField] private LocalizedString buyString;
     [SerializeField] private TextMeshProUGUI buyText;
     private ShopManager sm;
+    private bool isOpen;
 
     void Start() => sm = ShopManager.instance;
 
@@ -27,6 +28,7 @@ public class BuyPanelUI : MonoBehaviour
 
     public void OpenBuyPanel() 
     {
+        isOpen = true;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         LeanTween.value(gameObject, UpdateBackgroundAlpha, 0.0f, 1.0f, 0.8f);
     }
@@ -36,6 +38,7 @@ public class BuyPanelUI : MonoBehaviour
         LeanTween.value(gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.8f).setOnComplete(() => {
             GetComponent<CanvasGroup>().blocksRaycasts = false;
             sm.SetCanInput(true);
+            isOpen = false;
         });
     }
 
@@ -44,5 +47,10 @@ public class BuyPanelUI : MonoBehaviour
         buyString.Arguments[0] = name.ToString();
         buyString.Arguments[1] = price.ToString("0.00");
         buyString.RefreshString();
+    }
+
+    public bool GetIsOpen()
+    {
+        return isOpen;
     }
 }

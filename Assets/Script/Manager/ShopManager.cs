@@ -47,36 +47,19 @@ public class ShopManager : MonoBehaviour
             {
                 if(hit.collider != null)
                 {
-                    if(hit.collider.name == "non alcohol wipes" || hit.collider.name == "tisu basah non alkohol") 
-                    {
-                        buyPanelUI.UpdateText(hit.collider.name, objectsToBuy[0].price);
-                        tempIndex = 0;
-                    }
+                    if(hit.collider.name == "non alcohol wipes" || hit.collider.name == "tisu basah non alkohol") tempIndex = 0;
 
-                    if(hit.collider.name == "petroleum jelly") 
-                    {
-                        buyPanelUI.UpdateText(hit.collider.name, objectsToBuy[1].price);
-                        tempIndex = 1;
-                    }
+                    if(hit.collider.name == "petroleum jelly") tempIndex = 1;
 
-                    if(hit.collider.name == "hydrocortisone cream" || hit.collider.name == "krim hidrokortison") 
-                    {
-                        buyPanelUI.UpdateText(hit.collider.name, objectsToBuy[2].price);
-                        tempIndex = 2;
-                    }
+                    if(hit.collider.name == "hydrocortisone cream" || hit.collider.name == "krim hidrokortison") tempIndex = 2;
 
-                    if(hit.collider.name == "gauze pad" || hit.collider.name == "kain kasa") 
-                    {
-                        buyPanelUI.UpdateText(hit.collider.name, objectsToBuy[3].price);
-                        tempIndex = 3;
-                    }
-
-                    if(hit.collider.name == "bandage" || hit.collider.name == "perban") {
-                        buyPanelUI.UpdateText(hit.collider.name, objectsToBuy[4].price);
-                        tempIndex = 4;
-                    }
+                    if(hit.collider.name == "gauze pad" || hit.collider.name == "kain kasa") tempIndex = 3;
+                    
+                    if(hit.collider.name == "bandage" || hit.collider.name == "perban")tempIndex = 4;
                     
                     tempGO = hit.collider.gameObject;
+
+                    buyPanelUI.UpdateText(hit.collider.name, objectsToBuy[tempIndex].price);
                     buyPanelUI.OpenBuyPanel();
                     canInput = false;
                 }
@@ -92,10 +75,14 @@ public class ShopManager : MonoBehaviour
             if(PlayerPrefs.GetInt("Object" + objectsToBuy[i].objectIndex.ToString(), 0) == 1) 
             {
                 objectCollider[i].enabled = false;
-                objectCollider[i].gameObject.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterial(objectsToBuy[i].unlockedMaterial);
+                objectCollider[i].gameObject.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterialColor(Color.white);
             }
 
-            if(PlayerPrefs.GetInt("Object" + i.ToString(), 0) == 0) objectCollider[i].enabled = true;
+            if(PlayerPrefs.GetInt("Object" + objectsToBuy[i].objectIndex.ToString(), 0) == 0) 
+            {
+                objectCollider[i].enabled = true;
+                objectCollider[i].gameObject.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterialColor(Color.black);
+            }
         }
     }
 
@@ -109,7 +96,8 @@ public class ShopManager : MonoBehaviour
             PlayerPrefs.SetInt("Object" + objectsToBuy[tempIndex].objectIndex.ToString(), 1);
             PlayerPrefs.SetFloat("Money", currentMoney);
 
-            tempGO.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterial(objectsToBuy[tempIndex].unlockedMaterial);
+            tempGO.GetComponent<ObjectsToBuyMaterialChanger>().ChangeToUnhoverMaterial();
+            tempGO.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterialColor(Color.white);
 
             buyPanelUI.CloseBuyPanel();
 
@@ -119,8 +107,16 @@ public class ShopManager : MonoBehaviour
         if(currentMoney < objectsToBuy[tempIndex].price)
         {
             Debug.Log("Not Enough Money");
-            buyPanelUI.CloseBuyPanel();
+
+            NoBuy();
         }
+    }
+
+    public void NoBuy()
+    {
+        tempGO.GetComponent<ObjectsToBuyMaterialChanger>().ChangeToUnhoverMaterial();
+        tempGO.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterialColor(Color.black);
+        buyPanelUI.CloseBuyPanel();
     }
 
     IEnumerator OpenBox()
