@@ -28,15 +28,18 @@ public class PatientsQueueManager : MonoBehaviour
     private int totalPatientTreated;
     private int totalPatientFailed;
     private bool specialPatientSpawned;
+    private bool haveSpecialNPC;
     private TimeManager tm; 
 
     void Start()
     {
         tm = TimeManager.instance;
-
+        
         //PlayerPrefs.SetInt("SpecialSpawned", 0);
+        if(tm.GetDay() == 1 || tm.GetDay() % 6 == 0) haveSpecialNPC = true;
+        else haveSpecialNPC = false;
 
-        if(tm.GetHaveSpecialNPC())
+        if(haveSpecialNPC)
         {
             if(PlayerPrefs.GetInt("SpecialSpawned", 0) == 0) specialPatientSpawned = false;
             else if(PlayerPrefs.GetInt("SpecialSpawned", 0) == 1) specialPatientSpawned = true;
@@ -100,7 +103,7 @@ public class PatientsQueueManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
 
-        if(tm.GetHaveSpecialNPC()) 
+        if(haveSpecialNPC) 
         {
             if(tm.GetHour() <= 16) GenerateQueue();
             if(tm.GetHour() > 16 && !specialPatientSpawned) SpawnSpecialNPC(); 
@@ -111,7 +114,7 @@ public class PatientsQueueManager : MonoBehaviour
             }
         }
 
-        if(!tm.GetHaveSpecialNPC())
+        if(!haveSpecialNPC)
         {
             if(tm.GetHour() < 17) GenerateQueue();
             if(Mathf.Floor(tm.GetHour()) == 17) Debug.Log("Day " + tm.GetDay().ToString() + " Finish !");

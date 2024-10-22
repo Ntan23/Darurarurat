@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class TeaTimeInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool canInput;
 
     void OnMouseEnter()
     {
@@ -24,5 +14,8 @@ public class TeaTimeInput : MonoBehaviour
     void OnMouseDown()
     {
         //Debug.Log("Klik");
+        if(canInput) ScenesManager.instance.GoToNextScene();
     }
+
+    public void SetCanInput(bool value) => canInput = value;
 }

@@ -28,7 +28,6 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float startHour;
     private float startOffset;
     public bool canStart;
-    private bool haveSpecialNPC;
 
     void Start()
     {
@@ -36,16 +35,6 @@ public class TimeManager : MonoBehaviour
 
         startOffset = (startHour / hoursInDay) * timeMultiplier;
         currentTime = (totalTime + startOffset) % timeMultiplier;
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDestroy() => SceneManager.sceneLoaded -= OnSceneLoaded;
-
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        if(day == 1 || day % 6 == 0) haveSpecialNPC = true;
-        else haveSpecialNPC = false;
     }
 
     void Update() 
@@ -89,10 +78,5 @@ public class TimeManager : MonoBehaviour
     public int GetDay()
     {
         return day;
-    }
-
-    public bool GetHaveSpecialNPC()
-    {
-        return haveSpecialNPC;
     }
 }
