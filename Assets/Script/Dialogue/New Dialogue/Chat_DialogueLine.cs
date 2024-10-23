@@ -39,8 +39,11 @@ namespace DialogueSystem
                 _nameTextContainer.text = CurrCharacter.name;
                 if(_isWholeDialogueUseSprite)
                 {
-                    if(CurrCharacter.charaSprites.Length > 0)_spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
-                    _spriteContainer.gameObject.SetActive(true);
+                    if(CurrCharacter.charaSprites.Length > 0 && _getChatDialogueData.SpriteNumber < CurrCharacter.charaSprites.Length - 1 && _getChatDialogueData.SpriteNumber >= 0)
+                    {
+                        _spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
+                        _spriteContainer.gameObject.SetActive(true);
+                    }
                 }
             }
             else if(_getChatDialogueData.DialogueTypeNow == DialogueType.Instruction)
