@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class TeaTimeInput : MonoBehaviour
 {
-    private bool canInput;
+    private bool canInput;  
 
-    void OnMouseEnter()
-    {
-        //Debug.Log("Masuk");
-    }
+    void Start() => PlayerPrefs.SetInt("IsTeaTime", 1);
 
     void OnMouseDown()
     {

@@ -29,6 +29,8 @@ public class ShopManager : MonoBehaviour
     {
         CheckItem();
 
+        ChangeIsUpgradeValue(true);
+
         currentMoney = PlayerPrefs.GetFloat("Money", 0);
 
         currentMoneyText.text = currentMoney.ToString("0.00");
@@ -129,4 +131,10 @@ public class ShopManager : MonoBehaviour
     }
 
     public void SetCanInput(bool value) => canInput = value;
+
+    public void ChangeIsUpgradeValue(bool value) 
+    {
+        if(value) PlayerPrefs.SetInt("IsUpgrade", 1);
+        if(!value) PlayerPrefs.SetInt("IsUpgrade", 0);
+    }
 }

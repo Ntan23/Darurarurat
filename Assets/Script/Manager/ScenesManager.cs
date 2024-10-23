@@ -28,6 +28,12 @@ public class ScenesManager : MonoBehaviour
         else if(!is2D) QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("QualityLevel", 2));
     }
 
+    public void Play()
+    {
+        if(PlayerPrefs.GetInt("IsTeaTime", 0) == 1) GoToTargetScene("TeaTime");
+        if(PlayerPrefs.GetInt("IsUpgrade", 0) == 1) GoToTargetScene("UpgradeScene");
+        if(PlayerPrefs.GetInt("IsTeaTime", 0) == 0 && PlayerPrefs.GetInt("IsUpgrade", 0) == 0) GoToNextScene();
+    }
     public void GoToNextScene() => StartCoroutine(GoToNextSceneAnimation());
     public void GoToTargetScene(string sceneName) => StartCoroutine(GoToTargetSceneAnimation(sceneName));
     public void QuitGame() => StartCoroutine(QuitGameAnimation());

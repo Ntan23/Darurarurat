@@ -70,7 +70,7 @@ public class ProgressReportUI : MonoBehaviour
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         UpdateProgress();
         LeanTween.value(this.gameObject, UpdateBackgroundAlpha, 0.0f, 1.0f, 0.5f);
-        LeanTween.moveLocalY(progressBoard, 0.0f, 0.8f).setEaseSpring().setOnComplete(() => tm.UpdateDay());
+        LeanTween.moveLocalY(progressBoard, 0.0f, 0.8f).setEaseSpring();
     }
 
     public void DisableProgressReport()

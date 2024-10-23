@@ -55,6 +55,9 @@ public class TimeManager : MonoBehaviour
         PlayerPrefs.SetInt("Served", 0);
         PlayerPrefs.SetInt("Treated", 0);
         PlayerPrefs.SetInt("Failed", 0);
+
+        PlayerPrefs.SetInt("IsTeaTime", 0);
+        PlayerPrefs.SetInt("IsUpgrade", 0);
         
         //reset Time
         // startOffset = (startHour / hoursInDay) * timeMultiplier;

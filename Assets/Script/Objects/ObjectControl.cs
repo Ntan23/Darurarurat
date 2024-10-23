@@ -90,6 +90,7 @@ public class ObjectControl : MonoBehaviour
         hoverControl = GetComponent<IHover>();
 
         objCollider.enabled = false;
+        CheckItem();
         SetBeforeAnimatePosition();
         HideAllButtons();
     }
@@ -107,6 +108,12 @@ public class ObjectControl : MonoBehaviour
             canHide = false;
         }
         else if(!gm.IsPausing() && !canHide) canHide = true;
+    }
+
+    private void CheckItem()
+    {
+        if(PlayerPrefs.GetInt("Object" + objectIndex.ToString()) == 0) this.gameObject.SetActive(false);
+        if(PlayerPrefs.GetInt("Object" + objectIndex.ToString()) == 1) this.gameObject.SetActive(true);
     }
 
     #region MouseInput
