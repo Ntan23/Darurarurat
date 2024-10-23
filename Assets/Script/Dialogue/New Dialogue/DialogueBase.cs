@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace DialogueSystem{
             {
                 
                 if(i > _maxWords_ForFullText && Input.GetKey(KeyCode.Space)){
+                    inputText = Regex.Replace(inputText, "<sfx:.*?>", string.Empty);
                     textHolder.text = inputText;
                     break;
                 }

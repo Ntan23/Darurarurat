@@ -25,6 +25,7 @@ public class ComicPageController : MonoBehaviour
 
     [Header("All Container")]
     [SerializeField] private Comic_DialogueLine _dialogueLineContainer;
+    [SerializeField] private GameObject _comicBG;
     [SerializeField] private RectTransform _dialogueBoxParent, _comicImageParent;
     [SerializeField] private List<ComicPage> _comicPages;
     private ComicPage _currPage;
@@ -134,6 +135,7 @@ public class ComicPageController : MonoBehaviour
     }
     private void HideAllParent()
     {
+        _comicBG.SetActive(false);
         if(_dialogueBoxParent.gameObject.activeSelf)_dialogueBoxParent.gameObject.SetActive(false);
         if(_comicImageParent.gameObject.activeSelf)_comicImageParent.gameObject.SetActive(false);
     }
@@ -168,6 +170,7 @@ public class ComicPageController : MonoBehaviour
 
     public IEnumerator ComicTime()
     {
+        _comicBG.SetActive(true);
         for(int i=0; i < _comicPages.Count; i++)
         {
             _currPage = _comicPages[i];

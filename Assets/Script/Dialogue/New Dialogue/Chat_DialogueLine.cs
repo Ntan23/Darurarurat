@@ -55,7 +55,7 @@ namespace DialogueSystem
             
 
             
-            _dialogue = typeText(dialogueInput.DialogueText, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);
+            _dialogue = typeText(dialogueInput.DialogueTextLocalized, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);
 
             // Debug.Log("???????");
             StartCoroutine(_dialogue);

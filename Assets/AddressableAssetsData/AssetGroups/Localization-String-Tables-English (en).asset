@@ -167,6 +167,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: de2e2c5c42a1f074cbf812dafa657887
+    m_Address: ComicDialogueExample1_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: fd0da7803235ef743b80a46ca5cc6523
+    m_Address: ChatDialogue1_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: c2662c47e41d7ac47b3cdbc3451c9dc4
+    m_Address: ChatDialogue2_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:

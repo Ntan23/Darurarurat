@@ -37,7 +37,7 @@ namespace DialogueSystem
         }
         private void StopVA()
         {
-            AudioManager.instance.StopDialogueVAAudio_SFX(_currVA.VAname);
+            if(_currVA != null)AudioManager.instance.StopDialogueVAAudio_SFX(_currVA.VAname);
         }
     }
 

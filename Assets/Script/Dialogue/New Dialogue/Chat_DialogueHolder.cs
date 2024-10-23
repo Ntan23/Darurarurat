@@ -119,6 +119,7 @@ namespace DialogueSystem
             if(!_dialogueLineContainer.Finished)_dialogueLineContainer.StopDialogue();
             if(dialogSeq == null)return;
             if(!hasSceneDialogueFinish)StopCoroutine(dialogSeq);
+            HideDialogue();
             dialogSeq = null; 
         }
 

@@ -17,31 +17,74 @@ MonoBehaviour:
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Kamu gapapaa ??>
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:7af56d301fbb3e74abd50db29ea53e3a
+      m_TableEntryReference:
+        m_KeyId: 1037555159040
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 999
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Gapapaaa
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:7af56d301fbb3e74abd50db29ea53e3a
+      m_TableEntryReference:
+        m_KeyId: 1205734166528
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 2
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Syukurlah <sfx:KnockDoor> *Tok TOk
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:7af56d301fbb3e74abd50db29ea53e3a
+      m_TableEntryReference:
+        m_KeyId: 1345454821376
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 3
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Bisa gawat tadi itu
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:7af56d301fbb3e74abd50db29ea53e3a
+      m_TableEntryReference:
+        m_KeyId: 1559666315264
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 2
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Benar
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:7af56d301fbb3e74abd50db29ea53e3a
+      m_TableEntryReference:
+        m_KeyId: 1689035427840
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: ChatDialogue2
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 89fccddbe753aa842abb13113daa161b, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: c2662c47e41d7ac47b3cdbc3451c9dc4, type: 2}
+  - {fileID: 11400000, guid: de2f730421ac16d4cab8cb813b1f28ac, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

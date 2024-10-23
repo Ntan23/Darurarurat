@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ComicDialogueExample1_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: e1a580342c4bdbd4f8d73da5ce5b20bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 18033102848
+    m_Localized: Hi, How are you ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2933133103104
+    m_Localized: Sooo, what's on the menu today ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3756001021952
+    m_Localized: It's your favourite !!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3935898914816
+    m_Localized: Oh ! Is it spaghetti ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4230917869568
+    m_Localized: Nopee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4360328925184
+    m_Localized: Uh, Mac n Cheese?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4505837719552
+    m_Localized: Nope! Try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4630144307200
+    m_Localized: WAIT ! ! Is it what I think it is ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4948068356096
+    m_Localized: Yep ! Pizza !
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

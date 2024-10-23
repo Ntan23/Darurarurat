@@ -13,23 +13,50 @@ MonoBehaviour:
   m_Name: ChatDialogues 1
   m_EditorClassIdentifier: 
   dialoguesTitle: 1
-  isUseSprite: 0
+  isWholeDialogueUseSprite: 0
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: AAAAAAAAAAAA
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:89fccddbe753aa842abb13113daa161b
+      m_TableEntryReference:
+        m_KeyId: 95795499008
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 2
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: apa itu
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:89fccddbe753aa842abb13113daa161b
+      m_TableEntryReference:
+        m_KeyId: 152284385280
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 1
     _charaName: 0
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Kamu kenapaa ???
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:89fccddbe753aa842abb13113daa161b
+      m_TableEntryReference:
+        m_KeyId: 246983380992
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     _dialogueType: 0
     _charaName: 4
     _spriteNumber: 2
+  references:
+    version: 2
+    RefIds: []

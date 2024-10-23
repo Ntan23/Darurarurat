@@ -34,7 +34,7 @@ namespace DialogueSystem
             // textHolder.color = textColor;
             // textHolder.font = textFont;
 
-            _dialogue = typeText(dialogueInput.DialogueText, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);
+            _dialogue = typeText(dialogueInput.DialogueTextLocalized, _textContainer, dialogueInput.DelayTypeText, dialogueInput.DelayBetweenLines);
 
             // Debug.Log("???????");
             StartCoroutine(_dialogue);

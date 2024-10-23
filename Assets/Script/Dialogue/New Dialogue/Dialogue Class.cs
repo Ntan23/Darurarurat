@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 
 [Serializable]
@@ -14,11 +15,11 @@ public class Dialogue_Line
     //Tambah Sound effect kalo mau
     
     [Header("Kalau mau ada sfx di tengah-tengah audio tulisnya->  <sfx:namaSFX>")]
-    [TextArea(3, 7)][SerializeField]private string _dialogueText;
+    [SerializeField]private LocalizedString _dialogueTextLocalized;
 
     public float DelayTypeText { get { return _delayTypeText; }}
     public float DelayBetweenLines { get { return _delayBetweenLines;}}
-    public string DialogueText { get { return _dialogueText;}}
+    public string DialogueTextLocalized { get { return _dialogueTextLocalized.GetLocalizedString();}}
 
 }
 [Serializable]
@@ -41,7 +42,7 @@ public class Chat_Dialogue_Line : Dialogue_Line, INeedChatDialogue
 [Serializable]
 public class Comic_Dialogue_Line : Dialogue_Line, INeedVA
 {
-    [Space(1)]
+    [Space(5)]
     [Header("If you dont want va, empty it")]
     [SerializeField]private string _vaName;
 
