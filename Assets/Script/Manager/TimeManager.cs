@@ -28,6 +28,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float startHour;
     private float startOffset;
     public bool canStart;
+    private bool fromUpgrade;
 
     void Start()
     {
@@ -59,14 +60,10 @@ public class TimeManager : MonoBehaviour
         PlayerPrefs.SetInt("IsTeaTime", 0);
         PlayerPrefs.SetInt("IsUpgrade", 0);
         
-        //reset Time
-        // startOffset = (startHour / hoursInDay) * timeMultiplier;
-        // currentTime = (totalTime + startOffset) % timeMultiplier;
-
-        // canStart = false;
-
         Destroy(this.gameObject);
     }
+
+    public void ChangeFromUpgradeValue(bool value) => fromUpgrade = value;
 
     public float GetHour()
     {

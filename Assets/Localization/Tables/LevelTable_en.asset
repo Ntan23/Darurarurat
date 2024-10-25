@@ -90,10 +90,28 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 5030486214747095049
+  - m_Id: 165244022127984640
+    m_Localized: Target Quota Achieved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165244196850106368
+    m_Localized: Target Quota Not Achieved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165245511282065408
+    m_Localized: 'Next Target Quota : {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 5030486214747095049
+  - m_Id: 165245673937174528
+    m_Localized: Need {0} Quota More
+    m_Metadata:
+      m_Items:
+      - rid: 5030486214747095049
   references:
     version: 2
     RefIds:
     - rid: 5030486214747095049
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00007276090000000000b209ded841020000328509854802
+        m_Entries: 00007276090000000000b209ded8410200003285098548020000b2c0ea114b020000b29f10124b02

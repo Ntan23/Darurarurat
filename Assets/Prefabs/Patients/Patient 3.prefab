@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b457a6c10f6bf77428b0dd93231849c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  woundSprite: {fileID: 0}
   woundIndicator: {fileID: 2761049375546257664}
   speed: 2
-  _object: {fileID: 2761049375519448389}
   savedPosition:
   - {x: 0, y: 4.57, z: 0}
   - {x: 9.43, y: 4.57, z: 0}
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b457a6c10f6bf77428b0dd93231849c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  woundSprite: {fileID: 2761049376004641020}
   woundIndicator: {fileID: 2761049375546257664}
   speed: 2
-  _object: {fileID: 2761049375519448389}
   savedPosition:
   - {x: 0, y: 4.57, z: 0}
   - {x: 9.43, y: 4.57, z: 0}

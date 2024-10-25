@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Patients : MonoBehaviour
 {
     private PatientWoundSO _wound;
-    private Sprite woundSprite;
+    [SerializeField] private SpriteRenderer woundSprite;
     [SerializeField] private GameObject woundIndicator;
 
 
@@ -84,7 +84,11 @@ public class Patients : MonoBehaviour
         {
             if(!isSpecial) ScenesManager.instance.GoToTargetScene("Level " + (_wound.woundIndex + 1).ToString());
 
-            if(isSpecial) ScenesManager.instance.GoToTargetScene("Special " + (specialID + 1).ToString());
+            if(isSpecial) 
+            {
+                PlayerPrefs.SetInt("SpecialSpawned", 0);
+                ScenesManager.instance.GoToTargetScene("Special " + (specialID + 1).ToString());
+            }
         }
     }
     void MovingToNextPos() => transform.position = Vector2.MoveTowards(transform.position, goalpos.position, Time.deltaTime * speed); 
@@ -96,7 +100,7 @@ public class Patients : MonoBehaviour
     }
 
     public void SetWound(PatientWoundSO wound) => _wound = wound;
-    public void SetWoundSprite(PatientWoundSO wound) => woundSprite = wound.woundSprite;  
+    public void SetWoundSprite(PatientWoundSO wound) => woundSprite.sprite = wound.woundSprite;  
     public void SetTargetPositions(Transform[] pos) 
     {
         for(int i = 0; i < pos.Length; i++) positions[i] = pos[i];

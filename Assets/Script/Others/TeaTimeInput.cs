@@ -11,7 +11,11 @@ public class TeaTimeInput : MonoBehaviour
     void OnMouseDown()
     {
         //Debug.Log("Klik");
-        if(canInput) ScenesManager.instance.GoToNextScene();
+        if(canInput) 
+        {
+            PlayerPrefs.SetInt("IsTeaTime", 0);
+            ScenesManager.instance.GoToNextScene();
+        }
     }
 
     public void SetCanInput(bool value) => canInput = value;

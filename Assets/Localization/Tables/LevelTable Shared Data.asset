@@ -83,6 +83,22 @@ MonoBehaviour:
     m_Key: DayKey
     m_Metadata:
       m_Items: []
+  - m_Id: 165244022127984640
+    m_Key: QuotaReachedKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165244196850106368
+    m_Key: QuotaNotReachedKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165245511282065408
+    m_Key: NextTargetKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165245673937174528
+    m_Key: NeededQuotaKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

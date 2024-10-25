@@ -9497,6 +9497,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Story
       objectReference: {fileID: 0}
+    - target: {fileID: 484429852059211488, guid: 6925fe1b4548bdf4da02d79c59655c17,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 484429852059211491, guid: 6925fe1b4548bdf4da02d79c59655c17,
         type: 3}
       propertyPath: m_Pivot.x
@@ -19767,7 +19772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2982259186236215778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20758,11 +20763,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstAidBox_Final
       objectReference: {fileID: 0}
+    - target: {fileID: 7027062358944473170, guid: 5bee168237ac6c64dac3f279c70f9ada,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027062360221941055, guid: 5bee168237ac6c64dac3f279c70f9ada,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7027062360284825646, guid: 5bee168237ac6c64dac3f279c70f9ada,
         type: 3}
       propertyPath: skinMesh
       value: 
       objectReference: {fileID: 1708966758}
+    - target: {fileID: 7027062360478701844, guid: 5bee168237ac6c64dac3f279c70f9ada,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027062360906873020, guid: 5bee168237ac6c64dac3f279c70f9ada,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7244115860832991511, guid: 5bee168237ac6c64dac3f279c70f9ada,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -20958,6 +20983,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7873499609182265707, guid: 5bee168237ac6c64dac3f279c70f9ada,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7873499609188919527, guid: 5bee168237ac6c64dac3f279c70f9ada,
         type: 3}
       propertyPath: takenParent
@@ -20973,6 +21003,11 @@ PrefabInstance:
       propertyPath: takenParent
       value: 
       objectReference: {fileID: 870933546}
+    - target: {fileID: 7873499609476725800, guid: 5bee168237ac6c64dac3f279c70f9ada,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7873499609579841193, guid: 5bee168237ac6c64dac3f279c70f9ada,
         type: 3}
       propertyPath: m_Camera

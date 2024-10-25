@@ -36,7 +36,7 @@ public class PatientsQueueManager : MonoBehaviour
         tm = TimeManager.instance;
         
         //PlayerPrefs.SetInt("SpecialSpawned", 0);
-        if(tm.GetDay() == 1 || tm.GetDay() % 6 == 0) haveSpecialNPC = true;
+        if(tm.GetDay() == 1) haveSpecialNPC = true;
         else haveSpecialNPC = false;
 
         if(haveSpecialNPC)

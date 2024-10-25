@@ -273,6 +273,21 @@ public class GameManager : MonoBehaviour
         moneyText[0].text = currentPrice.ToString("0.00");
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(true);
+
+        if((TimeManager.instance.GetDay() == 1 && isSpecial) || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
+        {
+            int totalPatientServed, totalPatientTreated;
+            
+            totalPatientServed = PlayerPrefs.GetInt("Served", 0);
+            totalPatientTreated = PlayerPrefs.GetInt("Treated", 0);
+
+            totalPatientServed++;
+            totalPatientTreated++;
+
+            PlayerPrefs.SetInt("Served", totalPatientServed);
+            PlayerPrefs.SetInt("Treated", totalPatientTreated);
+        }
+        
         yield return new WaitForSeconds(1.5f);
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
@@ -282,8 +297,12 @@ public class GameManager : MonoBehaviour
         // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
         if(!isSpecial) sm.GoToTargetScene("PatientReception");
-        if(tm.GetHour() >= 17) mm.SaveMoney();
-        
+        if(tm.GetHour() >= 17) 
+        {
+            mm.SaveMoney();
+            if(!isSpecial && tm.GetDay() != 1) sm.GoToTargetScene("TeaTime");
+        }
+
         isWin = true;
     }
 
@@ -298,6 +317,21 @@ public class GameManager : MonoBehaviour
         missionFailUI.OpenUI();
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(false);
+
+        if((TimeManager.instance.GetDay() == 1 && isSpecial) || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
+        {
+            int totalPatientServed, totalPatientFailed;
+            
+            totalPatientServed = PlayerPrefs.GetInt("Served", 0);
+            totalPatientFailed = PlayerPrefs.GetInt("Failed", 0);
+
+            totalPatientServed++;
+            totalPatientFailed++;
+
+            PlayerPrefs.SetInt("Served", totalPatientServed);
+            PlayerPrefs.SetInt("Failed", totalPatientFailed);
+        }
+
         yield return new WaitForSeconds(1.5f);
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
@@ -307,7 +341,11 @@ public class GameManager : MonoBehaviour
         // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
         if(!isSpecial) sm.GoToTargetScene("PatientReception");
-        if(tm.GetHour() >= 17) mm.SaveMoney();
+        if(tm.GetHour() >= 17)
+        {
+            mm.SaveMoney();
+            if(!isSpecial && tm.GetDay() != 1) sm.GoToTargetScene("TeaTime");
+        } 
     }
 
     ///summary
