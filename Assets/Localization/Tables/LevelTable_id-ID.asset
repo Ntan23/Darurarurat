@@ -108,10 +108,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 5030486214747095048
+  - m_Id: 167060656023011328
+    m_Localized: 'Kuota Target : {0}'
+    m_Metadata:
+      m_Items:
+      - rid: 5030486214747095048
   references:
     version: 2
     RefIds:
     - rid: 5030486214747095048
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00007276090000000000b209ded8410200003285098548020000b2c0ea114b020000b29f10124b02
+        m_Entries: 00007276090000000000b209ded8410200003285098548020000b2c0ea114b020000b29f10124b0200003212c8845102

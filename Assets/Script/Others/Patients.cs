@@ -82,6 +82,8 @@ public class Patients : MonoBehaviour
     {
         if(canBeTreated) 
         {
+            canBeTreated = false;
+            
             if(!isSpecial) ScenesManager.instance.GoToTargetScene("Level " + (_wound.woundIndex + 1).ToString());
 
             if(isSpecial) 

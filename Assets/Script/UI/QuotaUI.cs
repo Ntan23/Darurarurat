@@ -37,7 +37,7 @@ public class QuotaUI : MonoBehaviour
     {
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        targetQuotaString.Arguments[0] = PlayerPrefs.GetFloat("TargetQuota", 10).ToString("0.00"); 
+        targetQuotaString.Arguments[0] = PlayerPrefs.GetFloat("TargetQuota", 10).ToString("0.00") + " Kp"; 
         targetQuotaString.RefreshString();
 
         StartCoroutine(OpenNCloseWindowAnimation(true));
@@ -47,7 +47,7 @@ public class QuotaUI : MonoBehaviour
     {
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        neededQuotaString.Arguments[0] = (PlayerPrefs.GetFloat("Quota", 10) - PlayerPrefs.GetFloat("Money", 0)).ToString("0.00"); 
+        neededQuotaString.Arguments[0] = (PlayerPrefs.GetFloat("TargetQuota", 10) - PlayerPrefs.GetFloat("Money", 0)).ToString("0.00") + " Kp"; 
         neededQuotaString.RefreshString();
 
         StartCoroutine(OpenNCloseWindowAnimation(false));
@@ -57,12 +57,22 @@ public class QuotaUI : MonoBehaviour
     {
         LeanTween.value(this.gameObject, UpdateAlpha, 0.0f, 1.0f, 0.8f);
         yield return new WaitForSeconds(2.5f);
-        if(!value) ResetData();
+        if(!value) 
+        {
+            ResetData();
+            yield return new WaitForSeconds(0.1f);
+        }
         ScenesManager.instance.GoToTargetScene("PatientReception");
     }
 
     private void ResetData()
     {
+        for(int i = 0; i < 6; i++)
+        {
+            if(i == 0 || i > 2) PlayerPrefs.SetInt("Object" + i.ToString(), 0);
+            if(i == 1 || i == 2) PlayerPrefs.SetInt("Object" + i.ToString(), 1);
+        }
+
         PlayerPrefs.SetInt("DaySaved", 1);
         PlayerPrefs.SetInt("Served", 0);
         PlayerPrefs.SetInt("Treated", 0);
@@ -72,5 +82,7 @@ public class QuotaUI : MonoBehaviour
 
         PlayerPrefs.SetInt("IsTeaTime", 0);
         PlayerPrefs.SetInt("IsUpgrade", 0);
+
+        MoneyManager.instance.ResetCurrentMoney();
     }
 }

@@ -19,21 +19,21 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private BuyPanelUI buyPanelUI;
     [SerializeField] private Animator firstAidBoxAnimator;
     [SerializeField] private TextMeshProUGUI currentMoneyText;
-    private float currentMoney;
     private int tempIndex;
     private GameObject tempGO;
     [SerializeField] private Collider[] objectCollider;
     private bool canInput;
+    private MoneyManager mm;
     
     void Start() 
     {
+        mm = MoneyManager.instance;
+
         CheckItem();
 
         ChangeIsUpgradeValue(true);
 
-        currentMoney = PlayerPrefs.GetFloat("Money", 0);
-
-        currentMoneyText.text = currentMoney.ToString("0.00");
+        currentMoneyText.text = mm.GetCurrentMoney().ToString("0.00") + " Kp";
 
         StartCoroutine(OpenBox());
     }
@@ -90,13 +90,22 @@ public class ShopManager : MonoBehaviour
 
     public void Buy()
     {
-        if(currentMoney >= objectsToBuy[tempIndex].price)
+        if(mm.GetCurrentMoney() < objectsToBuy[tempIndex].price)
         {
-            currentMoney -= objectsToBuy[tempIndex].price;
-            currentMoneyText.text = currentMoney.ToString("0.00");
+            Debug.Log("Not Enough Money");
+
+            NoBuy();
+        }
+
+        if(mm.GetCurrentMoney() >= objectsToBuy[tempIndex].price)
+        {
+            //currentMoney -= objectsToBuy[tempIndex].price;
+            mm.DecreaseMoney(objectsToBuy[tempIndex].price);
+
+            currentMoneyText.text = mm.GetCurrentMoney().ToString("0.00") + " Kp";
 
             PlayerPrefs.SetInt("Object" + objectsToBuy[tempIndex].objectIndex.ToString(), 1);
-            PlayerPrefs.SetFloat("Money", currentMoney);
+            mm.SaveMoney();
 
             tempGO.GetComponent<ObjectsToBuyMaterialChanger>().ChangeToUnhoverMaterial();
             tempGO.GetComponent<ObjectsToBuyMaterialChanger>().UpdateMaterialColor(Color.white);
@@ -106,12 +115,6 @@ public class ShopManager : MonoBehaviour
             tempGO.GetComponent<Collider>().enabled = false;
         }
 
-        if(currentMoney < objectsToBuy[tempIndex].price)
-        {
-            Debug.Log("Not Enough Money");
-
-            NoBuy();
-        }
     }
 
     public void NoBuy()

@@ -138,10 +138,16 @@ public class PatientsQueueManager : MonoBehaviour
 
     public void UpdateProgress(bool isTreated)
     {
+        Debug.Log("Tes");
+    
         totalPatientServed++;
 
         if(isTreated) totalPatientTreated++;
         if(!isTreated) totalPatientFailed++;
+
+        Debug.Log(totalPatientServed);
+        Debug.Log(totalPatientTreated);
+        Debug.Log(totalPatientFailed);
 
         PlayerPrefs.SetInt("Served", totalPatientServed);
         PlayerPrefs.SetInt("Treated", totalPatientTreated);

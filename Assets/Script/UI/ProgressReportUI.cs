@@ -91,7 +91,7 @@ public class ProgressReportUI : MonoBehaviour
         totalPatientsTreatedString.RefreshString();
         totalPatientsFailedString.Arguments[0] = PlayerPrefs.GetInt("Failed").ToString();
         totalPatientsFailedString.RefreshString();
-        profitString.Arguments[0] = PlayerPrefs.GetFloat("Money").ToString("0.00");
+        profitString.Arguments[0] = PlayerPrefs.GetFloat("Money").ToString("0.00") + " Kp";
         profitString.RefreshString();
     }
 }

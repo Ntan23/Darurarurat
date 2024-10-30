@@ -7,13 +7,15 @@ using System;
 
 public class DayTextUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI dayText;
+    private TextMeshProUGUI dayText;
     [SerializeField] private LocalizedString dayString;
     
     void Start() => UpdateText();
     
     void OnEnable() 
     {
+        dayText = GetComponent<TextMeshProUGUI>();
+
         dayString.Arguments = new string[1];
         dayString.StringChanged += UpdateDayText;
     }

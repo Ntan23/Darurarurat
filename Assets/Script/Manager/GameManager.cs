@@ -270,22 +270,29 @@ public class GameManager : MonoBehaviour
         am.PlayLevelCompleteSFX();
         missionCompleteUI.OpenUI();
         mm.AddMoney(currentPrice);
-        moneyText[0].text = currentPrice.ToString("0.00");
+        moneyText[0].text = currentPrice.ToString("0.00") + " Kp";
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(true);
 
-        if((TimeManager.instance.GetDay() == 1 && isSpecial) || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
+        if(isSpecial || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
         {
             int totalPatientServed, totalPatientTreated;
             
             totalPatientServed = PlayerPrefs.GetInt("Served", 0);
             totalPatientTreated = PlayerPrefs.GetInt("Treated", 0);
 
+            Debug.Log(totalPatientServed);
+            Debug.Log(totalPatientTreated);
+
             totalPatientServed++;
             totalPatientTreated++;
 
             PlayerPrefs.SetInt("Served", totalPatientServed);
             PlayerPrefs.SetInt("Treated", totalPatientTreated);
+
+            GameObject go = GameObject.FindGameObjectWithTag("Patient");
+
+            Destroy(go);
         }
         
         yield return new WaitForSeconds(1.5f);
@@ -313,17 +320,20 @@ public class GameManager : MonoBehaviour
         //am.PlayLevelCompleteSFX();
         //missionCompleteUI.OpenUI();
         mm.DecreaseMoney(woundSO.failPrice);
-        moneyText[1].text = woundSO.failPrice.ToString("0.00");
+        moneyText[1].text = woundSO.failPrice.ToString("0.00") + " Kp";
         missionFailUI.OpenUI();
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(false);
 
-        if((TimeManager.instance.GetDay() == 1 && isSpecial) || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
+        if((isSpecial) || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
         {
             int totalPatientServed, totalPatientFailed;
             
             totalPatientServed = PlayerPrefs.GetInt("Served", 0);
             totalPatientFailed = PlayerPrefs.GetInt("Failed", 0);
+
+            Debug.Log(totalPatientServed);
+            Debug.Log(totalPatientFailed);
 
             totalPatientServed++;
             totalPatientFailed++;

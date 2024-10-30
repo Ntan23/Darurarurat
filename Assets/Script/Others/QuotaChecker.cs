@@ -32,7 +32,7 @@ public class QuotaChecker : MonoBehaviour
                 targetQuota *= 2;
 
                 PlayerPrefs.SetFloat("TargetQuota", targetQuota);
-
+                
                 quotaUIs[0].OpenNCloseTargetAchievedWindow();
             }
 

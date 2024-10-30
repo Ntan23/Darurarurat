@@ -13,8 +13,12 @@ public class TeaTimeInput : MonoBehaviour
         //Debug.Log("Klik");
         if(canInput) 
         {
+            GameObject go = GameObject.FindGameObjectWithTag("Patient");
+
+            Destroy(go);
+
             PlayerPrefs.SetInt("IsTeaTime", 0);
-            ScenesManager.instance.GoToNextScene();
+            ScenesManager.instance.GoToTargetScene("UpgradeScene");
         }
     }
 
