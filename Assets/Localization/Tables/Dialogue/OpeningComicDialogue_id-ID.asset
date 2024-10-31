@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: OpeningComicDialogue_id-ID
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: id-ID
+  m_SharedData: {fileID: 11400000, guid: e076d0ae9352b3847a2562586c45e286, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 205350719488
+    m_Localized: Bagus. .
+    m_Metadata:
+      m_Items: []
+  - m_Id: 378323816448
+    m_Localized: Aku ga memilih ini. Aku seharusnya ditugaskan di rumah sakit, bukan
+      di suatu pulau apapun ini.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 682582822912
+    m_Localized: Kenapa harus aku ? Dari semua orang yang bisa mereka pilih, mereka
+      malah mengirimku ke sebuah pulau yang bahkan namanya pun belum pernah kudengar,
+      astaga.. <sfx:Sighing Heavily>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1215557226496
+    m_Localized: Ya Tuhan, tempat ini kotor sekali! Aku hampir tidak bisa bernapas
+      dengan semua debu ini.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828202434560
+    m_Localized: Tapi.. setidaknya pemandangannya cukup bagus untuk waktu minum teh
+      dan santai ku.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2347000090624
+    m_Localized: Baiklah, sudahi saja ini. Pasien pertama, masuklah.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

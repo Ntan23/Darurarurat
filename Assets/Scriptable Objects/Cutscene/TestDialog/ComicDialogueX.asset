@@ -16,12 +16,6 @@ MonoBehaviour:
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Kaze ni fukarete dare mo kizukanu you
-
-      Kubetsu ga tsukanai
-      monokuro no sekai
-
-      Iro wo tashite mo nani mo mienakute'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -34,12 +28,6 @@ MonoBehaviour:
     _vaName: Sweeping
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Kaze ni fukarete dare mo kizukanu you
-
-      Kubetsu ga tsukanai
-      monokuro no sekai
-
-'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -52,7 +40,6 @@ MonoBehaviour:
     _vaName: Bell
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: Iro wo tashite mo nani mo mienakute
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -62,15 +49,9 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
-    _vaName: Sweeping
+    _vaName: 
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Ataeru koto ni imi nado nai kedo
-
-      Hiroi atsumeta kakera
-      ushinau no?
-
-      Soshite yoru wa sono tsumetasa o'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -83,17 +64,6 @@ MonoBehaviour:
     _vaName: Sweeping
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Mou ii yo
-
-      Tookute mo todoke tai watashi wa
-
-      Uketometeku
-      namida mo dakishimeteitai noni
-
-      Yume no kyanbasu ni kokoro komeru no
-      wa
-
-      Kono sora ni egakidashiteku sutoorii'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -106,9 +76,6 @@ MonoBehaviour:
     _vaName: Sweeping
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Soshite yoru wa sono tsumetasa o
-
-      Tokashite te o nobashite'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -121,9 +88,6 @@ MonoBehaviour:
     _vaName: Sweeping
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Mou ii no
-
-      Tookute mo kanaetai watashi no'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -136,12 +100,6 @@ MonoBehaviour:
     _vaName: KnockDoor
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Konna sekai omoi mo kotoba de tsutsunda
-
-      Yume no kyanbasu
-      ni iro o tashiteyuku
-
-      Kono mune ni ima kagayaite'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf
@@ -154,14 +112,6 @@ MonoBehaviour:
     _vaName: Sweeping
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
-    _dialogueText: 'Tsuyokunakute mo ii
-
-      Kowarekakate mo ii
-
-      Kono kokoro
-      wa towa ni habataite
-
-      Hibiku youni nurikaeteiku Palette'
     _dialogueTextLocalized:
       m_TableReference:
         m_TableCollectionName: GUID:e1a580342c4bdbd4f8d73da5ce5b20bf

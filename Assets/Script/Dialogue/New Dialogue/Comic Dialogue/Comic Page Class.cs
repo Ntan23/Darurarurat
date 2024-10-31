@@ -17,6 +17,10 @@ public class ComicPage
     [SerializeField] private List<GameObject> _dialogueBoxsPage;
     [SerializeField] private List<TMP_Text> _dialogueTextContainersPage;
     [SerializeField] private List<ScrollRect> _dialogueBoxScrollRect;
+    [Header("Just Empty if No SFX")]
+    [Header("Put it based on other number")]
+    [SerializeField] private List<string> _startingSFX;
+    [SerializeField] private List<string> _endingSFX;
     private bool _isFinished;
     private IEnumerator scrollRect;
 
@@ -57,6 +61,7 @@ public class ComicPage
     {
         LeanTween.alpha(_comicImagePage.rectTransform, toAlpha, duration).setOnComplete(functionAfterFade);
     }
+
     public void ShowDialogueBox(Action functionAfterFade, float duration)
     {
         if(_currDialogueBoxIdx == _dialogueBoxsPage.Count)
@@ -91,6 +96,18 @@ public class ComicPage
             _dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition = new Vector2(_dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition.x, 0);
         }
         
+    }
+    public void PlayStartingSFX()
+    {
+        if(_startingSFX == null || _currDialogueBoxIdx > _startingSFX.Count - 1 ||_startingSFX[_currDialogueBoxIdx] == "" ) return;
+
+        AudioManager.instance.PlayDialogueVAAudio_SFX(_startingSFX[_currDialogueBoxIdx]);
+    }
+    public void PlayEndingSFX()
+    {
+        if(_endingSFX == null || _currDialogueBoxIdx - 1 == _endingSFX.Count || _currDialogueBoxIdx - 1 > _endingSFX.Count - 1 || _endingSFX[_currDialogueBoxIdx - 1] == "" ) return;
+        Debug.Log("Ending" + _endingSFX[_currDialogueBoxIdx - 1]);
+        AudioManager.instance.PlayDialogueVAAudio_SFX(_endingSFX[_currDialogueBoxIdx - 1]);
     }
 
 }

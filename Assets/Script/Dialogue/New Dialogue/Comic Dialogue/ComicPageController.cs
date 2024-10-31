@@ -186,15 +186,16 @@ public class ComicPageController : MonoBehaviour
 
             while(!_currPage.IsFInished)
             {
-
+                _currPage.PlayStartingSFX();
                 _currDialogue = _comicPagesAllDialogues_SODIALOGUES.dialogue_Lines[_currDialogueIdx];
                 _currPage.ShowDialogueBox(DoDialogue, _fadeDialogBoxDuration);
                 _currDialogueIdx++;
                 yield return new WaitUntil(()=> 
                 _dialogueLineContainer.Finished);
                 StopCoroutine(_scrollRectSave);
-
+                
                 _dialogueLineContainer.ChangeFinished_false();
+                _currPage.PlayEndingSFX();
                 _scrollRectSave = null;
             }
             

@@ -8,5 +8,5 @@ public enum ChatDialoguesTitle
 }
 public enum ComicDialoguesTitle
 {
-    Cx_1, Cx_2
+    Cx_1, Cx_2, OpeningComic
 }
