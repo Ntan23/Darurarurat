@@ -46,9 +46,9 @@ namespace DialogueSystem
                     }
                 }
             }
-            else if(_getChatDialogueData.DialogueTypeNow == DialogueType.Instruction)
+            else if(_getChatDialogueData.DialogueTypeNow == DialogueType.Narration)
             {
-                _nameTextContainer.text = "Instruction";
+                _nameTextContainer.text = "";
             }
             _nameContainer.SetActive(true);
             _nameTextContainer.gameObject.SetActive(true);

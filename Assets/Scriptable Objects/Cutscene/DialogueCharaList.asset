@@ -18,27 +18,8 @@ MonoBehaviour:
     _textColor: {r: 1, g: 0.76792455, b: 0.9682706, a: 0}
     charaSprites: []
   - dialogueCharaName: 1
-    name: A
+    name: Nadya
     _textColor: {r: 0.7619986, g: 0.40943396, b: 1, a: 0}
     charaSprites:
     - {fileID: 21300000, guid: f67790756b5c12442afcb3c79df950a0, type: 3}
     - {fileID: 21300000, guid: 962bc8c1d9a3dc046a3463de04294909, type: 3}
-  - dialogueCharaName: 2
-    name: B
-    _textColor: {r: 0, g: 0.5791142, b: 1, a: 0}
-    charaSprites:
-    - {fileID: 21300000, guid: 24919c0f08d176841a93ea086b1c3969, type: 3}
-    - {fileID: 21300000, guid: a0cb48459f9c35342a3c5c9570a2b4e9, type: 3}
-  - dialogueCharaName: 3
-    name: C
-    _textColor: {r: 1, g: 0.3150943, b: 0.8128243, a: 0}
-    charaSprites:
-    - {fileID: 21300000, guid: a4a832b523ceb2c439f5413273e8ee0f, type: 3}
-    - {fileID: 21300000, guid: 9fc5aa3fce6142b498ae536a4123b85a, type: 3}
-    - {fileID: 21300000, guid: 78139715d2af3c8469400bf0e0c9f2bd, type: 3}
-    - {fileID: 21300000, guid: 2f50ef30d09314648b5456f41d082614, type: 3}
-  - dialogueCharaName: 4
-    name: D
-    _textColor: {r: 1, g: 0.76792455, b: 0.9682706, a: 0}
-    charaSprites:
-    - {fileID: 21300000, guid: 160c7d67489a4b749a2bd1050ac11a90, type: 3}

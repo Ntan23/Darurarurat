@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum DialogueType
 {
-    Character, Instruction
+    Character, Narration
 }

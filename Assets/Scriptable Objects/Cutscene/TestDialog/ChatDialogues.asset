@@ -40,8 +40,8 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 2
+    _dialogueType: 1
+    _charaName: 1
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
@@ -55,7 +55,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 0
-    _charaName: 3
+    _charaName: 1
     _spriteNumber: 3
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
@@ -69,7 +69,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 0
-    _charaName: 3
+    _charaName: 1
     _spriteNumber: 2
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
