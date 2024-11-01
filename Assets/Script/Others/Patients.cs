@@ -14,6 +14,7 @@ public class Patients : MonoBehaviour
     [Header("For Movement")]
     [SerializeField] private float speed = 2;
     private Transform[] positions = new Transform[2];
+    [SerializeField] private SpriteRenderer patientSpriteRenderer;
     private int nextLocation;
     private Transform goalpos;
     [SerializeField] private Vector3[] savedPosition;
@@ -68,7 +69,8 @@ public class Patients : MonoBehaviour
                     
                     if(nextLocation < 1) 
                     {
-                        LeanTween.scale(gameObject, new Vector3(2.0f, 2.0f, 2.0f), 2.0f);
+                        patientSpriteRenderer.sortingOrder = 1;
+                        LeanTween.scale(gameObject, new Vector3(1.8f, 1.8f, 1.8f), 2.0f);
                         nextLocation++;
                     }
                 }
