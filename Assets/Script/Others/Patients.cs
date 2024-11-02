@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,12 +27,15 @@ public class Patients : MonoBehaviour
     [SerializeField] private bool isSpecial;
     [Header("For Special Patients Only")]
     [SerializeField] private int specialID;
+    private Animator doorAnimator;
 
     void Awake() => DontDestroyOnLoad(this);
     
     void Start()
     {
         pqm = PatientsQueueManager.instance;
+
+        doorAnimator = GameObject.FindGameObjectWithTag("Door").GetComponent<Animator>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -67,17 +71,30 @@ public class Patients : MonoBehaviour
                     
                     if(nextLocation == 1) LeanTween.scale(woundIndicator, new Vector3(0.5f, 0.5f, 0.5f), 2.0f).setEaseSpring().setOnComplete(() => canMove = false);
                     
-                    if(nextLocation < 1) 
-                    {
-                        patientSpriteRenderer.sortingOrder = 1;
-                        LeanTween.scale(gameObject, new Vector3(1.8f, 1.8f, 1.8f), 2.0f);
-                        nextLocation++;
-                    }
+                    if(nextLocation < 1) StartCoroutine(PatientFadeAndDoorAnimation());
                 }
             }
         } 
     }
 
+    void UpdateSpriteAlpa(float alpha) => patientSpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+
+    IEnumerator PatientFadeAndDoorAnimation()
+    {
+        canMove = false;
+        patientSpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        doorAnimator.Play("Door_OpenClose");
+        yield return new WaitForSeconds(0.2f);
+        patientSpriteRenderer.sortingOrder = 1;
+        LeanTween.value(patientSpriteRenderer.gameObject, UpdateSpriteAlpa, 0.0f, 1.0f, 1.0f).setOnComplete(() => 
+        {
+            canMove = true;
+
+            LeanTween.scale(gameObject, new Vector3(1.8f, 1.8f, 1.8f), 2.0f);
+        });
+
+        nextLocation++;
+    }
     void OnMouseDown() => TreatWound();
 
     public void TreatWound()
