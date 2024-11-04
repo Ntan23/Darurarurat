@@ -15,7 +15,7 @@ public class ComicManager : MonoBehaviour
     public static ComicManager Instance { get; private set;}
     [SerializeField]private List<ComicPageController> _comicList;
     private ComicPageController _currComic;
-    public Action<ComicDialoguesTitle> OnComicFinished;
+    public Action<ComicDialoguesTitle> OnComicFinished; //orang yg manggil comic manager utk mainin bs manggil ini utk tau comic dh finished dan lakuin sesuatu abis comic finished
 
     private void Awake() 
     {

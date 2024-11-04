@@ -9,11 +9,8 @@ using UnityEngine.UI;
 /// <summary>
 /// CONTROL PER COMIC PART
 /// </summary>
-public class ComicPageController : MonoBehaviour
+public class ComicPageController : MonoBehaviour, INeedButtonInput
 {
-    [Header("Test")]
-    public bool isGo, istest;
-    public bool isStop;
     private ComicManager comicManager;
 
     [Header("The SODialogues")]
@@ -41,6 +38,9 @@ public class ComicPageController : MonoBehaviour
     private IEnumerator _comicTime, _scrollRectSave, xxx;
     private bool _finished;
     private bool _canMovePage;
+    [Header("NextButton")]
+    [SerializeField]private Button _nextButtonContainer;
+    private bool _isNextButtonClicked;
     #region  GETTER SETTER VARIABLE
     public bool Finished { get { return _finished; } }
     public ComicDialoguesTitle ComicTitle {get {return _comicTitle;}}
@@ -64,20 +64,7 @@ public class ComicPageController : MonoBehaviour
         comicManager = ComicManager.Instance;
         
     }
-    private void Update() 
-    {
 
-        if(isGo)
-        {
-            isGo =false;
-            ShowComic();
-        }
-        if(isStop)
-        {
-            isStop = false;
-            HideComic();
-        }
-    }
     public void GetAllTextContainersScrollsFromComicPagesBox()
     {
         for(int i=0 ; i < _comicPages.Count;i++)
@@ -136,6 +123,9 @@ public class ComicPageController : MonoBehaviour
     private void HideAllParent()
     {
         _comicBG.SetActive(false);
+        _nextButtonContainer.gameObject.SetActive(false);
+        _nextButtonContainer.onClick.RemoveAllListeners();
+
         if(_dialogueBoxParent.gameObject.activeSelf)_dialogueBoxParent.gameObject.SetActive(false);
         if(_comicImageParent.gameObject.activeSelf)_comicImageParent.gameObject.SetActive(false);
     }
@@ -180,10 +170,12 @@ public class ComicPageController : MonoBehaviour
                 if(_fade)_fade.FadeNormal(_fadeOutDuration, 0);
             }
 
-
+            _nextButtonContainer.onClick.AddListener(NextButtonClicked);
+            _nextButtonContainer.gameObject.SetActive(true);
             
             yield return new WaitUntil(()=> IsInputTrue());
-
+            _nextButtonContainer.onClick.RemoveListener(NextButtonClicked);
+            _nextButtonContainer.onClick.AddListener(_dialogueLineContainer.NextButtonClicked);
             while(!_currPage.IsFInished)
             {
                 _currPage.PlayStartingSFX();
@@ -198,8 +190,15 @@ public class ComicPageController : MonoBehaviour
                 _currPage.PlayEndingSFX();
                 _scrollRectSave = null;
             }
-            
+            _nextButtonContainer.onClick.RemoveListener(_dialogueLineContainer.NextButtonClicked);
+            _nextButtonContainer.onClick.AddListener(NextButtonClicked);
             yield return new WaitUntil(()=> IsInputTrue());
+            
+            if(i != _comicPages.Count - 1)
+            {
+                _nextButtonContainer.onClick.RemoveListener(NextButtonClicked);
+                _nextButtonContainer.gameObject.SetActive(false);
+            }
 
             _currPage.SetTransparentImage_Animated(null, 0.2f, _fadeComicBGDuration);
             if( i + 1 != _comicPages.Count) _comicPages[i+1].SetTransparentImage_Animated(MoveNext, 1f, _fadeComicBGDuration);
@@ -210,6 +209,8 @@ public class ComicPageController : MonoBehaviour
         }
         // Debug.Log("ALOOO");
         yield return new WaitUntil(()=> IsInputTrue());
+        _nextButtonContainer.onClick.RemoveListener(NextButtonClicked);
+
         _finished = true;
         // Debug.Log("??????");
         if(_fade)_fade.Fade_WithFunction(HideComic, _fadeInDuration, 1);
@@ -228,9 +229,13 @@ public class ComicPageController : MonoBehaviour
             _dialogueLineContainer.SetDialogue(_currDialogue);
         }
     }
-    public bool IsInputTrue()
+    private bool IsInputTrue()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) return true;
+        if(Input.GetKeyDown(KeyCode.Space) || _isNextButtonClicked)
+        {
+            if(_isNextButtonClicked)_isNextButtonClicked = false;
+            return true;
+        }
         return false;
     }
     public void MoveNext()
@@ -245,4 +250,6 @@ public class ComicPageController : MonoBehaviour
             }
         );
     }
+
+    public void NextButtonClicked() => _isNextButtonClicked = true;
 }

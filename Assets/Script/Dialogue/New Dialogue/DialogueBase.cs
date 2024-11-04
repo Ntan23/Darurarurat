@@ -6,13 +6,14 @@ using TMPro;
 using UnityEngine;
 
 namespace DialogueSystem{
-    public class DialogueBase : MonoBehaviour
+    public class DialogueBase : MonoBehaviour, INeedButtonInput
     {
         [SerializeField] protected int _maxWords_ForFullText = 1;
         protected bool _finished;
         private bool isRichText = false;
         private string saveRichText;
         private const string RICH_TEXT_SFX = "sfx";
+        protected bool _isNextButtonClicked;
 
         /// Kalo mo tambahin sfx tengah-tengah bisa pake isrichtext juga modelannya :D, tp bikin penanda sendiri; delay jg bisa
         /// kek misal <sfx: sfxname> or <delay: 0.2f>
@@ -26,7 +27,7 @@ namespace DialogueSystem{
             for(int i=0; i<inputText.Length;i++)
             {
                 
-                if(i > _maxWords_ForFullText && Input.GetKey(KeyCode.Space)){
+                if(i > _maxWords_ForFullText && IsInputTrue()){
                     inputText = Regex.Replace(inputText, "<sfx:.*?>", string.Empty);
                     textHolder.text = inputText;
                     break;
@@ -90,11 +91,16 @@ namespace DialogueSystem{
             AudioManager.instance.PlayDialogueVAAudio_SFX(sfxName);
         }
 
-        public bool IsInputTrue()
+        protected bool IsInputTrue()
         {
-            if(Input.GetKeyDown(KeyCode.Space)) return true;
+            if(Input.GetKeyDown(KeyCode.Space) || _isNextButtonClicked)
+            {
+                if(_isNextButtonClicked)_isNextButtonClicked = false;
+                return true;
+            }
             return false;
         }
+        public void NextButtonClicked() => _isNextButtonClicked = true;
 
     }
 
