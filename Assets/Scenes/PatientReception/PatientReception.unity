@@ -2207,19 +2207,19 @@ MonoBehaviour:
     serializedVersion: 2
     key0: {r: 0.13, g: 0.15, b: 0.33, a: 1}
     key1: {r: 0.12941177, g: 0.14901961, b: 0.32941177, a: 1}
-    key2: {r: 0.9716981, g: 0.94381154, b: 0.6554379, a: 0}
+    key2: {r: 0.9528302, g: 0.91903836, b: 0.56181026, a: 0}
     key3: {r: 1, g: 1, b: 1, a: 0}
     key4: {r: 1, g: 1, b: 1, a: 0}
-    key5: {r: 0.9433962, g: 0.73627794, b: 0.5206479, a: 0}
+    key5: {r: 0.9433962, g: 0.71991765, b: 0.45834818, a: 0}
     key6: {r: 0.12941177, g: 0.14901961, b: 0.32941177, a: 0}
     key7: {r: 0.12941177, g: 0.14901961, b: 0.32941177, a: 0}
     ctime0: 0
-    ctime1: 12722
-    ctime2: 20817
+    ctime1: 10551
+    ctime2: 20185
     ctime3: 27949
-    ctime4: 40670
-    ctime5: 47224
-    ctime6: 54548
+    ctime4: 39767
+    ctime5: 47316
+    ctime6: 55901
     ctime7: 65535
     atime0: 0
     atime1: 65535
@@ -2232,6 +2232,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 8
     m_NumAlphaKeys: 2
+  is2D: 1
 --- !u!1 &1045065171
 GameObject:
   m_ObjectHideFlags: 0
@@ -4245,11 +4246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1834912863688766054, guid: 6d82245683f3067459f19bf61640fd19,
-        type: 3}
-      propertyPath: timeMultiplier
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 1834912863688766054, guid: 6d82245683f3067459f19bf61640fd19,
         type: 3}
       propertyPath: digitalClockText

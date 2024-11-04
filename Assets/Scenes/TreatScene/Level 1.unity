@@ -6433,6 +6433,7 @@ GameObject:
   - component: {fileID: 410087041}
   - component: {fileID: 410087040}
   - component: {fileID: 410087042}
+  - component: {fileID: 410087043}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -6495,7 +6496,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 7439
+  m_ColorTemperature: 8000
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -6537,6 +6538,49 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &410087043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410087039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3074ebe649a484da023ab6cf127c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLight: {fileID: 0}
+  dayNightLightColorGradient:
+    serializedVersion: 2
+    key0: {r: 0.13, g: 0.15, b: 0.33, a: 1}
+    key1: {r: 0.12941177, g: 0.14901961, b: 0.32941177, a: 1}
+    key2: {r: 0.9528302, g: 0.91903836, b: 0.56181026, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 1, g: 1, b: 1, a: 0}
+    key5: {r: 0.9433962, g: 0.71991765, b: 0.45834818, a: 0}
+    key6: {r: 0.12941177, g: 0.14901961, b: 0.32941177, a: 0}
+    key7: {r: 0.12941177, g: 0.14901961, b: 0.32941177, a: 0}
+    ctime0: 0
+    ctime1: 10551
+    ctime2: 20185
+    ctime3: 27949
+    ctime4: 39767
+    ctime5: 47316
+    ctime6: 55901
+    ctime7: 65535
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2
+  is2D: 0
 --- !u!1 &428789850
 GameObject:
   m_ObjectHideFlags: 0
