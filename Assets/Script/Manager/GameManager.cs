@@ -270,7 +270,7 @@ public class GameManager : MonoBehaviour
         am.PlayLevelCompleteSFX();
         missionCompleteUI.OpenUI();
         mm.AddMoney(currentPrice);
-        moneyText[0].text = currentPrice.ToString("0.00") + " Kp";
+        moneyText[0].text = currentPrice.ToString("0.00") + " Rp";
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(true);
 
@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviour
         //am.PlayLevelCompleteSFX();
         //missionCompleteUI.OpenUI();
         mm.DecreaseMoney(woundSO.failPrice);
-        moneyText[1].text = woundSO.failPrice.ToString("0.00") + " Kp";
+        moneyText[1].text = woundSO.failPrice.ToString("0.00") + " Rp";
         missionFailUI.OpenUI();
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(false);

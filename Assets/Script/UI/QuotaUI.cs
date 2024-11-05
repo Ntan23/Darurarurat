@@ -37,7 +37,7 @@ public class QuotaUI : MonoBehaviour
     {
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        targetQuotaString.Arguments[0] = PlayerPrefs.GetFloat("TargetQuota", 10).ToString("0.00") + " Kp"; 
+        targetQuotaString.Arguments[0] = PlayerPrefs.GetFloat("TargetQuota", 10).ToString("0.00") + " Rp"; 
         targetQuotaString.RefreshString();
 
         StartCoroutine(OpenNCloseWindowAnimation(true));
@@ -47,7 +47,7 @@ public class QuotaUI : MonoBehaviour
     {
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        neededQuotaString.Arguments[0] = (PlayerPrefs.GetFloat("TargetQuota", 10) - PlayerPrefs.GetFloat("Money", 0)).ToString("0.00") + " Kp"; 
+        neededQuotaString.Arguments[0] = (PlayerPrefs.GetFloat("TargetQuota", 10) - PlayerPrefs.GetFloat("Money", 0)).ToString("0.00") + " Rp"; 
         neededQuotaString.RefreshString();
 
         StartCoroutine(OpenNCloseWindowAnimation(false));

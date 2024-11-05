@@ -8,6 +8,7 @@ public class Fade : MonoBehaviour
     private DialogueManager dm;
     private StoryManager sm;
     private TimeManager tm;
+    [SerializeField] private bool haveTips;
 
     void Start()
     {
@@ -34,6 +35,8 @@ public class Fade : MonoBehaviour
     IEnumerator FadeInAnimation()
     {
         yield return new WaitForSeconds(0.1f);
+        if(tm != null) tm.canStart = false;     
+
         if(gm != null)
         {
             if(!gm.CanSkip() && dm != null) dm.DeactivateSkipButton();
@@ -45,7 +48,11 @@ public class Fade : MonoBehaviour
 
         LeanTween.value(gameObject, UpdateAlpha, 1.0f, 0.0f, 1.5f).setOnComplete(() => 
         {
-            if(tm != null) tm.canStart = true;
+            if(tm != null) 
+            {
+                if(!haveTips) tm.canStart = true;
+                else if(haveTips && PlayerPrefs.GetInt("TipsShowed") == 1) tm.canStart = true;
+            }
             if(gm != null) gm.ChangeCanPauseValue(true);
             if(sm != null) GetComponent<CanvasGroup>().blocksRaycasts = false;
         });  

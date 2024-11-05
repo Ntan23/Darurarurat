@@ -26,7 +26,7 @@ public class TargetQuotaUI : MonoBehaviour
     
     private void UpdateText()
     {
-        targetQuotaString.Arguments[0] = PlayerPrefs.GetFloat("TargetQuota", 10).ToString("0.00") + " Kp"; 
+        targetQuotaString.Arguments[0] = PlayerPrefs.GetFloat("TargetQuota", 10).ToString("0.00") + " Rp"; 
         targetQuotaString.RefreshString();
     }
 }

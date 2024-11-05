@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
 
         ChangeIsUpgradeValue(true);
 
-        currentMoneyText.text = mm.GetCurrentMoney().ToString("0.00") + " Kp";
+        currentMoneyText.text = mm.GetCurrentMoney().ToString("0.00") + " Rp";
 
         StartCoroutine(OpenBox());
     }
@@ -102,7 +102,7 @@ public class ShopManager : MonoBehaviour
             //currentMoney -= objectsToBuy[tempIndex].price;
             mm.DecreaseMoney(objectsToBuy[tempIndex].price);
 
-            currentMoneyText.text = mm.GetCurrentMoney().ToString("0.00") + " Kp";
+            currentMoneyText.text = mm.GetCurrentMoney().ToString("0.00") + " Rp";
 
             PlayerPrefs.SetInt("Object" + objectsToBuy[tempIndex].objectIndex.ToString(), 1);
             mm.SaveMoney();

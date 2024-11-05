@@ -25,9 +25,9 @@ public class MoneyManager : MonoBehaviour
         pqm = PatientsQueueManager.instance;
 
         currentMoney = PlayerPrefs.GetFloat("Money", 0);
-        moneyText = pqm.GetMoneyText();
+        if(pqm != null) moneyText = pqm.GetMoneyText();
 
-        moneyText.text = currentMoney.ToString("0.00") + " Kp";
+        if(moneyText != null) moneyText.text = currentMoney.ToString("0.00") + " Rp";
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -55,7 +55,7 @@ public class MoneyManager : MonoBehaviour
         pqm = PatientsQueueManager.instance;
         moneyText = pqm.GetMoneyText();
         yield return new WaitForSeconds(0.1f);
-        moneyText.text = currentMoney.ToString("0.00") + " Kp";
+        moneyText.text = currentMoney.ToString("0.00") + " Rp";
     }
 
     public float GetCurrentMoney()
