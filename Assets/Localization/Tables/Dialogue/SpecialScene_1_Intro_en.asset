@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SpecialScene_1_Intro_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d187abb4446284e45a4fe0e4e92b677b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16542450012160
+    m_Localized: Phew, all done for today! Finally, I can relax. Time to close the
+      clinic.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16608380276736
+    m_Localized: "<i>But just as I\u2019m about to relax, I hear something faint\u2014like
+      someone crying.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16664214851584
+    m_Localized: "<i>Wait...what\u2019s that? It sounds like someone crying.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16667008258048
+    m_Localized: <i>I open the clinic door again, and suddenly, a young boy is standing
+      there, tears streaming down his face.</i>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16669726167040
+    m_Localized: <i>*sniffling*</i> D-Doctor, p-please help me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16671965925376
+    m_Localized: "<i>I\u2019m surprised to see him here, crying.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16673173884928
+    m_Localized: "Why are you crying kid, What\u2019s going on?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16673928859648
+    m_Localized: I-I was climbing a tree to get some fruit, a-a-and then I fell and
+      hurt m-my arm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16674629308416
+    m_Localized: "Alright, take a deep breath and calm down, kid. I\u2019ll patch
+      you up."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16675287814144
+    m_Localized: T-T-Thank you, Doctor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16675971485696
+    m_Localized: Now, hold still.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

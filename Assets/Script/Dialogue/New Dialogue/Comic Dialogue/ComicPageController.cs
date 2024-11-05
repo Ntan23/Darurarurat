@@ -103,6 +103,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
     //Prepare Comic before showing
     private void PreparingComic()
     {
+        Debug.Log("Preparing Comic");
         StopComicTime();
         _finished = false;
 

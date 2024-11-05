@@ -116,7 +116,7 @@ namespace DialogueSystem
         {
             if(hasSceneDialogueFinish)hasSceneDialogueFinish = false;
 
-            _pressToConContainer.SetActive(false);
+            if(_pressToConContainer != null)_pressToConContainer.SetActive(false);
             _nameContainer.gameObject.SetActive(false);
             _nameTextContainer.gameObject.SetActive(false);
             _spriteContainer.gameObject.SetActive(false);

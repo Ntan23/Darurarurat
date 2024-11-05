@@ -63,11 +63,11 @@ namespace DialogueSystem
 
         public override void AfterDone_BeforeInput()
         {
-            _pressToContinueContainer.SetActive(true);
+            if(_pressToContinueContainer!= null)_pressToContinueContainer.SetActive(true);
         }
         public override void AfterDone_AfterInput()
         {
-            _pressToContinueContainer.SetActive(false);
+            if(_pressToContinueContainer!= null)_pressToContinueContainer.SetActive(false);
         }
     }
 

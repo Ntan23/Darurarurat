@@ -23,3 +23,15 @@ MonoBehaviour:
     charaSprites:
     - {fileID: 21300000, guid: f67790756b5c12442afcb3c79df950a0, type: 3}
     - {fileID: 21300000, guid: 962bc8c1d9a3dc046a3463de04294909, type: 3}
+  - dialogueCharaName: 2
+    name: Boy
+    _textColor: {r: 0.7619986, g: 0.40943396, b: 1, a: 0}
+    charaSprites:
+    - {fileID: 21300000, guid: f67790756b5c12442afcb3c79df950a0, type: 3}
+    - {fileID: 21300000, guid: 962bc8c1d9a3dc046a3463de04294909, type: 3}
+  - dialogueCharaName: 3
+    name: Alex
+    _textColor: {r: 0.7619986, g: 0.40943396, b: 1, a: 0}
+    charaSprites:
+    - {fileID: 21300000, guid: f67790756b5c12442afcb3c79df950a0, type: 3}
+    - {fileID: 21300000, guid: 962bc8c1d9a3dc046a3463de04294909, type: 3}

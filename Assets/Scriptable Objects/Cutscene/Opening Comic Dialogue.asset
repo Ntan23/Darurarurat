@@ -61,7 +61,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
-    _vaName: Coughing
+    _vaName: 
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
@@ -69,6 +69,18 @@ MonoBehaviour:
         m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
       m_TableEntryReference:
         m_KeyId: 1828202434560
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: Coughing
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 2347000090624
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum DialogueCharaName
 {
-    None, Nadya, 
+    None, Nadya, Boy, Alex
 }

@@ -191,6 +191,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: 25b2b001015d58349aab4d3dc794bd3d
+    m_Address: SpecialScene_1_Finish_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: b1fcd777423b9aa469e07fdc7a89649e
+    m_Address: SpecialScene_1_Mid_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 3c1766dc7dec99d468c970e4d351d2f5
+    m_Address: SpecialScene_1_Intro_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2a54e979fa92cbd47a092b76cf194956, type: 2}
   m_SchemaSet:

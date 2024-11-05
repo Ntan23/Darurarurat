@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SpecialScene_1_Mid_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: fe2389a1e4a9dac41a8e662354162b1d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 18041506844672
+    m_Localized: "<i>*Sniffling*</i> W-W-What\u2019s that, Doctor? Why are you using
+      it on me?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18046019915776
+    m_Localized: This is called Betadine. It helps clean your wound so it heals faster.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18049794789376
+    m_Localized: <i>*Sniffling*</i> B-B-But why does it hurt and sting when you put
+      it on me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18052080685056
+    m_Localized: "Because it\u2019ll help you heal faster so you can get back to
+      playing. Do you want to play again?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18054442078208
+    m_Localized: <i>*Sniffling*</i> Yes doctor, I-I-I want to play again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18057420034048
+    m_Localized: Okay, now the betadine is done, now i need you to calm down, okay.
+      <i>*Handing a tisue*</i>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18058137260032
+    m_Localized: Okay, doctor.  <i>*wipe his face with a tisue*</i>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18058833514496
+    m_Localized: "Now there\u2019s only one more step, so you can play again."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18059504603136
+    m_Localized: "What\u2019s that, doctor? And what\u2019s that thing you\u2019re
+      holding?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18060104388608
+    m_Localized: This is called band-aid, and this is the one more step so you can
+      play again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18761220050944
+    m_Localized: "A band-aid? What\u2019s it for?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18763434643456
+    m_Localized: "It covers your wound so bacteria can\u2019t get in."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18764437082112
+    m_Localized: Bacteria? Is that bad?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18867835064320
+    m_Localized: "Yes, it can make you sick. You don\u2019t want that, do you?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18869424705536
+    m_Localized: No! Put it on so I can keep the bacteria out and play every day!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18870137737216
+    m_Localized: <i>*chuckling softly*</i> Alright... <i>*puts the band aid*</i>
+      And done.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
