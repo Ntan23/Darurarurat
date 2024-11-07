@@ -299,7 +299,8 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
-
+        // taruh sini (untuk panggil end story / dialog)
+        
         // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
         // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
 
@@ -346,6 +347,7 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
+        // taruh sini (untuk panggil end story / dialog)
 
         // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
         // if(levelUnlocked < nextLevelIndex && nextLevelIndex <= 5) PlayerPrefs.SetInt(PREFS_LEVEL_UNLOCKED, nextLevelIndex);
