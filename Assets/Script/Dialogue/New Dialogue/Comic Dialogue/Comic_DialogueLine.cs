@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace DialogueSystem
 {
     public class Comic_DialogueLine : DialogueLine
     {
+        public Action OnDialogueDoneBeforeInput;
         [SerializeField] private int _delayTimeForVA;
         INeedVA _currVA;
         public override void TypeFunction(int inputText_IDX)
@@ -13,9 +15,14 @@ namespace DialogueSystem
             StartVA(inputText_IDX);
             
         }
+        public override void AfterDone_BeforeInput()
+        {
+            OnDialogueDoneBeforeInput?.Invoke();
+        }
         public override void AfterDone_AfterInput()
         {
             StopVA();
+            
         }
         public override void StopDialogue()
         {

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0eb23cd38706f4ea661fc072c2882c, type: 3}
   m_Name: SpecialScene_1_Mid
   m_EditorClassIdentifier: 
-  dialoguesTitle: 1
-  isWholeDialogueUseSprite: 0
+  dialoguesTitle: 2
+  isWholeDialogueUseSprite: 1
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2

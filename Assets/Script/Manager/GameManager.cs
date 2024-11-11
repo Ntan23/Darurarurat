@@ -65,7 +65,14 @@ public class GameManager : MonoBehaviour
     [Header("Mission UI")]
     [SerializeField] private MissionUI missionCompleteUI;
     [SerializeField] private MissionUI missionFailUI;
+
+    [Header("Dialogue Title That Want to be Played")]
+    [Header("Ignore if Not calling dialogue")]
+    [SerializeField] private ChatDialoguesTitle _introTitle;
+    [SerializeField] private ChatDialoguesTitle _midTitle, _endTitle;
+    [Space(5)]
     private StoryManager storyManager;
+    private Chat_DialogueManager _chatDialogueManager;
     private DialogueManager dialogueManager;
     private AudioManager am;
     private ScenesManager sm;
@@ -86,6 +93,7 @@ public class GameManager : MonoBehaviour
         ///summary
         ///     Get Other Instance
         ///summary
+        _chatDialogueManager = Chat_DialogueManager.Instance;
         storyManager = StoryManager.instance;
         dialogueManager = DialogueManager.instance;
         am = AudioManager.instance;
@@ -117,6 +125,7 @@ public class GameManager : MonoBehaviour
         ///summary
         ///     Set Game State
         ///summary
+        if(_chatDialogueManager != null)_chatDialogueManager.PlayDialogueScene(_introTitle);
         gameState = State.Playing;
     }
 
@@ -299,6 +308,7 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
+        if(_chatDialogueManager != null) _chatDialogueManager.PlayDialogueScene(_endTitle);
         // taruh sini (untuk panggil end story / dialog)
         
         // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
@@ -347,6 +357,7 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
+        if(_chatDialogueManager != null) _chatDialogueManager.PlayDialogueScene(_endTitle);
         // taruh sini (untuk panggil end story / dialog)
 
         // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);

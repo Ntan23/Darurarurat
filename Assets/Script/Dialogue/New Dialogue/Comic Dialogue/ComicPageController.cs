@@ -22,7 +22,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
 
     [Header("All Container")]
     [SerializeField] private Comic_DialogueLine _dialogueLineContainer;
-    [SerializeField] private GameObject _comicBG;
+    [SerializeField] private GameObject _comicUIParent, _comicBG, _comicFrontBG;
     [SerializeField] private RectTransform _dialogueBoxParent, _comicImageParent;
     [SerializeField] private List<ComicPage> _comicPages;
     private ComicPage _currPage;
@@ -62,8 +62,11 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
     private void Start() 
     {
         comicManager = ComicManager.Instance;
+        _dialogueLineContainer.OnDialogueDoneBeforeInput += _dialogueLine_OnDialogueDoneBeforeInput;
         
     }
+
+
 
     public void GetAllTextContainersScrollsFromComicPagesBox()
     {
@@ -123,7 +126,9 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
     }
     private void HideAllParent()
     {
+        _comicUIParent.SetActive(false);
         _comicBG.SetActive(false);
+        if(_comicFrontBG != null)_comicFrontBG.SetActive(false);
         _nextButtonContainer.gameObject.SetActive(false);
         _nextButtonContainer.onClick.RemoveAllListeners();
 
@@ -161,7 +166,9 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
 
     public IEnumerator ComicTime()
     {
+        _comicUIParent.SetActive(true);
         _comicBG.SetActive(true);
+        if(_comicFrontBG != null)_comicFrontBG.SetActive(true);
         for(int i=0; i < _comicPages.Count; i++)
         {
             _currPage = _comicPages[i];
@@ -177,7 +184,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
             yield return new WaitUntil(()=> IsInputTrue());
             _nextButtonContainer.onClick.RemoveListener(NextButtonClicked);
             _nextButtonContainer.onClick.AddListener(_dialogueLineContainer.NextButtonClicked);
-            while(!_currPage.IsFInished)
+            while(!_currPage.IsFinished)
             {
                 _currPage.PlayStartingSFX();
                 _currDialogue = _comicPagesAllDialogues_SODIALOGUES.dialogue_Lines[_currDialogueIdx];
@@ -185,7 +192,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
                 _currDialogueIdx++;
                 yield return new WaitUntil(()=> 
                 _dialogueLineContainer.Finished);
-                StopCoroutine(_scrollRectSave);
+                // StopCoroutine(_scrollRectSave); -> pindah ke event biar stop pas, emg done
                 
                 _dialogueLineContainer.ChangeFinished_false();
                 _currPage.PlayEndingSFX();
@@ -253,4 +260,16 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
     }
 
     public void NextButtonClicked() => _isNextButtonClicked = true;
+    private void _dialogueLine_OnDialogueDoneBeforeInput()
+    {
+        // Debug.Log("Duarr" + _scrollRectSave != null?"Yey":"Booo");
+        if(_scrollRectSave != null)StopCoroutine(_scrollRectSave);
+        _scrollRectSave = null;
+
+        if(_currPage.IsFinished)
+        {
+            _dialogueLineContainer.NextButtonClicked();
+        }
+        // _currPage.NormalizeScrollRectPosFinal();
+    }
 }

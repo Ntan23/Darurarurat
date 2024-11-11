@@ -26,7 +26,7 @@ public class ComicPage
 
     #region  GETTER SETTER VARIABLE
     public int TotalBox { get { return _dialogueBoxsPage.Count;}}
-    public bool IsFInished {get { return _isFinished; } }
+    public bool IsFinished {get { return _isFinished; } }
     public List<GameObject> DialogueBoxsPage { get { return _dialogueBoxsPage;}}
     public List<TMP_Text> DialogueTextContainersPage { get { return _dialogueTextContainersPage; } set{ _dialogueTextContainersPage = value;}}
     public List<ScrollRect> DialogueBoxScrollRect { get { return _dialogueBoxScrollRect; } set{ _dialogueBoxScrollRect = value;}}
@@ -94,8 +94,14 @@ public class ComicPage
             // yield return new WaitForEndOfFrame();
             // Debug.Log(_dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition + "scroll" + _dialogueBoxsPage[_currDialogueBoxIdx - 1]);
             _dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition = new Vector2(_dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition.x, 0);
+            Debug.Log("normalized pos normal " +_dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition );
         }
         
+    }
+    public void NormalizeScrollRectPosFinal()
+    {
+        _dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition = new Vector2(1, 0);
+        Debug.Log("normalized pos normal2 " +_dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition );
     }
     public void PlayStartingSFX()
     {

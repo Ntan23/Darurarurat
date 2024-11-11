@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ChatDialoguesTitle
 {
-    SpecialScene1_intro, SpecialScene1_Mid, SpecialScene1_Finish
+    None, SpecialScene1_intro, SpecialScene1_Mid, SpecialScene1_Finish
 }
 public enum ComicDialoguesTitle
 {

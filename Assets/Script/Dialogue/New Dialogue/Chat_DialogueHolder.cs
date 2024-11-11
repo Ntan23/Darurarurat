@@ -20,6 +20,7 @@ namespace DialogueSystem
         [SerializeField] private Chat_DialogueLine _dialogueLineContainer;
 
         [Header("Containers")]
+        [SerializeField] private GameObject _dialogueParentContainer;
         [SerializeField] private RectTransform _bgDialogueContainer;
         [SerializeField] private RectTransform _bgContainer, _topBGContainer, _botBGContainer;
         [SerializeField] private GameObject _pressToConContainer, _nameContainer;
@@ -31,7 +32,8 @@ namespace DialogueSystem
         [Header("BG TOP BOT Component")]
         [SerializeField]private float nextYPoint;
         [SerializeField]private float moveDuration = 0.3f;
-        private float startYPointTop, startYPointBot, nextYPointTop, nextYPointBot;
+        [SerializeField]private float startYPointTop, startYPointBot;
+        private float nextYPointTop, nextYPointBot;
 
         [Tooltip("If true, langsung hide, if not true, tunggu Action apa baru tutup dr sana")]
         [SerializeField]private bool hasSceneDialogueFinish;
@@ -40,9 +42,7 @@ namespace DialogueSystem
         private void Awake() 
         {
             if(_dialogueLineContainer == null) _dialogueLineContainer = GetComponent<Chat_DialogueLine>();
-            startYPointTop = _topBGContainer.localPosition.y;
-            startYPointBot = _botBGContainer.localPosition.y;
-             nextYPointTop = startYPointTop - nextYPoint;
+            nextYPointTop = startYPointTop - nextYPoint;
             nextYPointBot = startYPointBot + nextYPoint;
             HideDialogue();
         }
@@ -127,6 +127,7 @@ namespace DialogueSystem
             _topBGContainer.gameObject.SetActive(false);
             _botBGContainer.gameObject.SetActive(false);
             _bgContainer.gameObject.SetActive(false);
+            _dialogueParentContainer.SetActive(false);
 
             _textContainer.text = "";
             LeanTween.alpha(_bgContainer, 0f, 0); //matikan ini jika gamau animasi
@@ -161,6 +162,7 @@ namespace DialogueSystem
         // public void GetContainer()
         public void MoveInBG(Action OnComplete)
         {
+            _dialogueParentContainer.gameObject.SetActive(true);
             _topBGContainer.gameObject.SetActive(true);
             _botBGContainer.gameObject.SetActive(true);
             _bgContainer.gameObject.SetActive(true);
