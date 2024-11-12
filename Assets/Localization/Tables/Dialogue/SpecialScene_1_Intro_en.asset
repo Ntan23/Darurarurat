@@ -24,47 +24,38 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16608380276736
-    m_Localized: "<i>But just as I\u2019m about to relax, I hear something faint\u2014like
-      someone crying.</i>"
+    m_Localized: "<i>But just as I\u2019m about to relax, I hear a faint cry outside
+      the clinic.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 16664214851584
-    m_Localized: "<i>Wait...what\u2019s that? It sounds like someone crying.</i>"
+    m_Localized: <i>Is someone crying outside the clinic?</i>
     m_Metadata:
       m_Items: []
   - m_Id: 16667008258048
-    m_Localized: <i>I open the clinic door again, and suddenly, a young boy is standing
-      there, tears streaming down his face.</i>
+    m_Localized: <i>I open the door to check out who is crying, and then i see a
+      young boy crying by himself.</i>
     m_Metadata:
       m_Items: []
   - m_Id: 16669726167040
-    m_Localized: <i>*sniffling*</i> D-Doctor, p-please help me.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16671965925376
-    m_Localized: "<i>I\u2019m surprised to see him here, crying.</i>"
+    m_Localized: <i>*sniffling*</i> D-Doctor, i-it hurts..
     m_Metadata:
       m_Items: []
   - m_Id: 16673173884928
-    m_Localized: "Why are you crying kid, What\u2019s going on?"
+    m_Localized: "What\u2019s wrong? What happened?"
     m_Metadata:
       m_Items: []
   - m_Id: 16673928859648
     m_Localized: I-I was climbing a tree to get some fruit, a-a-and then I fell and
-      hurt m-my arm.
+      hurt my hand.
     m_Metadata:
       m_Items: []
   - m_Id: 16674629308416
-    m_Localized: "Alright, take a deep breath and calm down, kid. I\u2019ll patch
-      you up."
+    m_Localized: Alright, take a deep breath and calm down, show me where it hurts.
     m_Metadata:
       m_Items: []
   - m_Id: 16675287814144
-    m_Localized: T-T-Thank you, Doctor.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16675971485696
-    m_Localized: Now, hold still.
+    m_Localized: Okay doctor..
     m_Metadata:
       m_Items: []
   references:

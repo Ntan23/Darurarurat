@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e0eb23cd38706f4ea661fc072c2882c, type: 3}
-  m_Name: SpecialScene_1_Finish
+  m_Name: SpecialScene_1_Mid1
   m_EditorClassIdentifier: 
-  dialoguesTitle: 4
+  dialoguesTitle: 2
   isWholeDialogueUseSprite: 1
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1176860577792
+        m_KeyId: 18041506844672
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -33,23 +33,9 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1179612041216
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 3
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
-      m_TableEntryReference:
-        m_KeyId: 1182178955264
+        m_KeyId: 18046019915776
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -61,51 +47,23 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1187702853632
+        m_KeyId: 18049794789376
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 0
-    _charaName: 3
+    _charaName: 2
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1190735335424
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 1
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
-      m_TableEntryReference:
-        m_KeyId: 1194690564096
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 3
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
-      m_TableEntryReference:
-        m_KeyId: 1195386818560
+        m_KeyId: 18052080685056
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -117,37 +75,23 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1196104044544
+        m_KeyId: 18054442078208
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 0
-    _charaName: 3
+    _charaName: 2
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1196775133184
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 1
-    _charaName: 0
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
-      m_TableEntryReference:
-        m_KeyId: 1197437833216
+        m_KeyId: 18057420034048
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -159,37 +103,23 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1198176030720
+        m_KeyId: 18058137260032
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 0
-    _charaName: 3
+    _charaName: 2
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1198712901632
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 1
-    _charaName: 0
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
-      m_TableEntryReference:
-        m_KeyId: 1592239280128
+        m_KeyId: 18058833514496
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -201,9 +131,23 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1650733043712
+        m_KeyId: 18059504603136
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 2
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
+      m_TableEntryReference:
+        m_KeyId: 18060104388608
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -215,9 +159,79 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:822bf767a1858ae499b57526685c13ef
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
       m_TableEntryReference:
-        m_KeyId: 1652897304576
+        m_KeyId: 18761220050944
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 2
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
+      m_TableEntryReference:
+        m_KeyId: 18763434643456
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 1
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
+      m_TableEntryReference:
+        m_KeyId: 18764437082112
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 2
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
+      m_TableEntryReference:
+        m_KeyId: 18867835064320
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 1
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
+      m_TableEntryReference:
+        m_KeyId: 18869424705536
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 2
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:fe2389a1e4a9dac41a8e662354162b1d
+      m_TableEntryReference:
+        m_KeyId: 18870137737216
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0

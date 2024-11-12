@@ -35,7 +35,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
       m_TableEntryReference:
-        m_KeyId: 0
+        m_KeyId: 16608380276736
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -84,20 +84,6 @@ MonoBehaviour:
       m_LocalVariables: []
     _dialogueType: 0
     _charaName: 2
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
-      m_TableEntryReference:
-        m_KeyId: 16671965925376
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 1
-    _charaName: 0
     _spriteNumber: 0
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
@@ -154,20 +140,6 @@ MonoBehaviour:
       m_LocalVariables: []
     _dialogueType: 0
     _charaName: 2
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
-      m_TableEntryReference:
-        m_KeyId: 16675971485696
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 1
     _spriteNumber: 0
   references:
     version: 2
