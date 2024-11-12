@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e440d112dcde543a9f28c481a0901e, type: 3}
+  m_Name: Opening Comic Dialogue
+  m_EditorClassIdentifier: 
+  dialoguesTitle: 2
+  dialogue_Lines:
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 205350719488
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: Sighing Heavily
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 378323816448
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: Frustated
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 682582822912
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 1215557226496
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 1828202434560
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: Coughing
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 2347000090624
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: 
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:e076d0ae9352b3847a2562586c45e286
+      m_TableEntryReference:
+        m_KeyId: 1784669236056064
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _vaName: Sigh
+  references:
+    version: 2
+    RefIds: []

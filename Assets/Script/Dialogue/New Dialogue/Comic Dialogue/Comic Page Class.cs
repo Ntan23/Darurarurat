@@ -19,8 +19,10 @@ public class ComicPage
     [SerializeField] private List<ScrollRect> _dialogueBoxScrollRect;
     [Header("Just Empty if No SFX")]
     [Header("Put it based on other number")]
-    [SerializeField] private List<string> _startingSFX;
-    [SerializeField] private List<string> _endingSFX;
+    [SerializeField] private List<string> _startingDialogueSFX;
+    [SerializeField] private List<string> _endingDialogueSFX;
+    [Header("This is just for starting, when comicpage was shown")]
+    [SerializeField] private string _startComicSFX;
     private bool _isFinished;
     private IEnumerator scrollRect;
 
@@ -103,17 +105,23 @@ public class ComicPage
         _dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition = new Vector2(1, 0);
         Debug.Log("normalized pos normal2 " +_dialogueBoxScrollRect[_currDialogueBoxIdx - 1].normalizedPosition );
     }
+    public void PlayStartingDialogueSFX()
+    {
+        if(_startingDialogueSFX == null || _currDialogueBoxIdx > _startingDialogueSFX.Count - 1 ||_startingDialogueSFX[_currDialogueBoxIdx] == "" ) return;
+
+        AudioManager.instance.PlayDialogueVAAudio_SFX(_startingDialogueSFX[_currDialogueBoxIdx]);
+    }
+    public void PlayEndingDialogueSFX()
+    {
+        if(_endingDialogueSFX == null || _currDialogueBoxIdx - 1 == _endingDialogueSFX.Count || _currDialogueBoxIdx - 1 > _endingDialogueSFX.Count - 1 || _endingDialogueSFX[_currDialogueBoxIdx - 1] == "" ) return;
+        Debug.Log("Ending" + _endingDialogueSFX[_currDialogueBoxIdx - 1]);
+        AudioManager.instance.PlayDialogueVAAudio_SFX(_endingDialogueSFX[_currDialogueBoxIdx - 1]);
+    }
     public void PlayStartingSFX()
     {
-        if(_startingSFX == null || _currDialogueBoxIdx > _startingSFX.Count - 1 ||_startingSFX[_currDialogueBoxIdx] == "" ) return;
+        if(_startComicSFX == "" ) return;
 
-        AudioManager.instance.PlayDialogueVAAudio_SFX(_startingSFX[_currDialogueBoxIdx]);
-    }
-    public void PlayEndingSFX()
-    {
-        if(_endingSFX == null || _currDialogueBoxIdx - 1 == _endingSFX.Count || _currDialogueBoxIdx - 1 > _endingSFX.Count - 1 || _endingSFX[_currDialogueBoxIdx - 1] == "" ) return;
-        Debug.Log("Ending" + _endingSFX[_currDialogueBoxIdx - 1]);
-        AudioManager.instance.PlayDialogueVAAudio_SFX(_endingSFX[_currDialogueBoxIdx - 1]);
+        AudioManager.instance.PlayDialogueVAAudio_SFX(_startComicSFX);
     }
 
 }

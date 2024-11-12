@@ -14,9 +14,9 @@ public class FadeFrontUI : MonoBehaviour
         {
             LeanTween.alpha(_FrontUI, 0, 0);
             if(!_FrontUI.gameObject.activeSelf)_FrontUI.gameObject.SetActive(true);
-            Debug.Log("frontUI1" + _FrontUI.gameObject.activeSelf);
+            // Debug.Log("frontUI1" + _FrontUI.gameObject.activeSelf);
         }
-        Debug.Log("frontUI12" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
+        // Debug.Log("frontUI12" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
         LeanTween.alpha(_FrontUI, toAlpha, fadeDuration).setOnComplete(
             ()=>
             {
@@ -27,7 +27,7 @@ public class FadeFrontUI : MonoBehaviour
                 functionAfterFade();
             }
         );
-        Debug.Log("frontUI13" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
+        // Debug.Log("frontUI13" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
         
     }
     public void FadeNormal(float fadeDuration, float toAlpha)
@@ -36,9 +36,9 @@ public class FadeFrontUI : MonoBehaviour
         {
             LeanTween.alpha(_FrontUI, 0, 0);
             if(!_FrontUI.gameObject.activeSelf)_FrontUI.gameObject.SetActive(true);
-            Debug.Log("frontUI2" + _FrontUI.gameObject.activeSelf);
+            // Debug.Log("frontUI2" + _FrontUI.gameObject.activeSelf);
         }
-        Debug.Log("frontUI22" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
+        // Debug.Log("frontUI22" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
         LeanTween.alpha(_FrontUI, toAlpha, fadeDuration).setOnComplete(
             ()=>
             {
@@ -48,7 +48,7 @@ public class FadeFrontUI : MonoBehaviour
                 }
             }
         );
-        Debug.Log("frontUI23" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
+        // Debug.Log("frontUI23" + _FrontUI.gameObject.activeSelf + _FrontUI.name);
         
     }
 }

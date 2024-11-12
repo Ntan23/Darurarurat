@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class ComicManager : MonoBehaviour
 {
-    [Header("Testing")]
-    public bool isGO;
-    public bool isStop;
-    public ComicDialoguesTitle title;
-
-
+    // [Header("Testing")]
+    // public bool isGO;
+    // public bool isStop;
+    // public ComicDialoguesTitle title;
     public static ComicManager Instance { get; private set;}
+    [SerializeField] private bool showOnAwake = true;
     [SerializeField]private List<ComicPageController> _comicList;
     private ComicPageController _currComic;
     public Action<ComicDialoguesTitle> OnComicFinished; //orang yg manggil comic manager utk mainin bs manggil ini utk tau comic dh finished dan lakuin sesuatu abis comic finished
 
+    private const string PLAYERPREF_TITLE = "ShowComicTitle";
+    private const string PLAYERPREF_NEXT_SCENE_AFTERCOMIC = "NextSceneNameAfterComic";
     private void Awake() 
     {
         ComicPageController[] comicList = GetComponentsInChildren<ComicPageController>();
@@ -26,17 +29,28 @@ public class ComicManager : MonoBehaviour
             Instance = this;
         }
     }
+    private void Start() 
+    {
+        OnComicFinished += OnComicFinishedDo;
+    }
+
+
     private void Update() {
-        if(isGO)
+        // if(isGO)
+        // {
+        //     // Debug.Log("????");
+        //     isGO = false;
+        //     PlayComic(title);
+        // }
+        // if(isStop)
+        // {
+        //     isStop = false;
+        //     StopCurrComic();
+        // }
+        if(showOnAwake)
         {
-            // Debug.Log("????");
-            isGO = false;
-            PlayComic(title);
-        }
-        if(isStop)
-        {
-            isStop = false;
-            StopCurrComic();
+            showOnAwake = false;
+            PlayComicUsingString(PlayerPrefs.GetString(PLAYERPREF_TITLE));
         }
     }
     public void PlayComic(ComicDialoguesTitle title)
@@ -75,4 +89,8 @@ public class ComicManager : MonoBehaviour
         }
     }
 
+    private void OnComicFinishedDo(ComicDialoguesTitle title)
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetString(PLAYERPREF_NEXT_SCENE_AFTERCOMIC));
+    }
 }

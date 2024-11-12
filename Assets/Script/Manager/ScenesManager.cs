@@ -64,4 +64,20 @@ public class ScenesManager : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+    public void StartGame()
+    {
+        PlayerPrefs.SetInt("IsFirstimePlaying", 0); // Matikan ini nanti
+        if(PlayerPrefs.GetInt("IsFirstimePlaying", 0) == 0)
+        {
+            PlayerPrefs.SetInt("IsFirstimePlaying", 1);
+            PlayerPrefs.SetString("ShowComicTitle", "OpeningComic");
+            PlayerPrefs.SetString("NextSceneNameAfterComic", "PatientReception");
+            GoToTargetScene("Comic Dialogue Scene");
+        }
+        else
+        {
+            GoToNextScene();
+        }
+    }
 }

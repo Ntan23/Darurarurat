@@ -14445,7 +14445,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1979870000}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: GoToNextScene
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17486,26 +17486,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b><size=60px>Game Designer</size></b>\nJouza\n\n<b><size=60px>Game 3D
-    Artist</size></b>\nNicholas\n\n<b><size=60px>Game Programmer</size></b>\nNicholas
-    Tandinata\n\n<b><size=60px>UI Designer</size></b>\nJouza\nNicholas Tandinata\n\n<b><size=60px>Font</size></b>\nHand
-    Craft by <b><u>MJ Type</u></b>\n\n<b><size=60px>Dialogue Avatar</size></b>\nAvatar
-    dari <u>https:<font=\"LiberationSans SDF\">// </font>avatarmaker.net<font=\"LiberationSans
-    SDF\">/ </font></u>\n\n<b><size=60px>SFX</size></b>\nSFX Buka Tutup Antiseptik
-    & Hidrokotison dari \n<u>https:<font=\"LiberationSans SDF\">// </font>pixabay.com<font=\"LiberationSans
-    SDF\">/</font>\r</u>\nSFX Keramaian, Klik Tombol, Jatuh & Level Selesai dari
-    \n<u>https:<font=\"LiberationSans SDF\">// </font>mixkit.co<font=\"LiberationSans
-    SDF\">/ </font></u>\nSFX lainnya dibuat oleh Jouza dan Nicholas Tandinata\n\n<b><size=60px>VFX</size></b>\nSimple
-    Toon Shader dibuat oleh  Indie Game Helper dari Unity Asset Store\nPost Processing
-    dibuat oleh Nicholas Tandinata\n\n<b><size=60px>BGM</size></b>\nSunflowers by
-    Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
-    SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\nMusic promoted
+  m_text: "<b><size=60px>Game Designer</size></b>\r\nJouza\r\n\r\n<b><size=60px>Game
+    3D Artist</size></b>\r\nNicholas\r\n\r\n<b><size=60px>Game Programmer</size></b>\r\nNicholas
+    Tandinata\r\n\r\n<b><size=60px>UI Designer</size></b>\r\nJouza\r\nNicholas Tandinata\r\n\nAdditional
+    art by <b><u>Shafa</u></b>\r\n\r\n<b><size=60px>Font</size></b>\r\nHand Craft
+    by <b><u>MJ Type</u></b>\r\n\n<b><size=60px>VFX</size></b>\r\nOToon URP Toon
+    Shading by Eric Hu from Unity Asset Store\r\nPost Processing by Nicholas Tandinata\r\n\r\n<b><size=60px>SFX</size></b>\r\nOpen
+    & Close Antiseptic, Sweeping Floor, Itch Scratch and Hydrocortisone Cream SFX
+    from \r\n<u>https:<font=\"LiberationSans SDF\">// </font>pixabay.com<font=\"LiberationSans
+    SDF\">/</font>\r\n</u>\r\nCrowd, Click Button, Child Fall, Kids Cry, Bell & Level
+    Complete SFX from\r\n<u>https:<font=\"LiberationSans SDF\">// </font>mixkit.co<font=\"LiberationSans
+    SDF\">/ </font></u>\r\nWooden Door and Bag Drop SFX from\r\n<u>https:<font=\"LiberationSans
+    SDF\">// </font>www.zapsplat.com<font=\"LiberationSans SDF\">/ </font></u>\r\nThe
+    Other SFX made by Jouza dan Nicholas Tandinata\r\n\r\n<b><size=60px>BGM</size></b>\r\nSunflowers
+    by Piano Amor <font=\"LiberationSans SDF\">| </font><u>https : <font=\"LiberationSans
+    SDF\">//</font>lesfm.net<font=\"LiberationSans SDF\">/</font></u>\r\nMusic promoted
     by <u>https : <font=\"LiberationSans SDF\">//</font>www.chosic.com<font=\"LiberationSans
     SDF\">/</font>free-music<font=\"LiberationSans SDF\">/</font>all<font=\"LiberationSans
-    SDF\">/</font></u>\nCreative Commons CC BY 3.0\n<u>https : <font=\"LiberationSans
+    SDF\">/</font></u>\r\nCreative Commons CC BY 3.0\r\n<u>https : <font=\"LiberationSans
     SDF\">//</font>creativecommons.org<font=\"LiberationSans SDF\">/</font>licenses<font=\"LiberationSans
     SDF\">/</font>by<font=\"LiberationSans SDF\">/</font>3.0<font=\"LiberationSans
-    SDF\">/</font></u>\n"
+    SDF\">/</font></u>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d, type: 2}
   m_sharedMaterial: {fileID: 5937824874173402612, guid: 413bdb0f12dc2604ea98fb3d0bc6a02d,

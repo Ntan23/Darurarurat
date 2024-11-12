@@ -41,6 +41,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
     [Header("NextButton")]
     [SerializeField]private Button _nextButtonContainer;
     private bool _isNextButtonClicked;
+
     #region  GETTER SETTER VARIABLE
     public bool Finished { get { return _finished; } }
     public ComicDialoguesTitle ComicTitle {get {return _comicTitle;}}
@@ -106,7 +107,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
     //Prepare Comic before showing
     private void PreparingComic()
     {
-        Debug.Log("Preparing Comic");
+        // Debug.Log("Preparing Comic");
         StopComicTime();
         _finished = false;
 
@@ -177,7 +178,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
                 _currPage.SetTransparentImage_Animated(null, 1f, _fadeComicBGDuration);
                 if(_fade)_fade.FadeNormal(_fadeOutDuration, 0);
             }
-
+            _currPage.PlayStartingSFX();
             _nextButtonContainer.onClick.AddListener(NextButtonClicked);
             _nextButtonContainer.gameObject.SetActive(true);
             
@@ -186,7 +187,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
             _nextButtonContainer.onClick.AddListener(_dialogueLineContainer.NextButtonClicked);
             while(!_currPage.IsFinished)
             {
-                _currPage.PlayStartingSFX();
+                _currPage.PlayStartingDialogueSFX();
                 _currDialogue = _comicPagesAllDialogues_SODIALOGUES.dialogue_Lines[_currDialogueIdx];
                 _currPage.ShowDialogueBox(DoDialogue, _fadeDialogBoxDuration);
                 _currDialogueIdx++;
@@ -195,7 +196,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
                 // StopCoroutine(_scrollRectSave); -> pindah ke event biar stop pas, emg done
                 
                 _dialogueLineContainer.ChangeFinished_false();
-                _currPage.PlayEndingSFX();
+                _currPage.PlayEndingDialogueSFX();
                 _scrollRectSave = null;
             }
             _nextButtonContainer.onClick.RemoveListener(_dialogueLineContainer.NextButtonClicked);
