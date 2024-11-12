@@ -10,48 +10,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: OpeningComicDialogue Shared Data
+  m_Name: SpecialScene_1_Mid2 Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: OpeningComicDialogue
-  m_TableCollectionNameGuidString: e076d0ae9352b3847a2562586c45e286
+  m_TableCollectionName: SpecialScene_1_Mid2
+  m_TableCollectionNameGuidString: a5ee7e3f8d6fd1243930ca449e386bc6
   m_Entries:
-  - m_Id: 205350719488
-    m_Key: Page1-1
+  - m_Id: 2150736023552
+    m_Key: Dialog1
     m_Metadata:
       m_Items: []
-  - m_Id: 378323816448
-    m_Key: Page1-2
+  - m_Id: 2197326352384
+    m_Key: Dialog2
     m_Metadata:
       m_Items: []
-  - m_Id: 682582822912
-    m_Key: 'Page1-3
-
-'
+  - m_Id: 2200212033536
+    m_Key: Dialog3
     m_Metadata:
       m_Items: []
-  - m_Id: 1215557226496
-    m_Key: Page1-4
+  - m_Id: 2202309185536
+    m_Key: Dialog4
     m_Metadata:
       m_Items: []
-  - m_Id: 1828202434560
-    m_Key: 'Page2-1
-
-'
+  - m_Id: 2204867710976
+    m_Key: Dialog5
     m_Metadata:
       m_Items: []
-  - m_Id: 2347000090624
-    m_Key: Page2-2
+  - m_Id: 2327676932096
+    m_Key: Dialog6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2946731036672
+    m_Key: Dialog7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2967534784512
+    m_Key: Dialog8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3091078008832
+    m_Key: Dialog9
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 3169039516700246016
+    rid: 2642849105993793539
   references:
     version: 2
     RefIds:
-    - rid: 3169039516700246016
+    - rid: 2642849105993793539
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1730381318344
+        m_CustomEpoch: 1731423977720

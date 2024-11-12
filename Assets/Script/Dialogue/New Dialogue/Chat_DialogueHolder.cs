@@ -168,7 +168,7 @@ namespace DialogueSystem
             _bgContainer.gameObject.SetActive(true);
             LeanTween.moveLocalY(_topBGContainer.gameObject, nextYPointTop, moveDuration);
             LeanTween.moveLocalY(_botBGContainer.gameObject, nextYPointBot, moveDuration);
-            LeanTween.alpha(_bgContainer, 0.5f, moveDuration).setOnComplete(OnComplete);
+            LeanTween.alpha(_bgContainer, 1, moveDuration).setOnComplete(OnComplete);
         }
         public void MoveOutBG(Action OnComplete)
         {

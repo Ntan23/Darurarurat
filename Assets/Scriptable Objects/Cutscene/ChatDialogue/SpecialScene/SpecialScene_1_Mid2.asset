@@ -10,74 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e0eb23cd38706f4ea661fc072c2882c, type: 3}
-  m_Name: SpecialScene_1_Intro
+  m_Name: SpecialScene_1_Mid2
   m_EditorClassIdentifier: 
-  dialoguesTitle: 1
+  dialoguesTitle: 4
   isWholeDialogueUseSprite: 1
   dialogue_Lines:
   - _delayTypeText: 0.1
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
       m_TableEntryReference:
-        m_KeyId: 16542450012160
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 1
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
-      m_TableEntryReference:
-        m_KeyId: 16608380276736
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 1
-    _charaName: 0
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
-      m_TableEntryReference:
-        m_KeyId: 16664214851584
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 0
-    _charaName: 1
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
-      m_TableEntryReference:
-        m_KeyId: 16667008258048
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    _dialogueType: 1
-    _charaName: 0
-    _spriteNumber: 0
-  - _delayTypeText: 0.1
-    _delayBetweenLines: 0.2
-    _dialogueTextLocalized:
-      m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
-      m_TableEntryReference:
-        m_KeyId: 16669726167040
+        m_KeyId: 2150736023552
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -89,9 +33,9 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
       m_TableEntryReference:
-        m_KeyId: 16673173884928
+        m_KeyId: 2197326352384
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -103,9 +47,9 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
       m_TableEntryReference:
-        m_KeyId: 16673928859648
+        m_KeyId: 2200212033536
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -117,9 +61,9 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
       m_TableEntryReference:
-        m_KeyId: 16674629308416
+        m_KeyId: 2202309185536
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
@@ -131,15 +75,71 @@ MonoBehaviour:
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
-        m_TableCollectionName: GUID:d187abb4446284e45a4fe0e4e92b677b
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
       m_TableEntryReference:
-        m_KeyId: 16675287814144
+        m_KeyId: 2204867710976
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 0
     _charaName: 2
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
+      m_TableEntryReference:
+        m_KeyId: 2327676932096
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 1
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
+      m_TableEntryReference:
+        m_KeyId: 2946731036672
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 2
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
+      m_TableEntryReference:
+        m_KeyId: 2967534784512
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 1
+    _spriteNumber: 0
+  - _delayTypeText: 0.1
+    _delayBetweenLines: 0.2
+    _dialogueTextLocalized:
+      m_TableReference:
+        m_TableCollectionName: GUID:a5ee7e3f8d6fd1243930ca449e386bc6
+      m_TableEntryReference:
+        m_KeyId: 3091078008832
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _dialogueType: 0
+    _charaName: 1
     _spriteNumber: 0
   references:
     version: 2

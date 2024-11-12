@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using TMPro;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     
     private enum State 
     {
-        Pause, Playing
+        Pause, Playing, Cutscene
     }
 
     private State gameState;
@@ -69,7 +70,9 @@ public class GameManager : MonoBehaviour
     [Header("Dialogue Title That Want to be Played")]
     [Header("Ignore if Not calling dialogue")]
     [SerializeField] private ChatDialoguesTitle _introTitle;
-    [SerializeField] private ChatDialoguesTitle _midTitle, _endTitle;
+    [SerializeField] private List<ChatDialoguesTitle> _midTitles;
+    public List<ChatDialoguesTitle> GetMidTitles{get{return _midTitles;}}
+    [SerializeField] private ChatDialoguesTitle _endTitle;
     [Space(5)]
     private StoryManager storyManager;
     private Chat_DialogueManager _chatDialogueManager;
@@ -125,8 +128,12 @@ public class GameManager : MonoBehaviour
         ///summary
         ///     Set Game State
         ///summary
-        if(_chatDialogueManager != null)_chatDialogueManager.PlayDialogueScene(_introTitle);
         gameState = State.Playing;
+        if(_chatDialogueManager != null)
+        {
+            gameState = State.Cutscene;
+            _chatDialogueManager.PlayDialogueScene(_introTitle);
+        }
     }
 
     #region Localization
@@ -153,7 +160,7 @@ public class GameManager : MonoBehaviour
     #region Pause
     private void Pause()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause)
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPauseMenuAnimating && canPause && gameState != State.Cutscene)
         {
             if(gameState == State.Playing)
             {
@@ -308,7 +315,11 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
-        if(_chatDialogueManager != null) _chatDialogueManager.PlayDialogueScene(_endTitle);
+        if(_chatDialogueManager != null)
+        {
+            _chatDialogueManager.PlayDialogueScene(_endTitle);
+            gameState = State.Cutscene;
+        }
         // taruh sini (untuk panggil end story / dialog)
         
         // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
@@ -357,7 +368,11 @@ public class GameManager : MonoBehaviour
 
         if(dialogueManager != null) dialogueManager.ShowEndDialogue();
         if(storyManager != null) storyManager.ShowEndStory();
-        if(_chatDialogueManager != null) _chatDialogueManager.PlayDialogueScene(_endTitle);
+        if(_chatDialogueManager != null)
+        {
+            _chatDialogueManager.PlayDialogueScene(_endTitle);
+            gameState = State.Cutscene;
+        }
         // taruh sini (untuk panggil end story / dialog)
 
         // if(dialogueSkipButtonIndicator < levelIndex && nextLevelIndex <= 6) PlayerPrefs.SetInt(PREFS_DIALOGUESKIP_INDICATOR, levelIndex);
@@ -418,6 +433,17 @@ public class GameManager : MonoBehaviour
     public bool IsPlaying()
     {
         return gameState == State.Playing;
+    }
+    public bool IsCutscene()
+    {
+        return gameState == State.Cutscene;
+    }
+    public void ChangeCutsceneStatus(bool IsCutscene)
+    {
+        if(IsCutscene && gameState == State.Pause)return;
+
+        if(IsCutscene) gameState = State.Cutscene;
+        else gameState = State.Playing;
     }
 
     public bool IsPausing()

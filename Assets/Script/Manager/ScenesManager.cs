@@ -70,8 +70,8 @@ public class ScenesManager : MonoBehaviour
         PlayerPrefs.SetInt("IsFirstimePlaying", 0); // Matikan ini nanti
         if(PlayerPrefs.GetInt("IsFirstimePlaying", 0) == 0)
         {
-            PlayerPrefs.SetInt("IsFirstimePlaying", 1);
-            PlayerPrefs.SetString("ShowComicTitle", "OpeningComic");
+            // PlayerPrefs.SetInt("IsFirstimePlaying", 1);
+            PlayerPrefs.SetString("ShowComicTitle", "OpeningGameComic");
             PlayerPrefs.SetString("NextSceneNameAfterComic", "PatientReception");
             GoToTargetScene("Comic Dialogue Scene");
         }

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SpecialScene_1_Mid2_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: a5ee7e3f8d6fd1243930ca449e386bc6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2150736023552
+    m_Localized: "What\u2019s the next step doctor? And what\u2019s that thing you\u2019re
+      holding?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2197326352384
+    m_Localized: This is called a band-aid, and this is the last step before you
+      can get more fruits after this.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2200212033536
+    m_Localized: A band-aid? What is it for?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2202309185536
+    m_Localized: "It will cover your wound so the evil bacterica won\u2019t get in."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2204867710976
+    m_Localized: Why is the bacteria evil?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2327676932096
+    m_Localized: "Because it can make you sick, you don\u2019t want that right?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2946731036672
+    m_Localized: No! please put it on so I can get back to getting more fruits!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2967534784512
+    m_Localized: <i>*chuckling*</i>Alright..
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3091078008832
+    m_Localized: Aaand done! Next time, also bring some fruits for me okay?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

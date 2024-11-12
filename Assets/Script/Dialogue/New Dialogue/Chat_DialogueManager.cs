@@ -4,15 +4,22 @@ using System.Collections.Generic;
 using DialogueSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
+[Serializable]
+public struct DialogueFinishActions
+{
+    public ChatDialoguesTitle title;
+    public List<UnityEvent> actionOnFinish;
+}
 public class Chat_DialogueManager : MonoBehaviour
 {
     public static Chat_DialogueManager Instance {get; private set;}
-    [Header("Testing")]
-    public bool isGO;
-    public bool isStop;
-    public ChatDialoguesTitle title;
+    // [Header("Testing")]
+    // public bool isGO;
+    // public bool isStop;
+    // public ChatDialoguesTitle title;
 
 
     [Header("Chat Dialogue List & Dialogue Holder")]
@@ -21,6 +28,7 @@ public class Chat_DialogueManager : MonoBehaviour
     private SOChatDialogues _chosenDialogue;
 
     public Action<ChatDialoguesTitle> OnDialogueFinish; //SUBS TO THIS IF YOU WANT TO DO SOMETHING AFTER DIALOGUE DONEE
+    public List<DialogueFinishActions> _dialogueFinishActionList;
 
     private void Awake() 
     {
@@ -30,19 +38,25 @@ public class Chat_DialogueManager : MonoBehaviour
             Instance = this;
         }
     }
-    private void Update() {
-        if(isGO)
-        {
-            // Debug.Log("????");
-            isGO = false;
-            PlayDialogueScene(title);
-        }
-        if(isStop)
-        {
-            isStop = false;
-            HideFinishedDialogueNow();
-        }
+    private void Start() 
+    {
+        OnDialogueFinish += OnDialogueFinishDo;
     }
+
+
+    // private void Update() {
+    //     if(isGO)
+    //     {
+    //         // Debug.Log("????");
+    //         isGO = false;
+    //         PlayDialogueScene(title);
+    //     }
+    //     if(isStop)
+    //     {
+    //         isStop = false;
+    //         HideFinishedDialogueNow();
+    //     }
+    // }
 
     public void PlayDialogueScene(ChatDialoguesTitle dialoguesTitle)
     {
@@ -67,9 +81,30 @@ public class Chat_DialogueManager : MonoBehaviour
         _dialogueHolder.StopCoroutineAbruptly();
         _dialogueHolder.HideDialogue();
     }
-    // public void StopDialogueWithoutHiding()
-    // {
-    //     _dialogueHolder.StopCourotineNow();
-    // }
+    private void OnDialogueFinishDo(ChatDialoguesTitle title)
+    {
+        if(GameManager.instance != null && GameManager.instance.IsCutscene())
+        {
+            GameManager.instance.ChangeCutsceneStatus(false);
+        }
+        foreach(DialogueFinishActions action in _dialogueFinishActionList)
+        {
+            if(action.title == title)
+            {
+                foreach(UnityEvent actionNow in action.actionOnFinish)
+                {
+                    actionNow.Invoke();
+                }
+                break;
+            }
+        }
+        if(title == ChatDialoguesTitle.OpeningGame)
+        {
+            PlayerPrefs.SetInt("IsFirstimePlaying", 1);
+        }
+
+    }
+    
+
     
 }

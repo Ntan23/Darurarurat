@@ -52,7 +52,7 @@ public class FirstAidBox : MonoBehaviour
     
     void OnMouseOver()
     {
-        if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen()) hoverControl.ShowHoverVisual();
+        if(canBeClicked && !gm.GetPauseMenuIsAnimating() && !pauseMenuUI.GetIsOpen() && !gm.IsCutscene()) hoverControl.ShowHoverVisual();
     }
     void OnMouseExit()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -75,6 +76,9 @@ public class ObjectControl : MonoBehaviour
     private GameManager gm;
     private AudioManager am;
     #endregion
+    public int GetObjectIndex{get{return objectIndex;}}
+    public bool IsInTheBox{get{return isInTheBox;}}
+    public Action<ObjectControl> OnMouseEnterHoverItem; // Hanya utk Special Scene
 
     void Start() 
     {
@@ -151,6 +155,7 @@ public class ObjectControl : MonoBehaviour
             ///summary 
             if(!gm.GetIsInInspectMode() && isInTheBox && !isAnimating) 
             {
+                OnMouseEnterHoverItem?.Invoke(this);
                 LeanTween.moveY(gameObject, 5.0f, 0.8f).setEaseSpring().setOnComplete(() => SetBeforeAnimatePosition());
                 
                 ///summary
@@ -175,6 +180,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(gm.IsPlaying() && !gm.GetPauseMenuIsAnimating())
         {
+            if(!isInTheBox)OnMouseEnterHoverItem?.Invoke(this);
             ///summary
             ///     HoverEffect if it's not inspect and inside box
             ///summary
