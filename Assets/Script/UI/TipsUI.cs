@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class TipsUI : MonoBehaviour
 {
-    private bool alreadyShow;
     private TimeManager tm;
 
     void Start()
     {
         tm = TimeManager.instance;
 
-        if(PlayerPrefs.GetInt("TipsShowed", 0) == 0) alreadyShow = false;
-        if(PlayerPrefs.GetInt("TipsShowed", 0) == 1) alreadyShow = true;
-
-        if(!alreadyShow) gameObject.SetActive(true);
-        else if(alreadyShow) gameObject.SetActive(false);
+        if(PlayerPrefs.GetInt("TipsShowed", 0) == 0) gameObject.SetActive(true);
+        if(PlayerPrefs.GetInt("TipsShowed", 0) == 1) gameObject.SetActive(false);
     }
 
     public void CloseTipsUI() 

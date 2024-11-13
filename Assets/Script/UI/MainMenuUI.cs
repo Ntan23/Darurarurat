@@ -16,12 +16,19 @@ public class MainMenuUI : MonoBehaviour
     private bool isOpen;
     private ScenesManager scenesManager;
     [SerializeField] private ResetUI resetUI;
+    private GameObject patient;
+    private TimeManager tm;
 
     void Start() 
     {
+        tm = TimeManager.instance;
         scenesManager = ScenesManager.instance;
         animator = GetComponent<Animator>();
 
+        patient = GameObject.FindGameObjectWithTag("Patient");
+
+        if(patient != null) Destroy(patient);
+        if(tm != null) Destroy(tm.gameObject);
 
         StartCoroutine(StartDelay());
     }
@@ -145,7 +152,7 @@ public class MainMenuUI : MonoBehaviour
         PlayerPrefs.SetInt("IsTeaTime", 0);
         PlayerPrefs.SetInt("IsUpgrade", 0);
         PlayerPrefs.SetInt("IsFirstimePlaying", 0);
-        PlayerPrefs.GetInt("TipsShowed", 0);
+        PlayerPrefs.SetInt("TipsShowed", 0);
         PlayerPrefs.SetInt("TipsReception", 0);
         PlayerPrefs.SetInt("TipsTeaTime", 0);
 
