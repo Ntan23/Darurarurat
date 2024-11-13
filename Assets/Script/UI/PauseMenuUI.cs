@@ -9,10 +9,12 @@ public class PauseMenuUI : MonoBehaviour
     // public GameObject clipboard;
     private CanvasGroup canvasGroup;
     private GameManager gm;
+    private TimeManager tm;
 
     void Start() 
     {
         gm = GameManager.instance;
+        tm = TimeManager.instance;
 
         canvasGroup = GetComponent<CanvasGroup>();
     }
@@ -20,7 +22,8 @@ public class PauseMenuUI : MonoBehaviour
     public void OpenPauseMenu(bool value)
     {
         if(!gm.IsPausing())
-        {
+        {   
+            tm.canStart = false;
             isOpen = true;
             gm.ChangePauseMenuIsAnimatingValue(true);
             LeanTween.value(gameObject, UpdateBackgroundAlpha, 0.0f, 1.0f, 0.5f);
@@ -37,7 +40,7 @@ public class PauseMenuUI : MonoBehaviour
         {
             isOpen = false;
             gm.ChangePauseMenuIsAnimatingValue(true);
-            LeanTween.value(gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.5f);
+            LeanTween.value(gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.5f).setOnComplete(() => tm.canStart = true);
             //LeanTween.moveLocalY(clipboard, -1092.0f, 0.8f).setEaseSpring();
             canvasGroup.blocksRaycasts = false;
             

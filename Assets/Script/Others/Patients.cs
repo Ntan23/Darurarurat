@@ -35,6 +35,8 @@ public class Patients : MonoBehaviour
     {
         pqm = PatientsQueueManager.instance;
 
+        patientSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
         doorAnimator = GameObject.FindGameObjectWithTag("Door").GetComponent<Animator>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -49,10 +51,9 @@ public class Patients : MonoBehaviour
     {
         woundIndicator.SetActive(false);
 
-        if(SceneManager.GetActiveScene().name == "PatientReception" && savedPosition != null) 
+        if(!isSpecial && SceneManager.GetActiveScene().name == "PatientReception" && savedPosition != null) 
         {
             MoveBack();
-            pqm.UpdateProgress(isTreated);
         }
     }
 
@@ -126,7 +127,8 @@ public class Patients : MonoBehaviour
     IEnumerator FadeOut()
     {
         yield return new WaitForSeconds(1.0f);
-        LeanTween.value(patientSpriteRenderer.gameObject, UpdateSpriteAlpa, 1.0f, 0.0f, 1.0f);
+        //pqm.UpdateProgress(isTreated);
+        LeanTween.value(patientSpriteRenderer.gameObject, UpdateSpriteAlpa, 1.0f, 0.0f, 1.0f).setOnComplete(() => Destroy(this.gameObject));
     }
 
     public void SetWound(PatientWoundSO wound) => _wound = wound;

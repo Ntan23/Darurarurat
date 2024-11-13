@@ -13657,7 +13657,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _comicDialogueList: {fileID: 11400000, guid: 0f4ae9a74f8919f45b8c1a7a675767b1, type: 2}
   _dialogueHolder: {fileID: 1513427759}
-  _dialogueFinishActionList: []
+  _dialogueFinishActionList:
+  - title: 5
+    actionOnFinish:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1148662694}
+          m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
+          m_MethodName: GoToTargetScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: TeaTime
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1518850743
 GameObject:
   m_ObjectHideFlags: 0

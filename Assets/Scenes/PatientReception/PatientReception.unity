@@ -2543,6 +2543,7 @@ MonoBehaviour:
   totalPatientsFailedText: {fileID: 778020305}
   profitText: {fileID: 275267865}
   progressBoard: {fileID: 1077951073}
+  tipsUI: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -4369,11 +4370,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116aa013f9003c0468ad86a405cd7ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   texts:
   - {fileID: 2104375771}
   - {fileID: 1840927677}
   - {fileID: 1791272567}
   - {fileID: 84776329}
+  teaTimeInput: {fileID: 0}
 --- !u!1 &1757870180
 GameObject:
   m_ObjectHideFlags: 0

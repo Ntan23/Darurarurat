@@ -157,19 +157,23 @@ public class PatientsQueueManager : MonoBehaviour
         spawnedPatient.GetComponent<Patients>().SetTargetPositions(positions);
     }
 
-    public void UpdateProgress(bool isTreated)
-    {
-        // Debug.Log("Tes");
+    // public void UpdateProgress(bool isTreated)
+    // {
+    //     Debug.Log("Tes");
     
-        totalPatientServed++;
+    //     totalPatientServed++;
 
-        if(isTreated) totalPatientTreated++;
-        if(!isTreated) totalPatientFailed++;
+    //     if(isTreated) totalPatientTreated++;
+    //     if(!isTreated) totalPatientFailed++;
 
-        PlayerPrefs.SetInt("Served", totalPatientServed);
-        PlayerPrefs.SetInt("Treated", totalPatientTreated);
-        PlayerPrefs.SetInt("Failed", totalPatientFailed);
-    }
+    //     Debug.Log("F : " + totalPatientFailed);
+    //     Debug.Log("S : " + totalPatientServed);
+    //     Debug.Log("T : " + totalPatientTreated);
+
+    //     PlayerPrefs.SetInt("Served", totalPatientServed);
+    //     PlayerPrefs.SetInt("Treated", totalPatientTreated);
+    //     PlayerPrefs.SetInt("Failed", totalPatientFailed);
+    // }
 
     public Transform[] GetTargetPositions()
     {

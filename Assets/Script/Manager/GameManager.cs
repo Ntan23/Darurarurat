@@ -252,6 +252,12 @@ public class GameManager : MonoBehaviour
 
     public void AddProcedureObjectIndex() => procedureObjectIndex += 1;
 
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Served", 0);
+        PlayerPrefs.SetInt("Treated",0);
+        PlayerPrefs.SetInt("Failed", 0);
+    }
     ///summary
     ///     Check win Condition, kalo menang dianimasiiin UI, tp ini blk lg UI dipisah ||Want Change||
     ///summary  
@@ -290,26 +296,24 @@ public class GameManager : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(true);
 
-        if(isSpecial || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
-        {
-            int totalPatientServed, totalPatientTreated;
-            
-            totalPatientServed = PlayerPrefs.GetInt("Served", 0);
-            totalPatientTreated = PlayerPrefs.GetInt("Treated", 0);
+        int totalPatientServed, totalPatientTreated;
+        
+        totalPatientServed = PlayerPrefs.GetInt("Served", 0);
+        totalPatientTreated = PlayerPrefs.GetInt("Treated", 0);
 
-            Debug.Log(totalPatientServed);
-            Debug.Log(totalPatientTreated);
+        totalPatientServed++;
+        totalPatientTreated++;
 
-            totalPatientServed++;
-            totalPatientTreated++;
+        Debug.Log("S : " + totalPatientServed);
+        Debug.Log("T : " + totalPatientTreated);
 
-            PlayerPrefs.SetInt("Served", totalPatientServed);
-            PlayerPrefs.SetInt("Treated", totalPatientTreated);
+        PlayerPrefs.SetInt("Served", totalPatientServed);
+        PlayerPrefs.SetInt("Treated", totalPatientTreated);
 
-            GameObject go = GameObject.FindGameObjectWithTag("Patient");
+        GameObject go = GameObject.FindGameObjectWithTag("Patient");
 
-            Destroy(go);
-        }
+        if(go != null) Destroy(go);
+        
         
         yield return new WaitForSeconds(1.5f);
 
@@ -347,22 +351,23 @@ public class GameManager : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("Patient").GetComponent<Patients>().SetTreatValue(false);
 
-        if((isSpecial) || (TimeManager.instance.GetDay() != 1 && TimeManager.instance.GetHour() >= 17 && !isSpecial)) 
-        {
-            int totalPatientServed, totalPatientFailed;
+        int totalPatientServed, totalPatientFailed;
             
-            totalPatientServed = PlayerPrefs.GetInt("Served", 0);
-            totalPatientFailed = PlayerPrefs.GetInt("Failed", 0);
+        totalPatientServed = PlayerPrefs.GetInt("Served", 0);
+        totalPatientFailed = PlayerPrefs.GetInt("Failed", 0);
 
-            Debug.Log(totalPatientServed);
-            Debug.Log(totalPatientFailed);
+        totalPatientServed++;
+        totalPatientFailed++;
 
-            totalPatientServed++;
-            totalPatientFailed++;
+        Debug.Log("F : " + totalPatientFailed);
+        Debug.Log("S : " + totalPatientServed);
 
-            PlayerPrefs.SetInt("Served", totalPatientServed);
-            PlayerPrefs.SetInt("Failed", totalPatientFailed);
-        }
+        PlayerPrefs.SetInt("Served", totalPatientServed);
+        PlayerPrefs.SetInt("Failed", totalPatientFailed);
+
+        GameObject go = GameObject.FindGameObjectWithTag("Patient");
+
+        if(go != null) Destroy(go);
 
         yield return new WaitForSeconds(1.5f);
 
