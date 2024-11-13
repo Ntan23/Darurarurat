@@ -52,7 +52,7 @@ public class Fade : MonoBehaviour
             if(tm != null) 
             {
                 if(!needToStopTime) tm.canStart = true;
-                else if(needToStopTime && PlayerPrefs.GetInt("TipsShowed") == 1 && SceneManager.GetActiveScene().name == "Level1") tm.canStart = true;
+                else if(needToStopTime && PlayerPrefs.GetInt("TipsShowed") == 1 && PlayerPrefs.GetInt("TipsReception") == 1 && SceneManager.GetActiveScene().name == "Level 1") tm.canStart = true;
                 else if(needToStopTime && PlayerPrefs.GetInt("IsFirstimePlaying", 0) == 1 && SceneManager.GetActiveScene().name == "PatientReception") tm.canStart = true;
                 else tm.canStart = false;
             }

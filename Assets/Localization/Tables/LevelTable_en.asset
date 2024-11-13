@@ -117,6 +117,52 @@ MonoBehaviour:
     m_Localized: You can open up the clipboard for more information
     m_Metadata:
       m_Items: []
+  - m_Id: 172237151481757696
+    m_Localized: Welcome to the Lifeline Demo, you will be playing as Nadya, a med
+      student on her way to become a doctor. Nadya is forced to go to an island and
+      treat the island locals as a stand-in doctor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172237425952817152
+    m_Localized: The old clinic will be shut down if the rent is not paid, Nadya
+      will have to work daily to earn money and reach the quota each week so the
+      clinic will not be shut down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172237520261742592
+    m_Localized: Nadya will earn money (Rp) by treating the visiting patients. With
+      the money, Nadya can collect it to reach he quota or upgrade her first-aid
+      box equipment to treat different type of wounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172237522543443968
+    m_Localized: 'The clock shows the time remaining for the day and the quota is
+      collected every 5 days.
+
+
+      Good Luck!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244466222104576
+    m_Localized: "You finished day 1. After working, Nadya will always chill by herself
+      with a cup of tea.\n\nIt\u2019s Tea Time!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244506130907136
+    m_Localized: In tea time, you can just chill, interact with the various objects
+      on the screen, or upgrade the first-aid box equipment.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244529535123456
+    m_Localized: For this demo, you are only able to upgrade the first-aid box. Upgrade
+      the first-aid box by clicking it on the table and purchase your desired item.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244548615012352
+    m_Localized: If you are done enjoying your tea time, you can continue to day
+      2 and keep the clinic going in business.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

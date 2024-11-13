@@ -15,6 +15,6 @@ MonoBehaviour:
   woundName: Itchy
   woundIndex: 3
   woundSprite: {fileID: 21300000, guid: 86997ebaa5c99bd41ac4b1259fccb51b, type: 3}
-  treatPrice: 2
-  failPrice: 1
+  treatPrice: 3
+  failPrice: 2
   objectNeededToTreatIndex: 04000000

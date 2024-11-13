@@ -77,8 +77,8 @@ public class QuotaUI : MonoBehaviour
         PlayerPrefs.SetInt("Served", 0);
         PlayerPrefs.SetInt("Treated", 0);
         PlayerPrefs.SetInt("Failed", 0);
-        PlayerPrefs.SetFloat("Money", 0);
-        PlayerPrefs.SetFloat("TargetQuota", 10);
+        PlayerPrefs.SetFloat("Money", 7.0f);
+        PlayerPrefs.SetFloat("TargetQuota", 50.0f);
 
         PlayerPrefs.SetInt("IsTeaTime", 0);
         PlayerPrefs.SetInt("IsUpgrade", 0);

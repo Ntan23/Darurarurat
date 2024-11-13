@@ -29,7 +29,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 2
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -43,7 +43,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -57,7 +57,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -71,7 +71,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -85,7 +85,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -99,7 +99,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -113,7 +113,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -127,7 +127,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -139,9 +139,9 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 1
-    _charaName: 0
+    _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -155,7 +155,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -169,7 +169,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 3
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -181,9 +181,9 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _dialogueType: 1
-    _charaName: 0
+    _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -197,7 +197,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -211,7 +211,7 @@ MonoBehaviour:
     _dialogueType: 0
     _charaName: 1
     _spriteNumber: 0
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:

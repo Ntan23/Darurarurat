@@ -67,7 +67,7 @@ public class ScenesManager : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerPrefs.SetInt("IsFirstimePlaying", 0); // Matikan ini nanti
+        //PlayerPrefs.SetInt("IsFirstimePlaying", 0); // Matikan ini nanti
         if(PlayerPrefs.GetInt("IsFirstimePlaying", 0) == 0)
         {
             // PlayerPrefs.SetInt("IsFirstimePlaying", 1);

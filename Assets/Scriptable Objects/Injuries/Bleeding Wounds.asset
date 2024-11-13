@@ -15,6 +15,6 @@ MonoBehaviour:
   woundName: Bleeding Wound
   woundIndex: 4
   woundSprite: {fileID: 21300000, guid: 9b80422474adc0f43a639de90dbec155, type: 3}
-  treatPrice: 5
-  failPrice: 3
+  treatPrice: 6
+  failPrice: 5
   objectNeededToTreatIndex: 0500000006000000

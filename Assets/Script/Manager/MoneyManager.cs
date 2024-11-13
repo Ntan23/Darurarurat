@@ -24,7 +24,7 @@ public class MoneyManager : MonoBehaviour
     {
         pqm = PatientsQueueManager.instance;
 
-        currentMoney = PlayerPrefs.GetFloat("Money", 0);
+        currentMoney = PlayerPrefs.GetFloat("Money", 7.0f);
         if(pqm != null) moneyText = pqm.GetMoneyText();
 
         if(moneyText != null) moneyText.text = currentMoney.ToString("0.00") + " Rp";

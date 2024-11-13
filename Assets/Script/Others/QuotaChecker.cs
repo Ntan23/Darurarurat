@@ -13,7 +13,7 @@ public class QuotaChecker : MonoBehaviour
     {
         tm = TimeManager.instance;
 
-        targetQuota = PlayerPrefs.GetFloat("TargetQuota", 10);
+        targetQuota = PlayerPrefs.GetFloat("TargetQuota",  50.0f);
     }
 
     public void CheckQuota()

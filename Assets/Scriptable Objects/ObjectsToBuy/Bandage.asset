@@ -14,7 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Bandage
   objectIndex: 6
-  price: 7
-  unlockedMaterial:
-  - {fileID: 2100000, guid: 0fa23bac8708eed42b0096291b18dd84, type: 2}
-  - {fileID: 2100000, guid: ec7493ce5f0f9854baf1e88a7c561693, type: 2}
+  price: 35

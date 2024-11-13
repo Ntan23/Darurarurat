@@ -119,6 +119,56 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 172237151481757696
+    m_Localized: Selamat datang di Demo Lifeline, Anda akan bermain sebagai Nadya,
+      seorang mahasiswa kedokteran yang sedang dalam perjalanan untuk menjadi seorang
+      dokter. Nadya dipaksa untuk pergi ke sebuah pulau dan merawat penduduk setempat
+      sebagai dokter pengganti.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172237425952817152
+    m_Localized: Klinik lama akan ditutup jika sewa tidak dibayar, Nadya harus bekerja
+      setiap hari untuk mendapatkan uang dan mencapai kuota setiap minggunya agar
+      klinik tidak ditutup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172237520261742592
+    m_Localized: Nadya akan mendapatkan uang (Rp) dengan mengobati pasien yang berkunjung.
+      Dengan uang tersebut, Nadya dapat mengumpulkannya untuk mencapai kuota atau
+      meningkatkan peralatan kotak P3K-nya untuk mengobati berbagai jenis luka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172237522543443968
+    m_Localized: 'Jam menunjukkan waktu yang tersisa untuk hari itu dan kuota dikumpulkan
+      setiap 5 hari.
+
+
+      Semoga berhasil!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244466222104576
+    m_Localized: 'Anda sudah menyelesaikan hari pertama. Setelah bekerja, Nadya akan
+      selalu bersantai sendiri dengan secangkir teh.
+
+
+      Saatnya minum teh!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244506130907136
+    m_Localized: Pada waktu minum teh, Anda bisa bersantai, berinteraksi dengan berbagai
+      objek di layar, atau meng-upgrade peralatan kotak P3K.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244529535123456
+    m_Localized: Untuk demo ini, Anda hanya dapat meningkatkan kotak P3K. Tingkatkan
+      kotak P3K dengan mengekliknya di atas meja dan beli item yang Anda inginkan.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172244548615012352
+    m_Localized: Jika Anda sudah selesai menikmati waktu minum teh, Anda bisa melanjutkan
+      ke hari kedua dan tetap menjalankan bisnis klinik.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

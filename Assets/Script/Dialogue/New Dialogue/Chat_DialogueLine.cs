@@ -44,11 +44,22 @@ namespace DialogueSystem
                         _spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
                         _spriteContainer.gameObject.SetActive(true);
                     }
+                    else _spriteContainer.gameObject.SetActive(false);
                 }
             }
             else if(_getChatDialogueData.DialogueTypeNow == DialogueType.Narration)
             {
                 _nameTextContainer.text = "";
+
+                if(_isWholeDialogueUseSprite)
+                {
+                    if(CurrCharacter.charaSprites.Length > 0 && _getChatDialogueData.SpriteNumber < CurrCharacter.charaSprites.Length && _getChatDialogueData.SpriteNumber >= 0)
+                    {
+                        _spriteContainer.sprite = CurrCharacter.charaSprites[_getChatDialogueData.SpriteNumber];
+                        _spriteContainer.gameObject.SetActive(true);
+                    }
+                    else _spriteContainer.gameObject.SetActive(false);
+                }
             }
             _nameContainer.SetActive(true);
             _nameTextContainer.gameObject.SetActive(true);

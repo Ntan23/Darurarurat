@@ -84,13 +84,15 @@ public class Patients : MonoBehaviour
         canMove = false;
         patientSpriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         doorAnimator.Play("Door_OpenClose");
+        transform.position = positions[1].position;
+        transform.localScale =  new Vector3(1.8f, 1.8f, 1.8f);
         yield return new WaitForSeconds(0.2f);
         patientSpriteRenderer.sortingOrder = 1;
         LeanTween.value(patientSpriteRenderer.gameObject, UpdateSpriteAlpa, 0.0f, 1.0f, 1.0f).setOnComplete(() => 
         {
             canMove = true;
 
-            LeanTween.scale(gameObject, new Vector3(1.8f, 1.8f, 1.8f), 2.0f);
+            //LeanTween.scale(gameObject, new Vector3(1.8f, 1.8f, 1.8f), 2.0f);
         });
 
         nextLocation++;
@@ -116,8 +118,15 @@ public class Patients : MonoBehaviour
     
     private void MoveBack()
     {
-        LeanTween.scale(gameObject, Vector3.one, 2.0f);
-        LeanTween.move(gameObject, savedPosition[0], 2.0f).setOnComplete(() => LeanTween.move(gameObject, savedPosition[1], 2.0f).setOnComplete(() => Destroy(this.gameObject)));
+        // LeanTween.scale(gameObject, Vector3.one, 2.0f);
+        // LeanTween.move(gameObject, savedPosition[0], 2.0f).setOnComplete(() => LeanTween.move(gameObject, savedPosition[1], 2.0f).setOnComplete(() => Destroy(this.gameObject)));
+        StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return new WaitForSeconds(1.0f);
+        LeanTween.value(patientSpriteRenderer.gameObject, UpdateSpriteAlpa, 1.0f, 0.0f, 1.0f);
     }
 
     public void SetWound(PatientWoundSO wound) => _wound = wound;

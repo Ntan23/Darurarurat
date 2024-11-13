@@ -15,6 +15,7 @@ public class MainMenuUI : MonoBehaviour
     private bool isAnimating;
     private bool isOpen;
     private ScenesManager scenesManager;
+    [SerializeField] private ResetUI resetUI;
 
     void Start() 
     {
@@ -23,6 +24,11 @@ public class MainMenuUI : MonoBehaviour
 
 
         StartCoroutine(StartDelay());
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R)) ResetData();
     }
 
     private void OnMouseDown()
@@ -119,5 +125,30 @@ public class MainMenuUI : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(1.0f);
         GetComponent<Collider>().enabled = true;
+    }
+
+    private void ResetData()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            if(i == 0 || i > 2) PlayerPrefs.SetInt("Object" + i.ToString(), 0);
+            if(i == 1 || i == 2) PlayerPrefs.SetInt("Object" + i.ToString(), 1);
+        }
+
+        PlayerPrefs.SetInt("DaySaved", 1);
+        PlayerPrefs.SetInt("Served", 0);
+        PlayerPrefs.SetInt("Treated", 0);
+        PlayerPrefs.SetInt("Failed", 0);
+        PlayerPrefs.SetFloat("Money", 7.0f);
+        PlayerPrefs.SetFloat("TargetQuota", 50.0f);
+
+        PlayerPrefs.SetInt("IsTeaTime", 0);
+        PlayerPrefs.SetInt("IsUpgrade", 0);
+        PlayerPrefs.SetInt("IsFirstimePlaying", 0);
+        PlayerPrefs.GetInt("TipsShowed", 0);
+        PlayerPrefs.SetInt("TipsReception", 0);
+        PlayerPrefs.SetInt("TipsTeaTime", 0);
+
+        resetUI.OpenUI();
     }
 }

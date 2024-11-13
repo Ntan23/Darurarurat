@@ -79,6 +79,4 @@ public class TimeManager : MonoBehaviour
     {
         return day;
     }
-
-    public void ChangeCanStartValue(bool value) => canStart = value;
 }

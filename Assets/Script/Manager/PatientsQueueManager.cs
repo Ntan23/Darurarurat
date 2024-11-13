@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 public class PatientsQueueManager : MonoBehaviour
@@ -63,7 +62,18 @@ public class PatientsQueueManager : MonoBehaviour
         if(canSpawn) StartCoroutine(CheckAvailableInjuries());
     }
 
-    public void CheckInjuriesAndSpawnPatient() => StartCoroutine(CheckAvailableInjuries());
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Served", 0);
+        PlayerPrefs.SetInt("Treated", 0);
+        PlayerPrefs.SetInt("Failed", 0);
+    }
+
+    public void CheckInjuriesAndSpawnPatient() 
+    {
+        tm.canStart = true;
+        StartCoroutine(CheckAvailableInjuries());
+    }
 
     private void CheckObject()
     {
@@ -155,10 +165,6 @@ public class PatientsQueueManager : MonoBehaviour
 
         if(isTreated) totalPatientTreated++;
         if(!isTreated) totalPatientFailed++;
-
-        Debug.Log(totalPatientServed);
-        Debug.Log(totalPatientTreated);
-        Debug.Log(totalPatientFailed);
 
         PlayerPrefs.SetInt("Served", totalPatientServed);
         PlayerPrefs.SetInt("Treated", totalPatientTreated);

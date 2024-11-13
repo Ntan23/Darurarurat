@@ -18,6 +18,7 @@ public class ProgressReportUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalPatientsFailedText;
     [SerializeField] private TextMeshProUGUI profitText;
     [SerializeField] private GameObject progressBoard;
+    [SerializeField] private TipsUIV2 tipsUI;
     private TimeManager tm;
     
     void Start() 
@@ -76,7 +77,7 @@ public class ProgressReportUI : MonoBehaviour
     public void DisableProgressReport()
     {
         LeanTween.value(this.gameObject, UpdateBackgroundAlpha, 1.0f, 0.0f, 0.5f);
-        LeanTween.moveLocalY(progressBoard, -970.0f, 0.8f).setEaseSpring();
+        LeanTween.moveLocalY(progressBoard, -970.0f, 0.8f).setEaseSpring().setOnComplete(() => tipsUI.Check());
     }
 
     private void UpdateBackgroundAlpha(float alpha) => GetComponent<CanvasGroup>().alpha = alpha;
