@@ -201,6 +201,7 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
             }
             _nextButtonContainer.onClick.RemoveListener(_dialogueLineContainer.NextButtonClicked);
             _nextButtonContainer.onClick.AddListener(NextButtonClicked);
+            if(i+1 == _comicPages.Count)NextButtonClicked();
             yield return new WaitUntil(()=> IsInputTrue());
             
             if(i != _comicPages.Count - 1)
@@ -209,8 +210,11 @@ public class ComicPageController : MonoBehaviour, INeedButtonInput
                 _nextButtonContainer.gameObject.SetActive(false);
             }
 
-            _currPage.SetTransparentImage_Animated(null, 0.2f, _fadeComicBGDuration);
-            if( i + 1 != _comicPages.Count) _comicPages[i+1].SetTransparentImage_Animated(MoveNext, 1f, _fadeComicBGDuration);
+            if( i + 1 != _comicPages.Count)
+            {
+                _currPage.SetTransparentImage_Animated(null, 0.2f, _fadeComicBGDuration);
+                _comicPages[i+1].SetTransparentImage_Animated(MoveNext, 1f, _fadeComicBGDuration);
+            }
             else _canMovePage = true;
             yield return new WaitUntil(()=> _canMovePage);
             _canMovePage = false;
