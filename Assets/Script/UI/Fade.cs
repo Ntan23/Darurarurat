@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fade : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Fade : MonoBehaviour
     private DialogueManager dm;
     private StoryManager sm;
     private TimeManager tm;
-    [SerializeField] private bool haveTips;
+    [SerializeField] private bool needToStopTime;
 
     void Start()
     {
@@ -50,8 +51,10 @@ public class Fade : MonoBehaviour
         {
             if(tm != null) 
             {
-                if(!haveTips) tm.canStart = true;
-                else if(haveTips && PlayerPrefs.GetInt("TipsShowed") == 1) tm.canStart = true;
+                if(!needToStopTime) tm.canStart = true;
+                else if(needToStopTime && PlayerPrefs.GetInt("TipsShowed") == 1 && SceneManager.GetActiveScene().name == "Level1") tm.canStart = true;
+                else if(needToStopTime && PlayerPrefs.GetInt("IsFirstimePlaying", 0) == 1 && SceneManager.GetActiveScene().name == "PatientReception") tm.canStart = true;
+                else tm.canStart = false;
             }
             if(gm != null) gm.ChangeCanPauseValue(true);
             if(sm != null) GetComponent<CanvasGroup>().blocksRaycasts = false;

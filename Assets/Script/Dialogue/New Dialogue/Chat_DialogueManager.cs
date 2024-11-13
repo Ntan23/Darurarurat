@@ -75,12 +75,12 @@ public class Chat_DialogueManager : MonoBehaviour
         }
     }
 
-
     public void HideFinishedDialogueNow()
     {
         _dialogueHolder.StopCoroutineAbruptly();
         _dialogueHolder.HideDialogue();
     }
+
     private void OnDialogueFinishDo(ChatDialoguesTitle title)
     {
         if(GameManager.instance != null && GameManager.instance.IsCutscene())
@@ -103,8 +103,5 @@ public class Chat_DialogueManager : MonoBehaviour
             PlayerPrefs.SetInt("IsFirstimePlaying", 1);
         }
 
-    }
-    
-
-    
+    } 
 }

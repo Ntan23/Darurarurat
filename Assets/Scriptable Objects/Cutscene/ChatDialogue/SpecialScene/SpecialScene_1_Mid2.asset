@@ -15,7 +15,7 @@ MonoBehaviour:
   dialoguesTitle: 4
   isWholeDialogueUseSprite: 1
   dialogue_Lines:
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:

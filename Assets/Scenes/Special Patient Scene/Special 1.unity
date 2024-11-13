@@ -27128,6 +27128,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Story
       objectReference: {fileID: 0}
+    - target: {fileID: 484429852059211488, guid: 6925fe1b4548bdf4da02d79c59655c17,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 484429852059211491, guid: 6925fe1b4548bdf4da02d79c59655c17,
         type: 3}
       propertyPath: m_Pivot.x

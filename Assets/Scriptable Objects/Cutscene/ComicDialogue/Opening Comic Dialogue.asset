@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguesTitle: 1
   dialogue_Lines:
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -26,7 +26,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _vaName: Sighing Heavily
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -38,7 +38,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _vaName: Frustated
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -50,7 +50,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _vaName: 
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -62,7 +62,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _vaName: 
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:
@@ -74,7 +74,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _vaName: Coughing
-  - _delayTypeText: 0.1
+  - _delayTypeText: 0.05
     _delayBetweenLines: 0.2
     _dialogueTextLocalized:
       m_TableReference:

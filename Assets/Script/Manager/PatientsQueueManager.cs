@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 public class PatientsQueueManager : MonoBehaviour
@@ -30,6 +31,7 @@ public class PatientsQueueManager : MonoBehaviour
     private bool specialPatientSpawned;
     private bool haveSpecialNPC;
     private TimeManager tm; 
+    private bool canSpawn;
 
     void Start()
     {
@@ -50,9 +52,18 @@ public class PatientsQueueManager : MonoBehaviour
         totalPatientServed = PlayerPrefs.GetInt("Served", 0);
         totalPatientTreated = PlayerPrefs.GetInt("Treated", 0);
         totalPatientFailed = PlayerPrefs.GetInt("Failed", 0);
- 
-        StartCoroutine(CheckAvailableInjuries());
+
+        if(PlayerPrefs.GetInt("IsFirstimePlaying", 0) == 0) 
+        {
+            canSpawn = false;
+            Chat_DialogueManager.Instance.PlayDialogueScene(ChatDialoguesTitle.OpeningGame);
+        }
+        else canSpawn = true;
+
+        if(canSpawn) StartCoroutine(CheckAvailableInjuries());
     }
+
+    public void CheckInjuriesAndSpawnPatient() => StartCoroutine(CheckAvailableInjuries());
 
     private void CheckObject()
     {
@@ -138,7 +149,7 @@ public class PatientsQueueManager : MonoBehaviour
 
     public void UpdateProgress(bool isTreated)
     {
-        Debug.Log("Tes");
+        // Debug.Log("Tes");
     
         totalPatientServed++;
 

@@ -14,7 +14,7 @@ public class CreditsUI : MonoBehaviour
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         LeanTween.value(gameObject, UpdateAlpha, 0.0f, 1.0f, 0.5f).setOnComplete(() =>
         {
-            LeanTween.moveLocalY(creditText, 1666.0f, textTimeToReachTheEnd).setLoopClamp();
+            LeanTween.moveLocalY(creditText, 1900.0f, textTimeToReachTheEnd).setLoopClamp();
         });
     }
 
@@ -26,7 +26,7 @@ public class CreditsUI : MonoBehaviour
         {
             GetComponent<CanvasGroup>().blocksRaycasts = false;
         });
-        creditText.transform.localPosition = new Vector3(0.0f, -1666.0f, 0.0f);
+        creditText.transform.localPosition = new Vector3(0.0f, -1900.0f, 0.0f);
     }
 
     IEnumerator OpenAnimation()
