@@ -176,7 +176,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-
     IEnumerator WaitForPauseMenuAnimation(bool isPause)
     {
         yield return new WaitForSeconds(0.6f);
